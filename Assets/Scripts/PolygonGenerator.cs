@@ -86,7 +86,7 @@ public class PolygonGenerator : MonoBehaviour {
 	}
 
 	void GenTerrain(){
-		blocks = new byte[10, 10];
+		blocks = new byte[20, 20];
 		for (int px = 0; px < blocks.GetLength (0); px++) {
 			for (int py = 0; py < blocks.GetLength (1); py++) {
 				if (py == 5) {
