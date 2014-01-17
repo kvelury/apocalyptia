@@ -14,6 +14,12 @@ using System.Collections.Generic;
 
 public class PolygonGenerator : MonoBehaviour {
 
+	//*******************************************************************************************
+	//constants
+	protected int gridWidth = 50;
+	protected int gridHeight = 50;
+	//*******************************************************************************************
+
 	//list of vertices to the mesh
 	public List<Vector3> newVertices = new List<Vector3>();
 	//triangles how to build each section of the mesh
@@ -21,20 +27,26 @@ public class PolygonGenerator : MonoBehaviour {
 	//UV list to tell Unity how texture is aligned to polygon
 	public List<Vector2> newUV = new List<Vector2>();
 	//save final terrain as this mesh
-	private Mesh mesh;
+	protected Mesh mesh;
 
 	//variables to pick apart the sprite sheet
-	private float tUnit = 0.25f; //percentage of the width of the image of one tile
-	private Vector2 tStone = new Vector2(1, 0);
-	private Vector2 tGrass = new Vector2(0, 1);
+	protected float tUnit = 0.25f; //percentage of the width of the image of one tile
+    protected Vector2 Grass = new Vector2(0, 2);
+	protected Vector2 DryGrass = new Vector2(0, 1);
+	protected Vector2 Stone = new Vector2(3, 2);
+	protected Vector2 Water = new Vector2(2, 3);
+	protected Vector2 Sand = new Vector2(2, 2);
+	protected Vector2 Dirt = new Vector2(1, 1);
+	protected enum TileCodes : byte {Grass, DryGrass, Stone, Water, Sand, Dirt};
 
-	private int squareCount = 0;
+	protected int squareCount = 0;
 
-	public byte[,] blocks; //0 = air, 1 = rock, 2 = grass.  replace with enum later
+	public byte[,] blocks;
+	//public TileFeature[,] tileObjects;
 
 
 	// Use this for initialization
-	void Start () {
+	public virtual void Start () {
 		mesh = GetComponent<MeshFilter>().mesh;
 
 		GenTerrain ();
@@ -43,11 +55,11 @@ public class PolygonGenerator : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	public virtual void Update () {
+		return;
 	}
 
-	void UpdateMesh(){
+	protected void UpdateMesh(){
 		mesh.Clear();
 		mesh.vertices = newVertices.ToArray();
 		mesh.triangles = newTriangles.ToArray();
@@ -61,7 +73,7 @@ public class PolygonGenerator : MonoBehaviour {
 		newUV.Clear ();
 	}
 
-	void GenSquare(int x, int y, Vector2 texture){
+	protected void GenSquare(int x, int y, Vector2 texture){
 		newVertices.Add( new Vector3(x, y, 0));
 		newVertices.Add( new Vector3(x + 1, y, 0));
 		newVertices.Add( new Vector3(x + 1, y - 1, 0));
@@ -85,28 +97,40 @@ public class PolygonGenerator : MonoBehaviour {
 		squareCount++;
 	}
 
-	void GenTerrain(){
-		blocks = new byte[20, 20];
+	protected virtual void GenTerrain(){
+		blocks = new byte[gridWidth, gridHeight];;
 		for (int px = 0; px < blocks.GetLength (0); px++) {
 			for (int py = 0; py < blocks.GetLength (1); py++) {
-				if (py == 5) {
-					blocks [px, py] = 2;
-				} else if (py < 5) {
-					blocks [px, py] = 1;
-				}else{
-					blocks[px, py] = 2;
-				}
+				//these are stupid random values.  More intelligent values come from derived classes
+				float tmp = Mathf.Round(Random.Range (0, 6));
+				tmp = tmp % 6;
+				blocks[px, py] = (byte)tmp;
 			}
 		}
 	}
 
-	void BuildMesh(){
+	protected void BuildMesh(){
 		for(int px = 0; px < blocks.GetLength (0); px++){
 			for(int py = 0; py < blocks.GetLength (1); py++){
-				if(blocks[px, py] == 1){
-					GenSquare(px, py, tStone);
-				}else if(blocks[px, py] == 2){
-					GenSquare(px, py, tGrass);
+				switch(blocks[px, py]){
+				case (byte)TileCodes.DryGrass:
+					GenSquare(px, py, DryGrass);
+					break;
+				case (byte)TileCodes.Grass:
+					GenSquare(px, py, Grass);
+					break;
+				case (byte)TileCodes.Stone:
+					GenSquare(px, py, Stone);
+					break;
+				case (byte)TileCodes.Water:
+					GenSquare(px, py, Water);
+					break;
+				case (byte)TileCodes.Sand:
+					GenSquare (px, py, Sand);
+					break;
+				case (byte)TileCodes.Dirt:
+					GenSquare (px, py, Dirt);
+					break;
 				}
 			}
 		}
