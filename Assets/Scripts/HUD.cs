@@ -19,13 +19,13 @@ public class HUD : MonoBehaviour {
 			resources.healthCount -= 10;
 		
 		if(GUI.Button (new Rect (20, 50, 80, 25), "Wood: " + resources.woodCount.ToString ()))
-			resources.woodCount += 1;
+			resources.woodCount += 10;
 		
 		if(GUI.Button (new Rect (20, 80, 80, 25), "Stone: " + resources.stoneCount.ToString ()))
-			resources.stoneCount += 1;
+			resources.stoneCount += 10;
 		
 		if(GUI.Button (new Rect (20, 110, 80, 25), "Iron: " + resources.ironCount.ToString ()))
-			resources.ironCount += 1;
+			resources.ironCount += 10;
 		
 		/* Use for later when resource collection is implemented
 		GUI.Box (new Rect (20, 50, 80, 25), "Wood: " + resources.woodCount.ToString ());
