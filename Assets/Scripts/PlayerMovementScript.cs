@@ -8,7 +8,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// This gets multiplied by the direction to get actual movement.
 	/// </summary>
 	public float velocity = 10;
-
+	public GameObject Weapon;
 	/// <summary>
 	/// The movement vector is given to the rigidbody physics to move the object
 	/// </summary>
@@ -24,6 +24,26 @@ public class PlayerMovementScript : MonoBehaviour {
 		Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"), 0);
 
 		movement = new Vector3 (velocity * direction.x, velocity * direction.y, 0);
+	
+		if(Input.GetMouseButtonDown (0)){
+			GameObject.Destroy (GameObject.Find ("Weapon(Clone)"));
+			Vector3 swingDir = new Vector3(transform.position.x,transform.position.y,-1);
+			Quaternion swingRot = new Quaternion(0,0,0,0);
+			if(Input.mousePosition.x > Screen.width/2 + 16)
+				swingDir.x  = transform.position.x + 0.55F;
+			else if(Input.mousePosition.x < Screen.width/2 - 16)
+				swingDir.x = transform.position.x - 0.55F;
+			if(Input.mousePosition.y > Screen.height/2 + 16)
+				swingDir.y  = transform.position.y + 0.55F;
+			else if(Input.mousePosition.y < Screen.height/2 - 16)
+				swingDir.y = transform.position.y - 0.55F;
+			swingRot = Quaternion.LookRotation (swingDir - transform.position);
+			swingRot.z = swingRot.w = 0;
+			if(swingDir.x == transform.position.x){
+				swingRot.y = swingRot.x;
+			}
+			GameObject swingInstance = Instantiate (Weapon,swingDir, swingRot) as GameObject;
+		}
 	}
 
 	//FixedUpdate is called once per tick and should be used for physics
