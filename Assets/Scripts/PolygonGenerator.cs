@@ -43,7 +43,8 @@ public class PolygonGenerator : MonoBehaviour {
 	protected int squareCount = 0;
 
 	public byte[,] blocks;
-	//public TileFeature[,] tileObjects;
+	public TileObject[,] tileObjects;
+	public GameObject player;
 
 
 	// Use this for initialization
@@ -57,7 +58,8 @@ public class PolygonGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
-		return;
+		Vector3 playerLocation = player.transform.localPosition;
+		Vector3 generatorLocation = this.transform.localPosition;
 	}
 
 	protected void UpdateMesh(){

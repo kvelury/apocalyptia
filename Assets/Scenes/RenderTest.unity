@@ -109,6 +109,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1128033392}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
   m_RootGameObject: {fileID: 1185055654}
@@ -166,6 +170,7 @@ GameObject:
   - 61: {fileID: 1128033395}
   - 114: {fileID: 1128033394}
   - 50: {fileID: 1128033393}
+  - 114: {fileID: 1128033398}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -253,6 +258,18 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1128033398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 741b139df0d955c4f861fd2044e26a00,
+    type: 2}
+  m_PrefabInternal: {fileID: 55634868}
+  m_GameObject: {fileID: 1128033392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 004cd174d52354446ba80bf2761071a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1185055654
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,6 +315,7 @@ MonoBehaviour:
   newVertices: []
   newTriangles: 
   newUV: []
+  player: {fileID: 1128033392}
 --- !u!64 &1185055657
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -438,6 +456,7 @@ MonoBehaviour:
   newVertices: []
   newTriangles: 
   newUV: []
+  player: {fileID: 1128033392}
 --- !u!64 &1778768338
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -620,6 +639,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 706b12dcea59c4759b5ef920bfe27eff, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1128033392}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 706b12dcea59c4759b5ef920bfe27eff, type: 2}
   m_RootGameObject: {fileID: 1778768336}
