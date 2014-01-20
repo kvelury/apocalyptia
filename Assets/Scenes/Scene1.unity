@@ -178,7 +178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ff23ad2ba554bcdbd79ed5fc1e51df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 10, y: 10, z: 0}
+  velocity: .5
+  screenBufferSize: 25
   target: {fileID: 1384526595}
   followDistance: {x: 0, y: 2, z: 4}
 --- !u!1001 &642179452
@@ -216,7 +217,8 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11400002, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   m_RootGameObject: {fileID: 1384526589}
   m_IsPrefabParent: 0
@@ -255,6 +257,7 @@ MonoBehaviour:
   newVertices: []
   newTriangles: 
   newUV: []
+  player: {fileID: 1384526589}
 --- !u!64 &847977252
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -341,7 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e154d1c89632347b538f974d0ed09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 10, y: 10}
+  velocity: 1
 --- !u!50 &1384526591
 Rigidbody2D:
   m_ObjectHideFlags: 0
@@ -457,6 +460,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1384526589}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
   m_RootGameObject: {fileID: 847977250}
