@@ -41,23 +41,23 @@ public class CameraControl : MonoBehaviour
 		}
 		if (followingTarget) {
 			transform.position = target.position - followDistance;
-			transform.LookAt (target);
+			transform.LookAt (target, new Vector3(0, 0, -1));
 		} else {
 			//Debug.Log ("currently free roaming");
 			if (Input.mousePosition.x > Screen.width - screenBufferSize) {
-				transform.position += velocity * new Vector3(1, 0, 0);
+				transform.position += Quaternion.Euler(0, 0, -45) * (velocity * new Vector3(1, 0, 0));
 				//Debug.Log ("Mouse Right");
 			}
 			if (Input.mousePosition.x < screenBufferSize) {
-				transform.position += velocity * new Vector3 (-1, 0, 0);
+				transform.position += Quaternion.Euler(0, 0, -45) * (velocity * new Vector3(-1, 0, 0));
 				//Debug.Log ("Mouse Left");
 			}
 			if (Input.mousePosition.y > Screen.height - screenBufferSize) {
-				transform.position += velocity * new Vector3 (0, 1, 0);
+				transform.position += Quaternion.Euler(0, 0, -45) * (velocity * new Vector3(0, 1, 0));
 				//Debug.Log ("Mouse Up");
 			}
 			if (Input.mousePosition.y < screenBufferSize) {
-				transform.position += velocity * new Vector3 (0, -1, 0);
+				transform.position += Quaternion.Euler(0, 0, -45) * (velocity * new Vector3(0, -1, 0));
 				//Debug.Log ("Mouse Down");
 			}
 		}

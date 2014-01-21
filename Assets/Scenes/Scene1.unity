@@ -178,10 +178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ff23ad2ba554bcdbd79ed5fc1e51df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: .25
+  velocity: .119999997
   screenBufferSize: 25
   target: {fileID: 1384526595}
-  followDistance: {x: 0, y: 2, z: 4}
+  followDistance: {x: 3, y: 3, z: 5}
 --- !u!1001 &642179452
 Prefab:
   m_ObjectHideFlags: 0
@@ -221,6 +221,10 @@ Prefab:
       propertyPath: m_LinearDrag
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 444190772}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
@@ -482,6 +486,7 @@ GameObject:
   - 61: {fileID: 1384526593}
   - 114: {fileID: 1384526592}
   - 50: {fileID: 1384526591}
+  - 114: {fileID: 1384526596}
   - 114: {fileID: 1384526590}
   m_Layer: 0
   m_Name: Player
@@ -501,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e154d1c89632347b538f974d0ed09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: .5
+  velocity: .25
   Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
 --- !u!50 &1384526591
 Rigidbody2D:
@@ -583,6 +588,19 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1384526596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 741b139df0d955c4f861fd2044e26a00,
+    type: 2}
+  m_PrefabInternal: {fileID: 642179452}
+  m_GameObject: {fileID: 1384526589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c767ebdae4fa3fa498210d4bdfc0f937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 444190772}
 --- !u!1001 &1603325073
 Prefab:
   m_ObjectHideFlags: 0
