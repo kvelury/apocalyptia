@@ -9,14 +9,29 @@ public class PlayerResources : MonoBehaviour {
 	public float fameCount;
 	public float healthCount;
 
-	//Once we know how we're doing resource tiles, we can fill out this method.
-	void CollectResources(){
+	/*****************************************************************************
+	 * boolean variable when this class wants to interact with the tile it is on.  
+	 * The PolygonGenerator class actually handles the interaction
+	 * **************************************************************************/
+	public bool interactWithCurrentTile;
+	
+	public void giveIron(float amount){
+		ironCount += amount;
+	}
+
+	public void giveWood(float amount){
+		woodCount += amount;
+	}
+
+	public void giveStone(float amount){
+		stoneCount += amount;
 	}
 
 	// Use this for initialization
 	void Start () {
 		healthCount = 100;
 		woodCount = fameCount = stoneCount = ironCount = 0;
+		interactWithCurrentTile = false;
 	}
 	
 	// Update is called once per frame

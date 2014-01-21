@@ -13,13 +13,23 @@ using System.Collections;
 
 public class TileObject : MonoBehaviour {
 
+	public enum resourceType:byte{Trees, Rocks, Iron, Building};
+
+	public byte type;
+	public int amount;
+
 	// Use this for initialization
 	public virtual void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
 	public virtual void Update () {
 	
+	}
+
+	public virtual void initialize(byte type, int amount){
+		this.type = type;
+		this.amount = amount;
 	}
 }

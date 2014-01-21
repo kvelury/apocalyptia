@@ -58,8 +58,48 @@ public class PolygonGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
+		PlayerResources pr = player.GetComponent<PlayerResources> ();
+
+		if (pr.interactWithCurrentTile == false) {
+			return;
+		}
+		//figure out where they are
 		Vector3 playerLocation = player.transform.localPosition;
 		Vector3 generatorLocation = this.transform.localPosition;
+		//calculate distance in x and y
+		float dx = playerLocation.x - generatorLocation.x;
+		float dy = playerLocation.y - generatorLocation.y;
+
+		Debug.Log (dx.ToString () + " " + dy.ToString ());
+
+		//figure out which grid tile the player is above
+		int gridx = Mathf.FloorToInt (dx / (gridWidth * 16));
+		int gridy = Mathf.FloorToInt (dy / (gridHeight * 16));
+
+		//retrieve the value at that point
+		TileObject t = tileObjects [gridx, gridy];
+		//if there is nothing there, quit
+		if (t == null){
+			return;
+		}
+
+		//compare what it is and increase the appropriate value
+		switch (t.type) {
+		case (byte)TileObject.resourceType.Building:
+			//no need to do anything yet
+			break;
+		case (byte)TileObject.resourceType.Iron:
+			pr.giveIron(5);
+			break;
+		case (byte)TileObject.resourceType.Rocks:
+			pr.giveStone(10);
+			break;
+		case (byte)TileObject.resourceType.Trees:
+			pr.giveWood(20);
+			break;
+		}
+
+
 	}
 
 	protected void UpdateMesh(){
@@ -101,7 +141,7 @@ public class PolygonGenerator : MonoBehaviour {
 	}
 
 	protected virtual void GenTerrain(){
-		blocks = new byte[gridWidth, gridHeight];;
+		blocks = new byte[gridWidth, gridHeight];
 		for (int px = 0; px < blocks.GetLength (0); px++) {
 			for (int py = 0; py < blocks.GetLength (1); py++) {
 				//these are stupid random values.  More intelligent values come from derived classes

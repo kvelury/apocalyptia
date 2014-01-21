@@ -536,6 +536,7 @@ MonoBehaviour:
   ironCount: 0
   fameCount: 0
   healthCount: 0
+  interactWithCurrentTile: 0
 --- !u!61 &1384526593
 BoxCollider2D:
   m_ObjectHideFlags: 0
