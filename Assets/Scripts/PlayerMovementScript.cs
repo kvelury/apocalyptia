@@ -23,11 +23,12 @@ public class PlayerMovementScript : MonoBehaviour {
 	void Update () {
 		Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"), 0);
 
-		movement = new Vector3 (velocity * direction.x, velocity * direction.y, 0);
+		//Debug.Log ((Quaternion.Euler (0, 0, -45) * (velocity * direction)).ToString ());
+		movement = Quaternion.Euler (0, 0, -45) * (velocity * direction);
 	
 		if(Input.GetMouseButtonDown (0)){
 			GameObject.Destroy (GameObject.Find ("Weapon(Clone)"));
-			Vector3 swingDir = new Vector3(transform.position.x,transform.position.y,-1);
+			Vector3 swingDir = new Vector3(transform.position.x,transform.position.y, 0);
 			Quaternion swingRot = new Quaternion(0,0,0,0);
 			if(Input.mousePosition.x > Screen.width/2 + 16)
 				swingDir.x  = transform.position.x + 0.55F;
@@ -42,6 +43,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			if(swingDir.x == transform.position.x){
 				swingRot.y = swingRot.x;
 			}
+			//we need account for the isometric rotation
 			GameObject swingInstance = Instantiate (Weapon,swingDir, swingRot) as GameObject;
 		}
 	}
