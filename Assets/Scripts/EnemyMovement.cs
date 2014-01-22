@@ -30,6 +30,19 @@ public class EnemyMovement : MonoBehaviour {
 				movement = new Vector2 (velocity.x * direction.x, velocity.y * direction.y);
 		}
 	}
+
+	void OnCollisionEnter2D (Collision2D col){
+		if (col.gameObject.tag == "Weapon") {
+			movement.x = -2F*movement.x;
+			movement.y = -2F*movement.y;
+			timer = 40;
+		}
+	}
+
+	void OnDestroy(){
+		PlayerResources pr = Player.GetComponent<PlayerResources> ();
+		pr.fameCount += 10;
+	}
 	
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
