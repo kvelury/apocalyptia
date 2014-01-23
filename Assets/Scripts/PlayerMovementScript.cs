@@ -11,6 +11,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// </summary>
 	public float velocity = 10;
 	public GameObject Weapon;
+	public float knockBackTimer;
 	/// <summary>
 	/// The movement vector is given to the rigidbody physics to move the object
 	/// </summary>
@@ -18,15 +19,21 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		knockBackTimer = 11;
 		stats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"), 0);
+		if (knockBackTimer > 10) {
+						Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"), 0);
 
-		//Debug.Log ((Quaternion.Euler (0, 0, -45) * (velocity * direction)).ToString ());
-		movement = Quaternion.Euler (0, 0, -45) * (velocity * direction);
+						//Debug.Log ((Quaternion.Euler (0, 0, -45) * (velocity * direction)).ToString ());
+						movement = Quaternion.Euler (0, 0, -45) * (velocity * direction);
+				} else {
+						knockBackTimer ++;
+
+				}
 	
 		if(Input.GetMouseButtonDown (0)){
 			GameObject.Destroy (GameObject.Find ("Weapon(Clone)"));
@@ -75,6 +82,14 @@ public class PlayerMovementScript : MonoBehaviour {
 			Debug.Log("Precision Guns: " + stats.precisionGuns.ToString());
 		}
 
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.tag == "Enemy") {
+			Vector3 direction = (transform.position - col.gameObject.transform.position).normalized;
+			movement = Quaternion.Euler (0,0,-45) * (0.5F * velocity*direction);
+			knockBackTimer = 0;
+			}
 	}
 
 	//FixedUpdate is called once per tick and should be used for physics
