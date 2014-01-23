@@ -20,6 +20,12 @@ public class PlayerStats : MonoBehaviour {
 		precisionGuns = powerGuns = sharpWeapon = bluntWeapon
 			= charm = intimidate = movement = medical = crafting
 				= repairing = 20;
+		if (GameOverEvents.talentTree [0].Active) {
+			precisionGuns += 10;
+			powerGuns += 10;
+			sharpWeapon += 10;
+			bluntWeapon += 10;
+		}
 	}
 	
 	// Update is called once per frame

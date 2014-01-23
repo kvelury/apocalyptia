@@ -3,6 +3,8 @@ using System.Collections;
 
 public class PlayerMovementScript : MonoBehaviour {
 
+	private PlayerStats stats;
+
 	/// <summary>
 	/// The velocity vector holds the player's movement speed.
 	/// This gets multiplied by the direction to get actual movement.
@@ -16,7 +18,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		stats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
 	}
 	
 	// Update is called once per frame
@@ -68,6 +70,11 @@ public class PlayerMovementScript : MonoBehaviour {
 				GameObject swingInstance = Instantiate (Weapon,swingDir, swingRot) as GameObject;
 			}
 		}
+
+		if (Input.GetKey (KeyCode.Space)) {
+			Debug.Log("Precision Guns: " + stats.precisionGuns.ToString());
+		}
+
 	}
 
 	//FixedUpdate is called once per tick and should be used for physics
