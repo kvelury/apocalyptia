@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
+  EnemySpawner: {fileID: 0}
   velocity: {x: 1, y: 1}
   timer: 0
 --- !u!114 &11400002

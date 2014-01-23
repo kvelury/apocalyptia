@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Rigidbody2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: .0500000007
   m_GravityScale: 0
   m_FixedAngle: 1
@@ -73,6 +73,7 @@ MonoBehaviour:
   ironCount: 0
   fameCount: 0
   healthCount: 0
+  interactWithCurrentTile: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

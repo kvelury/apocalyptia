@@ -42,7 +42,7 @@ public class PlayerResources : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.name == "Enemy") {
+		if (col.gameObject.tag == "Enemy") {
 			healthCount -= 5;
 		}
 	}
