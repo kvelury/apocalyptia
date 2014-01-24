@@ -23,11 +23,12 @@ public class PlayerResources : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.tag == "Enemy") {
-			healthCount -= 5;
+				if (col.gameObject.tag == "Enemy") {
+						healthCount -= 5;
+				}
 		}
-
-		Debug.Log ("PlayerResources.OnCollisionEnter2D");
+	void OnTriggerStay2D (Collider2D col){
+		//Debug.Log ("PlayerResources.OnCollisionEnter2D");
 		//add a keypress or gather action of some sort to this
 		if (col.gameObject.tag == "tree" && Input.GetKeyDown ("g") ) {
 			woodCount += 5;
