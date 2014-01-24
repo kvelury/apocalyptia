@@ -38,7 +38,7 @@ public class PolygonGenerator : MonoBehaviour {
 	protected readonly Vector2 Water = new Vector2(2, 3);
 	protected readonly Vector2 Sand = new Vector2(2, 2);
 	protected readonly Vector2 Dirt = new Vector2(1, 1);
-	protected enum TileCodes : byte {Grass, DryGrass, Stone, Water, Sand, Dirt};
+	public enum TileCodes : byte {Grass, DryGrass, Stone, Water, Sand, Dirt};
 
 	protected int squareCount = 0;
 
@@ -58,6 +58,7 @@ public class PolygonGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
+		/*
 		PlayerResources pr = player.GetComponent<PlayerResources> ();
 
 		if (pr.interactWithCurrentTile == false) {
@@ -98,7 +99,7 @@ public class PolygonGenerator : MonoBehaviour {
 			pr.giveWood(20);
 			break;
 		}
-
+		*/
 
 	}
 
@@ -116,7 +117,7 @@ public class PolygonGenerator : MonoBehaviour {
 		newUV.Clear ();
 	}
 
-	protected void GenSquare(int x, int y, Vector2 texture){
+	protected void GenSquare(int x, int y, Vector2 texture, float distance = 0){
 		newVertices.Add( new Vector3(x, y, 0));
 		newVertices.Add( new Vector3(x + 1, y, 0));
 		newVertices.Add( new Vector3(x + 1, y - 1, 0));

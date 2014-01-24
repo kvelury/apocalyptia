@@ -9,29 +9,10 @@ public class PlayerResources : MonoBehaviour {
 	public float fameCount;
 	public float healthCount;
 
-	/*****************************************************************************
-	 * boolean variable when this class wants to interact with the tile it is on.  
-	 * The PolygonGenerator class actually handles the interaction
-	 * **************************************************************************/
-	public bool interactWithCurrentTile;
-	
-	public void giveIron(float amount){
-		ironCount += amount;
-	}
-
-	public void giveWood(float amount){
-		woodCount += amount;
-	}
-
-	public void giveStone(float amount){
-		stoneCount += amount;
-	}
-
 	// Use this for initialization
 	void Start () {
 		healthCount = 100;
 		woodCount = fameCount = stoneCount = ironCount = 0;
-		interactWithCurrentTile = false;
 	}
 	
 	// Update is called once per frame
@@ -44,6 +25,11 @@ public class PlayerResources : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Enemy") {
 			healthCount -= 5;
+		}
+
+		//add a keypress or gather action of some sort to this
+		if (col.gameObject.tag == "Tree") {
+			woodCount += 5;
 		}
 	}
 }
