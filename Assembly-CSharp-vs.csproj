@@ -60,7 +60,6 @@
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\PolygonGenerator.cs" />
      <Compile Include="Assets\Scripts\TileObject.cs" />
-     <Compile Include="Assets\Scripts\TreeSpawner.cs" />
      <Compile Include="Assets\Scripts\WeaponScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

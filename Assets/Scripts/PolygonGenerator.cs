@@ -20,6 +20,9 @@ public class PolygonGenerator : MonoBehaviour {
 	protected int gridHeight = 50;
 	protected const float scale = 1.0f;
 	//*******************************************************************************************
+	//references for resources
+	public GameObject tree;
+	//*******************************************************************************************
 
 	//list of vertices to the mesh
 	public List<Vector3> newVertices = new List<Vector3>();
@@ -54,6 +57,7 @@ public class PolygonGenerator : MonoBehaviour {
 		GenTerrain ();
 		BuildMesh ();
 		UpdateMesh ();
+		AddResources ();
 	}
 	
 	// Update is called once per frame
@@ -175,6 +179,17 @@ public class PolygonGenerator : MonoBehaviour {
 				case (byte)TileCodes.Dirt:
 					GenSquare (px, py, Dirt);
 					break;
+				}
+			}
+		}
+	}
+
+	protected virtual void AddResources(){
+		for(int i = 0; i < blocks.GetLength (0); i++){
+			for(int j = 0; j < blocks.GetLength (1); j++){
+				if(blocks[i,j] == (byte)TileCodes.DryGrass ||  blocks[i,j] == (byte)TileCodes.Grass){
+					Vector3 location = new Vector3(i + this.transform.localPosition.x + 0.5f, j + this.transform.localPosition.y - 0.5f, 0.49f);
+					GameObject newTree = Instantiate (tree, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 				}
 			}
 		}

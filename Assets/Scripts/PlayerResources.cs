@@ -27,9 +27,11 @@ public class PlayerResources : MonoBehaviour {
 			healthCount -= 5;
 		}
 
+		Debug.Log ("PlayerResources.OnCollisionEnter2D");
 		//add a keypress or gather action of some sort to this
-		if (col.gameObject.tag == "Tree") {
+		if (col.gameObject.tag == "tree" && Input.GetKeyDown ("g") ) {
 			woodCount += 5;
+			Debug.Log ("wood collected");
 		}
 	}
 }
