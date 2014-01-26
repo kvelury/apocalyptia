@@ -28,7 +28,7 @@ public class DesertGenerator : PolygonGenerator {
 	 * The perlin noise function always returns the same value for same inputs,
 	 * i.e. Mathf.PerlinNoise(5, 10) always has the same return value.
 	 * 
-	 * This function starts by assigning a random value to start at.  THe 
+	 * This function starts by assigning a random value to start at.  The 
 	 * Perlin Noise plane is infinite, so we will just sample a random portion
 	 * of it.  Loop through and extract the correct value at that point.
 	 * 
@@ -39,8 +39,9 @@ public class DesertGenerator : PolygonGenerator {
 	 * ***********************************************************************/
 	protected override void GenTerrain(){
 		blocks = new byte[gridWidth, gridHeight];
-		float xStart = Random.Range (-1000, 1000);
-		float yStart = Random.Range (-1000, 1000);
+		float xStart = 221;//Random.Range (-1000, 1000);
+		float yStart = 383;//Random.Range (-1000, 1000);
+		Debug.Log ("Seeds used: " + xStart.ToString () + " " + yStart.ToString ());
 		for (int px = 0; px < blocks.GetLength (0); px++) {
 			for (int py = 0; py < blocks.GetLength (1); py++) {
 				float xSample = px + xStart / gridWidth * scale;

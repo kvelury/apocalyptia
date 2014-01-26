@@ -35,12 +35,12 @@ public class PolygonGenerator : MonoBehaviour {
 
 	//variables to pick apart the sprite sheet
 	protected const float tUnit = 0.25f; //percentage of the width of the image of one tile
-    protected readonly Vector2 Grass = new Vector2(0, 2);
+    protected readonly Vector2 Grass    = new Vector2(0, 2);
 	protected readonly Vector2 DryGrass = new Vector2(0, 1);
-	protected readonly Vector2 Stone = new Vector2(3, 2);
-	protected readonly Vector2 Water = new Vector2(2, 3);
-	protected readonly Vector2 Sand = new Vector2(2, 2);
-	protected readonly Vector2 Dirt = new Vector2(1, 1);
+	protected readonly Vector2 Stone    = new Vector2(3, 2);
+	protected readonly Vector2 Water    = new Vector2(2, 3);
+	protected readonly Vector2 Sand     = new Vector2(2, 2);
+	protected readonly Vector2 Dirt     = new Vector2(1, 1);
 	public enum TileCodes : byte {Grass, DryGrass, Stone, Water, Sand, Dirt};
 
 	protected int squareCount = 0;
