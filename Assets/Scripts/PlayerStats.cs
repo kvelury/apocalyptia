@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour {
 		precisionGuns = powerGuns = sharpWeapon = bluntWeapon
 			= charm = intimidate = movement = medical = crafting
 				= repairing = 20;
-		if (GameOverEvents.talentTree [0].Active) {
+		if (PlayerPrefs.GetInt("Talent0") == 1) {
 			precisionGuns += 10;
 			powerGuns += 10;
 			sharpWeapon += 10;

@@ -10,7 +10,21 @@ public class MainMenuEvents : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (Input.GetKey(KeyCode.Space)){
+			PlayerPrefs.DeleteKey("Talent0");
+			PlayerPrefs.DeleteKey("Talent1");
+			PlayerPrefs.DeleteKey("Talent2");
+			PlayerPrefs.DeleteKey("Talent3");
+			PlayerPrefs.DeleteKey("Talent4");
+			PlayerPrefs.DeleteKey("Talent5");
+			PlayerPrefs.DeleteKey("Talent6");
+			PlayerPrefs.DeleteKey("Talent7");
+			PlayerPrefs.DeleteKey("Talent8");
+			PlayerPrefs.DeleteKey("Talent9");
+			PlayerPrefs.DeleteKey("Talent10");
+			PlayerPrefs.DeleteKey("Talent11");
+			PlayerPrefs.DeleteKey("Talent12");
+		}
 	}
 
 	void OnGUI(){
