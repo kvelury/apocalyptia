@@ -16,19 +16,19 @@ public class GameOverEvents : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		//Load the saved talents to the tree
-		talentTree [0] = new Talent ("Self 1", 0, PlayerPrefs.GetInt("Talent0") == 0 ? false : true, new int[] {});
-		talentTree [1] = new Talent ("Self 2", 0, PlayerPrefs.GetInt("Talent1") == 0 ? false : true, new int[] {0});
-		talentTree [2] = new Talent ("Self 3", 0, PlayerPrefs.GetInt("Talent2") == 0 ? false : true, new int[] {1});
-		talentTree [3] = new Talent ("Self 4", 0, PlayerPrefs.GetInt("Talent3") == 0 ? false : true, new int[] {2});
-		talentTree [4] = new Talent ("Group 1", 0, PlayerPrefs.GetInt("Talent4") == 0 ? false : true, new int[] {});
-		talentTree [5] = new Talent ("Group 2", 0, PlayerPrefs.GetInt("Talent5") == 0 ? false : true, new int[] {4});
-		talentTree [6] = new Talent ("Group 3", 0, PlayerPrefs.GetInt("Talent6") == 0 ? false : true, new int[] {5});
-		talentTree [7] = new Talent ("Group 4", 0, PlayerPrefs.GetInt("Talent7") == 0 ? false : true, new int[] {6});
-		talentTree [8] = new Talent ("World 1", 0, PlayerPrefs.GetInt("Talent8") == 0 ? false : true, new int[] {});
-		talentTree [9] = new Talent ("World 2", 0, PlayerPrefs.GetInt("Talent9") == 0 ? false : true, new int[] {8});
-		talentTree [10] = new Talent ("World 3", 0, PlayerPrefs.GetInt("Talent10") == 0 ? false : true, new int[] {9});
-		talentTree [11] = new Talent ("World 4", 0, PlayerPrefs.GetInt("Talent11") == 0 ? false : true, new int[] {10});
-		talentTree [12] = new Talent ("Talent 5", 0, PlayerPrefs.GetInt("Talent12") == 0 ? false : true, new int[] {3, 7, 11});
+		talentTree [0] = new Talent ("Self 1", 10, PlayerPrefs.GetInt("Talent0") == 0 ? false : true, new int[] {});
+		talentTree [1] = new Talent ("Self 2", 50, PlayerPrefs.GetInt("Talent1") == 0 ? false : true, new int[] {0});
+		talentTree [2] = new Talent ("Self 3", 100, PlayerPrefs.GetInt("Talent2") == 0 ? false : true, new int[] {1});
+		talentTree [3] = new Talent ("Self 4", 200, PlayerPrefs.GetInt("Talent3") == 0 ? false : true, new int[] {2});
+		talentTree [4] = new Talent ("Group 1", 10, PlayerPrefs.GetInt("Talent4") == 0 ? false : true, new int[] {});
+		talentTree [5] = new Talent ("Group 2", 50, PlayerPrefs.GetInt("Talent5") == 0 ? false : true, new int[] {4});
+		talentTree [6] = new Talent ("Group 3", 100, PlayerPrefs.GetInt("Talent6") == 0 ? false : true, new int[] {5});
+		talentTree [7] = new Talent ("Group 4", 200, PlayerPrefs.GetInt("Talent7") == 0 ? false : true, new int[] {6});
+		talentTree [8] = new Talent ("World 1", 10, PlayerPrefs.GetInt("Talent8") == 0 ? false : true, new int[] {});
+		talentTree [9] = new Talent ("World 2", 50, PlayerPrefs.GetInt("Talent9") == 0 ? false : true, new int[] {8});
+		talentTree [10] = new Talent ("World 3", 100, PlayerPrefs.GetInt("Talent10") == 0 ? false : true, new int[] {9});
+		talentTree [11] = new Talent ("World 4", 200, PlayerPrefs.GetInt("Talent11") == 0 ? false : true, new int[] {10});
+		talentTree [12] = new Talent ("Talent 5", 500, PlayerPrefs.GetInt("Talent12") == 0 ? false : true, new int[] {3, 7, 11});
 	}
 	
 	// Update is called once per frame
@@ -43,6 +43,8 @@ public class GameOverEvents : MonoBehaviour {
 		// Make a background box
 		if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height - 50, 100, 50), "You Are Dead\n Try Again?"))
 			Application.LoadLevel ("MainMenu");
+
+		GUI.Label (new Rect(Screen.width - 100, 100, 100, 100), PlayerPrefs.GetFloat("Fame").ToString());
 
 		setButtonColor (0);
 		if (GUI.Button (new Rect (Screen.width * 1 / 4 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [0].Name)) {
@@ -132,6 +134,7 @@ public class GameOverEvents : MonoBehaviour {
 		PlayerPrefs.SetInt ("Talent10", talentTree [10].Active ? 1 : 0);
 		PlayerPrefs.SetInt ("Talent11", talentTree [11].Active ? 1 : 0);
 		PlayerPrefs.SetInt ("Talent12", talentTree [12].Active ? 1 : 0);
+		PlayerPrefs.SetFloat ("Fame", 0);
 		PlayerPrefs.Save ();
 	}
 
@@ -216,10 +219,11 @@ public class Talent{
 				return 2;
 		}
 		//next, check if there is enough fame
-		//if (fame < cost){
-		//    return 3;
-	    //}
-		//fame -= cost;
+		float fame = PlayerPrefs.GetFloat("Fame");
+		if (fame < cost){
+		    return 3;
+	    }
+		PlayerPrefs.SetFloat("Fame", fame - cost);
 		active = true;
 		return 0;
 	}

@@ -62,4 +62,9 @@ public class PlayerResources : MonoBehaviour {
 			}
 		}
 	}
+
+	void OnDestroy(){
+		PlayerPrefs.SetFloat("Fame", fameCount);
+		PlayerPrefs.Save ();
+	}
 }
