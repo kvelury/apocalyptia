@@ -58,13 +58,6 @@ public class PlayerResources : MonoBehaviour {
 			//Debug.Log ("wood collected");
 		}
 
-		//get heals from the house
-		if (col.gameObject.tag == "House") {
-			this.healthCount += 1;
-			if(this.healthCount > 100){
-				this.healthCount = 100;
-			}
-		}
 	}
 
 	void OnDestroy(){
