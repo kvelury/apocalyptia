@@ -118,9 +118,30 @@ public class GameplayEvents : MonoBehaviour {
 		if (GUI.Button (new Rect(Screen.width - 50, 0, 50, 50), "X")){
 			pauseMenuState = 0;
 		}
-		//for (int i = 0; i < 5; i++) {
-		//}
-
+		for (int i = 0; i < 5; i++) {
+			if(stats.inv[i] == 0){
+				GUI.Box (new Rect(i*200, 25, 100, 100), "Empty");
+			}
+			else if(stats.inv[i] == 1){
+				GUI.Box (new Rect(i*200, 25, 100, 100), "Wood Spear\n+10 Damage");
+			}
+		}
+		for (int i = 5; i < 10; i++) {
+			if(stats.inv[i] == 0){
+				GUI.Box (new Rect((i-5)*200, 150, 100, 100), "Empty");
+			}
+			else if(stats.inv[i] == 1){
+				GUI.Box (new Rect((i-5)*200, 150, 100, 100), "Wood Spear\n+10 Damage");
+			}
+		}
+		for (int i = 10; i < 15; i++) {
+			if(stats.inv[i] == 0){
+				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Empty");
+			}
+			else if(stats.inv[i] == 1){
+				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Wood Spear\n+10 Damage");
+			}
+		}
 	}
 
 	void CraftingEvents(){

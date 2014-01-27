@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Player = GameObject.Find ("Player");
-		velocity = new Vector3(5F, 5F);
+		velocity = new Vector3(2.5F, 2.5F);
 		EnemySpawner = GameObject.Find ("EnemySpawner");
 		if (Vector3.Distance (Player.transform.position, transform.position) < 20) {
 			movement = (Player.transform.position - transform.position).normalized;
