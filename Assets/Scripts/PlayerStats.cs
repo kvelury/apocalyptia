@@ -14,6 +14,10 @@ public class PlayerStats : MonoBehaviour {
 	public float medical;
 	public float crafting;
 	public float repairing;
+	public float[] inv;
+	public float currDam;
+	public float bestWep;
+	public float bestDef;
 	// Use this for initialization
 	void Start () {
 		//Change these once we set up persistant stat levels.
@@ -26,10 +30,30 @@ public class PlayerStats : MonoBehaviour {
 			sharpWeapon += 10;
 			bluntWeapon += 10;
 		}
+		inv = new float[15];
+		currDam = 10;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	public void InvCheck() {
+		//Inv check: Checks inventory for strongest weapon/defense
+		//Inv codes:
+		//1 = Wood Spear
+		//2 = Wood Sword
+		//3 = Wood Shield
+		bestWep = 0;
+		for (int i = 0; i < 14; i++) {
+			if((inv[i] == 1 || inv[i] == 2) && inv[i] > bestWep)
+				bestWep = inv[i];
+		}
+		if (bestWep == 0)
+						currDam = 10;
+				else if (bestWep == 1)
+						currDam = 20;
+				else if (bestWep == 2)
+						currDam = 40;
 	}
 }

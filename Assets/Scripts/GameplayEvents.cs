@@ -6,6 +6,7 @@ public class GameplayEvents : MonoBehaviour {
 	GameObject Player;
 
 	private PlayerResources resources;
+	private PlayerStats stats;
 
 	/// <summary>
 	/// Boolean representing whether the game is paused or not
@@ -25,6 +26,8 @@ public class GameplayEvents : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Player = GameObject.Find ("Player");
+		stats = Player.GetComponent<PlayerStats> ();
+		resources = Player.GetComponent<PlayerResources>();
 		isPaused = false;
 	}
 	
@@ -58,7 +61,6 @@ public class GameplayEvents : MonoBehaviour {
 		}else{
 			// Make a background box
 			Player = GameObject.Find ("Player");
-			resources = Player.GetComponent<PlayerResources>();
 			GUI.Box (new Rect (10, 10, 100, 165), "");
 			//Once combat is implemented, remove If Statement from here, and change Button to Box.
 			
@@ -116,6 +118,9 @@ public class GameplayEvents : MonoBehaviour {
 		if (GUI.Button (new Rect(Screen.width - 50, 0, 50, 50), "X")){
 			pauseMenuState = 0;
 		}
+		//for (int i = 0; i < 5; i++) {
+		//}
+
 	}
 
 	void CraftingEvents(){
@@ -123,7 +128,25 @@ public class GameplayEvents : MonoBehaviour {
 		if (GUI.Button (new Rect(Screen.width - 50, 0, 50, 50), "X")){
 			pauseMenuState = 0;
 		}
-
+		if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 100), "Wood Spear\n20 Wood")) {
+						if (resources.woodCount >= 20) {
+								int insert = 15;
+								for (int i = 0; i < 15; i++) {
+										if (stats.inv [i] == 0) {
+												insert = i;
+												break;
+										}
+								}
+								if (insert < 15) {
+										stats.inv [insert] = 1;
+										resources.woodCount -=20;
+										Debug.Log ("You successfully craft a spear!");
+								}
+				else
+					Debug.Log("Your inventory is full!");
+						} else
+								Debug.Log ("You need 20 wood to craft that!");
+				}
 		//Add crafting logic here
 	}
 

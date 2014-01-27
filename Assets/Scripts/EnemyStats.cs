@@ -6,11 +6,13 @@ public class EnemyStats : MonoBehaviour {
 	public float HP;
 	public float damage;
 	public GameObject Player;
+	public PlayerStats ps;
 	// Use this for initialization
 	void Start () {
 		maxHP = HP = 40;
 		damage = 5;
 		Player = GameObject.Find ("Player");
+		ps = Player.GetComponent<PlayerStats> ();
 
 	}
 	
@@ -27,7 +29,7 @@ public class EnemyStats : MonoBehaviour {
 	}
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Weapon") {
-			HP -= 10;
+			HP -= ps.currDam;
 			Destroy (col.gameObject);
 		}
 	}

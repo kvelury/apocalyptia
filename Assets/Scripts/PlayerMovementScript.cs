@@ -56,6 +56,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		transform.position += movement;
 
 		if(Input.GetMouseButtonDown (0)){
+			stats.InvCheck ();
 			GameObject.Destroy (GameObject.Find ("Weapon(Clone)"));
 			Vector3 swingDir = new Vector3(transform.position.x,transform.position.y, 0);
 			Quaternion swingRot = new Quaternion(0,0,0,0);

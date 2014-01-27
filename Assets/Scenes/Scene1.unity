@@ -686,6 +686,10 @@ MonoBehaviour:
   medical: 0
   crafting: 0
   repairing: 0
+  inv: []
+  currDam: 0
+  bestWep: 0
+  bestDef: 0
 --- !u!1001 &1603325073
 Prefab:
   m_ObjectHideFlags: 0
