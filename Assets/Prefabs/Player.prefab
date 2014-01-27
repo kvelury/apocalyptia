@@ -8,11 +8,13 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 400000}
-  - 212: {fileID: 21200000}
   - 61: {fileID: 6100000}
-  - 114: {fileID: 11400000}
   - 50: {fileID: 5000000}
+  - 212: {fileID: 21200000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400006}
+  - 114: {fileID: 11400000}
+  - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -68,12 +70,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14c9e48cccab2c9459856ab971a5d229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  woodenHouse: {fileID: 0}
   woodCount: 0
   stoneCount: 0
   ironCount: 0
   fameCount: 0
   healthCount: 0
-  interactWithCurrentTile: 0
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,6 +88,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+--- !u!114 &11400004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9c4c6bf825612e4d870c3dabb7eefce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precisionGuns: 0
+  powerGuns: 0
+  sharpWeapon: 0
+  bluntWeapon: 0
+  charm: 0
+  intimidate: 0
+  movement: 0
+  medical: 0
+  crafting: 0
+  repairing: 0
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e154d1c89632347b538f974d0ed09e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocity: .25
+  Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
+  knockBackTimer: 0
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1

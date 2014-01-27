@@ -18,12 +18,16 @@ public class PlayerResources : MonoBehaviour {
 	void Start () {
 		healthCount = 100;
 		woodCount = fameCount = stoneCount = ironCount = 0;
+		//Debug.Log (PlayerPrefs.GetFloat("Fame").ToString());
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (healthCount <= 0) {
 			Application.LoadLevel ("DeathScene");
+			Debug.Log ("Fame: " + fameCount.ToString());
+			PlayerPrefs.SetFloat("Fame", fameCount);
+			PlayerPrefs.Save ();
 			//put stuff here about moving world data into player preferences
 			//this will work because this is the last thing that is seen before the 
 			//scene moves on
@@ -37,7 +41,7 @@ public class PlayerResources : MonoBehaviour {
 			                        0);
 			GameObject newWoodenHouse = Instantiate (woodenHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
 		}
-	
+		//PlayerPrefs.SetFloat("Fame", fameCount);
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
@@ -64,6 +68,8 @@ public class PlayerResources : MonoBehaviour {
 	}
 
 	void OnDestroy(){
+		//PlayerPrefs.DeleteKey("Fame");
+		Debug.Log ("Fame: " + fameCount.ToString());
 		PlayerPrefs.SetFloat("Fame", fameCount);
 		PlayerPrefs.Save ();
 	}

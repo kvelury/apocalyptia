@@ -44,7 +44,7 @@ public class GameOverEvents : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height - 50, 100, 50), "You Are Dead\n Try Again?"))
 			Application.LoadLevel ("MainMenu");
 
-		GUI.Label (new Rect(Screen.width - 100, 100, 100, 100), PlayerPrefs.GetFloat("Fame").ToString());
+		GUI.Box (new Rect(Screen.width - 100, 0, 100, 100), PlayerPrefs.GetFloat("Fame").ToString());
 
 		setButtonColor (0);
 		if (GUI.Button (new Rect (Screen.width * 1 / 4 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [0].Name)) {
@@ -120,6 +120,7 @@ public class GameOverEvents : MonoBehaviour {
 	
 	// OnDestroy is called when the object is destroyed
 	void OnDestroy(){
+		Debug.Log ("Data Saved");
 		//save necessary data
 		PlayerPrefs.SetInt ("Talent0", talentTree [0].Active ? 1 : 0);
 		PlayerPrefs.SetInt ("Talent1", talentTree [1].Active ? 1 : 0);

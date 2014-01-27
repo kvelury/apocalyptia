@@ -52,14 +52,10 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-		if (Player != null) {
-						PlayerResources pr = Player.GetComponent<PlayerResources> ();
-						pr.fameCount += 10;
-				}
 		if (EnemySpawner != null) {
-						EnemySpawn es = EnemySpawner.GetComponent<EnemySpawn> ();
-						es.enemyCount -= 1;
-				}
+			EnemySpawn es = EnemySpawner.GetComponent<EnemySpawn> ();
+			es.enemyCount -= 1;
+		}
 	}
 	
 	//FixedUpdate is called once per tick and should be used for physics

@@ -11,6 +11,7 @@ public class MainMenuEvents : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKey(KeyCode.Space)){
+			Debug.Log("Talents Reset");
 			PlayerPrefs.DeleteKey("Talent0");
 			PlayerPrefs.DeleteKey("Talent1");
 			PlayerPrefs.DeleteKey("Talent2");
