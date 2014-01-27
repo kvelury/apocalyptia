@@ -6,7 +6,7 @@ public class WeaponScript : MonoBehaviour {
 	public float timer;
 	// Use this for initialization
 	void Start () {
-		Destroy (gameObject, 0.2F);
+		Destroy (gameObject, 0.05F);
 	}
 	
 	// Update is called once per frame

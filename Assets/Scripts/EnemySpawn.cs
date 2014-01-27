@@ -9,7 +9,7 @@ public class EnemySpawn : MonoBehaviour {
 	public int timer;
 	// Use this for initialization
 	void Start () {
-		maxEnemies = 5;
+		maxEnemies = 15;
 		for (int i = 0; i < maxEnemies; i++){
 			SpawnEnemy();
 			enemyCount++;
@@ -32,8 +32,8 @@ public class EnemySpawn : MonoBehaviour {
 	
 	void SpawnEnemy () {
 		Vector3 spawnLoc = new Vector3 (0, 0, 0);
-		spawnLoc.x = Random.Range (-25, 24);
-		spawnLoc.y = Random.Range (-30, 18);
+		spawnLoc.x = Random.Range (-25, 124);
+		spawnLoc.y = Random.Range (-30, 116);
 		
 		GameObject enemyInstance = Instantiate (Enemy, spawnLoc, new Quaternion(0,0,0,0)) as GameObject;
 		//enemyInstance.GetComponent<LookAtScript>().target = GameObject.Find("Main Camera").transform;

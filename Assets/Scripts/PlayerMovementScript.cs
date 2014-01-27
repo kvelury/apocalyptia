@@ -35,6 +35,26 @@ public class PlayerMovementScript : MonoBehaviour {
 
 				}
 	
+
+
+//		if (Input.GetKey (KeyCode.Space)) {
+//			//Debug.Log("Precision Guns: " + stats.precisionGuns.ToString());
+//		}
+
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		if (col.gameObject.tag == "Enemy") {
+			Vector3 direction = (transform.position - col.gameObject.transform.position).normalized;
+			movement = Quaternion.Euler (0,0,-45) * (0.5F * velocity*direction);
+			knockBackTimer = 0;
+			}
+	}
+
+	//FixedUpdate is called once per tick and should be used for physics
+	void FixedUpdate(){
+		transform.position += movement;
+
 		if(Input.GetMouseButtonDown (0)){
 			GameObject.Destroy (GameObject.Find ("Weapon(Clone)"));
 			Vector3 swingDir = new Vector3(transform.position.x,transform.position.y, 0);
@@ -77,23 +97,5 @@ public class PlayerMovementScript : MonoBehaviour {
 				GameObject swingInstance = Instantiate (Weapon,swingDir, swingRot) as GameObject;
 			}
 		}
-
-//		if (Input.GetKey (KeyCode.Space)) {
-//			//Debug.Log("Precision Guns: " + stats.precisionGuns.ToString());
-//		}
-
-	}
-
-	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.tag == "Enemy") {
-			Vector3 direction = (transform.position - col.gameObject.transform.position).normalized;
-			movement = Quaternion.Euler (0,0,-45) * (0.5F * velocity*direction);
-			knockBackTimer = 0;
-			}
-	}
-
-	//FixedUpdate is called once per tick and should be used for physics
-	void FixedUpdate(){
-		transform.position += movement;
 	}
 }

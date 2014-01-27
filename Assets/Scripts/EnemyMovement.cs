@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour {
 	/// </summary>
 	public GameObject Player;
 	public GameObject EnemySpawner;
-	public Vector2 velocity = new Vector3(10F, 10F);
+	public Vector2 velocity;
 	public int timer = 0;
 	/// <summary>
 	/// The movement vector is given to the rigidbody physics to move the object
@@ -19,6 +19,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Player = GameObject.Find ("Player");
+		velocity = new Vector3(5F, 5F);
 		EnemySpawner = GameObject.Find ("EnemySpawner");
 		if (Vector3.Distance (Player.transform.position, transform.position) < 20) {
 			movement = (Player.transform.position - transform.position).normalized;
