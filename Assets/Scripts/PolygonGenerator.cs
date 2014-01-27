@@ -18,7 +18,8 @@ public class PolygonGenerator : MonoBehaviour {
 	//constants
 	protected int gridWidth = 50;
 	protected int gridHeight = 50;
-	protected const float scale = 1.0f;
+	protected const float perlinScale = 1.0f;
+	protected const float worldScale = 3.0f;
 	//*******************************************************************************************
 	//references for resources
 	public GameObject tree;
@@ -122,10 +123,10 @@ public class PolygonGenerator : MonoBehaviour {
 	}
 
 	protected void GenSquare(int x, int y, Vector2 texture, float distance = 0){
-		newVertices.Add( new Vector3(x, y, 0));
-		newVertices.Add( new Vector3(x + 1, y, 0));
-		newVertices.Add( new Vector3(x + 1, y - 1, 0));
-		newVertices.Add( new Vector3(x, y - 1, 0));
+		newVertices.Add( new Vector3(worldScale * x, worldScale * y, 0));
+		newVertices.Add( new Vector3(worldScale * (x + 1), worldScale * y, 0));
+		newVertices.Add( new Vector3(worldScale * (x + 1), worldScale * (y - 1), 0));
+		newVertices.Add( new Vector3(worldScale * x, worldScale * (y - 1), 0));
 		
 		//unity uses left handed triangles
 		//the opposite of openGL's right handed
@@ -188,7 +189,9 @@ public class PolygonGenerator : MonoBehaviour {
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				if(blocks[i,j] == (byte)TileCodes.DryGrass ||  blocks[i,j] == (byte)TileCodes.Grass){
-					Vector3 location = new Vector3(i + this.transform.localPosition.x + 0.5f, j + this.transform.localPosition.y - 0.5f, 0.49f);
+					Vector3 location = new Vector3(worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
+					                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
+					                               0.49f);
 					GameObject newTree = Instantiate (tree, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 				}
 			}

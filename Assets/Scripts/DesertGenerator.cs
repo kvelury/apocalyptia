@@ -44,8 +44,8 @@ public class DesertGenerator : PolygonGenerator {
 		Debug.Log ("Seeds used: " + xStart.ToString () + " " + yStart.ToString ());
 		for (int px = 0; px < blocks.GetLength (0); px++) {
 			for (int py = 0; py < blocks.GetLength (1); py++) {
-				float xSample = px + xStart / gridWidth * scale;
-				float ySample = py + yStart / gridHeight * scale;
+				float xSample = px + xStart / gridWidth * perlinScale;
+				float ySample = py + yStart / gridHeight * perlinScale;
 				//Debug.Log (xSample.ToString () + " " + ySample.ToString ());
 				float elevation = Mathf.PerlinNoise (xSample, ySample); // value 0 - 1
 				//assign values based on this number
