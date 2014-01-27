@@ -25,7 +25,7 @@ public class PlayerResources : MonoBehaviour {
 	void Update () {
 		if (healthCount <= 0) {
 			Application.LoadLevel ("DeathScene");
-			Debug.Log ("Fame: " + fameCount.ToString());
+			//Debug.Log ("Fame: " + fameCount.ToString());
 			PlayerPrefs.SetFloat("Fame", fameCount);
 			PlayerPrefs.Save ();
 			//put stuff here about moving world data into player preferences
@@ -69,7 +69,7 @@ public class PlayerResources : MonoBehaviour {
 
 	void OnDestroy(){
 		//PlayerPrefs.DeleteKey("Fame");
-		Debug.Log ("Fame: " + fameCount.ToString());
+		//Debug.Log ("Fame: " + fameCount.ToString());
 		PlayerPrefs.SetFloat("Fame", fameCount);
 		PlayerPrefs.Save ();
 	}

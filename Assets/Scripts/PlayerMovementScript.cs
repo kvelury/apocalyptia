@@ -78,9 +78,9 @@ public class PlayerMovementScript : MonoBehaviour {
 			}
 		}
 
-		if (Input.GetKey (KeyCode.Space)) {
-			Debug.Log("Precision Guns: " + stats.precisionGuns.ToString());
-		}
+//		if (Input.GetKey (KeyCode.Space)) {
+//			//Debug.Log("Precision Guns: " + stats.precisionGuns.ToString());
+//		}
 
 	}
 

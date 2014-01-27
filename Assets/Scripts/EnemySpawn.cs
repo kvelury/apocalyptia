@@ -36,6 +36,6 @@ public class EnemySpawn : MonoBehaviour {
 		spawnLoc.y = Random.Range (-30, 18);
 		
 		GameObject enemyInstance = Instantiate (Enemy, spawnLoc, new Quaternion(0,0,0,0)) as GameObject;
-		enemyInstance.GetComponent<LookAtScript>().target = GameObject.Find("Main Camera").transform;
+		//enemyInstance.GetComponent<LookAtScript>().target = GameObject.Find("Main Camera").transform;
 	}
 }

@@ -20,7 +20,7 @@ public class EnemyStats : MonoBehaviour {
 			if (Player != null) {
 				PlayerResources pr = Player.GetComponent<PlayerResources> ();
 				pr.fameCount += 10;
-				Debug.Log ("Fame++");
+				//Debug.Log ("Fame++");
 			}
 			Destroy (gameObject);
 		}
