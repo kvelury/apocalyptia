@@ -8,7 +8,7 @@ public class TowerScript : MonoBehaviour {
 	//timer to attack in intervals
 	public float timer = 0;
 	public bool attack = false;
-	public GameObject Weapon;
+	//public GameObject Weapon;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +22,7 @@ public class TowerScript : MonoBehaviour {
 
 		if (timer <= 0) {
 			timer = 5;
-
+			/*
 			//in progress...
 			swingDir.x = transform.position.x + 0.55F;
 			swingDir.y = transform.position.y + 0.55F;
@@ -36,7 +36,7 @@ public class TowerScript : MonoBehaviour {
 				//we need account for the isometric rotation
 				GameObject swingInstance = Instantiate (Weapon,swingDir, swingRot) as GameObject;
 			}
-
+			*/
 		} else {
 			timer -= Time.deltaTime;
 		}
