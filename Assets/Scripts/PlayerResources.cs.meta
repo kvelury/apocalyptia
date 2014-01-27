@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: 14c9e48cccab2c9459856ab971a5d229
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - woodenHouse: {fileID: 100000, guid: dbd58aa1b4e0b014f977fe637eb03726, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
