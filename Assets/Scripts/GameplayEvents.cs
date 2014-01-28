@@ -128,6 +128,9 @@ public class GameplayEvents : MonoBehaviour {
 			else if(stats.inv[i] == 1){
 				GUI.Box (new Rect(i*200, 25, 100, 100), "Wood Spear\n+10 Damage");
 			}
+			else if(stats.inv[i] == 2){
+				GUI.Box (new Rect(i*200, 25, 100, 100), "Stone Spear\n+30 Damage");
+			}
 		}
 		for (int i = 5; i < 10; i++) {
 			if(stats.inv[i] == 0){
@@ -136,6 +139,9 @@ public class GameplayEvents : MonoBehaviour {
 			else if(stats.inv[i] == 1){
 				GUI.Box (new Rect((i-5)*200, 150, 100, 100), "Wood Spear\n+10 Damage");
 			}
+			else if(stats.inv[i] == 2){
+				GUI.Box (new Rect((i-5)*200, 150, 100, 100), "Stone Spear\n+30 Damage");
+			}
 		}
 		for (int i = 10; i < 15; i++) {
 			if(stats.inv[i] == 0){
@@ -143,6 +149,9 @@ public class GameplayEvents : MonoBehaviour {
 			}
 			else if(stats.inv[i] == 1){
 				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Wood Spear\n+10 Damage");
+			}
+			else if(stats.inv[i] == 2){
+				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Wood Spear\n+30 Damage");
 			}
 		}
 	}
@@ -164,13 +173,32 @@ public class GameplayEvents : MonoBehaviour {
 								if (insert < 15) {
 										stats.inv [insert] = 1;
 										resources.woodCount -=20;
-										Debug.Log ("You successfully craft a spear!");
+										Debug.Log ("You successfully craft a wood spear!");
 								}
 				else
 					Debug.Log("Your inventory is full!");
 						} else
 								Debug.Log ("You need 20 wood to craft that!");
 				}
+		if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 50, 200, 100), "Stone Spear\n40 Stone")) {
+			if (resources.stoneCount >= 40) {
+				int insert = 15;
+				for (int i = 0; i < 15; i++) {
+					if (stats.inv [i] == 0) {
+						insert = i;
+						break;
+					}
+				}
+				if (insert < 15) {
+					stats.inv [insert] = 2;
+					resources.woodCount -=40;
+					Debug.Log ("You successfully craft a stone spear!");
+				}
+				else
+					Debug.Log("Your inventory is full!");
+			} else
+				Debug.Log ("You need 40 stone to craft that!");
+		}
 		//Add crafting logic here
 	}
 

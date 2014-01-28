@@ -42,8 +42,9 @@ public class PlayerStats : MonoBehaviour {
 		//Inv check: Checks inventory for strongest weapon/defense
 		//Inv codes:
 		//1 = Wood Spear
-		//2 = Wood Sword
+		//2 = Stone Spear
 		//3 = Wood Shield
+		//4 = Stone Shield
 		bestWep = 0;
 		for (int i = 0; i < 14; i++) {
 			if((inv[i] == 1 || inv[i] == 2) && inv[i] > bestWep)
