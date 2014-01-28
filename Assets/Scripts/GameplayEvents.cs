@@ -7,6 +7,9 @@ public class GameplayEvents : MonoBehaviour {
 
 	private PlayerResources resources;
 	private PlayerStats stats;
+	public GameObject woodenHouse;
+	public GameObject resourceHouse;
+	public GameObject tower;
 
 	/// <summary>
 	/// Boolean representing whether the game is paused or not
@@ -176,8 +179,41 @@ public class GameplayEvents : MonoBehaviour {
 		if (GUI.Button (new Rect(Screen.width - 50, 0, 50, 50), "X")){
 			pauseMenuState = 0;
 		}
-
-		//Add building logic here
+		if (GUI.Button (new Rect(Screen.width/2 - 50, 25, 100, 75), "Healing Home\n\n25 Wood")) {
+			if (resources.woodCount >= WoodenHouseScript.cost) {
+				resources.woodCount -= WoodenHouseScript.cost;
+				Vector3 v = new Vector3(this.transform.localPosition.x,
+				                        this.transform.localPosition.y,
+				                        0);
+				GameObject newWoodenHouse = Instantiate (woodenHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
+			}
+			
+		}
+		if (GUI.Button (new Rect(Screen.width/2 - 75, 125, 150, 75), "Resource Generator \n\n50 Wood\n50 Stone")) {
+			if (resources.woodCount >= ResourceHouseScript.cost && resources.stoneCount >= ResourceHouseScript.cost) {
+				resources.woodCount -= ResourceHouseScript.cost;
+				resources.stoneCount -= ResourceHouseScript.cost;
+				Vector3 v = new Vector3(this.transform.localPosition.x,
+				                        this.transform.localPosition.y,
+				                        0);
+				GameObject newResourceHouse = Instantiate (resourceHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
+			}
+			
+		}
+		
+		if (GUI.Button (new Rect(Screen.width/2 - 75, 225, 150, 75), "Attack Tower \n\n25 Wood\n25 Stone \n25 Iron")) {
+			if (resources.woodCount >= TowerScript.cost && resources.stoneCount >= TowerScript.cost
+			    && resources.ironCount >= TowerScript.cost) {
+				resources.woodCount -= TowerScript.cost;
+				resources.stoneCount -= TowerScript.cost;
+				resources.ironCount -= TowerScript.cost;
+				Vector3 v = new Vector3(this.transform.localPosition.x,
+				                        this.transform.localPosition.y,
+				                        0);
+				GameObject newTower = Instantiate (tower, v, new Quaternion(0, 0, 0, 0)) as GameObject;
+			}
+			
+		}
 	}
 
 	void OnDestroy(){

@@ -55,11 +55,14 @@
      <Compile Include="Assets\Scripts\GameplayEvents.cs" />
      <Compile Include="Assets\Scripts\LookAtScript.cs" />
      <Compile Include="Assets\Scripts\MainMenuEvents.cs" />
+     <Compile Include="Assets\Scripts\NPCBehavior.cs" />
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerResources.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\PolygonGenerator.cs" />
+     <Compile Include="Assets\Scripts\ResourceHouseScript.cs" />
      <Compile Include="Assets\Scripts\TileObject.cs" />
+     <Compile Include="Assets\Scripts\TowerScript.cs" />
      <Compile Include="Assets\Scripts\WeaponScript.cs" />
      <Compile Include="Assets\Scripts\WoodenHouseScript.cs" />
   </ItemGroup>
