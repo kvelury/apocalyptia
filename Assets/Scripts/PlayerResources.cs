@@ -33,6 +33,14 @@ public class PlayerResources : MonoBehaviour {
 			//scene moves on
 		}
 
+		//place a building
+		if(Input.GetKey ("b") && this.woodCount >= WoodenHouseScript.cost && Input.GetKeyDown ("b")){
+			this.woodCount -= WoodenHouseScript.cost;
+			Vector3 v = new Vector3(this.transform.localPosition.x,
+			                        this.transform.localPosition.y,
+			                        0);
+			GameObject newWoodenHouse = Instantiate (woodenHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
+		}
 		//PlayerPrefs.SetFloat("Fame", fameCount);
 	}
 

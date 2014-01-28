@@ -32,12 +32,5 @@ public class EnemyStats : MonoBehaviour {
 			HP -= ps.currDam;
 			Destroy (col.gameObject);
 		}
-
-		if (col.gameObject.tag == "Tower") {
-			//TowerScript ts = col.gameObject.GetComponent<TowerScript>();
-			//if (ts.attack == true)
-			HP -= 40;
-			Debug.Log ("enemy touching tower");
-		}
 	}
 }
