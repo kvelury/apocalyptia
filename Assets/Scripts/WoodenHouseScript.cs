@@ -10,7 +10,8 @@ public class WoodenHouseScript : MonoBehaviour {
 	public const int cost = 25;
 	
 	//timer to enable healing at certain intervals
-	public float timer = 0;
+	public float timer = 1.5f;
+	public bool heal = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -23,16 +24,24 @@ public class WoodenHouseScript : MonoBehaviour {
 	void Update () {
 		//subtract amount of it time it took to run previous frame (in seconds)
 		timer -= Time.deltaTime;
+
+		if (timer <= 0) {
+			if (heal == true) heal = false;
+			else if (heal == false) heal = true;
+			timer = 1.5f;
+		}
 	}
 	
 	void OnTriggerStay2D(Collider2D col){
 		//get heals from the house
-		if (timer <= 0 && col.gameObject.tag == "Player") {
-			//set time interval (in seconds)
-			timer = 30;
-			
-			while (resources.healthCount < 100)
-				resources.healthCount += 1;
+		if (col.gameObject.tag == "Player") {
+			if (heal == true) {
+				resources.healthCount += 5;
+				heal = false;
+			}
+			if (resources.healthCount >= 100) 
+				resources.healthCount = 100;
+
 		}
 	}
 }

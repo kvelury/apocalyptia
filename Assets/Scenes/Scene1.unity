@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57a60eac9ca045faac343095143465e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bullet: {fileID: 100000, guid: 78e526db30a194b59814994e0535430f, type: 2}
   timer: 0
   attack: 0
 --- !u!61 &214289528
@@ -180,7 +181,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1.29999995, y: 1.5}
+  m_Size: {x: 12, y: 12}
   m_Center: {x: 0, y: 0}
 --- !u!212 &214289529
 SpriteRenderer:
@@ -566,6 +567,18 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: ddaf5803e78334bbcad26d776ea08874, type: 2}
+      propertyPath: m_Size.x
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: ddaf5803e78334bbcad26d776ea08874, type: 2}
+      propertyPath: m_Size.y
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: ddaf5803e78334bbcad26d776ea08874, type: 2}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 100000, guid: 78e526db30a194b59814994e0535430f, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ddaf5803e78334bbcad26d776ea08874, type: 2}
   m_RootGameObject: {fileID: 214289526}
@@ -801,6 +814,14 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: ee0bdeef6ed7b4c25888139ae188c01d, type: 2}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6100000, guid: ee0bdeef6ed7b4c25888139ae188c01d, type: 2}
+      propertyPath: m_Size.y
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ee0bdeef6ed7b4c25888139ae188c01d, type: 2}
   m_RootGameObject: {fileID: 1711031401}
@@ -872,7 +893,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f116ce7f341bed647abec0d55b1604f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 0
+  timer: 15
+  heal: 0
 --- !u!4 &1040028306
 Transform:
   m_ObjectHideFlags: 0
@@ -1209,7 +1231,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 1.29999995, y: 1.5}
+  m_Size: {x: 2, y: 3}
   m_Center: {x: 0, y: 0}
 --- !u!1 &1774746821
 GameObject:

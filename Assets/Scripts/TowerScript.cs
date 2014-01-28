@@ -4,11 +4,14 @@ using System.Collections;
 public class TowerScript : MonoBehaviour {
 	
 	public const int cost = 25;
-	
+	public GameObject Bullet;
+
 	//timer to attack in intervals
 	public float timer = 0;
 	public bool attack = false;
-	//public GameObject Weapon;
+
+	private Transform target;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -17,29 +20,22 @@ public class TowerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 swingDir = new Vector3(transform.position.x,transform.position.y, 0);
-		Quaternion swingRot = new Quaternion(0,0,0,0);
-		
-		if (timer <= 0) {
-			timer = 5;
-			/*
-                        //in progress...
-                        swingDir.x = transform.position.x + 0.55F;
-                        swingDir.y = transform.position.y + 0.55F;
 
-                        swingRot = Quaternion.LookRotation (swingDir - transform.position);
-                        swingRot.z = swingRot.w = 0;
-                        if(swingDir.x == transform.position.x){
-                                swingRot.y = swingRot.x;
-                        }
-                        if(swingDir.x != transform.position.x || swingDir.y != transform.position.y){
-                                //we need account for the isometric rotation
-                                GameObject swingInstance = Instantiate (Weapon,swingDir, swingRot) as GameObject;
-                        }
-                        */
-		} else {
-			timer -= Time.deltaTime;
+	}
+
+	void OnTriggerStay2D(Collider2D col){
+		if (col.gameObject.tag == "Enemy") {
+			//target enemy
+			target = col.transform;
+			//transform.LookAt(target);
+
+			Vector3 direction = new Vector3(target.position.x,target.position.y, 0);
+			Quaternion rotation = new Quaternion(0,0,0,0);
+			rotation = Quaternion.LookRotation (direction - transform.position);
+
+			GameObject newBullet = (GameObject)Instantiate(Bullet, direction, rotation);
+			newBullet.rigidbody2D.AddForce(transform.forward * 5); // shoot in the target direction
 		}
 	}
-	
+
 }

@@ -27,9 +27,15 @@ public class EnemyStats : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
+
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Weapon") {
 			HP -= ps.currDam;
+			Destroy (col.gameObject);
+		}
+
+		if (col.gameObject.tag == "Bullet") {
+			HP -= 10;
 			Destroy (col.gameObject);
 		}
 	}
