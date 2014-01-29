@@ -11,13 +11,19 @@ public class EnemySpawn : MonoBehaviour {
 	float incrementTime = 1;
 	float incrementBy = 1;
 	public float doomTimer = 0;
+	public float winTimer;
 	double time =0;
+	public bool doomEvent;
+	public bool winEvent;
 	// Use this for initialization
 	void Start () {
-		incrementTime = 0.3f;
+		incrementTime = 1f;
 		incrementBy = 1;
 		maxEnemies = 15;
+		doomEvent = false;
+		winEvent = false;
 		enemySpawnTime = 80;
+		winTimer = 0;
 		for (int i = 0; i < maxEnemies; i++){
 			SpawnEnemy();
 			//enemyCount++;
@@ -33,10 +39,13 @@ public class EnemySpawn : MonoBehaviour {
 		{
 			time-=incrementTime;
 			doomTimer+=incrementBy;
+			if(doomEvent == true)
+				winTimer+=incrementBy;
 		}
 		if (doomTimer >= 120) {
 			maxEnemies = 100;
 			enemySpawnTime = 20;
+			doomEvent = true;
 		}
 		if (enemyCount < maxEnemies) {
 			timer++;
@@ -45,6 +54,11 @@ public class EnemySpawn : MonoBehaviour {
 				if(Random.Range (0, 10) > 4)
 					SpawnEnemy();
 			}
+		}
+		if (winTimer >= 120) {
+			winEvent = true;
+			Debug.Log ("You have survived!");
+			//Victory code goes here.
 		}
 		
 	}
