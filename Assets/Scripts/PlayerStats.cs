@@ -33,11 +33,14 @@ public class PlayerStats : MonoBehaviour {
 		}
 		inv = new float[15];
 		currDam = 10;
+<<<<<<< HEAD
 
 		//fill the player's inventory with persistent items
 		for (int i = 0; i<inv.Length; i++){
 			inv [i] = PlayerPrefs.GetFloat("Inventory " + i.ToString());
 		}
+=======
+>>>>>>> df3d9afa26848ef5ab3b3f5750e5f6e6a2c8549e
 		currDef = 0;
 	}
 	
