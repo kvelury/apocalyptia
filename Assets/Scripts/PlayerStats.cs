@@ -32,12 +32,18 @@ public class PlayerStats : MonoBehaviour {
 		}
 		inv = new float[15];
 		currDam = 10;
+
+		//fill the player's inventory with persistent items
+		for (int i = 0; i<inv.Length; i++){
+			inv [i] = PlayerPrefs.GetFloat("Inventory " + i.ToString());
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 	}
+
 	public void InvCheck() {
 		//Inv check: Checks inventory for strongest weapon/defense
 		//Inv codes:

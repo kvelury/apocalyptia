@@ -24,13 +24,17 @@ public class PlayerResources : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (healthCount <= 0) {
-			Application.LoadLevel ("DeathScene");
 			//Debug.Log ("Fame: " + fameCount.ToString());
 			PlayerPrefs.SetFloat("Fame", fameCount);
-			PlayerPrefs.Save ();
 			//put stuff here about moving world data into player preferences
 			//this will work because this is the last thing that is seen before the 
 			//scene moves on
+			float[] inventory = GameObject.Find("Player").GetComponent<PlayerStats>().inv;
+			for (int i=0; i<inventory.Length; i++){
+				PlayerPrefs.SetFloat("Inventory " + i.ToString(), inventory[i]);
+			}
+			PlayerPrefs.Save ();
+			Application.LoadLevel ("DeathScene");
 		}
 
 		//place a building
