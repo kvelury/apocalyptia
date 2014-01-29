@@ -16,6 +16,7 @@ public class PlayerStats : MonoBehaviour {
 	public float repairing;
 	public float[] inv;
 	public float currDam;
+	public float currDef;
 	public float bestWep;
 	public float bestDef;
 	// Use this for initialization
@@ -32,6 +33,7 @@ public class PlayerStats : MonoBehaviour {
 		}
 		inv = new float[15];
 		currDam = 10;
+		currDef = 0;
 	}
 	
 	// Update is called once per frame
@@ -43,8 +45,8 @@ public class PlayerStats : MonoBehaviour {
 		//Inv codes:
 		//1 = Wood Spear
 		//2 = Stone Spear
-		//3 = Wood Shield
-		//4 = Stone Shield
+		//11 = Wood Shield
+		//12 = Stone Shield
 		bestWep = 0;
 		for (int i = 0; i < 14; i++) {
 			if((inv[i] == 1 || inv[i] == 2) && inv[i] > bestWep)
@@ -56,5 +58,16 @@ public class PlayerStats : MonoBehaviour {
 						currDam = 20;
 				else if (bestWep == 2)
 						currDam = 40;
+		bestDef = 0;
+		for (int i = 0; i < 14; i++) {
+			if((inv[i] == 11 || inv[i] == 12) && inv[i] > bestWep)
+				bestDef = inv[i];
+		}
+		if (bestDef == 0)
+			currDef = 0;
+		else if (bestDef == 11)
+			currDef = 5;
+		else if (bestDef == 12)
+			currDef = 15;
 	}
 }
