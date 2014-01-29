@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour {
 	public GameObject EnemySpawner;
 	public Vector2 velocity;
 	public int timer = 0;
+	EnemySpawn es;
 	/// <summary>
 	/// The movement vector is given to the rigidbody physics to move the object
 	/// </summary>
@@ -21,6 +22,7 @@ public class EnemyMovement : MonoBehaviour {
 		Player = GameObject.Find ("Player");
 		velocity = new Vector3(2.5F, 2.5F);
 		EnemySpawner = GameObject.Find ("EnemySpawner");
+		es = EnemySpawner.GetComponent<EnemySpawn> ();
 		if (Vector3.Distance (Player.transform.position, transform.position) < 20) {
 			movement = (Player.transform.position - transform.position).normalized;
 			movement.x = movement.x * velocity.x;
@@ -32,11 +34,13 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (velocity.Equals (new Vector3 (2.5F, 2.5F)) && es.doomEvent == true)
+						velocity = velocity * 1.5F;
 		timer += 1;
 		if (timer > 50) {
 				timer = 0;
 			Vector2 direction;
-			if(Vector3.Distance (Player.transform.position,transform.position) < 10)
+			if(Vector3.Distance (Player.transform.position,transform.position) < 10 || (es.doomEvent == true && Random.Range(0, 10) > 6))
 				direction = (Player.transform.position - transform.position).normalized;
 			else
 				direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
@@ -54,7 +58,6 @@ public class EnemyMovement : MonoBehaviour {
 
 	void OnDestroy(){
 		if (EnemySpawner != null) {
-			EnemySpawn es = EnemySpawner.GetComponent<EnemySpawn> ();
 			es.enemyCount -= 1;
 		}
 	}

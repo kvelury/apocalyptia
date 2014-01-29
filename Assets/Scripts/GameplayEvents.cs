@@ -131,6 +131,12 @@ public class GameplayEvents : MonoBehaviour {
 			else if(stats.inv[i] == 2){
 				GUI.Box (new Rect(i*200, 25, 100, 100), "Stone Spear\n+30 Damage");
 			}
+			else if(stats.inv[i] == 11){
+				GUI.Box (new Rect(i*200, 25, 100, 100), "Wood Shield\n+5 Defense");
+			}
+			else if(stats.inv[i] == 12){
+				GUI.Box (new Rect(i*200, 25, 100, 100), "Stone Shield\n+15 Defense");
+			}
 		}
 		for (int i = 5; i < 10; i++) {
 			if(stats.inv[i] == 0){
@@ -142,6 +148,12 @@ public class GameplayEvents : MonoBehaviour {
 			else if(stats.inv[i] == 2){
 				GUI.Box (new Rect((i-5)*200, 150, 100, 100), "Stone Spear\n+30 Damage");
 			}
+			else if(stats.inv[i] == 11){
+				GUI.Box (new Rect((i-5)*200, 150, 100, 100), "Wood Shield\n+5 Defense");
+			}
+			else if(stats.inv[i] == 12){
+				GUI.Box (new Rect((i-5)*200, 150, 100, 100), "Stone Shield\n+15 Defense");
+			}
 		}
 		for (int i = 10; i < 15; i++) {
 			if(stats.inv[i] == 0){
@@ -151,7 +163,13 @@ public class GameplayEvents : MonoBehaviour {
 				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Wood Spear\n+10 Damage");
 			}
 			else if(stats.inv[i] == 2){
-				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Wood Spear\n+30 Damage");
+				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Stone Spear\n+30 Damage");
+			}
+			else if(stats.inv[i] == 11){
+				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Wood Shield\n+5 Damage");
+			}
+			else if(stats.inv[i] == 12){
+				GUI.Box (new Rect((i-10)*200, 275, 100, 100), "Stone Shield\n+15 Damage");
 			}
 		}
 	}
@@ -161,7 +179,7 @@ public class GameplayEvents : MonoBehaviour {
 		if (GUI.Button (new Rect(Screen.width - 50, 0, 50, 50), "X")){
 			pauseMenuState = 0;
 		}
-		if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 - 100, 200, 100), "Wood Spear\n20 Wood")) {
+		if (GUI.Button (new Rect (Screen.width / 2 - 300, Screen.height / 2 - 100, 200, 100), "Wood Spear\n+10 Damage\n20 Wood")) {
 						if (resources.woodCount >= 20) {
 								int insert = 15;
 								for (int i = 0; i < 15; i++) {
@@ -180,7 +198,7 @@ public class GameplayEvents : MonoBehaviour {
 						} else
 								Debug.Log ("You need 20 wood to craft that!");
 				}
-		if (GUI.Button (new Rect (Screen.width / 2 - 100, Screen.height / 2 + 50, 200, 100), "Stone Spear\n40 Stone")) {
+		if (GUI.Button (new Rect (Screen.width / 2 - 300, Screen.height / 2 + 50, 200, 100), "Stone Spear\n+30 Damage\n40 Stone")) {
 			if (resources.stoneCount >= 40) {
 				int insert = 15;
 				for (int i = 0; i < 15; i++) {
@@ -191,7 +209,7 @@ public class GameplayEvents : MonoBehaviour {
 				}
 				if (insert < 15) {
 					stats.inv [insert] = 2;
-					resources.woodCount -=40;
+					resources.stoneCount -=40;
 					Debug.Log ("You successfully craft a stone spear!");
 				}
 				else
@@ -199,6 +217,45 @@ public class GameplayEvents : MonoBehaviour {
 			} else
 				Debug.Log ("You need 40 stone to craft that!");
 		}
+		if (GUI.Button (new Rect (Screen.width / 2 + 100, Screen.height / 2 - 100, 200, 100), "Wood Shield\n+5 Defense\n10 Wood")) {
+			if (resources.woodCount >= 10) {
+				int insert = 15;
+				for (int i = 0; i < 15; i++) {
+					if (stats.inv [i] == 0) {
+						insert = i;
+						break;
+					}
+				}
+				if (insert < 15) {
+					stats.inv [insert] = 11;
+					resources.woodCount -=10;
+					Debug.Log ("You successfully craft a wood shield!");
+				}
+				else
+					Debug.Log("Your inventory is full!");
+			} else
+				Debug.Log ("You need 10 wood to craft that!");
+		}
+		if (GUI.Button (new Rect (Screen.width / 2 + 100, Screen.height / 2 + 50, 200, 100), "Stone Shield\n+15 Defense\n30 Stone")) {
+			if (resources.stoneCount >= 30) {
+				int insert = 15;
+				for (int i = 0; i < 15; i++) {
+					if (stats.inv [i] == 0) {
+						insert = i;
+						break;
+					}
+				}
+				if (insert < 15) {
+					stats.inv [insert] = 12;
+					resources.stoneCount -=30;
+					Debug.Log ("You successfully craft a stone shield!");
+				}
+				else
+					Debug.Log("Your inventory is full!");
+			} else
+				Debug.Log ("You need 30 stone to craft that!");
+		}
+		stats.InvCheck ();
 		//Add crafting logic here
 	}
 
