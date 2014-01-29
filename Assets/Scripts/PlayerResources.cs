@@ -51,12 +51,12 @@ public class PlayerResources : MonoBehaviour {
 	}
 
 	void OnTriggerStay2D (Collider2D col){
-		//Debug.Log ("PlayerResources.OnCollisionEnter2D");
 		//add a keypress or gather action of some sort to this
 		if (col.gameObject.tag == "tree" && Input.GetKeyDown ("g")) {
-				woodCount += 5;
-						//Debug.Log ("wood collected");
-		} else if (col.gameObject.tag == "NPC" && Input.GetKeyDown ("t")) {
+			woodCount += 5;
+		}else if (col.gameObject.tag == "stone" && Input.GetKeyDown ("g")) {
+			stoneCount += 5;
+		}else if (col.gameObject.tag == "NPC" && Input.GetKeyDown ("t")) {
 			Debug.Log ("NPC Greeting!");
 			//Dialogue script call goes here!
 		}

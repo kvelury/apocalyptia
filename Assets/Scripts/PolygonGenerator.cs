@@ -23,6 +23,7 @@ public class PolygonGenerator : MonoBehaviour {
 	//*******************************************************************************************
 	//references for resources
 	public GameObject tree;
+	public GameObject stone;
 	//*******************************************************************************************
 
 	//list of vertices to the mesh
@@ -188,11 +189,19 @@ public class PolygonGenerator : MonoBehaviour {
 	protected virtual void AddResources(){
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
+				//add trees
 				if(blocks[i,j] == (byte)TileCodes.DryGrass ||  blocks[i,j] == (byte)TileCodes.Grass){
 					Vector3 location = new Vector3(worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
 					                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
 					                               0.49f);
 					GameObject newTree = Instantiate (tree, location, new Quaternion(0, 0, 0, 0)) as GameObject;
+				}
+				//add stone
+				if(blocks[i,j] == (byte)TileCodes.Stone){
+					Vector3 location = new Vector3(worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
+					                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
+					                               0.49f);
+					GameObject newStone = Instantiate (stone, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 				}
 			}
 		}
