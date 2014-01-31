@@ -13,10 +13,15 @@ public class PlayerResources : MonoBehaviour {
 	//May end up moving fame and health to their own scripts.
 	public float fameCount;
 	public float healthCount;
+	//for health bar
+	public float currHealth;
+	public float maxHealth;
 
 	// Use this for initialization
 	void Start () {
 		healthCount = 100;
+		maxHealth = 100;
+
 		woodCount = fameCount = stoneCount = ironCount = 0;
 		//Debug.Log (PlayerPrefs.GetFloat("Fame").ToString());
 	}
@@ -37,15 +42,14 @@ public class PlayerResources : MonoBehaviour {
 			Application.LoadLevel ("DeathScene");
 		}
 
-		//place a building
-		if(Input.GetKey ("b") && this.woodCount >= WoodenHouseScript.cost && Input.GetKeyDown ("b")){
-			this.woodCount -= WoodenHouseScript.cost;
-			Vector3 v = new Vector3(this.transform.localPosition.x,
-			                        this.transform.localPosition.y,
-			                        0);
-			GameObject newWoodenHouse = Instantiate (woodenHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
-		}
-		//PlayerPrefs.SetFloat("Fame", fameCount);
+		//adjust health bar variables
+		currHealth = healthCount;
+		if(currHealth < 0)
+			currHealth = 0;
+		if(currHealth > maxHealth)
+			currHealth = maxHealth;
+		if(maxHealth < 1)
+			maxHealth = 1;
 	}
 
 	void OnCollisionEnter2D(Collision2D col){

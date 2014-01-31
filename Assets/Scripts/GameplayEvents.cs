@@ -10,6 +10,7 @@ public class GameplayEvents : MonoBehaviour {
 	public GameObject woodenHouse;
 	public GameObject resourceHouse;
 	public GameObject tower;
+	public int healthBarLength;
 
 	/// <summary>
 	/// Boolean representing whether the game is paused or not
@@ -32,6 +33,7 @@ public class GameplayEvents : MonoBehaviour {
 		stats = Player.GetComponent<PlayerStats> ();
 		resources = Player.GetComponent<PlayerResources>();
 		isPaused = false;
+		healthBarLength = Screen.width / 2;
 	}
 	
 	// Update is called once per frame
@@ -39,6 +41,8 @@ public class GameplayEvents : MonoBehaviour {
 		if (Input.GetKey(KeyCode.Escape)){
 			Pause ();
 		}
+
+		healthBarLength = (int)((Screen.width / 2) * (resources.currHealth/resources.maxHealth));
 	}
 
 	//GUI
@@ -64,12 +68,16 @@ public class GameplayEvents : MonoBehaviour {
 		}else{
 			// Make a background box
 			Player = GameObject.Find ("Player");
-			GUI.Box (new Rect (10, 10, 100, 165), "");
+			GUI.Box (new Rect (10, 30, 100, 165), "");
 			//Once combat is implemented, remove If Statement from here, and change Button to Box.
-			
-			//Once resource collection is implemented use the section below to just display resources rather than add them.
+			//Once resource collection is implemented use the section below to just display resources rather than add them
+			/*
 			if(GUI.Button (new Rect (20, 20, 80, 25), "Health: " + resources.healthCount.ToString ()))
 				resources.healthCount -= 10;
+			*/
+			
+			if(GUI.Button(new Rect(10, 10, healthBarLength, 20), + resources.currHealth + "/" + resources.maxHealth))
+				resources.healthCount -= 10;;
 			
 			if(GUI.Button (new Rect (20, 50, 80, 25), "Wood: " + resources.woodCount.ToString ()))
 				resources.woodCount += 10;
@@ -264,25 +272,28 @@ public class GameplayEvents : MonoBehaviour {
 		if (GUI.Button (new Rect(Screen.width - 50, 0, 50, 50), "X")){
 			pauseMenuState = 0;
 		}
-		if (GUI.Button (new Rect(Screen.width/2 - 50, 25, 100, 75), "Healing Home\n\n25 Wood")) {
-			if (resources.woodCount >= WoodenHouseScript.cost) {
-				resources.woodCount -= WoodenHouseScript.cost;
+		if (GUI.Button (new Rect(Screen.width/2 - 50, 25, 100, 75), "Healing Home\n\n30 Wood\n15 Stone")) {
+			if (resources.woodCount >= WoodenHouseScript.wCost && resources.stoneCount >= WoodenHouseScript.sCost) {
+				resources.woodCount -= WoodenHouseScript.wCost;
+				resources.stoneCount -= WoodenHouseScript.sCost;
 				Vector3 v = new Vector3(this.transform.localPosition.x,
 				                        this.transform.localPosition.y,
 				                        0);
 				GameObject newWoodenHouse = Instantiate (woodenHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
 			}
+			resources.fameCount += 50;
 			
 		}
-		if (GUI.Button (new Rect(Screen.width/2 - 75, 125, 150, 75), "Resource Generator \n\n50 Wood\n50 Stone")) {
-			if (resources.woodCount >= ResourceHouseScript.cost && resources.stoneCount >= ResourceHouseScript.cost) {
-				resources.woodCount -= ResourceHouseScript.cost;
-				resources.stoneCount -= ResourceHouseScript.cost;
+		if (GUI.Button (new Rect(Screen.width/2 - 75, 125, 150, 75), "Resource Generator \n\n75 Wood\n50 Stone")) {
+			if (resources.woodCount >= ResourceHouseScript.wCost && resources.stoneCount >= ResourceHouseScript.sCost) {
+				resources.woodCount -= ResourceHouseScript.wCost;
+				resources.stoneCount -= ResourceHouseScript.sCost;
 				Vector3 v = new Vector3(this.transform.localPosition.x,
 				                        this.transform.localPosition.y,
 				                        0);
 				GameObject newResourceHouse = Instantiate (resourceHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
 			}
+			resources.fameCount += 75;
 			
 		}
 		
@@ -297,7 +308,7 @@ public class GameplayEvents : MonoBehaviour {
 				                        0);
 				GameObject newTower = Instantiate (tower, v, new Quaternion(0, 0, 0, 0)) as GameObject;
 			}
-			
+			resources.fameCount += 100;
 		}
 	}
 

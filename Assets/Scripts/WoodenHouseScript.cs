@@ -7,7 +7,8 @@ public class WoodenHouseScript : MonoBehaviour {
 	
 	private PlayerResources resources;
 	
-	public const int cost = 25;
+	public const int wCost = 30;
+	public const int sCost = 15;
 	
 	//timer to enable healing at certain intervals
 	public float timer = 1.5f;

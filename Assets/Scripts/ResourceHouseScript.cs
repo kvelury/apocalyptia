@@ -6,7 +6,8 @@ public class ResourceHouseScript : MonoBehaviour {
 	GameObject Player;
 	private PlayerResources resources;
 	
-	public const int cost = 50;
+	public const int wCost = 75;
+	public const int sCost = 50;
 	public float timer = 0;
 	private int resCount = 0;
 	
