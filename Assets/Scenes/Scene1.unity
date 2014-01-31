@@ -231,6 +231,7 @@ GameObject:
   - 114: {fileID: 230536863}
   - 114: {fileID: 230536862}
   - 50: {fileID: 230536861}
+  - 114: {fileID: 230536867}
   m_Layer: 0
   m_Name: NPC
   m_TagString: NPC
@@ -329,6 +330,20 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &230536867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: ad362b38d9e2fa94a91ddd0414edbf21,
+    type: 2}
+  m_PrefabInternal: {fileID: 1656428221}
+  m_GameObject: {fileID: 230536860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466ed4957dc214af3a1a6141c663cd23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  answerButtons: []
+  Questions: []
 --- !u!1001 &239965701
 Prefab:
   m_ObjectHideFlags: 0
@@ -1170,6 +1185,7 @@ MonoBehaviour:
   repairing: 0
   inv: []
   currDam: 0
+  currDef: 0
   bestWep: 0
   bestDef: 0
 --- !u!1001 &1603325073
@@ -1380,6 +1396,9 @@ MonoBehaviour:
   timer: 0
   enemySpawnTime: 0
   doomTimer: 0
+  winTimer: 0
+  doomEvent: 0
+  winEvent: 0
 --- !u!4 &1774746823
 Transform:
   m_ObjectHideFlags: 0
