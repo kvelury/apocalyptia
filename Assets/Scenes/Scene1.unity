@@ -832,7 +832,6 @@ MonoBehaviour:
   newVertices: []
   newTriangles: 
   newUV: []
-  player: {fileID: 1384526589}
 --- !u!64 &847977252
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1170,6 +1169,7 @@ MonoBehaviour:
   repairing: 0
   inv: []
   currDam: 0
+  currDef: 0
   bestWep: 0
   bestDef: 0
 --- !u!1001 &1603325073
@@ -1380,6 +1380,9 @@ MonoBehaviour:
   timer: 0
   enemySpawnTime: 0
   doomTimer: 0
+  winTimer: 0
+  doomEvent: 0
+  winEvent: 0
 --- !u!4 &1774746823
 Transform:
   m_ObjectHideFlags: 0

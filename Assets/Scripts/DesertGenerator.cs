@@ -11,6 +11,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DesertGenerator : PolygonGenerator {
+	private float waterThreshold = 0.07f;
+	private float dirtThreshold = 0.09f;
+	private float dryGrassThreshold = 0.11f;
+	private float mountainThreshold = 0.85f;
 
 	/*
 	// Use this for initialization
@@ -39,20 +43,15 @@ public class DesertGenerator : PolygonGenerator {
 	 * ***********************************************************************/
 	protected override void GenTerrain(){
 		blocks = new byte[gridWidth, gridHeight];
-		float xStart = 221;//Random.Range (-1000, 1000);
-		float yStart = 383;//Random.Range (-1000, 1000);
+		float xStart = Random.Range (-1000, 1000);
+		float yStart = Random.Range (-1000, 1000);
 		Debug.Log ("Seeds used: " + xStart.ToString () + " " + yStart.ToString ());
+		float[,] elevationMap = GetElevationMap (xStart, yStart);
 		for (int px = 0; px < blocks.GetLength (0); px++) {
 			for (int py = 0; py < blocks.GetLength (1); py++) {
-				float xSample = px + xStart / gridWidth * perlinScale;
-				float ySample = py + yStart / gridHeight * perlinScale;
-				//Debug.Log (xSample.ToString () + " " + ySample.ToString ());
-				float elevation = Mathf.PerlinNoise (xSample, ySample); // value 0 - 1
 				//assign values based on this number
-				float waterThreshold = 0.07f;
-				float dirtThreshold = 0.09f;
-				float dryGrassThreshold = 0.11f;
-				float mountainThreshold = 0.85f;
+				
+				float elevation = elevationMap[px, py];
 				if(elevation < waterThreshold){//low elevation
 					blocks[px, py] = (byte)TileCodes.Water;
 				}else if(elevation >= waterThreshold && elevation < dirtThreshold){

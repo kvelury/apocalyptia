@@ -18,8 +18,8 @@ public class PolygonGenerator : MonoBehaviour {
 	//constants
 	protected int gridWidth = 50;
 	protected int gridHeight = 50;
-	protected const float perlinScale = 1.0f;
 	protected const float worldScale = 3.0f;
+	protected const int perlinSamples = 10;
 	//*******************************************************************************************
 	//references for resources
 	public GameObject tree;
@@ -48,8 +48,6 @@ public class PolygonGenerator : MonoBehaviour {
 	protected int squareCount = 0;
 
 	public byte[,] blocks;
-	public TileObject[,] tileObjects;
-	public GameObject player;
 
 
 	// Use this for initialization
@@ -64,49 +62,7 @@ public class PolygonGenerator : MonoBehaviour {
 	
 	// Update is called once per frame
 	public virtual void Update () {
-		/*
-		PlayerResources pr = player.GetComponent<PlayerResources> ();
-
-		if (pr.interactWithCurrentTile == false) {
-			return;
-		}
-		//figure out where they are
-		Vector3 playerLocation = player.transform.localPosition;
-		Vector3 generatorLocation = this.transform.localPosition;
-		//calculate distance in x and y
-		float dx = playerLocation.x - generatorLocation.x;
-		float dy = playerLocation.y - generatorLocation.y;
-
-		Debug.Log (dx.ToString () + " " + dy.ToString ());
-
-		//figure out which grid tile the player is above
-		int gridx = Mathf.FloorToInt (dx / (gridWidth * 16));
-		int gridy = Mathf.FloorToInt (dy / (gridHeight * 16));
-
-		//retrieve the value at that point
-		TileObject t = tileObjects [gridx, gridy];
-		//if there is nothing there, quit
-		if (t == null){
-			return;
-		}
-
-		//compare what it is and increase the appropriate value
-		switch (t.type) {
-		case (byte)TileObject.resourceType.Building:
-			//no need to do anything yet
-			break;
-		case (byte)TileObject.resourceType.Iron:
-			pr.giveIron(5);
-			break;
-		case (byte)TileObject.resourceType.Rocks:
-			pr.giveStone(10);
-			break;
-		case (byte)TileObject.resourceType.Trees:
-			pr.giveWood(20);
-			break;
-		}
-		*/
-
+		//nothing
 	}
 
 	protected void UpdateMesh(){
@@ -206,4 +162,67 @@ public class PolygonGenerator : MonoBehaviour {
 			}
 		}
 	}
+
+	
+	protected float[,] GetElevationMap(float x, float y){
+		float[,] elevation = new float[gridWidth, gridHeight];
+		float perlinScale = 80.0f;
+		for (int i = 0; i < perlinSamples; i++) {
+			for (int px = 0; px < blocks.GetLength (0); px++) {
+				for (int py = 0; py < blocks.GetLength (1); py++) {
+					//float xSample = px + x / gridWidth * perlinScale;
+					//float ySample = py + y / gridHeight * perlinScale;
+					//Debug.Log (xSample.ToString () + " " + ySample.ToString ());
+					elevation [px, py] += Noise ((int)x + px, (int)y + py, perlinScale, 1, 1.0f);
+				}
+			}
+			perlinScale /= 2.0f;
+		}
+		Normalize (elevation);
+		printArray (elevation);
+		return elevation;
+	}
+
+	float Noise(int x, int y, float scale, float mag, float exp){
+		return Mathf.Pow (Mathf.PerlinNoise (x / scale, y / scale) * mag, exp);
+	}
+
+	protected void Normalize(float[,] map){
+		//change all values between 0 and 1
+		for(int i = 0; i < map.GetLength (0); i++){
+			for(int j = 0; j < map.GetLength (1); j++){
+				map[i,j] /= (float)perlinSamples;
+			}
+		}
+		//find the low and high points
+		float low = 10;
+		float high = -10;
+		for(int i = 0; i < map.GetLength (0); i++){
+			for(int j = 0; j < map.GetLength (1); j++){
+				if(map[i,j] > high)
+					high = map[i,j];
+				if(map[i,j] < low)
+				   low = map[i,j];
+			}
+		}
+		//rescale so low is 0 and high is 1
+		for(int i = 0; i < map.GetLength (0); i++){
+			for(int j = 0; j < map.GetLength (0); j++){
+				map[i,j] -= low;
+				map[i,j] *= 1/high;
+			}
+		}
+	}
+
+	protected void printArray(float[,] x){
+		string s = "";
+		for (int i = 0; i < x.GetLength (0); i++) {
+			for (int j = 0; j < x.GetLength (1); j++) {
+				s += x [i, j].ToString () + " ";
+			}
+			s += "\n";
+		}
+		Debug.Log (s);
+	}
+
 }
