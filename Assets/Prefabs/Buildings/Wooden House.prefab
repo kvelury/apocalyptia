@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11400000}
   - 212: {fileID: 21200000}
   - 61: {fileID: 6100000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Wooden House
   m_TagString: House
@@ -51,6 +52,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f116ce7f341bed647abec0d55b1604f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 1.5
+  heal: 0
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c767ebdae4fa3fa498210d4bdfc0f937, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21200000
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -72,7 +86,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_SortingLayerID: 0
-  m_Sprite: {fileID: 21300000, guid: 1389b9ec10578d54a932b429bd4db6a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3126591f3a4e7ab42beb66aa67a38908, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

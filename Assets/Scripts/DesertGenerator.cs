@@ -64,7 +64,7 @@ public class DesertGenerator : PolygonGenerator {
 					if(Random.Range (1, 100) < treePercentage){
 						Vector3 location = new Vector3( worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
 					                               		worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
-					                               		0.49f);
+						                               0);//0.49f);
 						GameObject newTree = Instantiate (tree, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 					}
 				}
@@ -73,7 +73,7 @@ public class DesertGenerator : PolygonGenerator {
 					if(Random.Range (1, 100) < stonePercentage){
 						Vector3 location = new Vector3( worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
 					                               		worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
-					                               		0.49f);
+						                               0);//-0.49f);
 						GameObject newStone = Instantiate (stone, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 					}
 				}

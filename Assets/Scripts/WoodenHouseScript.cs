@@ -32,6 +32,18 @@ public class WoodenHouseScript : MonoBehaviour {
 			timer = 1.5f;
 		}
 	}
+
+	void FixedUpdate(){
+		if(Vector3.Distance (Player.transform.position, transform.position) <= 2){
+			if (heal == true) {
+				resources.healthCount += 5;
+				heal = false;
+			}
+			if (resources.healthCount >= 100) 
+				resources.healthCount = 100;
+			
+		}
+	}
 	
 	void OnTriggerStay2D(Collider2D col){
 		//get heals from the house
