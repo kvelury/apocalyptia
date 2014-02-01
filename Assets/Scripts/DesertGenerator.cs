@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 public class DesertGenerator : PolygonGenerator {
 	private float waterThreshold = 0.07f;
-	private float dryGrassThreshold = 0.09f;
+	private float grassThreshold = 0.09f;
 	private float dirtThreshold = 0.11f;
 	private float mountainThreshold = 0.9f;
 
@@ -41,9 +41,9 @@ public class DesertGenerator : PolygonGenerator {
 				float elevation = elevationMap[px, py];
 				if(elevation < waterThreshold){//low elevation
 					blocks[px, py] = (byte)TileCodes.Water;
-				}else if(elevation >= waterThreshold && elevation < dryGrassThreshold){
-					blocks[px, py] = (byte)TileCodes.DryGrass;
-				}else if(elevation >= dryGrassThreshold && elevation < dirtThreshold){
+				}else if(elevation >= waterThreshold && elevation < grassThreshold){
+					blocks[px, py] = (byte)TileCodes.Grass;
+				}else if(elevation >= grassThreshold && elevation < dirtThreshold){
 					blocks[px, py] = (byte)TileCodes.Dirt;
 				}else if(elevation >= dirtThreshold && elevation < mountainThreshold){//middle elevation
 					blocks[px, py] = (byte)TileCodes.Sand;
