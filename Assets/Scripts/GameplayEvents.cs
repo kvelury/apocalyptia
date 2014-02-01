@@ -276,8 +276,8 @@ public class GameplayEvents : MonoBehaviour {
 			if (resources.woodCount >= WoodenHouseScript.wCost && resources.stoneCount >= WoodenHouseScript.sCost) {
 				resources.woodCount -= WoodenHouseScript.wCost;
 				resources.stoneCount -= WoodenHouseScript.sCost;
-				Vector3 v = new Vector3(this.transform.localPosition.x,
-				                        this.transform.localPosition.y,
+				Vector3 v = new Vector3(Player.transform.localPosition.x,
+				                        Player.transform.localPosition.y,
 				                        0);
 				GameObject newWoodenHouse = Instantiate (woodenHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
 			}
@@ -288,8 +288,8 @@ public class GameplayEvents : MonoBehaviour {
 			if (resources.woodCount >= ResourceHouseScript.wCost && resources.stoneCount >= ResourceHouseScript.sCost) {
 				resources.woodCount -= ResourceHouseScript.wCost;
 				resources.stoneCount -= ResourceHouseScript.sCost;
-				Vector3 v = new Vector3(this.transform.localPosition.x,
-				                        this.transform.localPosition.y,
+				Vector3 v = new Vector3(Player.transform.localPosition.x,
+				                        Player.transform.localPosition.y,
 				                        0);
 				GameObject newResourceHouse = Instantiate (resourceHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
 			}
@@ -303,8 +303,8 @@ public class GameplayEvents : MonoBehaviour {
 				resources.woodCount -= TowerScript.cost;
 				resources.stoneCount -= TowerScript.cost;
 				resources.ironCount -= TowerScript.cost;
-				Vector3 v = new Vector3(this.transform.localPosition.x,
-				                        this.transform.localPosition.y,
+				Vector3 v = new Vector3(Player.transform.localPosition.x,
+				                        Player.transform.localPosition.y,
 				                        0);
 				GameObject newTower = Instantiate (tower, v, new Quaternion(0, 0, 0, 0)) as GameObject;
 			}
