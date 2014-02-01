@@ -11,10 +11,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DesertGenerator : PolygonGenerator {
-	private float waterThreshold = 0.07f;
-	private float grassThreshold = 0.09f;
-	private float dirtThreshold = 0.11f;
-	private float mountainThreshold = 0.9f;
+	private float waterThreshold = 0.10f;
+	private float grassThreshold = 0.15f;
+	private float dirtThreshold = 0.17f;
+	private float mountainThreshold = 0.85f;
 
 	/*
 	// Use this for initialization
@@ -30,8 +30,8 @@ public class DesertGenerator : PolygonGenerator {
 
 	protected override void GenTerrain(){
 		blocks = new byte[gridWidth, gridHeight];
-		float xStart = Random.Range (-1000, 1000);
-		float yStart = Random.Range (-1000, 1000);
+		float xStart = 913;//Random.Range (-1000, 1000);
+		float yStart = -722;//Random.Range (-1000, 1000);
 		Debug.Log ("Seeds used: " + xStart.ToString () + " " + yStart.ToString ());
 		float[,] elevationMap = GetElevationMap (xStart, yStart);
 		for (int px = 0; px < blocks.GetLength (0); px++) {

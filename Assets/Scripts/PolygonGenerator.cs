@@ -165,7 +165,7 @@ public class PolygonGenerator : MonoBehaviour {
 	
 	protected float[,] GetElevationMap(float x, float y){
 		float[,] elevation = new float[gridWidth, gridHeight];
-		float perlinScale = 80.0f;
+		float perlinScale = 15.0f;
 		for (int i = 0; i < perlinSamples; i++) {
 			for (int px = 0; px < blocks.GetLength (0); px++) {
 				for (int py = 0; py < blocks.GetLength (1); py++) {
