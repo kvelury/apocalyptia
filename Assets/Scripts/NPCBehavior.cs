@@ -19,7 +19,7 @@ public class NPCBehavior : MonoBehaviour {
 	void Update () {
 		if (Vector3.Distance (Player.transform.position, transform.position) < 2)
 						movement = new Vector2 (0, 0);
-		else {
+		else if(!GameController.questAccepted && !GameController.questTwoAccepted){
 				timer++;
 				if (timer >= 50) {
 						timer = 0;

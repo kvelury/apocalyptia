@@ -19,7 +19,7 @@ public class PolygonGenerator : MonoBehaviour {
 	public const int gridWidth = 100;
 	public const int gridHeight = 100;
 	public const float worldScale = 3.0f;
-	protected const int perlinSamples = 1;
+	protected const int perlinSamples = 3;
 	//*******************************************************************************************
 	//references for resources
 	public GameObject tree;
@@ -175,7 +175,7 @@ public class PolygonGenerator : MonoBehaviour {
 					elevation [px, py] += Noise ((int)x + px, (int)y + py, perlinScale, 1, 1.0f);
 				}
 			}
-			perlinScale /= 5.0f;
+			perlinScale *= 500.0f;
 		}
 		Normalize (elevation);
 		//printArray (elevation);
