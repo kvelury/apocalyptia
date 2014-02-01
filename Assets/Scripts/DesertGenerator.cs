@@ -12,9 +12,9 @@ using System.Collections.Generic;
 
 public class DesertGenerator : PolygonGenerator {
 	private float waterThreshold = 0.07f;
-	private float dirtThreshold = 0.09f;
-	private float dryGrassThreshold = 0.11f;
-	private float mountainThreshold = 0.85f;
+	private float dryGrassThreshold = 0.09f;
+	private float dirtThreshold = 0.11f;
+	private float mountainThreshold = 0.9f;
 
 	/*
 	// Use this for initialization
@@ -28,19 +28,6 @@ public class DesertGenerator : PolygonGenerator {
 	}
 	*/
 
-	/**************************************************************************
-	 * The perlin noise function always returns the same value for same inputs,
-	 * i.e. Mathf.PerlinNoise(5, 10) always has the same return value.
-	 * 
-	 * This function starts by assigning a random value to start at.  The 
-	 * Perlin Noise plane is infinite, so we will just sample a random portion
-	 * of it.  Loop through and extract the correct value at that point.
-	 * 
-	 * From there, assign ranges.  Low elevations will have water, high will 
-	 * be stone for mountains.  The exact value that constitutes low or high
-	 * will vary based on the apocalypse.  For desert, the threshold for water
-	 * will be super low, but for flood it will be very high
-	 * ***********************************************************************/
 	protected override void GenTerrain(){
 		blocks = new byte[gridWidth, gridHeight];
 		float xStart = Random.Range (-1000, 1000);
@@ -54,14 +41,41 @@ public class DesertGenerator : PolygonGenerator {
 				float elevation = elevationMap[px, py];
 				if(elevation < waterThreshold){//low elevation
 					blocks[px, py] = (byte)TileCodes.Water;
-				}else if(elevation >= waterThreshold && elevation < dirtThreshold){
-					blocks[px, py] = (byte)TileCodes.Dirt;
-				}else if(elevation >= dirtThreshold && elevation < dryGrassThreshold){
+				}else if(elevation >= waterThreshold && elevation < dryGrassThreshold){
 					blocks[px, py] = (byte)TileCodes.DryGrass;
-				}else if(elevation >= dryGrassThreshold && elevation < mountainThreshold){//middle elevation
+				}else if(elevation >= dryGrassThreshold && elevation < dirtThreshold){
+					blocks[px, py] = (byte)TileCodes.Dirt;
+				}else if(elevation >= dirtThreshold && elevation < mountainThreshold){//middle elevation
 					blocks[px, py] = (byte)TileCodes.Sand;
 				}else{//high elevation
 					blocks[px, py] = (byte)TileCodes.Stone;
+				}
+			}
+		}
+	}
+
+	protected override void AddResources(){
+		float treePercentage = 10f;
+		float stonePercentage = 30f;
+		for(int i = 0; i < blocks.GetLength (0); i++){
+			for(int j = 0; j < blocks.GetLength (1); j++){
+				//add trees
+				if(blocks[i,j] == (byte)TileCodes.DryGrass ||  blocks[i,j] == (byte)TileCodes.Grass){
+					if(Random.Range (1, 100) < treePercentage){
+						Vector3 location = new Vector3( worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
+					                               		worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
+					                               		0.49f);
+						GameObject newTree = Instantiate (tree, location, new Quaternion(0, 0, 0, 0)) as GameObject;
+					}
+				}
+				//add stone
+				if(blocks[i,j] == (byte)TileCodes.Stone){
+					if(Random.Range (1, 100) < stonePercentage){
+						Vector3 location = new Vector3( worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
+					                               		worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
+					                               		0.49f);
+						GameObject newStone = Instantiate (stone, location, new Quaternion(0, 0, 0, 0)) as GameObject;
+					}
 				}
 			}
 		}

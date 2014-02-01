@@ -16,10 +16,10 @@ public class PolygonGenerator : MonoBehaviour {
 
 	//*******************************************************************************************
 	//constants
-	protected int gridWidth = 50;
-	protected int gridHeight = 50;
-	protected const float worldScale = 3.0f;
-	protected const int perlinSamples = 10;
+	public const int gridWidth = 100;
+	public const int gridHeight = 100;
+	public const float worldScale = 3.0f;
+	protected const int perlinSamples = 1;
 	//*******************************************************************************************
 	//references for resources
 	public GameObject tree;
@@ -176,19 +176,32 @@ public class PolygonGenerator : MonoBehaviour {
 					elevation [px, py] += Noise ((int)x + px, (int)y + py, perlinScale, 1, 1.0f);
 				}
 			}
-			perlinScale /= 2.0f;
+			perlinScale /= 5.0f;
 		}
 		Normalize (elevation);
-		printArray (elevation);
+		//printArray (elevation);
 		return elevation;
 	}
 
-	float Noise(int x, int y, float scale, float mag, float exp){
+	/**************************************************************************
+	 * The perlin noise function always returns the same value for same inputs,
+	 * i.e. Mathf.PerlinNoise(5, 10) always has the same return value.
+	 * 
+	 * This function starts by assigning a random value to start at.  The 
+	 * Perlin Noise plane is infinite, so we will just sample a random portion
+	 * of it.  Loop through and extract the correct value at that point.
+	 * 
+	 * From there, assign ranges.  Low elevations will have water, high will 
+	 * be stone for mountains.  The exact value that constitutes low or high
+	 * will vary based on the apocalypse.  For desert, the threshold for water
+	 * will be super low, but for flood it will be very high
+	 * ***********************************************************************/
+	protected float Noise(int x, int y, float scale, float mag, float exp){
 		return Mathf.Pow (Mathf.PerlinNoise (x / scale, y / scale) * mag, exp);
 	}
 
 	protected void Normalize(float[,] map){
-		//change all values between 0 and 1
+		//change all values to be between 0 and 1, since they will be a sum of [perlinSamples] passes
 		for(int i = 0; i < map.GetLength (0); i++){
 			for(int j = 0; j < map.GetLength (1); j++){
 				map[i,j] /= (float)perlinSamples;
@@ -205,11 +218,12 @@ public class PolygonGenerator : MonoBehaviour {
 				   low = map[i,j];
 			}
 		}
+		//Debug.Log ("Low: " + low.ToString () + " High: " + high.ToString ());
 		//rescale so low is 0 and high is 1
 		for(int i = 0; i < map.GetLength (0); i++){
 			for(int j = 0; j < map.GetLength (0); j++){
 				map[i,j] -= low;
-				map[i,j] *= 1/high;
+				map[i,j] *= 1/(high-low);
 			}
 		}
 	}

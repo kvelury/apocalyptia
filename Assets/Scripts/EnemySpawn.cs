@@ -19,7 +19,7 @@ public class EnemySpawn : MonoBehaviour {
 	void Start () {
 		incrementTime = 1f;
 		incrementBy = 1;
-		maxEnemies = 15;
+		maxEnemies = 50;
 		doomEvent = false;
 		winEvent = false;
 		enemySpawnTime = 80;
@@ -43,7 +43,7 @@ public class EnemySpawn : MonoBehaviour {
 				winTimer+=incrementBy;
 		}
 		if (doomTimer >= 120) {
-			maxEnemies = 100;
+			maxEnemies = 250;
 			enemySpawnTime = 20;
 			doomEvent = true;
 		}
@@ -65,8 +65,14 @@ public class EnemySpawn : MonoBehaviour {
 	
 	void SpawnEnemy () {
 		Vector3 spawnLoc = new Vector3 (0, 0, 0);
-		spawnLoc.x = Random.Range (-25, 124);
-		spawnLoc.y = Random.Range (-30, 116);
+		//find the data for where the world is located
+		int worldWidth = PolygonGenerator.gridWidth;
+		int worldHeight = PolygonGenerator.gridHeight;
+		//rescale
+		worldWidth *= (int)PolygonGenerator.worldScale;
+		worldHeight *= (int)PolygonGenerator.worldScale;
+		spawnLoc.x = Random.Range (-25, worldWidth);
+		spawnLoc.y = Random.Range (-30, worldHeight);
 		enemyCount++;
 		GameObject enemyInstance = Instantiate (Enemy, spawnLoc, new Quaternion(0,0,0,0)) as GameObject;
 		//enemyInstance.GetComponent<LookAtScript>().target = GameObject.Find("Main Camera").transform;
