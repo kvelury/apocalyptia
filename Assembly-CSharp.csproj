@@ -52,6 +52,7 @@
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\EnemySpawn.cs" />
      <Compile Include="Assets\Scripts\EnemyStats.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GameOverEvents.cs" />
      <Compile Include="Assets\Scripts\GameplayEvents.cs" />
      <Compile Include="Assets\Scripts\LookAtScript.cs" />

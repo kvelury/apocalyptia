@@ -23,6 +23,9 @@ public class EnemyStats : MonoBehaviour {
 				PlayerResources pr = Player.GetComponent<PlayerResources> ();
 				pr.fameCount += 10;
 				//Debug.Log ("Fame++");
+				if(GameController.questAccepted == true){
+					GameController.killCount += 1;
+				}
 			}
 			Destroy (gameObject);
 		}
