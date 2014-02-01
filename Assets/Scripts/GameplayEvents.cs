@@ -280,6 +280,9 @@ public class GameplayEvents : MonoBehaviour {
 				                        Player.transform.localPosition.y,
 				                        0);
 				GameObject newWoodenHouse = Instantiate (woodenHouse, v, new Quaternion(0, 0, 0, 0)) as GameObject;
+				if (GameController.questTwoAccepted){
+					GameController.houseBuilt = true;
+				}
 			}
 			resources.fameCount += 50;
 			
