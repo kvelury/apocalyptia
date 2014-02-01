@@ -581,6 +581,7 @@ MonoBehaviour:
   woodenHouse: {fileID: 100000, guid: dbd58aa1b4e0b014f977fe637eb03726, type: 2}
   resourceHouse: {fileID: 100000, guid: ee0bdeef6ed7b4c25888139ae188c01d, type: 2}
   tower: {fileID: 100000, guid: ddaf5803e78334bbcad26d776ea08874, type: 2}
+  healthBarLength: 0
 --- !u!114 &444190774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1085,6 +1086,8 @@ MonoBehaviour:
   ironCount: 0
   fameCount: 0
   healthCount: 0
+  currHealth: 0
+  maxHealth: 0
 --- !u!61 &1384526593
 BoxCollider2D:
   m_ObjectHideFlags: 0
