@@ -307,10 +307,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33ff23ad2ba554bcdbd79ed5fc1e51df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: .119999997
+  velocity: .100000001
   screenBufferSize: 25
   target: {fileID: 1384526595}
-  followDistance: {x: 3, y: 3, z: 6}
+  followDistance: {x: 3, y: 3, z: 9}
 --- !u!1001 &501337760
 Prefab:
   m_ObjectHideFlags: 0

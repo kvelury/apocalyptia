@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (velocity == 2.5F && es.doomEvent == true)
+		if (/*velocity == 2.5F &&*/ es.doomEvent == true)
 						velocity = velocity * 1.5F;
 		timer += 1;
 		if (timer > 50) {

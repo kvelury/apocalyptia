@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
   EnemySpawner: {fileID: 0}
-  velocity: {x: 1, y: 1}
+  velocity: 1
   timer: 0
 --- !u!114 &11400002
 MonoBehaviour:
