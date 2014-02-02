@@ -9,7 +9,7 @@ public class EnemyMovement : MonoBehaviour {
 	/// </summary>
 	public GameObject Player;
 	public GameObject EnemySpawner;
-	public Vector2 velocity;
+	public float velocity = 2.5F;
 	public int timer = 0;
 	EnemySpawn es;
 	/// <summary>
@@ -20,13 +20,13 @@ public class EnemyMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Player = GameObject.Find ("Player");
-		velocity = new Vector3(2.5F, 2.5F);
+//		velocity = 2.5F;
 		EnemySpawner = GameObject.Find ("EnemySpawner");
 		es = EnemySpawner.GetComponent<EnemySpawn> ();
 		if (Vector3.Distance (Player.transform.position, transform.position) < 20) {
 			movement = (Player.transform.position - transform.position).normalized;
-			movement.x = movement.x * velocity.x;
-			movement.y = movement.y * velocity.y;
+			movement.x = movement.x * velocity;
+			movement.y = movement.y * velocity;
 		}
 			
 			//movement = new Vector2 (velocity.x * (Player.transform.position.x - transform.position.x), velocity.y * (Player.transform.position.y - transform.position.y));
@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (velocity.Equals (new Vector3 (2.5F, 2.5F)) && es.doomEvent == true)
+		if (velocity == 2.5F && es.doomEvent == true)
 						velocity = velocity * 1.5F;
 		timer += 1;
 		if (timer > 50) {
@@ -44,7 +44,7 @@ public class EnemyMovement : MonoBehaviour {
 				direction = (Player.transform.position - transform.position).normalized;
 			else
 				direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
-			movement = new Vector2 (velocity.x * direction.x, velocity.y * direction.y);
+			movement = new Vector2 (velocity * direction.x, velocity * direction.y);
 		}
 	}
 
