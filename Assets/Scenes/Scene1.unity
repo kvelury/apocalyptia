@@ -310,7 +310,7 @@ MonoBehaviour:
   velocity: .100000001
   screenBufferSize: 25
   target: {fileID: 1384526595}
-  followDistance: {x: 3, y: 3, z: 9}
+  followDistance: {x: 2.5, y: 2.5, z: 7.5}
 --- !u!1001 &501337760
 Prefab:
   m_ObjectHideFlags: 0

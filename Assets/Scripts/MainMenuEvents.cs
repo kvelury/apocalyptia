@@ -12,19 +12,10 @@ public class MainMenuEvents : MonoBehaviour {
 	void Update () {
 		if (Input.GetKey(KeyCode.Space)){
 			Debug.Log("Talents Reset");
-			PlayerPrefs.DeleteKey("Talent0");
-			PlayerPrefs.DeleteKey("Talent1");
-			PlayerPrefs.DeleteKey("Talent2");
-			PlayerPrefs.DeleteKey("Talent3");
-			PlayerPrefs.DeleteKey("Talent4");
-			PlayerPrefs.DeleteKey("Talent5");
-			PlayerPrefs.DeleteKey("Talent6");
-			PlayerPrefs.DeleteKey("Talent7");
-			PlayerPrefs.DeleteKey("Talent8");
-			PlayerPrefs.DeleteKey("Talent9");
-			PlayerPrefs.DeleteKey("Talent10");
-			PlayerPrefs.DeleteKey("Talent11");
-			PlayerPrefs.DeleteKey("Talent12");
+			for (int i=0; i<20; i++){
+				PlayerPrefs.DeleteKey("Talent" + i.ToString());
+			}
+			PlayerPrefs.DeleteKey("Completion");
 		}
 	}
 

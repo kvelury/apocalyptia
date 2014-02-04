@@ -11,29 +11,56 @@ public class GameOverEvents : MonoBehaviour {
 	/// 8->9->10->11
 	/// 3 || 7 || 11 -> 12
 	/// </summary>
-	public static Talent[] talentTree = new Talent[13];
+	public static Talent[] talentTree = new Talent[20];
+
+	public static int questlinesCompleted = 0;
 
 	// Use this for initialization
 	void Start () {
 		//Load the saved talents to the tree
-		talentTree [0] = new Talent ("Self 1", 10, PlayerPrefs.GetInt("Talent0") == 0 ? false : true, new int[] {});
-		talentTree [1] = new Talent ("Self 2", 50, PlayerPrefs.GetInt("Talent1") == 0 ? false : true, new int[] {0});
-		talentTree [2] = new Talent ("Self 3", 100, PlayerPrefs.GetInt("Talent2") == 0 ? false : true, new int[] {1});
-		talentTree [3] = new Talent ("Self 4", 200, PlayerPrefs.GetInt("Talent3") == 0 ? false : true, new int[] {2});
-		talentTree [4] = new Talent ("Group 1", 10, PlayerPrefs.GetInt("Talent4") == 0 ? false : true, new int[] {});
-		talentTree [5] = new Talent ("Group 2", 50, PlayerPrefs.GetInt("Talent5") == 0 ? false : true, new int[] {4});
-		talentTree [6] = new Talent ("Group 3", 100, PlayerPrefs.GetInt("Talent6") == 0 ? false : true, new int[] {5});
-		talentTree [7] = new Talent ("Group 4", 200, PlayerPrefs.GetInt("Talent7") == 0 ? false : true, new int[] {6});
-		talentTree [8] = new Talent ("World 1", 10, PlayerPrefs.GetInt("Talent8") == 0 ? false : true, new int[] {});
-		talentTree [9] = new Talent ("World 2", 50, PlayerPrefs.GetInt("Talent9") == 0 ? false : true, new int[] {8});
-		talentTree [10] = new Talent ("World 3", 100, PlayerPrefs.GetInt("Talent10") == 0 ? false : true, new int[] {9});
-		talentTree [11] = new Talent ("World 4", 200, PlayerPrefs.GetInt("Talent11") == 0 ? false : true, new int[] {10});
-		talentTree [12] = new Talent ("Talent 5", 500, PlayerPrefs.GetInt("Talent12") == 0 ? false : true, new int[] {3, 7, 11});
+		talentTree [0] = new Talent ("Denial", 0, PlayerPrefs.GetInt("Talent0") == 0 ? false : true, new int[] {-1});
+		talentTree [1] = new Talent ("Anger", 0, PlayerPrefs.GetInt("Talent1") == 0 ? false : true, new int[] {-1});
+		talentTree [2] = new Talent ("Bargaining", 0, PlayerPrefs.GetInt("Talent2") == 0 ? false : true, new int[] {-1});
+		talentTree [3] = new Talent ("Depression", 0, PlayerPrefs.GetInt("Talent3") == 0 ? false : true, new int[] {-1});
+		talentTree [4] = new Talent ("Acceptance", 0, PlayerPrefs.GetInt("Talent4") == 0 ? false : true, new int[] {-1});
+		talentTree [5] = new Talent ("Sword 1", 10, PlayerPrefs.GetInt("Talent5") == 0 ? false : true, new int[] {0});
+		talentTree [6] = new Talent ("Sword 2", 50, PlayerPrefs.GetInt("Talent6") == 0 ? false : true, new int[] {1, 5});
+		talentTree [7] = new Talent ("Sword 3", 100, PlayerPrefs.GetInt("Talent7") == 0 ? false : true, new int[] {2, 6});
+		talentTree [8] = new Talent ("Sword 4", 150, PlayerPrefs.GetInt("Talent8") == 0 ? false : true, new int[] {3, 7});
+		talentTree [9] = new Talent ("Sword 5", 200, PlayerPrefs.GetInt("Talent9") == 0 ? false : true, new int[] {4, 8});
+		talentTree [10] = new Talent ("Shield 1", 10, PlayerPrefs.GetInt("Talent10") == 0 ? false : true, new int[] {0});
+		talentTree [11] = new Talent ("Shield 2", 50, PlayerPrefs.GetInt("Talent11") == 0 ? false : true, new int[] {1, 10});
+		talentTree [12] = new Talent ("Shield 3", 100, PlayerPrefs.GetInt("Talent12") == 0 ? false : true, new int[] {2, 11});
+		talentTree [13] = new Talent ("Shield 4", 150, PlayerPrefs.GetInt("Talent13") == 0 ? false : true, new int[] {3, 12});
+		talentTree [14] = new Talent ("Shield 5", 200, PlayerPrefs.GetInt("Talent14") == 0 ? false : true, new int[] {4, 13});
+		talentTree [15] = new Talent ("Spear 1", 10, PlayerPrefs.GetInt("Talent15") == 0 ? false : true, new int[] {0});
+		talentTree [16] = new Talent ("Spear 2", 50, PlayerPrefs.GetInt("Talent16") == 0 ? false : true, new int[] {1, 15});
+		talentTree [17] = new Talent ("Spear 3", 100, PlayerPrefs.GetInt("Talent17") == 0 ? false : true, new int[] {2, 16});
+		talentTree [18] = new Talent ("Spear 4", 150, PlayerPrefs.GetInt("Talent18") == 0 ? false : true, new int[] {3, 17});
+		talentTree [19] = new Talent ("Spear 5", 200, PlayerPrefs.GetInt("Talent19") == 0 ? false : true, new int[] {4, 18});
+
+		questlinesCompleted = PlayerPrefs.GetInt("Completion");
+
+		for (int i = 0; i<questlinesCompleted; i++) {
+			talentTree[i].Active = true;
+			Debug.Log ("Activated Talent " + i.ToString());
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		//some debug controls
+		if (Input.GetKeyDown(KeyCode.UpArrow)){
+			PlayerPrefs.SetFloat("Fame", PlayerPrefs.GetFloat("Fame") + 10);
+		}
+		if (Input.GetKeyDown (KeyCode.LeftShift)){
+			questlinesCompleted++;
+			if (questlinesCompleted > 5) questlinesCompleted = 5;
+			for (int i = 0; i<questlinesCompleted; i++) {
+				talentTree[i].Active = true;
+				Debug.Log ("Activated Talent " + i.ToString());
+			}
+		}
 	}
 
 	//GUI
@@ -44,60 +71,97 @@ public class GameOverEvents : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height - 50, 100, 50), "You Are Dead\n Try Again?"))
 			Application.LoadLevel ("MainMenu");
 
-		GUI.Box (new Rect(Screen.width - 100, 0, 100, 50), PlayerPrefs.GetFloat("Fame").ToString());
+		GUI.Box (new Rect(Screen.width - 50, 0, 50, 50), PlayerPrefs.GetFloat("Fame").ToString());
 
+		#region MainTalents
+		//draw main talents
 		setButtonColor (0);
-		if (GUI.Button (new Rect (Screen.width * 1 / 4 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [0].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [0].Name)) {
 			result = talentTree [0].ActivateTalent ();
 		}
 		setButtonColor (1);
-		if (GUI.Button (new Rect (Screen.width * 1 / 4 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [1].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [1].Name)) {
 			result = talentTree [1].ActivateTalent ();
 		}
 		setButtonColor (2);
-		if (GUI.Button (new Rect (Screen.width * 1 / 4 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [2].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [2].Name)) {
 			result = talentTree [2].ActivateTalent ();
 		}
 		setButtonColor (3);
-		if (GUI.Button (new Rect (Screen.width * 1 / 4 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [3].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [3].Name)) {
 			result = talentTree [3].ActivateTalent ();
 		}
 		setButtonColor (4);
-		if (GUI.Button (new Rect (Screen.width * 2 / 4 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [4].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [4].Name)) {
 			result = talentTree [4].ActivateTalent ();
 		}
+		#endregion
+		#region SwordTalents
 		setButtonColor (5);
-		if (GUI.Button (new Rect (Screen.width * 2 / 4 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [5].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [5].Name)) {
 			result = talentTree [5].ActivateTalent ();
 		}
 		setButtonColor (6);
-		if (GUI.Button (new Rect (Screen.width * 2 / 4 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [6].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [6].Name)) {
 			result = talentTree [6].ActivateTalent ();
 		}
 		setButtonColor (7);
-		if (GUI.Button (new Rect (Screen.width * 2 / 4 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [7].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [7].Name)) {
 			result = talentTree [7].ActivateTalent ();
 		}
 		setButtonColor (8);
-		if (GUI.Button (new Rect (Screen.width * 3 / 4 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [8].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [8].Name)) {
 			result = talentTree [8].ActivateTalent ();
 		}
 		setButtonColor (9);
-		if (GUI.Button (new Rect (Screen.width * 3 / 4 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [9].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [9].Name)) {
 			result = talentTree [9].ActivateTalent ();
 		}
+		#endregion
+		#region ShieldTalents
 		setButtonColor (10);
-		if (GUI.Button (new Rect (Screen.width * 3 / 4 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [10].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [10].Name)) {
 			result = talentTree [10].ActivateTalent ();
 		}
 		setButtonColor (11);
-		if (GUI.Button (new Rect (Screen.width * 3 / 4 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [11].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [11].Name)) {
 			result = talentTree [11].ActivateTalent ();
 		}
 		setButtonColor (12);
-		if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height * 5 / 6 - 50, 100, 50), talentTree [12].Name)) {
+		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [12].Name)) {
 			result = talentTree[12].ActivateTalent ();
 		}
+		setButtonColor (13);
+		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [13].Name)) {
+			result = talentTree[13].ActivateTalent ();
+		}
+		setButtonColor (14);
+		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [14].Name)) {
+			result = talentTree[14].ActivateTalent ();
+		}
+		#endregion
+		#region SpearTalents
+		setButtonColor (15);
+		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [15].Name)) {
+			result = talentTree[15].ActivateTalent ();
+		}
+		setButtonColor (16);
+		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [16].Name)) {
+			result = talentTree[16].ActivateTalent ();
+		}
+		setButtonColor (17);
+		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [17].Name)) {
+			result = talentTree[17].ActivateTalent ();
+		}
+		setButtonColor (18);
+		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [18].Name)) {
+			result = talentTree[18].ActivateTalent ();
+		}
+		setButtonColor (19);
+		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [19].Name)) {
+			result = talentTree[19].ActivateTalent ();
+		}
+		#endregion
 		
 		switch (result) {
 		case 0:
@@ -112,6 +176,9 @@ public class GameOverEvents : MonoBehaviour {
 		case 3:
 			Debug.Log ("Fame Stocks are too low, Sire.");
 			break;
+		case 4:
+			Debug.Log ("This talent requires quest completion");
+			break;
 		default:
 			break;
 		}
@@ -122,20 +189,11 @@ public class GameOverEvents : MonoBehaviour {
 	void OnDestroy(){
 		//Debug.Log ("Data Saved");
 		//save necessary data
-		PlayerPrefs.SetInt ("Talent0", talentTree [0].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent1", talentTree [1].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent2", talentTree [2].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent3", talentTree [3].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent4", talentTree [4].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent5", talentTree [5].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent6", talentTree [6].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent7", talentTree [7].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent8", talentTree [8].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent9", talentTree [9].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent10", talentTree [10].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent11", talentTree [11].Active ? 1 : 0);
-		PlayerPrefs.SetInt ("Talent12", talentTree [12].Active ? 1 : 0);
+		for (int i=0; i<talentTree.Length; i++){
+			PlayerPrefs.SetInt("Talent" + i.ToString(), talentTree[i].Active? 1 : 0);
+		}
 		PlayerPrefs.SetFloat ("Fame", 0);
+		PlayerPrefs.SetInt("Completion", questlinesCompleted);
 		PlayerPrefs.Save ();
 	}
 
@@ -182,6 +240,7 @@ public class Talent{
 	private bool active;
 	public bool Active {
 		get { return active; }
+		set { active = value; }
 	}
 
 	public Talent(string Name, float Cost, bool Active, int[] Prereqs){
@@ -209,14 +268,17 @@ public class Talent{
 			return 1;
 		//next check if the prerequisite is active
 		if (prereqs.Length != 0) {
-			bool onePrereqMet = false;
+			bool allPrereqsMet = true;
 			foreach (int i in prereqs) {
-				if (GameOverEvents.talentTree [i].Active){
-					onePrereqMet = true;
+				if (i == -1){
+					return 4;
+				}
+				if (!GameOverEvents.talentTree [i].Active){
+					allPrereqsMet = false;
 					break;
 				}
 			}
-			if (!onePrereqMet)
+			if (!allPrereqsMet)
 				return 2;
 		}
 		//next, check if there is enough fame
