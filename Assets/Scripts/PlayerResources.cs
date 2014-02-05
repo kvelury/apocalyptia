@@ -55,7 +55,8 @@ public class PlayerResources : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		PlayerStats ps = gameObject.GetComponent<PlayerStats> ();
 		if (col.gameObject.tag == "Enemy") {
-			healthCount -= (20 - ps.currDef);
+			EnemyStats es = col.gameObject.GetComponent<EnemyStats>();
+			healthCount -= (es.damage - ps.currDef);
 		}
 	}
 

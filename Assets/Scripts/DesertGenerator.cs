@@ -11,10 +11,10 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DesertGenerator : PolygonGenerator {
-	private float waterThreshold = 0.10f;
-	private float grassThreshold = 0.15f;
-	private float dirtThreshold = 0.17f;
-	private float mountainThreshold = 0.85f;
+	private float waterThreshold = 0.15f;//0.10f;
+	private float grassThreshold = 0.20f;//0.15f;
+	private float dirtThreshold = 0.22f;//0.17f;
+	private float mountainThreshold = 0.75f;//0.85f;
 
 	/*
 	// Use this for initialization

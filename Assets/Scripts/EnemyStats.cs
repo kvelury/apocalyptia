@@ -9,8 +9,14 @@ public class EnemyStats : MonoBehaviour {
 	public PlayerStats ps;
 	// Use this for initialization
 	void Start () {
-		maxHP = HP = 40;
-		damage = 5;
+		if (gameObject.name == "Enemy(Clone)") {
+						maxHP = HP = 40;
+						damage = 5;
+				} 
+		else if (gameObject.name == "Enemy2" /*(Clone)*/) {
+			maxHP = HP = 60;
+			damage = 10;
+				}
 		Player = GameObject.Find ("Player");
 		ps = Player.GetComponent<PlayerStats> ();
 
@@ -21,10 +27,15 @@ public class EnemyStats : MonoBehaviour {
 		if (HP <= 0){
 			if (Player != null) {
 				PlayerResources pr = Player.GetComponent<PlayerResources> ();
+				if(gameObject.name == "Enemy(Clone)"){
 				pr.fameCount += 10;
 				//Debug.Log ("Fame++");
 				if(GameController.questAccepted == true){
 					GameController.killCount += 1;
+				}
+				}
+				else if(gameObject.name == "Enemy2" /*(Clone)*/){
+					pr.fameCount+=20;
 				}
 			}
 			Destroy (gameObject);
@@ -36,10 +47,12 @@ public class EnemyStats : MonoBehaviour {
 			HP -= ps.currDam;
 			Destroy (col.gameObject);
 		}
+		//Bullet code irrelevant, bullet has trigger not collision box.
 
+		/*
 		if (col.gameObject.tag == "Bullet") {
 			HP -= 10;
 			Destroy (col.gameObject);
-		}
+		}*/
 	}
 }

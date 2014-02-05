@@ -39,11 +39,16 @@ public class EnemyMovement : MonoBehaviour {
 		timer += 1;
 		if (timer > 50) {
 				timer = 0;
-			Vector2 direction;
-			if(Vector3.Distance (Player.transform.position,transform.position) < 10 || (es.doomEvent == true && Random.Range(0, 10) > 6))
-				direction = (Player.transform.position - transform.position).normalized;
-			else
-				direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
+			Vector2 direction = new Vector2 (0,0);
+			if(gameObject.name == "Enemy(Clone)"){
+				if(Vector3.Distance (Player.transform.position,transform.position) < 10 || (es.doomEvent == true && Random.Range(0, 10) > 6))
+					direction = (Player.transform.position - transform.position).normalized;
+				else
+					direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
+			}
+			else if(gameObject.name == "Enemy2" /*(Clone)*/){
+				//TRICKSY BEHAVIOR GOES HERE!
+			}
 			movement = new Vector2 (velocity * direction.x, velocity * direction.y);
 		}
 	}
@@ -57,9 +62,11 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-		if (EnemySpawner != null) {
-			es.enemyCount -= 1;
-		}
+		if (gameObject.name == "Enemy(Clone)") {
+						if (EnemySpawner != null) {
+								es.enemyCount -= 1;
+						}
+				}
 	}
 	
 	//FixedUpdate is called once per tick and should be used for physics
