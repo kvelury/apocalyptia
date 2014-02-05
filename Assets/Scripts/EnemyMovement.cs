@@ -11,6 +11,7 @@ public class EnemyMovement : MonoBehaviour {
 	public GameObject EnemySpawner;
 	public float velocity = 2.5F;
 	public int timer = 0;
+	public int chargeTimer;
 	EnemySpawn es;
 	/// <summary>
 	/// The movement vector is given to the rigidbody physics to move the object
@@ -20,7 +21,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Player = GameObject.Find ("Player");
-//		velocity = 2.5F;
+		velocity = 2.5F;
 		EnemySpawner = GameObject.Find ("EnemySpawner");
 		es = EnemySpawner.GetComponent<EnemySpawn> ();
 		if (Vector3.Distance (Player.transform.position, transform.position) < 20) {
@@ -46,8 +47,26 @@ public class EnemyMovement : MonoBehaviour {
 				else
 					direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
 			}
+
+
 			else if(gameObject.name == "Enemy2" /*(Clone)*/){
 				//TRICKSY BEHAVIOR GOES HERE!
+				if(Vector3.Distance (Player.transform.position,transform.position) < 10){// || (es.doomEvent == true && Random.Range(0, 10) > 6)){
+					if(chargeTimer < 2){
+						direction = -(Player.transform.position - transform.position).normalized;
+						chargeTimer++;
+					}
+					else if(chargeTimer < 4){
+						direction = 2 * (Player.transform.position - transform.position).normalized;
+						chargeTimer++;
+					}
+					else if(chargeTimer >= 4){
+						chargeTimer = 0;
+					}
+					//Tricksy behavior when player is in view.
+				}
+				else
+					direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
 			}
 			movement = new Vector2 (velocity * direction.x, velocity * direction.y);
 		}
