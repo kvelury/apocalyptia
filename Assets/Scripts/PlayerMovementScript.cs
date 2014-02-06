@@ -10,12 +10,24 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// This gets multiplied by the direction to get actual movement.
 	/// </summary>
 	public float velocity = 10;
+
 	public GameObject Weapon;
+
+	private float weaponCoolTimer = 15;
+
+	/// <summary>
+	/// The weapon cool down, in frames.
+	/// </summary>
+	public static float weaponCoolDown = 15;
+
+
 	public float knockBackTimer;
 	/// <summary>
 	/// The movement vector is given to the rigidbody physics to move the object
 	/// </summary>
 	private Vector3 movement;
+
+	private GameObject swingInstance;
 
 	// Use this for initialization
 	void Start () {
@@ -53,10 +65,38 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
-		transform.position += movement;
+		if (swingInstance == null){
+			transform.position += movement;
+		}
 
-		if(Input.GetMouseButtonDown (0)){
-			//stats.InvCheck ();
+		if(Input.GetMouseButtonDown (0) && weaponCoolTimer >= weaponCoolDown){
+			Vector3 swingDir = new Vector3(transform.position.x, transform.position.y, 0);
+			Quaternion swingRot = new Quaternion(0,0,0,0);
+			if (Input.mousePosition.x > Screen.width/2 + 16){
+				swingDir.y = transform.position.y - 0.70F;
+			}
+			if (Input.mousePosition.x < Screen.width/2 - 16){
+				swingDir.y = transform.position.y + 0.70F;
+			}
+			if (Input.mousePosition.y > Screen.height/2 + 16){
+				swingDir.x = transform.position.x + 0.70F;
+			}
+			if (Input.mousePosition.y < Screen.height/2 - 16){
+				swingDir.x = transform.position.x - 0.70F;
+			}
+			swingRot = Quaternion.LookRotation (swingDir - transform.position);
+			swingRot.z = swingRot.w = 0;
+			if(swingDir.x == transform.position.x){
+				swingRot.y = swingRot.x;
+			}
+			swingRot *= Quaternion.Euler (0, 0, 90 * Mathf.Deg2Rad);
+			if(swingDir.x != transform.position.x || swingDir.y != transform.position.y){
+				
+				//we need account for the isometric rotation
+				swingInstance = Instantiate (Weapon, swingDir, swingRot) as GameObject;
+				weaponCoolTimer = 0;
+			}
+/*			//stats.InvCheck ();
 			GameObject.Destroy (GameObject.Find ("Weapon(Clone)"));
 			Vector3 swingDir = new Vector3(transform.position.x,transform.position.y, 0);
 			Quaternion swingRot = new Quaternion(0,0,0,0);
@@ -96,7 +136,9 @@ public class PlayerMovementScript : MonoBehaviour {
 				
 				//we need account for the isometric rotation
 				GameObject swingInstance = Instantiate (Weapon,swingDir, swingRot) as GameObject;
-			}
+			} */
+		} else {
+			weaponCoolTimer++;
 		}
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameplayEvents : MonoBehaviour {
 
-	GameObject Player;
+	private GameObject Player;
 
 	private PlayerResources resources;
 	private PlayerStats stats;

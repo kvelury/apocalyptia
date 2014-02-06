@@ -197,7 +197,7 @@ public class GameOverEvents : MonoBehaviour {
 		PlayerPrefs.Save ();
 	}
 
-	void setButtonColor(int talentNum){
+	private void setButtonColor(int talentNum){
 		if (talentTree [talentNum].Active)
 			GUI.color = Color.green;
 		else

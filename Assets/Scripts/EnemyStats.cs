@@ -45,7 +45,7 @@ public class EnemyStats : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Weapon") {
 			HP -= ps.currDam;
-			Destroy (col.gameObject);
+			//Destroy (col.gameObject);
 		}
 		//Bullet code irrelevant, bullet has trigger not collision box.
 
