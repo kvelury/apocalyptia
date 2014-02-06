@@ -20,6 +20,7 @@ public class PolygonGenerator : MonoBehaviour {
 	public const int gridHeight = 100;
 	public const float worldScale = 3.0f;
 	protected const int perlinSamples = 3;
+	public const int maxLevel = 5;
 	//*******************************************************************************************
 	//references for resources
 	public GameObject tree;
@@ -46,7 +47,13 @@ public class PolygonGenerator : MonoBehaviour {
 
 	protected int squareCount = 0;
 
+	//types of terrain elements at a given location
 	public byte[,] blocks;
+	//difficulty
+	public enum Difficulty:int{Dumbass, Easy, Medium, Hard, Fuckyou};
+	protected int difficulty = 0;
+	protected float xStart;
+	protected float yStart;
 
 
 	// Use this for initialization
@@ -56,12 +63,21 @@ public class PolygonGenerator : MonoBehaviour {
 		GenTerrain ();
 		BuildMesh ();
 		UpdateMesh ();
-		AddResources ();
+		//AddResources ();
 	}
 	
 	// Update is called once per frame
 	public virtual void Update () {
 		//nothing
+	}
+
+	public virtual void IncreaseDifficulty(){
+		if (difficulty == maxLevel) {
+			return;
+		}
+		difficulty++;
+		Start ();
+		blocks = null;
 	}
 
 	protected void UpdateMesh(){
@@ -178,7 +194,7 @@ public class PolygonGenerator : MonoBehaviour {
 			perlinScale *= 500.0f;
 		}
 		Normalize (elevation);
-		//printArray (elevation);
+		printArray (elevation);
 		return elevation;
 	}
 

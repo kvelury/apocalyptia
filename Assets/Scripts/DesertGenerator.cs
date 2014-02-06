@@ -11,27 +11,49 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DesertGenerator : PolygonGenerator {
-	private float waterThreshold = 0.15f;//0.10f;
-	private float grassThreshold = 0.20f;//0.15f;
-	private float dirtThreshold = 0.22f;//0.17f;
-	private float mountainThreshold = 0.75f;//0.85f;
+	private float waterThreshold;
+	private float grassThreshold;
+	private float dirtThreshold;
+	private float mountainThreshold;
 
 	/*
 	// Use this for initialization
 	public override void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	public override void Update () {
-	
-	}
 	*/
 
+	// Update is called once per frame
+	public override void Update () {
+		if (Input.GetKeyDown ("r")) {
+			IncreaseDifficulty ();
+			/*
+			Debug.Log ("W: " + waterThreshold + "\n" +
+			           "G: " + grassThreshold + "\n" +
+			           "D: " + dirtThreshold + "\n" +
+			           "M: " + mountainThreshold);
+			Debug.Log (difficulty);
+			*/
+		}
+	}
+
+	/*
+	public override void IncreaseDifficulty(){
+		difficulty++;
+		if (difficulty > 5) {
+			difficulty = 5;
+		}
+		Start ();
+	}
+	*/
 	protected override void GenTerrain(){
+		waterThreshold = 0.15f + 0.1f * difficulty;
+		grassThreshold = 0.20f + 0.1f * difficulty;
+		dirtThreshold = 0.22f + 2 * difficulty;
+		mountainThreshold = 0.75f + (float)(2 * difficulty);
 		blocks = new byte[gridWidth, gridHeight];
-		float xStart = 913;//Random.Range (-1000, 1000);
-		float yStart = -722;//Random.Range (-1000, 1000);
+		xStart = 913;//Random.Range (-1000, 1000);
+		yStart = -722;//Random.Range (-1000, 1000);
 		Debug.Log ("Seeds used: " + xStart.ToString () + " " + yStart.ToString ());
 		float[,] elevationMap = GetElevationMap (xStart, yStart);
 		for (int px = 0; px < blocks.GetLength (0); px++) {
