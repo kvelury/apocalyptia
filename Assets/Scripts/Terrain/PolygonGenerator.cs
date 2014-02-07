@@ -93,6 +93,9 @@ public class PolygonGenerator : MonoBehaviour {
 			return;
 		}
 		difficulty++;
+		//Added the next two lines to reduce lag - Kyle
+		ClearWater ();
+		mesh.Clear ();
 		Start ();
 		blocks = null;
 	}
@@ -100,6 +103,13 @@ public class PolygonGenerator : MonoBehaviour {
 	public int GetDifficulty(){
 		return this.difficulty;
 	}
+
+	protected void ClearWater(){
+		GameObject[] water = GameObject.FindGameObjectsWithTag ("Water");
+		for (int i = 0; i < water.Length; i++) {
+			Destroy (water[i]);
+				}
+		}
 
 	protected void UpdateMesh(){
 		mesh.Clear();
