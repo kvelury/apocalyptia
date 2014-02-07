@@ -97,7 +97,7 @@ public class PolygonGenerator : MonoBehaviour {
 		ClearWater ();
 		mesh.Clear ();
 		Start ();
-		blocks = null;
+		//blocks = null;
 	}
 
 	public int GetDifficulty(){

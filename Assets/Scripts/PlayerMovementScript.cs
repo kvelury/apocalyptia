@@ -12,6 +12,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	public float velocity = 10;
 
 	public GameObject Weapon;
+	public DesertGenerator desertGen;
 
 	private float weaponCoolTimer = 15;
 
@@ -33,6 +34,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	void Start () {
 		knockBackTimer = 11;
 		stats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
+		desertGen = GameObject.Find ("DesertGenerator").GetComponent<DesertGenerator>();
 	}
 	
 	// Update is called once per frame
@@ -146,6 +148,11 @@ public class PlayerMovementScript : MonoBehaviour {
 		} else {
 			weaponCoolTimer++;
 		}
-		velocity = 0.1f;
+		if (desertGen.blocks [Mathf.CeilToInt(transform.position.x / 3.0f /*This is the worldscale*/ - 0.5f), 
+		                    Mathf.CeilToInt (transform.position.y / 3.0f /*This is the worldscale*/ - 0.5f)] 
+						== (byte)PolygonGenerator.TileCodes.Water)
+						velocity = 0.05f;
+		else
+			velocity = 0.1f;
 	}
 }

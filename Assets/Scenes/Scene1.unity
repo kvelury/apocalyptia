@@ -572,6 +572,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: .100000001
   Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
+  desertGen: {fileID: 0}
   knockBackTimer: 0
 --- !u!50 &1384526591
 Rigidbody2D:

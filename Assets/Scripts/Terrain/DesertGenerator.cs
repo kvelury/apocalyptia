@@ -95,12 +95,12 @@ public class DesertGenerator : PolygonGenerator {
 					}
 				}
 				*/
-				if(blocks[i, j] == (byte)TileCodes.Water){
+				/*if(blocks[i, j] == (byte)TileCodes.Water){
 					Vector3 location = new Vector3( worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
 					                                 worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
 					                                 0);
 					GameObject newWater = Instantiate(water, location, new Quaternion(0, 0, 0, 0)) as GameObject;
-				}
+				}*/
 			}
 		}
 	}
