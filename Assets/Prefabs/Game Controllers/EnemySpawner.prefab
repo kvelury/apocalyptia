@@ -42,6 +42,11 @@ MonoBehaviour:
   maxEnemies: 0
   enemyCount: 0
   timer: 0
+  enemySpawnTime: 0
+  doomTimer: 0
+  winTimer: 0
+  doomEvent: 0
+  winEvent: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

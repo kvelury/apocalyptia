@@ -13,8 +13,8 @@ GameObject:
   - 64: {fileID: 6400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: DesertGenerator
-  m_TagString: Untagged
+  m_Name: TerrainGenerator
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25, y: -30, z: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,13 +79,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d875f2f3a31494ea56efb869f185dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 963dd17ed9b7f324895681fffbf9c7ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tree: {fileID: 0}
+  stone: {fileID: 0}
+  player: {fileID: 0}
   newVertices: []
   newTriangles: 
   newUV: []
-  player: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

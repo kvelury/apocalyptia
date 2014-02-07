@@ -457,7 +457,7 @@ GameObject:
   - 114: {fileID: 847977251}
   m_Layer: 0
   m_Name: DesertGenerator
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -476,6 +476,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tree: {fileID: 100000, guid: 2053dbc23dda7e840a2c800b34e52ebc, type: 2}
   stone: {fileID: 100000, guid: 709185ee6fbc65140a52516c7f56c016, type: 2}
+  player: {fileID: 1384526589}
   newVertices: []
   newTriangles: 
   newUV: []
@@ -530,7 +531,7 @@ Transform:
   m_PrefabInternal: {fileID: 1603325073}
   m_GameObject: {fileID: 847977250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -25, y: -30, z: .5}
+  m_LocalPosition: {x: 0, y: 0, z: .5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -806,6 +807,7 @@ MonoBehaviour:
   EnemySpawner: {fileID: 0}
   velocity: 2.5
   timer: 0
+  chargeTimer: 0
 --- !u!114 &1466232372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,11 +834,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
       propertyPath: m_LocalPosition.z
@@ -870,6 +872,10 @@ Prefab:
       propertyPath: stone
       value: 
       objectReference: {fileID: 100000, guid: 709185ee6fbc65140a52516c7f56c016, type: 2}
+    - target: {fileID: 100000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
   m_RootGameObject: {fileID: 847977250}

@@ -48,7 +48,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BulletScript.cs" />
      <Compile Include="Assets\Scripts\CameraControl.cs" />
-     <Compile Include="Assets\Scripts\DesertGenerator.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\EnemySpawn.cs" />
      <Compile Include="Assets\Scripts\EnemyStats.cs" />
@@ -62,8 +61,10 @@
      <Compile Include="Assets\Scripts\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\PlayerResources.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
-     <Compile Include="Assets\Scripts\PolygonGenerator.cs" />
      <Compile Include="Assets\Scripts\ResourceHouseScript.cs" />
+     <Compile Include="Assets\Scripts\Terrain\DesertGenerator.cs" />
+     <Compile Include="Assets\Scripts\Terrain\FloodGenerator.cs" />
+     <Compile Include="Assets\Scripts\Terrain\PolygonGenerator.cs" />
      <Compile Include="Assets\Scripts\TileObject.cs" />
      <Compile Include="Assets\Scripts\TowerScript.cs" />
      <Compile Include="Assets\Scripts\WeaponScript.cs" />

@@ -1,11 +1,9 @@
-﻿/***********************************************************************
+﻿/*****************************************************************************************
  * Terrain generator script
  * By Cody Childers
  * Based of tutorials found at:
  * http://studentgamedev.blogspot.com/2013/08/unity-voxel-tutorial-part-1-generating.html
- * http://studentgamedev.blogspot.com/2013/08/VoxelTutP2.html
- * ********************************************************************/
-
+ * **************************************************************************************/
 
 using UnityEngine;
 using System.Collections;
@@ -25,6 +23,7 @@ public class PolygonGenerator : MonoBehaviour {
 	//references for resources
 	public GameObject tree;
 	public GameObject stone;
+	public GameObject player;
 	//*******************************************************************************************
 
 	//list of vertices to the mesh
@@ -54,11 +53,27 @@ public class PolygonGenerator : MonoBehaviour {
 	protected int difficulty = 0;
 	protected float xStart;
 	protected float yStart;
+	protected bool firstInit = true;
 
 
 	// Use this for initialization
 	public virtual void Start () {
 		mesh = GetComponent<MeshFilter>().mesh;
+
+		//fetch the difficulty from player preferences
+		/*
+		if (false) {
+			difficulty = 0;
+		} else {
+			difficulty = 0;
+		}
+		*/
+		//set the seed if necessary
+		if (firstInit) {
+			xStart = Random.Range (0, 10000);
+			yStart = Random.Range (0, 10000);
+			firstInit = false;
+		}
 
 		GenTerrain ();
 		BuildMesh ();
@@ -78,6 +93,10 @@ public class PolygonGenerator : MonoBehaviour {
 		difficulty++;
 		Start ();
 		blocks = null;
+	}
+
+	public int GetDifficulty(){
+		return this.difficulty;
 	}
 
 	protected void UpdateMesh(){
@@ -194,7 +213,7 @@ public class PolygonGenerator : MonoBehaviour {
 			perlinScale *= 500.0f;
 		}
 		Normalize (elevation);
-		printArray (elevation);
+		//printArray (elevation);
 		return elevation;
 	}
 
