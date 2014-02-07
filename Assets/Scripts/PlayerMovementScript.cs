@@ -63,6 +63,12 @@ public class PlayerMovementScript : MonoBehaviour {
 			}
 	}
 
+	void OnTriggerStay2D(Collider2D col){
+		if (col.gameObject.tag == "Water") {
+			velocity = 0.05f;
+				}
+		}
+
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
 		if (swingInstance == null){
@@ -140,5 +146,6 @@ public class PlayerMovementScript : MonoBehaviour {
 		} else {
 			weaponCoolTimer++;
 		}
+		velocity = 0.1f;
 	}
 }
