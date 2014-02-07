@@ -71,10 +71,11 @@ public class DesertGenerator : PolygonGenerator {
 	}
 
 	protected override void AddResources(){
-		float treePercentage = 10f;
-		float stonePercentage = 30f;
+		//float treePercentage = 10f;
+		//float stonePercentage = 30f;
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
+				/*
 				//add trees
 				if(blocks[i,j] == (byte)TileCodes.DryGrass ||  blocks[i,j] == (byte)TileCodes.Grass){
 					if(Random.Range (1, 100) < treePercentage){
@@ -92,6 +93,13 @@ public class DesertGenerator : PolygonGenerator {
 						                               0);//-0.49f);
 						GameObject newStone = Instantiate (stone, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 					}
+				}
+				*/
+				if(blocks[i, j] == (byte)TileCodes.Water){
+					Vector3 location = new Vector3( worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
+					                                 worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
+					                                 0);
+					GameObject newWater = Instantiate(water, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 				}
 			}
 		}

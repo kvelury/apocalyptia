@@ -24,6 +24,7 @@ public class PolygonGenerator : MonoBehaviour {
 	public GameObject tree;
 	public GameObject stone;
 	public GameObject player;
+	public GameObject water;
 	//*******************************************************************************************
 
 	//list of vertices to the mesh
@@ -78,7 +79,8 @@ public class PolygonGenerator : MonoBehaviour {
 		GenTerrain ();
 		BuildMesh ();
 		UpdateMesh ();
-		//AddResources ();
+		AddResources ();
+		SpawnPlayerSafely ();
 	}
 	
 	// Update is called once per frame
@@ -271,6 +273,15 @@ public class PolygonGenerator : MonoBehaviour {
 			s += "\n";
 		}
 		Debug.Log (s);
+	}
+
+	protected void SpawnPlayerSafely(){
+		for(int i = gridWidth/2; i < gridWidth; i++){
+			if(blocks[i, gridHeight/2] != (byte)TileCodes.Water){
+				//player.transform.localPosition.x = worldScale * i;
+				return;
+			}
+		}
 	}
 
 }

@@ -477,6 +477,7 @@ MonoBehaviour:
   tree: {fileID: 100000, guid: 2053dbc23dda7e840a2c800b34e52ebc, type: 2}
   stone: {fileID: 100000, guid: 709185ee6fbc65140a52516c7f56c016, type: 2}
   player: {fileID: 1384526589}
+  water: {fileID: 100000, guid: 33b195513ffa7f84eab060a938e2f3a2, type: 2}
   newVertices: []
   newTriangles: 
   newUV: []
@@ -876,6 +877,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
+      propertyPath: water
+      value: 
+      objectReference: {fileID: 100000, guid: 33b195513ffa7f84eab060a938e2f3a2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
   m_RootGameObject: {fileID: 847977250}
