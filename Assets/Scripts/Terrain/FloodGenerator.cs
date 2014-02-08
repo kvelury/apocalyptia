@@ -46,7 +46,7 @@ public class FloodGenerator : PolygonGenerator {
 	protected override void GenTerrain(){
 		waterThreshold = 0.30f + 0.1f * difficulty;
 		sandThreshold = 0.36f + 0.1f * difficulty;
-		grassThreshold = 0.75f ;//+ 0.1f * difficulty;
+		grassThreshold = 0.87f ;//+ 0.1f * difficulty;
 		mountainThreshold = 1.0f;
 		blocks = new byte[gridWidth, gridHeight];
 		//xStart = 913;//Random.Range (-1000, 1000);

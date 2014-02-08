@@ -148,11 +148,12 @@ public class PlayerMovementScript : MonoBehaviour {
 		} else {
 			weaponCoolTimer++;
 		}
-		if (desertGen.blocks [Mathf.CeilToInt(transform.position.x / 3.0f /*This is the worldscale*/ - 0.5f), 
-		                    Mathf.CeilToInt (transform.position.y / 3.0f /*This is the worldscale*/ - 0.5f)] 
-						== (byte)PolygonGenerator.TileCodes.Water)
-						velocity = 0.05f;
-		else
+		if (desertGen.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
+		                      Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale    )] 
+						      == (byte)PolygonGenerator.TileCodes.Water) {
+			velocity = 0.05f;
+		} else {
 			velocity = 0.1f;
+		}
 	}
 }
