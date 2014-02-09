@@ -67,7 +67,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D col){
 		if (col.gameObject.tag == "Water") {
-			velocity = 0.05f;
+			velocity = 0.05f + stats.currSpeed;
 				}
 		}
 
@@ -151,9 +151,9 @@ public class PlayerMovementScript : MonoBehaviour {
 		if (desertGen.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
 		                      Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale    )] 
 						      == (byte)PolygonGenerator.TileCodes.Water) {
-			velocity = 0.05f;
+			velocity = 0.05f + stats.currSpeed;
 		} else {
-			velocity = 0.1f;
+			velocity = 0.1f + stats.currSpeed;
 		}
 	}
 }

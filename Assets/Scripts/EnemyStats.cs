@@ -5,6 +5,11 @@ public class EnemyStats : MonoBehaviour {
 	public float maxHP;
 	public float HP;
 	public float damage;
+	
+	public GameObject Sword;
+	public GameObject Shield;
+	public GameObject Boots;
+	private GameObject itemDrop;
 	public GameObject Player;
 	public PlayerStats ps;
 	// Use this for initialization
@@ -37,6 +42,16 @@ public class EnemyStats : MonoBehaviour {
 				else if(gameObject.name == "Enemy2" /*(Clone)*/){
 					pr.fameCount+=20;
 				}
+			}
+			int i = Random.Range (1, 5);
+			if (i == 1) {
+				itemDrop = Instantiate (Sword, transform.position, new Quaternion(0,0,0,0)) as GameObject;
+			}
+			else if (i == 2) {
+				itemDrop = Instantiate (Shield, transform.position, new Quaternion(0,0,0,0)) as GameObject;
+			}
+			else if (i == 3) {
+				itemDrop = Instantiate (Boots, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
 			Destroy (gameObject);
 		}
