@@ -19,7 +19,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// <summary>
 	/// The weapon cool down, in frames.
 	/// </summary>
-	public static float weaponCoolDown = 15;
+	public static float weaponCoolDown = 10;
 
 
 	public float knockBackTimer;

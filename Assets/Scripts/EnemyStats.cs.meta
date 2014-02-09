@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: fc53d4e862d841342875f822a95265a6
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Sword: {fileID: 100000, guid: 36adfb9e0fd1c9d4781ca35815a2ae1c, type: 2}
+  - Shield: {fileID: 100000, guid: 83a08dd1d40298847a0e3fcc6c994f81, type: 2}
+  - Boots: {fileID: 100000, guid: b29c6169b0d4a444184e82ff8295df0f, type: 2}
+  - Player: {instanceID: 0}
+  - ps: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
