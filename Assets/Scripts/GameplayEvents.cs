@@ -68,14 +68,11 @@ public class GameplayEvents : MonoBehaviour {
 		}else{
 			// Make a background box
 			Player = GameObject.Find ("Player");
+			/*
 			GUI.Box (new Rect (10, 30, 100, 165), "");
 			//Once combat is implemented, remove If Statement from here, and change Button to Box.
 			//Once resource collection is implemented use the section below to just display resources rather than add them
-			/*
-			if(GUI.Button (new Rect (20, 20, 80, 25), "Health: " + resources.healthCount.ToString ()))
-				resources.healthCount -= 10;
-			*/
-			
+
 			if(GUI.Button(new Rect(10, 10, healthBarLength, 20), + resources.currHealth + "/" + resources.maxHealth))
 				resources.healthCount -= 10;;
 			
@@ -87,13 +84,10 @@ public class GameplayEvents : MonoBehaviour {
 			
 			if(GUI.Button (new Rect (20, 110, 80, 25), "Iron: " + resources.ironCount.ToString ()))
 				resources.ironCount += 10;
-			
-			/* Use for later when resource collection is implemented
-			GUI.Box (new Rect (20, 50, 80, 25), "Wood: " + resources.woodCount.ToString ());
-			GUI.Box (new Rect (20, 80, 80, 25), "Stone: " + resources.stoneCount.ToString ());
-			GUI.Box (new Rect (20, 110, 80, 25), "Iron: " + resources.ironCount.ToString ());
-			*/
+
 			GUI.Box (new Rect (20, 140, 80, 25), "Fame: " + resources.fameCount.ToString ());
+
+			*/
 		}
 	}
 

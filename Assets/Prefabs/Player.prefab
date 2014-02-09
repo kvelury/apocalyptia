@@ -11,9 +11,9 @@ GameObject:
   - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
   - 212: {fileID: 21200000}
+  - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400006}
-  - 114: {fileID: 11400000}
   - 114: {fileID: 11400004}
   m_Layer: 0
   m_Name: Player
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: .100000001
   Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
+  desertGen: {fileID: 0}
   knockBackTimer: 0
 --- !u!212 &21200000
 SpriteRenderer:

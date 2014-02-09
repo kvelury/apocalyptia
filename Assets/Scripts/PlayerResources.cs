@@ -12,14 +12,16 @@ public class PlayerResources : MonoBehaviour {
 	public float ironCount;
 	//May end up moving fame and health to their own scripts.
 	public float fameCount;
-	public float healthCount;
+	public float healthCount = 100;
 	//for health bar
-	public float currHealth;
-	public float maxHealth;
+	public float currHealth = 100;
+	public float maxHealth = 100;
+	public float minHealth = 0;
 
 	// Use this for initialization
 	void Start () {
 		healthCount = 100;
+		currHealth = healthCount;
 		maxHealth = 100;
 
 		woodCount = fameCount = stoneCount = ironCount = 0;

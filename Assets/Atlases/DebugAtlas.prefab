@@ -1,0 +1,227 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: DebugAtlas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f514313262e3d141ad017b60809752a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
+  items:
+  - name: enemy_health_bar_000
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .2578125
+      width: .5
+      height: .125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 64}
+    textureGUID: faa4c875bc275417496bcc1f75e63c0b
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_001
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .84375
+      width: .5
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 32}
+    textureGUID: caebaade260bc48d0a6fa20c461a3728
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_background_000
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .38671875
+      width: .5
+      height: .125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 64}
+    textureGUID: 01873ca26008c4b19b9f9b4cefa108cb
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_background_001
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .64453125
+      width: .5
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 32}
+    textureGUID: 723eb6757d8fe4bcc815930d2ea68f59
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_foreground_000
+    region:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: .5
+      height: .125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 64}
+    textureGUID: 52d880a6b445540c7b8557c0f45c1126
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_foreground_001
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .12890625
+      width: .5
+      height: .125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 64}
+    textureGUID: 49f5ddc485dad4073addb2d72592a47a
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_foreground_002
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .515625
+      width: .5
+      height: .125
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 64}
+    textureGUID: ed051b95e62974b10ae6c19a557b7a36
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_foreground_003
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .91015625
+      width: .5
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 32}
+    textureGUID: abcf7482a240242e6a73938c5c304486
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_foreground_004
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .7109375
+      width: .5
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 32}
+    textureGUID: 64dd188c2867a408e9ea62b63a42f73a
+    deleted: 0
+    texture: {fileID: 0}
+  - name: enemy_health_bar_foreground_005
+    region:
+      serializedVersion: 2
+      x: 0
+      y: .77734375
+      width: .5
+      height: .0625
+    border:
+      m_Left: 0
+      m_Right: 0
+      m_Top: 0
+      m_Bottom: 0
+    rotated: 0
+    sizeInPixels: {x: 256, y: 32}
+    textureGUID: d1207ae054d144f2c93b475a6e722cc7
+    deleted: 0
+    texture: {fileID: 0}
+  generator: 0
+  imageFileGUID: 
+  dataFileGUID: 
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

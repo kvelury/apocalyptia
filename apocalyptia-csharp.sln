@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{A76AD3AC-2F7C-1808-C82E-00D851D07B3B}") = "apocalyptia", "Assembly-CSharp-vs.csproj", "{6649892E-695B-1273-0B02-9F3AFC22CFE2}"
 EndProject
+Project("{A76AD3AC-2F7C-1808-C82E-00D851D07B3B}") = "apocalyptia", "Assembly-CSharp-Editor-vs.csproj", "{3A7BEB54-AB57-6C08-378C-3A4DF54DBA7B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{6649892E-695B-1273-0B02-9F3AFC22CFE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6649892E-695B-1273-0B02-9F3AFC22CFE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6649892E-695B-1273-0B02-9F3AFC22CFE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A7BEB54-AB57-6C08-378C-3A4DF54DBA7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A7BEB54-AB57-6C08-378C-3A4DF54DBA7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A7BEB54-AB57-6C08-378C-3A4DF54DBA7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A7BEB54-AB57-6C08-378C-3A4DF54DBA7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																							GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																		GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
