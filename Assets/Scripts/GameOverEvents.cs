@@ -71,117 +71,117 @@ public class GameOverEvents : MonoBehaviour {
 		if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height - 50, 100, 50), "You Are Dead\n Try Again?"))
 			Application.LoadLevel ("MainMenu");
 
-		GUI.Box (new Rect(Screen.width - 50, 0, 50, 50), PlayerPrefs.GetFloat("Fame").ToString());
-
-		#region MainTalents
-		//draw main talents
-		setButtonColor (0);
-		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [0].Name)) {
-			result = talentTree [0].ActivateTalent ();
-		}
-		setButtonColor (1);
-		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [1].Name)) {
-			result = talentTree [1].ActivateTalent ();
-		}
-		setButtonColor (2);
-		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [2].Name)) {
-			result = talentTree [2].ActivateTalent ();
-		}
-		setButtonColor (3);
-		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [3].Name)) {
-			result = talentTree [3].ActivateTalent ();
-		}
-		setButtonColor (4);
-		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [4].Name)) {
-			result = talentTree [4].ActivateTalent ();
-		}
-		#endregion
-		#region SwordTalents
-		setButtonColor (5);
-		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [5].Name)) {
-			result = talentTree [5].ActivateTalent ();
-		}
-		setButtonColor (6);
-		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [6].Name)) {
-			result = talentTree [6].ActivateTalent ();
-		}
-		setButtonColor (7);
-		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [7].Name)) {
-			result = talentTree [7].ActivateTalent ();
-		}
-		setButtonColor (8);
-		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [8].Name)) {
-			result = talentTree [8].ActivateTalent ();
-		}
-		setButtonColor (9);
-		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [9].Name)) {
-			result = talentTree [9].ActivateTalent ();
-		}
-		#endregion
-		#region ShieldTalents
-		setButtonColor (10);
-		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [10].Name)) {
-			result = talentTree [10].ActivateTalent ();
-		}
-		setButtonColor (11);
-		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [11].Name)) {
-			result = talentTree [11].ActivateTalent ();
-		}
-		setButtonColor (12);
-		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [12].Name)) {
-			result = talentTree[12].ActivateTalent ();
-		}
-		setButtonColor (13);
-		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [13].Name)) {
-			result = talentTree[13].ActivateTalent ();
-		}
-		setButtonColor (14);
-		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [14].Name)) {
-			result = talentTree[14].ActivateTalent ();
-		}
-		#endregion
-		#region SpearTalents
-		setButtonColor (15);
-		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [15].Name)) {
-			result = talentTree[15].ActivateTalent ();
-		}
-		setButtonColor (16);
-		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [16].Name)) {
-			result = talentTree[16].ActivateTalent ();
-		}
-		setButtonColor (17);
-		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [17].Name)) {
-			result = talentTree[17].ActivateTalent ();
-		}
-		setButtonColor (18);
-		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [18].Name)) {
-			result = talentTree[18].ActivateTalent ();
-		}
-		setButtonColor (19);
-		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [19].Name)) {
-			result = talentTree[19].ActivateTalent ();
-		}
-		#endregion
-		
-		switch (result) {
-		case 0:
-			Debug.Log("Talent Activated");
-			break;
-		case 1:
-			Debug.Log ("Already Active");
-			break;
-		case 2:
-			Debug.Log ("Prerequisite Needed");
-			break;
-		case 3:
-			Debug.Log ("Fame Stocks are too low, Sire.");
-			break;
-		case 4:
-			Debug.Log ("This talent requires quest completion");
-			break;
-		default:
-			break;
-		}
+//		GUI.Box (new Rect(Screen.width - 50, 0, 50, 50), PlayerPrefs.GetFloat("Fame").ToString());
+//
+//		#region MainTalents
+//		//draw main talents
+//		setButtonColor (0);
+//		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [0].Name)) {
+//			result = talentTree [0].ActivateTalent ();
+//		}
+//		setButtonColor (1);
+//		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [1].Name)) {
+//			result = talentTree [1].ActivateTalent ();
+//		}
+//		setButtonColor (2);
+//		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [2].Name)) {
+//			result = talentTree [2].ActivateTalent ();
+//		}
+//		setButtonColor (3);
+//		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [3].Name)) {
+//			result = talentTree [3].ActivateTalent ();
+//		}
+//		setButtonColor (4);
+//		if (GUI.Button (new Rect (Screen.width * 1 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [4].Name)) {
+//			result = talentTree [4].ActivateTalent ();
+//		}
+//		#endregion
+//		#region SwordTalents
+//		setButtonColor (5);
+//		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [5].Name)) {
+//			result = talentTree [5].ActivateTalent ();
+//		}
+//		setButtonColor (6);
+//		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [6].Name)) {
+//			result = talentTree [6].ActivateTalent ();
+//		}
+//		setButtonColor (7);
+//		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [7].Name)) {
+//			result = talentTree [7].ActivateTalent ();
+//		}
+//		setButtonColor (8);
+//		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [8].Name)) {
+//			result = talentTree [8].ActivateTalent ();
+//		}
+//		setButtonColor (9);
+//		if (GUI.Button (new Rect (Screen.width * 2 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [9].Name)) {
+//			result = talentTree [9].ActivateTalent ();
+//		}
+//		#endregion
+//		#region ShieldTalents
+//		setButtonColor (10);
+//		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [10].Name)) {
+//			result = talentTree [10].ActivateTalent ();
+//		}
+//		setButtonColor (11);
+//		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [11].Name)) {
+//			result = talentTree [11].ActivateTalent ();
+//		}
+//		setButtonColor (12);
+//		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [12].Name)) {
+//			result = talentTree[12].ActivateTalent ();
+//		}
+//		setButtonColor (13);
+//		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [13].Name)) {
+//			result = talentTree[13].ActivateTalent ();
+//		}
+//		setButtonColor (14);
+//		if (GUI.Button (new Rect (Screen.width * 3 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [14].Name)) {
+//			result = talentTree[14].ActivateTalent ();
+//		}
+//		#endregion
+//		#region SpearTalents
+//		setButtonColor (15);
+//		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 1/6 - 50, 100, 50), talentTree [15].Name)) {
+//			result = talentTree[15].ActivateTalent ();
+//		}
+//		setButtonColor (16);
+//		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 2/6 - 50, 100, 50), talentTree [16].Name)) {
+//			result = talentTree[16].ActivateTalent ();
+//		}
+//		setButtonColor (17);
+//		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 3/6 - 50, 100, 50), talentTree [17].Name)) {
+//			result = talentTree[17].ActivateTalent ();
+//		}
+//		setButtonColor (18);
+//		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 4/6 - 50, 100, 50), talentTree [18].Name)) {
+//			result = talentTree[18].ActivateTalent ();
+//		}
+//		setButtonColor (19);
+//		if (GUI.Button (new Rect (Screen.width * 4 / 5 - 50, (Screen.height - 100) * 5/6 - 50, 100, 50), talentTree [19].Name)) {
+//			result = talentTree[19].ActivateTalent ();
+//		}
+//		#endregion
+//		
+//		switch (result) {
+//		case 0:
+//			Debug.Log("Talent Activated");
+//			break;
+//		case 1:
+//			Debug.Log ("Already Active");
+//			break;
+//		case 2:
+//			Debug.Log ("Prerequisite Needed");
+//			break;
+//		case 3:
+//			Debug.Log ("Fame Stocks are too low, Sire.");
+//			break;
+//		case 4:
+//			Debug.Log ("This talent requires quest completion");
+//			break;
+//		default:
+//			break;
+//		}
 		
 	}
 	

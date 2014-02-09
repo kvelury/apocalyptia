@@ -55,12 +55,12 @@ public class GameplayEvents : MonoBehaviour {
 			case 1:
 				InventoryEvents();
 				break;
-			case 2:
-				CraftingEvents();
-				break;
-			case 3:
-				BuildingEvents();
-				break;
+//			case 2:
+//				CraftingEvents();
+//				break;
+//			case 3:
+//				BuildingEvents();
+//				break;
 			default:
 				break;
 			}
@@ -107,12 +107,12 @@ public class GameplayEvents : MonoBehaviour {
 		if (GUI.Button (new Rect(Screen.width/2 - 100, Screen.height * 1/4 - 50, 200, 50), "Inventory")){
 			pauseMenuState = 1;
 		}
-		if (GUI.Button (new Rect(Screen.width/2 - 100, Screen.height * 2/4 - 50, 200, 50), "Crafting")){
-			pauseMenuState = 2;
-		}
-		if (GUI.Button (new Rect(Screen.width/2 - 100, Screen.height * 3/4 - 50, 200, 50), "Building")){
-			pauseMenuState = 3;
-		}
+//		if (GUI.Button (new Rect(Screen.width/2 - 100, Screen.height * 2/4 - 50, 200, 50), "Crafting")){
+//			pauseMenuState = 2;
+//		}
+//		if (GUI.Button (new Rect(Screen.width/2 - 100, Screen.height * 3/4 - 50, 200, 50), "Building")){
+//			pauseMenuState = 3;
+//		}
 		if (GUI.Button (new Rect(Screen.width - 50, 0, 50, 50), "X")){
 			UnPause();
 		}

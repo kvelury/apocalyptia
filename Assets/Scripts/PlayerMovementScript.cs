@@ -62,7 +62,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			Vector3 direction = (transform.position - col.gameObject.transform.position).normalized;
 			movement = Quaternion.Euler (0,0,-45) * (0.5F * velocity*direction);
 			knockBackTimer = 0;
-			}
+		}
 	}
 
 	void OnTriggerStay2D(Collider2D col){
@@ -92,18 +92,19 @@ public class PlayerMovementScript : MonoBehaviour {
 			if (Input.mousePosition.y < Screen.height/2 - 16){
 				swingDir.x = transform.position.x - 0.70F;
 			}
+			if (Input.mousePosition.x > Screen.width/2 - 16 && Input.mousePosition.x < Screen.width/2 + 16
+			    && Input.mousePosition.y > Screen.height/2 - 16 && Input.mousePosition.y < Screen.height/2 + 16){
+				swingDir.y = transform.position.y + 0.70F;
+			}
 			swingRot = Quaternion.LookRotation (swingDir - transform.position);
 			swingRot.z = swingRot.w = 0;
 			if(swingDir.x == transform.position.x){
 				swingRot.y = swingRot.x;
 			}
-			swingRot *= Quaternion.Euler (0, 0, 90 * Mathf.Deg2Rad);
-			if(swingDir.x != transform.position.x || swingDir.y != transform.position.y){
-				
-				//we need account for the isometric rotation
-				swingInstance = Instantiate (Weapon, swingDir, swingRot) as GameObject;
-				weaponCoolTimer = 0;
-			}
+			swingRot *= Quaternion.Euler (0, 0, 90);				
+			//we need account for the isometric rotation
+			swingInstance = Instantiate (Weapon, swingDir, swingRot) as GameObject;
+			weaponCoolTimer = 0;
 /*			//stats.InvCheck ();
 			GameObject.Destroy (GameObject.Find ("Weapon(Clone)"));
 			Vector3 swingDir = new Vector3(transform.position.x,transform.position.y, 0);
@@ -148,6 +149,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		} else {
 			weaponCoolTimer++;
 		}
+
 		if (desertGen.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
 		                      Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale    )] 
 						      == (byte)PolygonGenerator.TileCodes.Water) {
