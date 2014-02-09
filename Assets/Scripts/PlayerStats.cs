@@ -128,7 +128,7 @@ public class PlayerStats : MonoBehaviour {
 				else
 						currDam = 10;
 				if (inv [1] == 1)
-						currDef = 10;
+						currDef = 5;
 				else
 						currDef = 0;
 				if (inv [2] == 1)

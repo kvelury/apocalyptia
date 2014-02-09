@@ -16,11 +16,11 @@ public class EnemyStats : MonoBehaviour {
 	void Start () {
 		if (gameObject.name == "Enemy(Clone)") {
 						maxHP = HP = 40;
-						damage = 5;
+						damage = 10;
 				} 
 		else if (gameObject.name == "Enemy2" /*(Clone)*/) {
 			maxHP = HP = 60;
-			damage = 10;
+			damage = 15;
 				}
 		Player = GameObject.Find ("Player");
 		ps = Player.GetComponent<PlayerStats> ();
