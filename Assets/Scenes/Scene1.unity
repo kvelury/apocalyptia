@@ -74,6 +74,51 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &98493955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 98493957}
+  - 114: {fileID: 98493956}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &98493956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98493955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5689b3193529bd84ebe8f94d5244a401, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  desertApocalypse: {fileID: 100000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
+  floodApocalypse: {fileID: 100000, guid: 98282a51222c95a488ea186c792ae072, type: 2}
+  volcanoApocalypse: {fileID: 0}
+  frostApocalypse: {fileID: 0}
+  derpApocalypse: {fileID: 0}
+  currentApocalypse: {fileID: 0}
+  player: {fileID: 1384526589}
+--- !u!4 &98493957
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 98493955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
 --- !u!1 &230536860
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &847977251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,7 +748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: .100000001
   Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
-  desertGen: {fileID: 0}
+  terrain: {fileID: 0}
   knockBackTimer: 0
 --- !u!50 &1384526591
 Rigidbody2D:
@@ -1012,7 +1057,7 @@ Prefab:
       objectReference: {fileID: 100000, guid: 709185ee6fbc65140a52516c7f56c016, type: 2}
     - target: {fileID: 100000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: d037eccd78b6a4670a4be5d6174129b8, type: 2}
       propertyPath: water
@@ -1510,7 +1555,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2075333025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .00130208337, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1352344432}

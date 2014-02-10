@@ -73,6 +73,7 @@ public class FloodGenerator : PolygonGenerator {
 	protected override void AddResources(){
 		float treePercentage = 10f;
 		float stonePercentage = 30f;
+		/*
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				//add trees
@@ -95,5 +96,6 @@ public class FloodGenerator : PolygonGenerator {
 				}
 			}
 		}
+		*/
 	}
 }
