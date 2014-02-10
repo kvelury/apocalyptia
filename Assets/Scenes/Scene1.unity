@@ -108,6 +108,7 @@ MonoBehaviour:
   derpApocalypse: {fileID: 0}
   currentApocalypse: {fileID: 0}
   player: {fileID: 1384526589}
+  currentBaseDifficulty: 0
 --- !u!4 &98493957
 Transform:
   m_ObjectHideFlags: 0
@@ -538,6 +539,7 @@ MonoBehaviour:
   newVertices: []
   newTriangles: 
   newUV: []
+  difficulty: 0
 --- !u!64 &847977252
 MeshCollider:
   m_ObjectHideFlags: 0

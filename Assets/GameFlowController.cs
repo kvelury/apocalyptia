@@ -15,6 +15,8 @@ public class GameFlowController : MonoBehaviour {
 	public GameObject player;
 	private PlayerMovementScript movement;
 
+	public int currentBaseDifficulty = 0;
+
 	// Use this for initialization
 	void Start () {
 		movement = player.GetComponent<PlayerMovementScript> ();
@@ -25,10 +27,18 @@ public class GameFlowController : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown ("o")) {
 			NewApocalypse ();
+			Debug.Log ("O was pressed - remove this asap\nGameFlowController.Update()");
 		}
+		if (Input.GetKeyDown ("p")) {
+			currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
+			Debug.Log ("DifficultyIncreased - P was pressed\nRemove this ASAP\nGameFlowController.Update()");
+		}
+
 	}
 
 	public void NewApocalypse(){
+		//increase difficulty in preparation
+		++currentBaseDifficulty;
 		//clean up the current
 		if (currentApocalypse != null) {
 			GameObject.Destroy (currentApocalypse);
@@ -47,6 +57,10 @@ public class GameFlowController : MonoBehaviour {
 		}
 		//tell the player where to find the terrain for purposes of water, lava, etc.
 		movement.terrain = currentApocalypse.GetComponent<PolygonGenerator>();
+		//make sure it generates at proper difficulty
+		for (int i = 0; i < currentBaseDifficulty; i++) {
+			currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
+		}
 
 	}
 }

@@ -51,7 +51,7 @@ public class PolygonGenerator : MonoBehaviour {
 	public byte[,] blocks;
 	//difficulty
 	public enum Difficulty:int{Dumbass, Easy, Medium, Hard, Fuckyou};
-	protected int difficulty = 0;
+	public int difficulty = 0;
 	protected float xStart;
 	protected float yStart;
 	protected bool firstInit = true;
