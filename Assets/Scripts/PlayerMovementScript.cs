@@ -77,7 +77,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			transform.position += movement;
 		}
 
-		if(Input.GetMouseButtonDown (0) && weaponCoolTimer >= weaponCoolDown){
+		if(Input.GetMouseButton (0) && weaponCoolTimer >= weaponCoolDown){
 			Vector3 swingDir = new Vector3(transform.position.x, transform.position.y, 0);
 			Quaternion swingRot = new Quaternion(0,0,0,0);
 			if (Input.mousePosition.x > Screen.width/2 + 16){
