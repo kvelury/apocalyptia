@@ -44,7 +44,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (knockBackTimer > 10) {
+		if (knockBackTimer > 30) {
 
 			if (Input.GetKey ("space") && dodgeCount > 50) isDodging = true;
 
@@ -84,8 +84,9 @@ public class PlayerMovementScript : MonoBehaviour {
 
 		transform.position += movement;
 
-		if (swingInstance != null){
-			swingInstance.transform.position += movement;
+		if (swingInstance != null) {
+						swingInstance.transform.position += movement;
+				}
 		else {
 			if (isDodging == true && dodgeCount > 50){
 				transform.position += movement*20;
@@ -169,13 +170,14 @@ public class PlayerMovementScript : MonoBehaviour {
 		} else {
 			weaponCoolTimer++;
 		}
-
-		if (terrain.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
-		                      Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale    )] 
-						      == (byte)PolygonGenerator.TileCodes.Water) {
-			velocity = 0.05f + stats.currSpeed;
-		} else {
-			velocity = 0.1f + stats.currSpeed;
-		}
+		if (knockBackTimer > 30) {
+						if (terrain.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
+		                      Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale)] 
+								== (byte)PolygonGenerator.TileCodes.Water) {
+								velocity = 0.05f + stats.currSpeed;
+						} else {
+								velocity = 0.1f + stats.currSpeed;
+						}
+				}
 	}
 }

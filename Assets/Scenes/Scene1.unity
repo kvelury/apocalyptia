@@ -751,6 +751,8 @@ MonoBehaviour:
   velocity: .100000001
   Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
   terrain: {fileID: 0}
+  isDodging: 0
+  dodgeCount: 0
   knockBackTimer: 0
 --- !u!50 &1384526591
 Rigidbody2D:
@@ -789,6 +791,7 @@ MonoBehaviour:
   currHealth: 100
   maxHealth: 100
   minHealth: 0
+  mercyTimer: 0
 --- !u!61 &1384526593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1005,11 +1008,11 @@ MonoBehaviour:
   maxHP: 0
   HP: 0
   damage: 0
-  Sword: {fileID: 0}
-  Shield: {fileID: 0}
-  Boots: {fileID: 0}
+  Sword: {fileID: 100000, guid: 36adfb9e0fd1c9d4781ca35815a2ae1c, type: 2}
+  Shield: {fileID: 100000, guid: 83a08dd1d40298847a0e3fcc6c994f81, type: 2}
+  Boots: {fileID: 100000, guid: b29c6169b0d4a444184e82ff8295df0f, type: 2}
   Player: {fileID: 0}
-  EnemyParticle: {fileID: 0}
+  EnemyParticle: {fileID: 100000, guid: cd8301ea2b288a040a0a27165146695b, type: 2}
   ps: {fileID: 0}
 --- !u!1001 &1603325073
 Prefab:

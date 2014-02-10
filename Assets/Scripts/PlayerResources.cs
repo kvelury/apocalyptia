@@ -17,6 +17,7 @@ public class PlayerResources : MonoBehaviour {
 	public float currHealth = 100;
 	public float maxHealth = 100;
 	public float minHealth = 0;
+	public float mercyTimer = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -43,7 +44,7 @@ public class PlayerResources : MonoBehaviour {
 			PlayerPrefs.Save ();
 			Application.LoadLevel ("DeathScene");
 		}
-
+		mercyTimer++;
 		//adjust health bar variables
 		currHealth = healthCount;
 		if(currHealth < 0)
@@ -56,9 +57,10 @@ public class PlayerResources : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		PlayerStats ps = gameObject.GetComponent<PlayerStats> ();
-		if (col.gameObject.tag == "Enemy") {
+		if (col.gameObject.tag == "Enemy" && mercyTimer > 30) {
 			EnemyStats es = col.gameObject.GetComponent<EnemyStats>();
 			healthCount -= (es.damage - ps.currDef);
+			mercyTimer = 0;
 		}
 	}
 
