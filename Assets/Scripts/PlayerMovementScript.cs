@@ -21,6 +21,11 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// </summary>
 	public static float weaponCoolDown = 10;
 
+	/// <summary>
+	/// Checking whether the character is in the process of dodging
+	/// </summary>
+	public bool isDodging = false;
+	public int dodgeCount = 0;
 
 	public float knockBackTimer;
 	/// <summary>
@@ -40,7 +45,10 @@ public class PlayerMovementScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (knockBackTimer > 10) {
-						Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"), 0);
+
+			if (Input.GetKey ("space") && dodgeCount > 50) isDodging = true;
+
+				Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"), 0);
 
 						//Debug.Log ((Quaternion.Euler (0, 0, -45) * (velocity * direction)).ToString ());
 						movement = Quaternion.Euler (0, 0, -45) * (velocity * direction);
@@ -74,6 +82,14 @@ public class PlayerMovementScript : MonoBehaviour {
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
 		if (swingInstance == null){
+			if (isDodging == true && dodgeCount > 50){
+				transform.position += movement*20;
+				isDodging = false;
+				dodgeCount = 0;
+			}
+			else if (dodgeCount < 51) {
+				dodgeCount++;
+			}
 			transform.position += movement;
 		}
 
