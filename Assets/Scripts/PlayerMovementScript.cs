@@ -73,8 +73,11 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
-		if (swingInstance == null){
-			transform.position += movement;
+
+		transform.position += movement;
+
+		if (swingInstance != null){
+			swingInstance.transform.position += movement;
 		}
 
 		if(Input.GetMouseButton (0) && weaponCoolTimer >= weaponCoolDown){

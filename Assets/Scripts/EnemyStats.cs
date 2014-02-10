@@ -11,7 +11,10 @@ public class EnemyStats : MonoBehaviour {
 	public GameObject Boots;
 	private GameObject itemDrop;
 	public GameObject Player;
+	public GameObject EnemyParticle;
 	public PlayerStats ps;
+
+	private ParticleSystem particleSystem;
 	// Use this for initialization
 	void Start () {
 		if (gameObject.name == "Enemy(Clone)") {
@@ -24,7 +27,6 @@ public class EnemyStats : MonoBehaviour {
 				}
 		Player = GameObject.Find ("Player");
 		ps = Player.GetComponent<PlayerStats> ();
-
 	}
 	
 	// Update is called once per frame
@@ -61,7 +63,9 @@ public class EnemyStats : MonoBehaviour {
 		if (col.gameObject.tag == "Weapon") {
 			HP -= ps.currDam;
 			//Destroy (col.gameObject);
+			particleSystem = Instantiate(EnemyParticle, transform.position, Quaternion.LookRotation(transform.position - Player.transform.position)) as ParticleSystem;
 		}
+
 		//Bullet code irrelevant, bullet has trigger not collision box.
 
 		/*

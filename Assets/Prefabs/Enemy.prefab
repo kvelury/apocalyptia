@@ -92,6 +92,7 @@ MonoBehaviour:
   Shield: {fileID: 100000, guid: 83a08dd1d40298847a0e3fcc6c994f81, type: 2}
   Boots: {fileID: 100000, guid: b29c6169b0d4a444184e82ff8295df0f, type: 2}
   Player: {fileID: 0}
+  EnemyParticle: {fileID: 100000, guid: cd8301ea2b288a040a0a27165146695b, type: 2}
   ps: {fileID: 0}
 --- !u!114 &11400004
 MonoBehaviour:
