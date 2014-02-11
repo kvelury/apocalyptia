@@ -39,6 +39,9 @@ public class GameFlowController : MonoBehaviour {
 	public void NewApocalypse(){
 		//increase difficulty in preparation
 		++currentBaseDifficulty;
+		if (currentBaseDifficulty > 5) {
+			currentBaseDifficulty = 5;
+		}
 		//clean up the current
 		if (currentApocalypse != null) {
 			GameObject.Destroy (currentApocalypse);
@@ -58,9 +61,12 @@ public class GameFlowController : MonoBehaviour {
 		//tell the player where to find the terrain for purposes of water, lava, etc.
 		movement.terrain = currentApocalypse.GetComponent<PolygonGenerator>();
 		//make sure it generates at proper difficulty
-		for (int i = 0; i < currentBaseDifficulty; i++) {
+		Debug.Log ("before loop");
+		while(currentApocalypse.GetComponent<PolygonGenerator>().GetDifficulty () < currentBaseDifficulty) {
+			Debug.Log ("Difficulty increased");
 			currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
 		}
+		Debug.Log ("after loop");
 
 	}
 }
