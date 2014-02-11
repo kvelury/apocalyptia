@@ -35,8 +35,8 @@ public class PlayerStats : MonoBehaviour {
 			bluntWeapon += 10;
 		}
 		pr = gameObject.GetComponent<PlayerResources> ();
-		//Inv slots 4 -> 10 reserved for Mark.
-		//Inv slots 11 -> 17 reserved for Kyle.
+		//Inv slots 3 -> 9 reserved for Mark.
+		//Inv slots 10 -> 16 reserved for Kyle.
 		inv = new float[17];
 		currDam = 10;
 
@@ -69,6 +69,11 @@ public class PlayerStats : MonoBehaviour {
 			InvCheck();
 			Debug.Log ("Boots added.");
 				}
+		if (Input.GetKeyDown ("l")) {
+			inv[10] = 1;
+			InvCheck ();
+			Debug.Log("HealthLeech added.");
+				}
 	
 	}
 
@@ -91,6 +96,10 @@ public class PlayerStats : MonoBehaviour {
 				pr.healthCount += 10;
 				if(pr.healthCount > 100)
 					pr.healthCount = 100;
+				Destroy (col.gameObject);
+			}
+			else if(col.gameObject.name == "HealthLeech(Clone)"){
+				inv[10] = 1;
 				Destroy (col.gameObject);
 			}
 			InvCheck ();
@@ -132,9 +141,12 @@ public class PlayerStats : MonoBehaviour {
 				//Inventory works differently now. Slots correspond to whether or not the player has
 				//one of that slot's items. 0 = does not, 1 = has.
 				//Slots:
-				//1 = Sword, + 10 damage
-				//2 = Shield, + 10 damage resist
-				//3 = Boots, + 0.05 speed
+				//0 = Sword, + 10 damage
+				//1 = Shield, + 10 damage resist
+				//2 = Boots, + 0.05 speed
+				//3 - 9 reserved for Mark
+				//10 = Health Leech
+				//
 				if (inv [0] == 1)
 						currDam = 20;
 				else

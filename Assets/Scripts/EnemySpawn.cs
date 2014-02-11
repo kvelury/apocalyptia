@@ -77,7 +77,7 @@ public class EnemySpawn : MonoBehaviour {
 			timer++;
 			if(timer > enemySpawnTime){
 				timer = 0;
-				if(Random.Range (0, 10) > 2)
+				if(Random.Range (0, 10) > 2 || enemyCount <= 0)
 					SpawnEnemy();
 			}
 		}

@@ -10,10 +10,12 @@ public class EnemyStats : MonoBehaviour {
 	public GameObject Shield;
 	public GameObject Boots;
 	public GameObject Heart;
+	public GameObject HealthLeech;
 	private GameObject itemDrop;
 	public GameObject Player;
 	public GameObject EnemyParticle;
 	public PlayerStats ps;
+	public PlayerResources pr;
 
 	private ParticleSystem particleSystem;
 	// Use this for initialization
@@ -28,6 +30,7 @@ public class EnemyStats : MonoBehaviour {
 				}
 		Player = GameObject.Find ("Player");
 		ps = Player.GetComponent<PlayerStats> ();
+		pr = Player.GetComponent<PlayerResources> ();
 	}
 	
 	// Update is called once per frame
@@ -61,6 +64,9 @@ public class EnemyStats : MonoBehaviour {
 			else if (i == 4 || i == 5) {
 				itemDrop = Instantiate (Heart, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
+			else if (i == 6){
+				itemDrop = Instantiate (HealthLeech, transform.position, new Quaternion(0,0,0,0)) as GameObject;
+			}
 			Destroy (gameObject);
 		}
 	}
@@ -70,6 +76,8 @@ public class EnemyStats : MonoBehaviour {
 			HP -= ps.currDam;
 			//Destroy (col.gameObject);
 			particleSystem = Instantiate(EnemyParticle, transform.position, Quaternion.LookRotation(transform.position - Player.transform.position)) as ParticleSystem;
+			if(ps.inv[10] == 1)
+				pr.healthCount += 1;
 		}
 
 		//Bullet code irrelevant, bullet has trigger not collision box.
