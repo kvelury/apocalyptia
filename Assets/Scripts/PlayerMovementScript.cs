@@ -39,7 +39,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	void Start () {
 		knockBackTimer = 11;
 		stats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
-		terrain = GameObject.Find ("Terrain").GetComponent<PolygonGenerator>();
+//		terrain = GameObject.Find ("Terrain").GetComponent<PolygonGenerator>();
 	}
 	
 	// Update is called once per frame

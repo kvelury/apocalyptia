@@ -108,6 +108,10 @@ MonoBehaviour:
   derpApocalypse: {fileID: 0}
   currentApocalypse: {fileID: 0}
   player: {fileID: 1384526589}
+  sword: {fileID: 100000, guid: 36adfb9e0fd1c9d4781ca35815a2ae1c, type: 2}
+  shield: {fileID: 100000, guid: 83a08dd1d40298847a0e3fcc6c994f81, type: 2}
+  boots: {fileID: 100000, guid: b29c6169b0d4a444184e82ff8295df0f, type: 2}
+  itemInstance: {fileID: 0}
   currentBaseDifficulty: 0
 --- !u!4 &98493957
 Transform:
@@ -586,8 +590,8 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
-  - {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -660,12 +664,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1352344426}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -100, y: 100, z: 0}
+  m_LocalPosition: {x: -178, y: 17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1929489087}
   - {fileID: 2075333027}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1384526595}
 --- !u!1 &1384526589
 GameObject:
   m_ObjectHideFlags: 0
@@ -791,6 +795,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1810115749}
+  - {fileID: 1352344432}
   m_Father: {fileID: 0}
 --- !u!114 &1384526596
 MonoBehaviour:
@@ -832,6 +837,7 @@ MonoBehaviour:
   currSpeed: 0
   bestWep: 0
   bestDef: 0
+  pr: {fileID: 0}
 --- !u!1001 &1603325073
 Prefab:
   m_ObjectHideFlags: 0

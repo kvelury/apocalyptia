@@ -20,6 +20,8 @@ public class PlayerStats : MonoBehaviour {
 	public float currSpeed;
 	public float bestWep;
 	public float bestDef;
+
+	public PlayerResources pr;
 	// Use this for initialization
 	void Start () {
 		//Change these once we set up persistant stat levels.
@@ -32,7 +34,10 @@ public class PlayerStats : MonoBehaviour {
 			sharpWeapon += 10;
 			bluntWeapon += 10;
 		}
-		inv = new float[15];
+		pr = gameObject.GetComponent<PlayerResources> ();
+		//Inv slots 4 -> 10 reserved for Mark.
+		//Inv slots 11 -> 17 reserved for Kyle.
+		inv = new float[17];
 		currDam = 10;
 
 		//fill the player's inventory with persistent items
@@ -79,6 +84,13 @@ public class PlayerStats : MonoBehaviour {
 			}
 			else if(col.gameObject.name == "Boots(Clone)"){
 				inv[2] = 1;
+				Destroy (col.gameObject);
+			}
+			
+			else if (col.gameObject.name == "Heart(Clone)") {
+				pr.healthCount += 10;
+				if(pr.healthCount > 100)
+					pr.healthCount = 100;
 				Destroy (col.gameObject);
 			}
 			InvCheck ();

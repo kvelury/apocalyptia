@@ -9,6 +9,7 @@ public class EnemyStats : MonoBehaviour {
 	public GameObject Sword;
 	public GameObject Shield;
 	public GameObject Boots;
+	public GameObject Heart;
 	private GameObject itemDrop;
 	public GameObject Player;
 	public GameObject EnemyParticle;
@@ -45,7 +46,7 @@ public class EnemyStats : MonoBehaviour {
 					pr.fameCount+=20;
 				}
 			}
-			int i = Random.Range (1, 5);
+			int i = Random.Range (1, 8);
 			if (i == 1) {
 				itemDrop = Instantiate (Sword, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
@@ -54,6 +55,9 @@ public class EnemyStats : MonoBehaviour {
 			}
 			else if (i == 3) {
 				itemDrop = Instantiate (Boots, transform.position, new Quaternion(0,0,0,0)) as GameObject;
+			}
+			else if (i == 4 || i == 5) {
+				itemDrop = Instantiate (Heart, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
 			Destroy (gameObject);
 		}

@@ -95,7 +95,8 @@ public class PolygonGenerator : MonoBehaviour {
 		difficulty++;
 		//Added the next two lines to reduce lag - Kyle
 		ClearWater ();
-		mesh.Clear ();
+		if(mesh!= null)
+			mesh.Clear ();
 		Start ();
 		//blocks = null;
 	}
