@@ -452,6 +452,10 @@ Prefab:
       propertyPath: Enemy
       value: 
       objectReference: {fileID: 100000, guid: eecace7165a7d2049aaf76273d21dd02, type: 2}
+    - target: {fileID: 11400000, guid: 81e327a069f43374ca6e9be0d8516771, type: 2}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81e327a069f43374ca6e9be0d8516771, type: 2}
   m_RootGameObject: {fileID: 1774746821}
@@ -492,6 +496,8 @@ MonoBehaviour:
   stone: {fileID: 100000, guid: 709185ee6fbc65140a52516c7f56c016, type: 2}
   player: {fileID: 1384526589}
   water: {fileID: 100000, guid: 33b195513ffa7f84eab060a938e2f3a2, type: 2}
+  enemyspawner: {fileID: 0}
+  es: {fileID: 0}
   newVertices: []
   newTriangles: 
   newUV: []
@@ -971,10 +977,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 100000, guid: eecace7165a7d2049aaf76273d21dd02, type: 2}
+  Player: {fileID: 100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   maxEnemies: 0
   enemyCount: 0
   timer: 0
   enemySpawnTime: 0
+  difficulty: 0
   doomTimer: 0
   winTimer: 0
   doomEvent: 0

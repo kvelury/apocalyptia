@@ -32,6 +32,8 @@ public class EnemyStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Vector3.Distance (transform.position, Player.transform.position) > 50)
+						Destroy (gameObject);
 		if (HP <= 0){
 			if (Player != null) {
 				PlayerResources pr = Player.GetComponent<PlayerResources> ();

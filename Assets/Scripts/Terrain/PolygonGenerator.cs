@@ -25,6 +25,8 @@ public class PolygonGenerator : MonoBehaviour {
 	public GameObject stone;
 	public GameObject player;
 	public GameObject water;
+	public GameObject enemyspawner;
+	public EnemySpawn es;
 	//*******************************************************************************************
 
 	//list of vertices to the mesh
@@ -75,7 +77,6 @@ public class PolygonGenerator : MonoBehaviour {
 			yStart = Random.Range (0, 10000);
 			firstInit = false;
 		}
-
 		GenTerrain ();
 		BuildMesh ();
 		UpdateMesh ();
@@ -92,6 +93,9 @@ public class PolygonGenerator : MonoBehaviour {
 		if (difficulty == maxLevel) {
 			return;
 		}
+		enemyspawner = GameObject.Find ("EnemySpawner");
+		es = enemyspawner.GetComponent<EnemySpawn> ();
+		es.difficulty ++;
 		difficulty++;
 		//Added the next two lines to reduce lag - Kyle
 		ClearWater ();
