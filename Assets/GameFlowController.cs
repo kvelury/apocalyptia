@@ -22,6 +22,9 @@ public class GameFlowController : MonoBehaviour {
 
 	public int currentBaseDifficulty = 0;
 
+	//creation of the object doesn't happen right when i say it, so need this
+	private bool worldStillNeedsUpdate = false;
+
 	// Use this for initialization
 	void Start () {
 		movement = player.GetComponent<PlayerMovementScript> ();
@@ -37,6 +40,13 @@ public class GameFlowController : MonoBehaviour {
 		if (Input.GetKeyDown ("p")) {
 			currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
 			Debug.Log ("DifficultyIncreased - P was pressed\nRemove this ASAP\nGameFlowController.Update()");
+		}
+		if (worldStillNeedsUpdate) {
+			//make sure it generates at proper difficulty
+			for (int i = 0; i < currentBaseDifficulty; i++) {
+				currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
+			}
+			worldStillNeedsUpdate = false;
 		}
 
 	}
@@ -92,10 +102,6 @@ public class GameFlowController : MonoBehaviour {
 		}
 		//tell the player where to find the terrain for purposes of water, lava, etc.
 		movement.terrain = currentApocalypse.GetComponent<PolygonGenerator>();
-		//make sure it generates at proper difficulty
-		for (int i = 0; i < currentBaseDifficulty; i++) {
-			currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
-		}
-
+		worldStillNeedsUpdate = true;
 	}
 }
