@@ -1,0 +1,101 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class GameFlowController : MonoBehaviour {
+
+	//fields for terrain, set these in inspector
+	public GameObject desertApocalypse;
+	public GameObject floodApocalypse;
+	public GameObject volcanoApocalypse;
+	public GameObject frostApocalypse;
+	public GameObject derpApocalypse;
+
+	public GameObject currentApocalypse;
+	
+	public GameObject player;
+	private PlayerMovementScript movement;
+	public GameObject sword;
+	public GameObject shield;
+	public GameObject boots;
+	public GameObject healthleech;
+	public GameObject itemInstance;
+
+	public int currentBaseDifficulty = 0;
+
+	// Use this for initialization
+	void Start () {
+		movement = player.GetComponent<PlayerMovementScript> ();
+		NewApocalypse ();
+	}
+	
+	// Update is called once per frame
+	void Update () {
+		if (Input.GetKeyDown ("o")) {
+			NewApocalypse ();
+			Debug.Log ("O was pressed - remove this asap\nGameFlowController.Update()");
+		}
+		if (Input.GetKeyDown ("p")) {
+			currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
+			Debug.Log ("DifficultyIncreased - P was pressed\nRemove this ASAP\nGameFlowController.Update()");
+		}
+
+	}
+
+	public void NewApocalypse(){
+		//increase difficulty in preparation
+		++currentBaseDifficulty;
+		//clean up the current
+		if (currentApocalypse != null) {
+			GameObject.Destroy (currentApocalypse);
+			
+			GameObject[] items = GameObject.FindGameObjectsWithTag ("Item");
+			for (int i = 0; i < items.Length; i++) {
+				Destroy (items[i]);
+			}
+		}
+		//pick the new one
+		int rand = Mathf.RoundToInt(Random.Range (0, 100)) % 2;
+		Debug.Log (rand);
+		//create the proper new apocalypse
+		switch (rand) {
+			case 0:
+				currentApocalypse = (GameObject)Instantiate (desertApocalypse, new Vector3 (0, 0, 1), new Quaternion (0, 0, 0, 0));
+				break;
+			case 1:
+				currentApocalypse = (GameObject)Instantiate (floodApocalypse, new Vector3 (0, 0, 1), new Quaternion (0, 0, 0, 0));
+				break;
+		}
+		for (int i = 0; i < 20; i++) {
+			switch (Random.Range (0,8)){
+			case 0:
+				itemInstance = Instantiate (sword, new Vector3(Random.Range (-25,PolygonGenerator.gridWidth * PolygonGenerator.worldScale)
+				                                                          ,Random.Range (-30,PolygonGenerator.gridHeight * PolygonGenerator.worldScale))
+				                                       , new Quaternion(0,0,0,0)) as GameObject;
+				break;
+			case 1:
+				itemInstance = Instantiate (shield, new Vector3(Random.Range (-25,PolygonGenerator.gridWidth * PolygonGenerator.worldScale)
+				                                                          ,Random.Range (-30,PolygonGenerator.gridHeight * PolygonGenerator.worldScale))
+				                                       , new Quaternion(0,0,0,0)) as GameObject;
+				break;
+			case 2:
+				itemInstance = Instantiate (boots, new Vector3(Random.Range (-25,PolygonGenerator.gridWidth * PolygonGenerator.worldScale)
+				                                                          ,Random.Range (-30,PolygonGenerator.gridHeight * PolygonGenerator.worldScale))
+				                                       , new Quaternion(0,0,0,0)) as GameObject;
+				break;
+			case 3:
+				itemInstance = Instantiate (healthleech, new Vector3(Random.Range (-25,PolygonGenerator.gridWidth * PolygonGenerator.worldScale)
+				                                               ,Random.Range (-30,PolygonGenerator.gridHeight * PolygonGenerator.worldScale))
+				                            , new Quaternion(0,0,0,0)) as GameObject;
+				break;
+			}
+
+		}
+		//tell the player where to find the terrain for purposes of water, lava, etc.
+		movement.terrain = currentApocalypse.GetComponent<PolygonGenerator>();
+		//make sure it generates at proper difficulty
+		for (int i = 0; i < currentBaseDifficulty; i++) {
+			currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
+		}
+
+	}
+}
