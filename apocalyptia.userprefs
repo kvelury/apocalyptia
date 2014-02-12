@@ -1,15 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerStats.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\EnemyStats.cs">
     <Files>
-      <File FileName="Assets\Scripts\GameFlowController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyStats.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\EnemyStats.cs" Line="66" Column="138" />
       <File FileName="Assets\Scripts\PlayerMovementScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerResources.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerStats.cs" Line="41" Column="10" />
-      <File FileName="Assets\Scripts\GameplayEvents.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\InvSlotScript.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
