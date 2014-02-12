@@ -18,6 +18,8 @@ public class GameFlowController : MonoBehaviour {
 	public GameObject shield;
 	public GameObject boots;
 	public GameObject healthleech;
+	public GameObject moreHearts;
+	public GameObject oneUp;
 	public GameObject itemInstance;
 
 	public int currentBaseDifficulty = 0;
@@ -96,6 +98,16 @@ public class GameFlowController : MonoBehaviour {
 				itemInstance = Instantiate (healthleech, new Vector3(Random.Range (-25,PolygonGenerator.gridWidth * PolygonGenerator.worldScale)
 				                                               ,Random.Range (-30,PolygonGenerator.gridHeight * PolygonGenerator.worldScale))
 				                            , new Quaternion(0,0,0,0)) as GameObject;
+				break;
+			case 4:
+				itemInstance = Instantiate (moreHearts, new Vector3(Random.Range (-25,PolygonGenerator.gridWidth * PolygonGenerator.worldScale)
+				                                                    ,Random.Range (-30,PolygonGenerator.gridHeight * PolygonGenerator.worldScale))
+				                            , new Quaternion(0,0,0,0)) as GameObject;
+				break;
+			case 5:
+				itemInstance = Instantiate (oneUp, new Vector3(Random.Range (-25,PolygonGenerator.gridWidth * PolygonGenerator.worldScale)
+				                                        ,Random.Range (-30,PolygonGenerator.gridHeight * PolygonGenerator.worldScale))
+				                     , new Quaternion(0,0,0,0)) as GameObject;
 				break;
 			}
 

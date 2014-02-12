@@ -74,6 +74,16 @@ public class PlayerStats : MonoBehaviour {
 			InvCheck ();
 			Debug.Log("HealthLeech added.");
 				}
+		if (Input.GetKeyDown ("m")) {
+			inv[11] = 1;
+			InvCheck ();
+			Debug.Log ("MoreHearts added.");
+				}
+		if (Input.GetKeyDown ("u")) {
+			inv[12] = 1;
+			InvCheck ();
+			Debug.Log ("OneUp added.");
+				}
 	
 	}
 
@@ -100,6 +110,14 @@ public class PlayerStats : MonoBehaviour {
 			}
 			else if(col.gameObject.name == "HealthLeech(Clone)"){
 				inv[10] = 1;
+				Destroy (col.gameObject);
+			}
+			else if(col.gameObject.name =="MoreHearts(Clone)"){
+				inv[11] = 1;
+				Destroy (col.gameObject);
+			}
+			else if(col.gameObject.name == "OneUp(Clone)"){
+				inv[12] = 1;
 				Destroy (col.gameObject);
 			}
 			InvCheck ();
@@ -146,7 +164,7 @@ public class PlayerStats : MonoBehaviour {
 				//2 = Boots, + 0.05 speed
 				//3 - 9 reserved for Mark
 				//10 = Health Leech
-				//
+				//11 = More Hearts dropped
 				if (inv [0] == 1)
 						currDam = 20;
 				else
