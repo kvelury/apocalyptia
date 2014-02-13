@@ -42,6 +42,12 @@ public class DesertGenerator : PolygonGenerator {
 		Start ();
 	}
 	*/
+
+	protected override void SetType(){
+		apocalypseType = (int)ApocalypseType.Desert;
+	}
+
+
 	protected override void GenTerrain(){
 		waterThreshold = 0.15f + 0.1f * difficulty;
 		grassThreshold = 0.20f + 0.1f * difficulty;

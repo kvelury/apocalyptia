@@ -28,6 +28,10 @@ public class PolygonGenerator : MonoBehaviour {
 	public GameObject enemyspawner;
 	public EnemySpawn es;
 	//*******************************************************************************************
+	//data needed externally
+	public int apocalypseType;
+	public enum ApocalypseType : int {Default, Desert, Flood, Volcano};
+	//*******************************************************************************************
 
 	//list of vertices to the mesh
 	public List<Vector3> newVertices = new List<Vector3>();
@@ -61,17 +65,9 @@ public class PolygonGenerator : MonoBehaviour {
 
 	// Use this for initialization
 	public virtual void Start () {
+		SetType ();
 		mesh = GetComponent<MeshFilter>().mesh;
-
-		//fetch the difficulty from player preferences
-		/*
-		if (false) {
-			difficulty = 0;
-		} else {
-			difficulty = 0;
-		}
-		*/
-		//set the seed if necessary
+		//set the seed if necessary, ignored if this is called by increasing difficulty instead
 		if (firstInit) {
 			xStart = Random.Range (0, 10000);
 			yStart = Random.Range (0, 10000);
@@ -87,6 +83,10 @@ public class PolygonGenerator : MonoBehaviour {
 	// Update is called once per frame
 	public virtual void Update () {
 		//nothing
+	}
+
+	protected virtual void SetType(){
+		apocalypseType = (int)ApocalypseType.Default;
 	}
 
 	public virtual void IncreaseDifficulty(){
