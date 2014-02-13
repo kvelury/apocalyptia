@@ -18,14 +18,18 @@ public class HazardControlScript : MonoBehaviour {
 
 	private float timeSinceLastHazard;
 
-	private int currentApocalypse;
+	private ApocalypseType currentApocalypse;
 	
 	// Use this for initialization
 	void Start () {
 		Player = GameObject.Find("Player");
 		SetDifficulty();
 		timeSinceLastHazard = 0;
+		currentApocalypse = GameObject.Find("GameController").GetComponent<PolygonGenerator>().apocalypseType;
 		//generate hazards based on difficulty
+		for (int i = 0; i<maxHazards; i++){
+			SpawnHazard();
+		}
 	}
 	
 	// Update is called once per frame
@@ -34,12 +38,16 @@ public class HazardControlScript : MonoBehaviour {
 			//check a random chance against the spawn rate
 			//this makes it more likely for a hazard to spawn as time goes on
 			float result = Random.Range(0, hazardSpawnRate - timeSinceLastHazard);
+			if (result > 1){
+				SpawnHazard();
+			}
 		}
 	}
 
-	private void SpawnHazard(int apocalypseID){
+	private void SpawnHazard(){
 		//spawn a hazard based on apocalypse
 
+		//check for a proper location - ie a whirlpool is actually on a water tile
 		//do{
 		float theta, radius;
 		theta = Random.Range (0, 360);
@@ -47,22 +55,23 @@ public class HazardControlScript : MonoBehaviour {
 		Vector3 location = new Vector3(radius * Mathf.Cos(theta), radius * Mathf.Sin(theta), 0);
 		//} while (location is valid)
 
-		switch (apocalypseID){
-		case 0:
+		switch (currentApocalypse){
+		case ApocalypseType.Desert:
+			//spawn a dust devil
 			break;
-		case 1:
+		case ApocalypseType.Flood:
+			//spawn a whirlpool
 			break;
-		case 2:
+		case ApocalypseType.Volcano:
+			//spawn a rockfall
 			break;
-		case 3:
-			break;
-		case 4:
+		case ApocalypseType.Default:
 			break;
 		default:
 			break;
 		}
 
-		//check for a proper location - ie a whirlpool is actually on a water tile
+		currHazards++;
 	}
 	
 	public void SetDifficulty(){

@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class PlayerMovementScript : MonoBehaviour {
-
 	private PlayerStats stats;
+	public AudioClip slash;
 
 	/// <summary>
 	/// The velocity vector holds the player's movement speed.
@@ -26,6 +26,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// </summary>
 	public bool isDodging = false;
 	public int dodgeCount = 0;
+	Vector3 dodgeDirection = new Vector3 (0,0,0);
 
 	public float knockBackTimer;
 	/// <summary>
@@ -82,25 +83,35 @@ public class PlayerMovementScript : MonoBehaviour {
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
 
-		transform.position += movement;
-
 		if (swingInstance != null) {
 						swingInstance.transform.position += movement;
 				}
 		else {
 			if (isDodging == true && dodgeCount > 50){
-				transform.position += movement*20;
+				dodgeDirection = movement*5;
 				isDodging = false;
 				dodgeCount = 0;
 			}
-			else if (dodgeCount < 51) {
+			if (dodgeCount < 7){
+				transform.position += dodgeDirection;
+			}
+		    if (dodgeCount < 25) {
 				dodgeCount++;
+			}
+			else if (dodgeCount < 51) {
+				transform.position += movement;
+				dodgeCount++;
+			}
+			else{
+				transform.position += movement;
 			}
 		}
 
 		if(Input.GetMouseButton (0) && weaponCoolTimer >= weaponCoolDown){
 			Vector3 swingDir = new Vector3(transform.position.x, transform.position.y, 0);
 			Quaternion swingRot = new Quaternion(0,0,0,0);
+			audio.clip = slash;
+			audio.PlayOneShot(audio.clip);
 			if (Input.mousePosition.x > Screen.width/2 + 16){
 				swingDir.y = transform.position.y - 0.70F;
 			}

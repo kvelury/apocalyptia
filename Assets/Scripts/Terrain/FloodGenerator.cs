@@ -43,6 +43,13 @@ public class FloodGenerator : PolygonGenerator {
 		Start ();
 	}
 	*/
+
+	protected override void SetType ()
+	{
+		apocalypseType = ApocalypseType.Flood;
+	}
+
+
 	protected override void GenTerrain(){
 		waterThreshold = 0.30f + 0.1f * difficulty;
 		sandThreshold = 0.36f + 0.1f * difficulty;

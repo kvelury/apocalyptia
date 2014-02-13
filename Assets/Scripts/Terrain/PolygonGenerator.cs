@@ -9,6 +9,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
+public enum ApocalypseType : int {Default, Desert, Flood, Volcano};
 
 public class PolygonGenerator : MonoBehaviour {
 
@@ -27,6 +28,9 @@ public class PolygonGenerator : MonoBehaviour {
 	public GameObject water;
 	public GameObject enemyspawner;
 	public EnemySpawn es;
+	//*******************************************************************************************
+	//data needed externally
+	public ApocalypseType apocalypseType;
 	//*******************************************************************************************
 
 	//list of vertices to the mesh
@@ -61,17 +65,9 @@ public class PolygonGenerator : MonoBehaviour {
 
 	// Use this for initialization
 	public virtual void Start () {
+		SetType ();
 		mesh = GetComponent<MeshFilter>().mesh;
-
-		//fetch the difficulty from player preferences
-		/*
-		if (false) {
-			difficulty = 0;
-		} else {
-			difficulty = 0;
-		}
-		*/
-		//set the seed if necessary
+		//set the seed if necessary, ignored if this is called by increasing difficulty instead
 		if (firstInit) {
 			xStart = Random.Range (0, 10000);
 			yStart = Random.Range (0, 10000);
@@ -87,6 +83,10 @@ public class PolygonGenerator : MonoBehaviour {
 	// Update is called once per frame
 	public virtual void Update () {
 		//nothing
+	}
+
+	protected virtual void SetType(){
+		apocalypseType = (int)ApocalypseType.Default;
 	}
 
 	public virtual void IncreaseDifficulty(){

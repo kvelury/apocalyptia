@@ -11,11 +11,14 @@ public class EnemyStats : MonoBehaviour {
 	public GameObject Boots;
 	public GameObject Heart;
 	public GameObject HealthLeech;
+	public GameObject MoreHearts;
 	private GameObject itemDrop;
 	public GameObject Player;
 	public GameObject EnemyParticle;
 	public PlayerStats ps;
 	public PlayerResources pr;
+
+	public AudioClip hit1;
 
 	private ParticleSystem particleSystem;
 	// Use this for initialization
@@ -51,7 +54,7 @@ public class EnemyStats : MonoBehaviour {
 					pr.fameCount+=20;
 				}
 			}
-			int i = Random.Range (1, 8);
+			int i = Random.Range (1, 15);
 			if (i == 1) {
 				itemDrop = Instantiate (Sword, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
@@ -61,10 +64,10 @@ public class EnemyStats : MonoBehaviour {
 			else if (i == 3) {
 				itemDrop = Instantiate (Boots, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
-			else if (i == 4 || i == 5) {
+			else if ((i == 4 || i == 5) || ((i == 6 || i == 7) && ps.inv[11] == 1)) {
 				itemDrop = Instantiate (Heart, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
-			else if (i == 6){
+			else if (i == 8){
 				itemDrop = Instantiate (HealthLeech, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
 			Destroy (gameObject);
@@ -73,6 +76,8 @@ public class EnemyStats : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Weapon") {
+			audio.clip = hit1;
+			audio.PlayOneShot(audio.clip);
 			HP -= ps.currDam;
 			//Destroy (col.gameObject);
 			particleSystem = Instantiate(EnemyParticle, transform.position, Quaternion.LookRotation(transform.position - Player.transform.position)) as ParticleSystem;

@@ -32,6 +32,8 @@ public class PlayerResources : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (healthCount <= 0) {
+			PlayerStats ps = gameObject.GetComponent<PlayerStats>();
+			if(ps.inv[12] == 0){
 			//Debug.Log ("Fame: " + fameCount.ToString());
 			PlayerPrefs.SetFloat("Fame", fameCount);
 			//put stuff here about moving world data into player preferences
@@ -43,6 +45,13 @@ public class PlayerResources : MonoBehaviour {
 			}
 			PlayerPrefs.Save ();
 			Application.LoadLevel ("DeathScene");
+				}
+			else{
+				ps.inv[12] = 0;
+				healthCount = 75;
+				Debug.Log ("You have used your One-Up.");
+				mercyTimer = 0;
+			}
 		}
 		mercyTimer++;
 		//adjust health bar variables

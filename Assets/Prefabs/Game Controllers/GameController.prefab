@@ -49,6 +49,8 @@ MonoBehaviour:
   shield: {fileID: 100000, guid: 83a08dd1d40298847a0e3fcc6c994f81, type: 2}
   boots: {fileID: 100000, guid: b29c6169b0d4a444184e82ff8295df0f, type: 2}
   healthleech: {fileID: 100000, guid: 548f83752a1ea82438b96a61932a236c, type: 2}
+  moreHearts: {fileID: 100000, guid: d4375d3c606d54a45b8a2670ed52b7b7, type: 2}
+  oneUp: {fileID: 100000, guid: 4697feebceac36846a761482765ea749, type: 2}
   itemInstance: {fileID: 0}
   currentBaseDifficulty: 0
 --- !u!1001 &100100000
