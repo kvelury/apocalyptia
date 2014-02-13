@@ -26,6 +26,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// </summary>
 	public bool isDodging = false;
 	public int dodgeCount = 0;
+	Vector3 dodgeDirection = new Vector3 (0,0,0);
 
 	public float knockBackTimer;
 	/// <summary>
@@ -82,19 +83,27 @@ public class PlayerMovementScript : MonoBehaviour {
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
 
-		transform.position += movement;
-
 		if (swingInstance != null) {
 						swingInstance.transform.position += movement;
 				}
 		else {
 			if (isDodging == true && dodgeCount > 50){
-				transform.position += movement*20;
+				dodgeDirection = movement*5;
 				isDodging = false;
 				dodgeCount = 0;
 			}
-			else if (dodgeCount < 51) {
+			if (dodgeCount < 7){
+				transform.position += dodgeDirection;
+			}
+		    if (dodgeCount < 25) {
 				dodgeCount++;
+			}
+			else if (dodgeCount < 51) {
+				transform.position += movement;
+				dodgeCount++;
+			}
+			else{
+				transform.position += movement;
 			}
 		}
 
