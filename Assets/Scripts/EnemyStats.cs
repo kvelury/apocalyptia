@@ -18,6 +18,8 @@ public class EnemyStats : MonoBehaviour {
 	public PlayerStats ps;
 	public PlayerResources pr;
 
+	public AudioClip hit1;
+
 	private ParticleSystem particleSystem;
 	// Use this for initialization
 	void Start () {
@@ -74,6 +76,8 @@ public class EnemyStats : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Weapon") {
+			audio.clip = hit1;
+			audio.PlayOneShot(audio.clip);
 			HP -= ps.currDam;
 			//Destroy (col.gameObject);
 			particleSystem = Instantiate(EnemyParticle, transform.position, Quaternion.LookRotation(transform.position - Player.transform.position)) as ParticleSystem;
