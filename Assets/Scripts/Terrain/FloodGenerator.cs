@@ -78,16 +78,18 @@ public class FloodGenerator : PolygonGenerator {
 	}
 
 	protected override void AddResources(){
-		float treePercentage = 10f;
-		float stonePercentage = 30f;
-		/*
+		/***************************************************************/
+		//THESE NUMBERS COMBINED ARE NOT TO EXCEED 50 DUE TO LAG ISSUES//
+		/***************************************************************/
+		float treePercentage = 14f;
+		float stonePercentage = 2f;
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				//add trees
-				if(blocks[i,j] == (byte)TileCodes.DryGrass ||  blocks[i,j] == (byte)TileCodes.Grass){
+				if(blocks[i,j] == (byte)TileCodes.Grass){
 					if(Random.Range (1, 100) < treePercentage){
-						Vector3 location = new Vector3( worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
-						                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
+						Vector3 location = new Vector3( worldScale * i + worldScale * 0.5f,
+						                               worldScale * j - worldScale * 0.5f,
 						                               0);//0.49f);
 						GameObject newTree = Instantiate (tree, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 					}
@@ -95,14 +97,13 @@ public class FloodGenerator : PolygonGenerator {
 				//add stone
 				if(blocks[i,j] == (byte)TileCodes.Stone){
 					if(Random.Range (1, 100) < stonePercentage){
-						Vector3 location = new Vector3( worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
-						                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
+						Vector3 location = new Vector3( worldScale * i + worldScale * 0.5f,
+						                               worldScale * j  - worldScale * 0.5f,
 						                               0);//-0.49f);
 						GameObject newStone = Instantiate (stone, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 					}
 				}
 			}
 		}
-		*/
 	}
 }

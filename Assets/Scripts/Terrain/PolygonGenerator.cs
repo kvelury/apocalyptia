@@ -77,7 +77,9 @@ public class PolygonGenerator : MonoBehaviour {
 		BuildMesh ();
 		UpdateMesh ();
 		AddResources ();
-		SpawnPlayerSafely ();
+		if (firstInit) {
+			SpawnPlayerSafely ();
+		}
 	}
 	
 	// Update is called once per frame
@@ -291,13 +293,13 @@ public class PolygonGenerator : MonoBehaviour {
 	}
 
 	protected void SpawnPlayerSafely(){
-		/*
 		//starting point to check in the middle
 		int midx = gridWidth/2;
 		int midy = gridHeight/2;
 		//an array of vectors to try moving to to find a safe spot
 		//these go radially around a square
-		Vector2[] locationVectors = { new Vector2(-1, -1),
+		Vector2[] locationVectors = { new Vector2( 0,  0),
+									  new Vector2(-1, -1),
 									  new Vector2( 0, -1),
 									  new Vector2( 1, -1),
 									  new Vector2(-1,  0),
@@ -307,17 +309,19 @@ public class PolygonGenerator : MonoBehaviour {
 									  new Vector2( 1,  1) };
 		//multiplied factor to the vector2's above
 		for(int offset = 1; true; offset++){//this is broken by the return
-			for(int i = 0; i < locationVectors.Length; i++){
-				if(blocks[midx + Mathf.FloorToInt(locationVectors[i].x) * offset, midy + Mathf.FloorToInt (locationVectors[i].y) * offset]
+			for(int i = 0; i < locationVectors.Length; i++){//check each item in the array
+				if(blocks[midx + (int)locationVectors[i].x * offset, midy + (int)locationVectors[i].y * offset]
 				   != (byte)TileCodes.Water){
+					Vector2 newLocation = new Vector2((midx + locationVectors[i].x * offset),
+					                                  (midy + locationVectors[i].y * offset));
 					player.transform.Translate (0, 0, 0);//reset to make the next computation easier
-					player.transform.Translate (midx + locationVectors[i].x * offset,
-					                            midy + locationVectors[i].y * offset, 
-					                            0);
+					player.transform.Translate ( newLocation.x, newLocation.y, 0);
+					Debug.Log (locationVectors[i].ToString () + " " + midx + " " + midy + " " 
+					           + blocks[midx + (int)locationVectors[i].x, midy + (int)locationVectors[i].y]);
 					return;
 				}
 			}
-		}*/
+		}
 	}
 
 }

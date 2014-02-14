@@ -82,12 +82,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d53a820e4a1809249a6eaad4acb7b2d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tree: {fileID: 0}
-  stone: {fileID: 0}
+  tree: {fileID: 100000, guid: 2053dbc23dda7e840a2c800b34e52ebc, type: 2}
+  stone: {fileID: 100000, guid: 709185ee6fbc65140a52516c7f56c016, type: 2}
   player: {fileID: 0}
+  water: {fileID: 0}
+  enemyspawner: {fileID: 0}
+  es: {fileID: 0}
+  apocalypseType: 0
   newVertices: []
   newTriangles: 
   newUV: []
+  difficulty: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

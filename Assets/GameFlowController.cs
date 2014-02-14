@@ -31,6 +31,7 @@ public class GameFlowController : MonoBehaviour {
 	void Start () {
 		movement = player.GetComponent<PlayerMovementScript> ();
 		NewApocalypse ();
+		currentApocalypse.GetComponent<PolygonGenerator> ().player = this.player;
 	}
 	
 	// Update is called once per frame
@@ -54,6 +55,7 @@ public class GameFlowController : MonoBehaviour {
 	}
 
 	public void NewApocalypse(){
+		DespawnOldResources ();
 		//increase difficulty in preparation
 		++currentBaseDifficulty;
 		//clean up the current
@@ -115,5 +117,9 @@ public class GameFlowController : MonoBehaviour {
 		//tell the player where to find the terrain for purposes of water, lava, etc.
 		movement.terrain = currentApocalypse.GetComponent<PolygonGenerator>();
 		worldStillNeedsUpdate = true;
+	}
+
+	private void DespawnOldResources(){
+		Debug.Log ("GameFlowController.DespawnOldResources() not implemented");
 	}
 }
