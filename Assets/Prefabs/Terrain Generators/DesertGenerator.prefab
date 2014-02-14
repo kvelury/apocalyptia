@@ -84,7 +84,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tree: {fileID: 100000, guid: 2053dbc23dda7e840a2c800b34e52ebc, type: 2}
   stone: {fileID: 100000, guid: 709185ee6fbc65140a52516c7f56c016, type: 2}
-  player: {fileID: 0}
+  player: {fileID: 100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   water: {fileID: 0}
   enemyspawner: {fileID: 0}
   es: {fileID: 0}

@@ -71,7 +71,7 @@ public class PolygonGenerator : MonoBehaviour {
 		if (firstInit) {
 			xStart = Random.Range (0, 10000);
 			yStart = Random.Range (0, 10000);
-			firstInit = false;
+			//firstInit = false;
 		}
 		GenTerrain ();
 		BuildMesh ();
@@ -79,6 +79,7 @@ public class PolygonGenerator : MonoBehaviour {
 		AddResources ();
 		if (firstInit) {
 			SpawnPlayerSafely ();
+			firstInit = false;
 		}
 	}
 	
@@ -294,6 +295,7 @@ public class PolygonGenerator : MonoBehaviour {
 
 	protected void SpawnPlayerSafely(){
 		//starting point to check in the middle
+		player = GameObject.Find ("Player");
 		int midx = gridWidth/2;
 		int midy = gridHeight/2;
 		//an array of vectors to try moving to to find a safe spot
@@ -316,7 +318,7 @@ public class PolygonGenerator : MonoBehaviour {
 					                                  (midy + locationVectors[i].y * offset));
 					player.transform.Translate (0, 0, 0);//reset to make the next computation easier
 					player.transform.Translate ( newLocation.x, newLocation.y, 0);
-					Debug.Log (locationVectors[i].ToString () + " " + midx + " " + midy + " " 
+					Debug.Log ("Moved Player: " + locationVectors[i].ToString () + " " + midx + " " + midy + " " 
 					           + blocks[midx + (int)locationVectors[i].x, midy + (int)locationVectors[i].y]);
 					return;
 				}
