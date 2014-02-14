@@ -84,6 +84,11 @@ public class PlayerStats : MonoBehaviour {
 			InvCheck ();
 			Debug.Log ("OneUp added.");
 				}
+		if (Input.GetKeyDown ("f")) {
+			inv[16] = 1;
+			InvCheck ();
+			Debug.Log ("ForceField added.");
+				}
 	
 	}
 
@@ -118,6 +123,10 @@ public class PlayerStats : MonoBehaviour {
 			}
 			else if(col.gameObject.name == "OneUp(Clone)"){
 				inv[12] = 1;
+				Destroy (col.gameObject);
+			}
+			else if(col.gameObject.name == "ForceField(Clone"){
+				inv[16] = 1;
 				Destroy (col.gameObject);
 			}
 			InvCheck ();
@@ -165,6 +174,13 @@ public class PlayerStats : MonoBehaviour {
 				//3 - 9 reserved for Mark
 				//10 = Health Leech
 				//11 = More Hearts dropped
+				//12 = One-Up
+				//13 =
+				//14 =
+				//15 =
+				//16 -> Reserved for Use Items. Use item codes are are as follows:
+				//0 = empty
+				//1 = Forcefield.
 				if (inv [0] == 1)
 						currDam = 20;
 				else

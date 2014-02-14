@@ -15,7 +15,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	public PolygonGenerator terrain;
 
 	private float weaponCoolTimer = 15;
-
+	public PlayerResources pr;
 	/// <summary>
 	/// The weapon cool down, in frames.
 	/// </summary>
@@ -38,6 +38,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		pr = gameObject.GetComponent<PlayerResources> ();
 		knockBackTimer = 11;
 		stats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
 //		terrain = GameObject.Find ("Terrain").GetComponent<PolygonGenerator>();
@@ -82,7 +83,9 @@ public class PlayerMovementScript : MonoBehaviour {
 
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
-
+		if (Input.GetMouseButton (1) && pr.useItemTimer == 300) {
+			pr.UseItem ();
+		}
 		if (swingInstance != null) {
 						swingInstance.transform.position += movement;
 				}

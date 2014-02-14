@@ -99,8 +99,19 @@ public class EnemySpawn : MonoBehaviour {
 		worldHeight *= (int)PolygonGenerator.worldScale;
 		//spawnLoc.x = Random.Range (-25, worldWidth);
 		//spawnLoc.y = Random.Range (-30, worldHeight);
-		spawnLoc.x = Random.Range (Player.transform.position.x - 50, Player.transform.position.x + 50);
-		spawnLoc.y = Random.Range (Player.transform.position.y - 50, Player.transform.position.y + 50);
+		float xDist = 0;
+		while(xDist > -20 && xDist < 20)
+			xDist = Random.Range (-49, 49);
+		
+		float yDist = 0;
+		while(yDist > -20 && yDist < 20)
+			yDist = Random.Range (-49, 49);
+		spawnLoc.x = Player.transform.position.x + xDist;
+		spawnLoc.y = Player.transform.position.y + yDist;
+		//spawnLoc.x = Random.Range (Player.transform.position.x - 10, Player.transform.position.x + 10);
+		//spawnLoc.x = spawnLoc.x * 4;
+		//spawnLoc.y = Random.Range (Player.transform.position.y - 10, Player.transform.position.y + 10);
+		//spawnLoc.y = spawnLoc.y * 4;
 		enemyCount++;
 		GameObject enemyInstance = Instantiate (Enemy, spawnLoc, new Quaternion(0,0,0,0)) as GameObject;
 		//enemyInstance.GetComponent<LookAtScript>().target = GameObject.Find("Main Camera").transform;

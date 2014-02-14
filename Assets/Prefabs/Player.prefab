@@ -202,6 +202,10 @@ MonoBehaviour:
   maxHealth: 0
   minHealth: 0
   mercyTimer: 0
+  useItemTimer: 0
+  forceFieldActive: 0
+  PlayerDefault: {fileID: 21300000, guid: 5f95f869327f1c0469d505bf6b11b77d, type: 3}
+  PlayerForceField: {fileID: 21300000, guid: 4245bb094d63dd14fb62194498cbe50d, type: 3}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,6 +260,7 @@ MonoBehaviour:
   velocity: .100000001
   Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
   terrain: {fileID: 0}
+  pr: {fileID: 0}
   isDodging: 0
   dodgeCount: 0
   knockBackTimer: 0
