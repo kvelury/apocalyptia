@@ -295,6 +295,8 @@ public class PolygonGenerator : MonoBehaviour {
 	}
 
 	protected void SpawnPlayerSafely(){
+		//COMMENTING THIS OUT FOR NOW
+		/*
 		//starting point to check in the middle
 		player = GameObject.Find ("Player");
 		int midx = gridWidth/2;
@@ -325,6 +327,21 @@ public class PolygonGenerator : MonoBehaviour {
 					return;
 				}
 			}
+		}*/
+		//Temorary fix.
+		player = GameObject.Find ("Player");
+		bool safe = false;
+		while (!safe) {
+			//player.transform.Translate (-player.transform.position.x, -player.transform.position.y, 0);
+			player.transform.position =  new Vector3(Random.Range (-25,PolygonGenerator.gridWidth * PolygonGenerator.worldScale)
+			                                         ,Random.Range (-30,PolygonGenerator.gridHeight * PolygonGenerator.worldScale), 0);
+			//player.transform.Translate (0,0,-player.transform.position.z);
+			if (blocks [Mathf.CeilToInt (player.transform.position.x / PolygonGenerator.worldScale - 1), 
+			            Mathf.CeilToInt (player.transform.position.y / PolygonGenerator.worldScale)] 
+			    != (byte)PolygonGenerator.TileCodes.Water) {
+				safe = true;
+			}
+			else Debug.Log ("InWater, moving");
 		}
 	}
 	//Cloned from GameFlowController, since it's private.
