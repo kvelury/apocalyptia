@@ -126,6 +126,16 @@ public class GameFlowController : MonoBehaviour {
 	}
 
 	private void DespawnOldResources(){
+		GameObject[] trees = GameObject.FindGameObjectsWithTag ("tree");
+		GameObject[] stones = GameObject.FindGameObjectsWithTag ("stone");
+		
+		for (int i = 0; i < trees.Length; i++) {
+			Destroy (trees[i]);
+		}
+	
+	for (int i = 0; i < stones.Length; i++) {
+		Destroy (stones[i]);
+	}
 		Debug.Log ("GameFlowController.DespawnOldResources() not implemented");
 	}
 }
