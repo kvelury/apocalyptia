@@ -318,6 +318,7 @@ public class PolygonGenerator : MonoBehaviour {
 					                                  (midy + locationVectors[i].y * offset));
 					player.transform.Translate (0, 0, 0);//reset to make the next computation easier
 					player.transform.Translate ( newLocation.x, newLocation.y, 0);
+					player.transform.Translate (0,0,-player.transform.position.z);
 					Debug.Log ("Moved Player: " + locationVectors[i].ToString () + " " + midx + " " + midy + " " 
 					           + blocks[midx + (int)locationVectors[i].x, midy + (int)locationVectors[i].y]);
 					return;
