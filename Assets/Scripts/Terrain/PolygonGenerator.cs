@@ -102,6 +102,7 @@ public class PolygonGenerator : MonoBehaviour {
 		difficulty++;
 		//Added the next two lines to reduce lag - Kyle
 		ClearWater ();
+		DespawnOldResources ();
 		if(mesh!= null)
 			mesh.Clear ();
 		Start ();
@@ -200,7 +201,7 @@ public class PolygonGenerator : MonoBehaviour {
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				//add trees
-				if(blocks[i,j] == (byte)TileCodes.DryGrass ||  blocks[i,j] == (byte)TileCodes.Grass){
+				if(/*blocks[i,j] == (byte)TileCodes.DryGrass ||  */blocks[i,j] == (byte)TileCodes.Grass){
 					Vector3 location = new Vector3(worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
 					                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
 					                               0.49f);
@@ -325,6 +326,20 @@ public class PolygonGenerator : MonoBehaviour {
 				}
 			}
 		}
+	}
+	//Cloned from GameFlowController, since it's private.
+	private void DespawnOldResources(){
+		GameObject[] trees = GameObject.FindGameObjectsWithTag ("tree");
+		GameObject[] stones = GameObject.FindGameObjectsWithTag ("stone");
+		
+		for (int i = 0; i < trees.Length; i++) {
+			Destroy (trees[i]);
+		}
+		
+		for (int i = 0; i < stones.Length; i++) {
+			Destroy (stones[i]);
+		}
+		Debug.Log ("GameFlowController.DespawnOldResources() not implemented");
 	}
 
 }
