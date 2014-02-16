@@ -24,6 +24,7 @@ public class PolygonGenerator : MonoBehaviour {
 	//references for resources
 	public GameObject tree;
 	public GameObject stone;
+	public GameObject building;
 	public GameObject player;
 	public GameObject water;
 	public GameObject enemyspawner;
@@ -213,6 +214,13 @@ public class PolygonGenerator : MonoBehaviour {
 					                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
 					                               0.49f);
 					GameObject newStone = Instantiate (stone, location, new Quaternion(0, 0, 0, 0)) as GameObject;
+				}
+				//add buildings
+				if(blocks[i,j] == (byte)TileCodes.Sand){
+					Vector3 location = new Vector3(worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
+					                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
+					                               0.49f);
+					GameObject newBuilding = Instantiate (building, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 				}
 			}
 		}

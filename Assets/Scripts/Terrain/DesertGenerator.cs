@@ -82,6 +82,7 @@ public class DesertGenerator : PolygonGenerator {
 		/***************************************************************/
 		float treePercentage = 5f;
 		float stonePercentage = 20f;
+		float buildingPercentage = 10f;
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				//add trees
@@ -100,6 +101,15 @@ public class DesertGenerator : PolygonGenerator {
 					                               		worldScale * j - worldScale * 0.5f,
 						                                0);
 						GameObject newStone = Instantiate (stone, location, new Quaternion(0, 0, 0, 0)) as GameObject;
+					}
+				}
+				//add buildings
+				if(blocks[i,j] == (byte)TileCodes.Sand){
+					if(Random.Range (1, 100) < buildingPercentage){
+						Vector3 location = new Vector3( worldScale * i + worldScale * 0.5f,
+						                               worldScale * j  - worldScale * 0.5f,
+						                               0);//-0.49f);
+						GameObject newBuilding = Instantiate (building, location, new Quaternion(0, 0, 0, 0)) as GameObject;
 					}
 				}
 			}
