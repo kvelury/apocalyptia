@@ -9,6 +9,7 @@ public class InvSlotScript : MonoBehaviour {
 	public bool weapon = false;
 	public bool shield = false;
 	public bool boots = false;
+	public bool oneUse = false;
 
 	// Use this for initialization
 	void Start () {
@@ -35,7 +36,11 @@ public class InvSlotScript : MonoBehaviour {
 			boots = true;
 			//Debug.Log ("boots");
 		}
-
+		//one-use item picked up
+		if (stats.inv[16] == 1) {
+			oneUse = true;
+			//Debug.Log ("boots");
+		}
 
 	}
 }
