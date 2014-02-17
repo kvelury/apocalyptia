@@ -102,7 +102,7 @@ public class PolygonGenerator : MonoBehaviour {
 		es.difficulty ++;
 		difficulty++;
 		//Added the next two lines to reduce lag - Kyle
-		ClearWater ();
+		//ClearWater ();
 		DespawnOldResources ();
 		if(mesh!= null)
 			mesh.Clear ();

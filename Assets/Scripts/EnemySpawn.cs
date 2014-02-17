@@ -20,6 +20,7 @@ public class EnemySpawn : MonoBehaviour {
 	public bool winEvent;
 	// Use this for initialization
 	void Start () {
+		Player = GameObject.Find ("Player");
 		incrementTime = 1f;
 		incrementBy = 1;
 		maxEnemies = 20;

@@ -41,6 +41,9 @@ public class InvSlotScript : MonoBehaviour {
 			oneUse = true;
 			//Debug.Log ("boots");
 		}
+		else{
+			oneUse = false;
+		}
 
 	}
 }

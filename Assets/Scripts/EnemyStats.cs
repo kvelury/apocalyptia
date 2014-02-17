@@ -38,8 +38,12 @@ public class EnemyStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Vector3.Distance (transform.position, Player.transform.position) > 50)
+		if (Vector3.Distance (transform.position, Player.transform.position) > 50) {
+			/*Debug.Log ("Enemy Too far away!: Enemy.x = " + transform.position.x + ", Player.x = "
+			           + Player.transform.position.x + ", Enemy.y = " + transform.position.y +
+			           ", Player.y = " + Player.transform.position.y);*/
 						Destroy (gameObject);
+				}
 		if (HP <= 0){
 			if (Player != null) {
 				PlayerResources pr = Player.GetComponent<PlayerResources> ();
