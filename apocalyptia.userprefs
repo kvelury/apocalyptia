@@ -1,9 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HazardControlScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Terrain\PolygonGenerator.cs">
     <Files>
-      <File FileName="Assets\Scripts\HazardControlScript.cs" Line="78" Column="31" />
-      <File FileName="Assets\Scripts\RockfallScript.cs" Line="20" Column="5" />
+      <File FileName="Assets\Scripts\Terrain\PolygonGenerator.cs" Line="131" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
