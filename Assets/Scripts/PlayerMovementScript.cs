@@ -87,27 +87,25 @@ public class PlayerMovementScript : MonoBehaviour {
 			pr.UseItem ();
 		}
 		if (swingInstance != null) {
-						swingInstance.transform.position += movement;
-				}
-		else {
-			if (isDodging == true && dodgeCount > 50){
-				dodgeDirection = movement*5;
-				isDodging = false;
-				dodgeCount = 0;
-			}
-			if (dodgeCount < 7){
-				transform.position += dodgeDirection;
-			}
-		    if (dodgeCount < 25) {
-				dodgeCount++;
-			}
-			else if (dodgeCount < 51) {
-				transform.position += movement;
-				dodgeCount++;
-			}
-			else{
-				transform.position += movement;
-			}
+			swingInstance.transform.position += movement;
+		}
+		if (isDodging == true && dodgeCount > 50){
+			dodgeDirection = movement*5;
+			isDodging = false;
+			dodgeCount = 0;
+		}
+		if (dodgeCount < 7){
+			transform.position += dodgeDirection;
+		}
+		if (dodgeCount < 25) {
+			dodgeCount++;
+		}
+		else if (dodgeCount < 51) {
+			transform.position += movement;
+			dodgeCount++;
+		}
+		else{
+			transform.position += movement;
 		}
 
 		if(Input.GetMouseButton (0) && weaponCoolTimer >= weaponCoolDown){

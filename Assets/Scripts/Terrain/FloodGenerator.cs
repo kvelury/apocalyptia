@@ -83,7 +83,7 @@ public class FloodGenerator : PolygonGenerator {
 		/***************************************************************/
 		float treePercentage = 14f;
 		float stonePercentage = 2f;
-		float buildingPercentage = 5f;
+		float buildingPercentage = 1f;
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				//add trees

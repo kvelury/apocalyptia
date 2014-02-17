@@ -36,15 +36,28 @@ public class HazardControlScript : MonoBehaviour {
 
 		hazards = new List<GameObject>();
 		deadHazards = new List<GameObject>();
-
-		//generate hazards based on difficulty
-		for (int i = 0; i<maxHazards; i++){
-			SpawnHazard();
-		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		timeSinceLastHazard++;
+
+		//find and destroy all spent particle systems
+        //Debug.Log("Count: " + hazards.Count);
+		foreach (GameObject g in hazards){
+			HazardScript hazardScript = g.GetComponent<HazardScript>();
+			//Debug.Log("isAlive? " + hazardScript.isAlive);
+			if (!hazardScript.isAlive){
+				Destroy (g);
+				deadHazards.Add(g);
+				Debug.Log ("Hazard Removed");
+			}
+		}
+		foreach (GameObject g in deadHazards){
+			hazards.Remove(g);
+		}
+		deadHazards.Clear();
+
 		if (hazards.Count < maxHazards){
 			//check a random chance against the spawn rate
 			//this makes it more likely for a hazard to spawn as time goes on
@@ -53,22 +66,7 @@ public class HazardControlScript : MonoBehaviour {
 				SpawnHazard();
 			}
 		}
-
-		//find and destroy all spent particle systems
-//		Debug.Log("Count: " + hazards.Count);
-		foreach (GameObject g in hazards){
-			ParticleSystem p = g.GetComponent<ParticleSystem>();
-			if (p != null){
-				Destroy (p, p.duration + 0.5f);
-				deadHazards.Add(g);
-			}
-		}
-		foreach (GameObject g in deadHazards){
-			hazards.Remove(g);
-		}
-		deadHazards.Clear();
-
-//		Debug.Log("Hazard Count: " + hazards.Count.ToString());
+		//		Debug.Log("Hazard Count: " + hazards.Count.ToString());
 	}
 
 	private void SpawnHazard(){
@@ -79,7 +77,7 @@ public class HazardControlScript : MonoBehaviour {
 		do{
 			float theta, radius;
 			theta = Random.Range (0, 360);
-			radius = Random.Range (0, 10) + 5;
+			radius = Random.Range (0, 5);
 			location = new Vector3(radius * Mathf.Cos(theta * Mathf.Deg2Rad) + Player.transform.position.x, radius * Mathf.Sin(theta * Mathf.Deg2Rad) + Player.transform.position.y, 0);
 		} while (!isValidLocation(location));
 
@@ -103,7 +101,8 @@ public class HazardControlScript : MonoBehaviour {
 			break;
 		}
 
-//		Debug.Log("Hazard Spawned");
+		Debug.Log("Hazard Spawned");
+		timeSinceLastHazard = 0;
 		//currHazards++;
 	}
 
@@ -115,7 +114,6 @@ public class HazardControlScript : MonoBehaviour {
 //		                                      Mathf.CeilToInt(location.y / PolygonGenerator.worldScale), 0).ToString());
 //		Debug.Log ("Player Location: " + new Vector3(Mathf.CeilToInt(Player.transform.position.x / PolygonGenerator.worldScale - 1),
 //		                                      Mathf.CeilToInt(Player.transform.position.y / PolygonGenerator.worldScale), 0).ToString());
-
 		try {
 			currTile = terrain.blocks[Mathf.CeilToInt(location.x / PolygonGenerator.worldScale - 1),
 			                               Mathf.CeilToInt(location.y / PolygonGenerator.worldScale)];
@@ -150,10 +148,5 @@ public class HazardControlScript : MonoBehaviour {
 //		Debug.Log ("Difficulty: " + difficulty.ToString());
 		maxHazards = difficulty * 5 + 5;
 		hazardSpawnRate = 60 * (5 - difficulty);
-	}
-
-	public void LogHazardDeath(){
-		currHazards--;
-		Debug.Log("Hazard has died");
 	}
 }

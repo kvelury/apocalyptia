@@ -39,10 +39,10 @@
 	<Reference Include="System.Core" />
 	<Reference Include="System.Xml.Linq" />
 	<Reference Include="UnityEngine">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
 	</Reference>
 	<Reference Include="UnityEditor">
-	  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+	  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
 	</Reference>
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +240,7 @@
      <Compile Include="Assets\Scripts\GameOverEvents.cs" />
      <Compile Include="Assets\Scripts\GameplayEvents.cs" />
      <Compile Include="Assets\Scripts\HazardControlScript.cs" />
+     <Compile Include="Assets\Scripts\HazardScript.cs" />
      <Compile Include="Assets\Scripts\InvSlotScript.cs" />
      <Compile Include="Assets\Scripts\LookAtScript.cs" />
      <Compile Include="Assets\Scripts\MainMenuEvents.cs" />
@@ -249,6 +250,7 @@
      <Compile Include="Assets\Scripts\PlayerResources.cs" />
      <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\ResourceHouseScript.cs" />
+     <Compile Include="Assets\Scripts\RockfallScript.cs" />
      <Compile Include="Assets\Scripts\Terrain\DesertGenerator.cs" />
      <Compile Include="Assets\Scripts\Terrain\FloodGenerator.cs" />
      <Compile Include="Assets\Scripts\Terrain\PolygonGenerator.cs" />

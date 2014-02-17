@@ -82,7 +82,7 @@ public class DesertGenerator : PolygonGenerator {
 		/***************************************************************/
 		float treePercentage = 5f;
 		float stonePercentage = 20f;
-		float buildingPercentage = 10f;
+		float buildingPercentage = 1f;
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				//add trees
