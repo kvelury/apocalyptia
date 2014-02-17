@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+guid: d6eae1178cc2d564594eca48db731f9e
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - closeLid: {fileID: 2800000, guid: b97b94af8b07b124ea7a43ff35ef108f, type: 3}
+  - openLid: {fileID: 2800000, guid: fe97547dbc5bb9b4e8d4da2b4749d751, type: 3}
+  - currLid: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

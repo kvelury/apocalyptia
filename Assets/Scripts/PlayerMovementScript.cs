@@ -108,7 +108,11 @@ public class PlayerMovementScript : MonoBehaviour {
 			transform.position += movement;
 		}
 
-		if(Input.GetMouseButton (0) && weaponCoolTimer >= weaponCoolDown){
+		if(Input.GetMouseButton (0) && weaponCoolTimer >= weaponCoolDown && 
+		   //This added check is so the player doesn't swing when clicking Big Red Button.
+		 		  !(Input.mousePosition.x > (Screen.width - 220) && Input.mousePosition.x < (Screen.width - 20)
+		 		 	&& Input.mousePosition.y > (20) && Input.mousePosition.y < (220))){
+
 			Vector3 swingDir = new Vector3(transform.position.x, transform.position.y, 0);
 			Quaternion swingRot = new Quaternion(0,0,0,0);
 			audio.clip = slash;
