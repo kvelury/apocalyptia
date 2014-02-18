@@ -28,6 +28,7 @@ public class PolygonGenerator : MonoBehaviour {
 	public GameObject player;
 	public GameObject water;
 	public GameObject enemyspawner;
+	public GameObject endgameobj;
 	public EnemySpawn es;
 	//*******************************************************************************************
 	//data needed externally
@@ -101,6 +102,13 @@ public class PolygonGenerator : MonoBehaviour {
 		es = enemyspawner.GetComponent<EnemySpawn> ();
 		es.difficulty ++;
 		difficulty++;
+		if (difficulty == maxLevel) {
+			GameObject endgame = Instantiate (endgameobj, 
+			                                  new Vector3(player.transform.position.x + Random.Range (-30, 30), 
+			            									player.transform.position.y + Random.Range (-30, 30)),
+			                                  new Quaternion(0,0,0,0)) as GameObject;
+			Debug.Log ("Endgame object spawned!");
+				}
 		//Added the next two lines to reduce lag - Kyle
 		//ClearWater ();
 		DespawnOldResources ();

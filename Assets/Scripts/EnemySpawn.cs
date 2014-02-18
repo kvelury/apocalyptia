@@ -35,28 +35,34 @@ public class EnemySpawn : MonoBehaviour {
 		
 	}
 	void Update(){
-		switch (difficulty) {
-		case 1:
-			maxEnemies = 25;
-			enemySpawnTime = 20;
-			break;
-		case 2:
-			maxEnemies = 25;
-			enemySpawnTime = 15;
-			break;
-		case 3:
-			maxEnemies = 30;
-			enemySpawnTime = 15;
-			break;
-		case 4:
-			maxEnemies = 30;
-			enemySpawnTime = 10;
-			break;
-		case 5:
-			maxEnemies = 35;
-			enemySpawnTime = 10;
-			break;
-			}
+		if (!doomEvent) {
+						switch (difficulty) {
+						case 1:
+								maxEnemies = 25;
+								enemySpawnTime = 20;
+								break;
+						case 2:
+								maxEnemies = 25;
+								enemySpawnTime = 15;
+								break;
+						case 3:
+								maxEnemies = 30;
+								enemySpawnTime = 15;
+								break;
+						case 4:
+								maxEnemies = 30;
+								enemySpawnTime = 10;
+								break;
+						case 5:
+								maxEnemies = 35;
+								enemySpawnTime = 10;
+								break;
+						}
+				}
+		else {
+			maxEnemies = 40;
+			enemySpawnTime = 5;
+				}
 		}
 	// Update is called once per frame
 	void FixedUpdate () {
