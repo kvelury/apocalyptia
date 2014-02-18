@@ -4,6 +4,7 @@ using System.Collections;
 public class EndGameScript : MonoBehaviour {
 	public GameObject player;
 	public EnemySpawn es;
+	public EndGameHUD egh;
 	public float timer;
 	public float time;
 	public bool isEndGame;
@@ -12,6 +13,9 @@ public class EndGameScript : MonoBehaviour {
 	void Start () {
 		player = GameObject.Find ("Player");
 		es = GameObject.Find ("EnemySpawner").GetComponent<EnemySpawn> ();
+		egh = Camera.main.GetComponent<EndGameHUD> ();
+		egh.endgameobj = gameObject;
+		egh.display = true;
 	}
 	
 	// Update is called once per frame
