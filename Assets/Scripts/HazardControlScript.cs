@@ -50,7 +50,7 @@ public class HazardControlScript : MonoBehaviour {
 			if (!hazardScript.isAlive){
 				Destroy (g);
 				deadHazards.Add(g);
-				Debug.Log ("Hazard Removed");
+				//Debug.Log ("Hazard Removed");
 			}
 		}
 		foreach (GameObject g in deadHazards){
@@ -77,8 +77,8 @@ public class HazardControlScript : MonoBehaviour {
 		do{
 			float theta, radius;
 			theta = Random.Range (0, 360);
-			radius = Random.Range (0, 5);
-			location = new Vector3(radius * Mathf.Cos(theta * Mathf.Deg2Rad) + Player.transform.position.x, radius * Mathf.Sin(theta * Mathf.Deg2Rad) + Player.transform.position.y, 0);
+			radius = Random.Range (1, 5);
+			location = new Vector3(radius * Mathf.Cos(theta * Mathf.Deg2Rad) + Player.transform.position.x, radius * Mathf.Sin(theta * Mathf.Deg2Rad) + Player.transform.position.y, -5);
 		} while (!isValidLocation(location));
 
 		switch (currentApocalypse){
@@ -101,7 +101,7 @@ public class HazardControlScript : MonoBehaviour {
 			break;
 		}
 
-		Debug.Log("Hazard Spawned");
+		//Debug.Log("Hazard Spawned");
 		timeSinceLastHazard = 0;
 		//currHazards++;
 	}

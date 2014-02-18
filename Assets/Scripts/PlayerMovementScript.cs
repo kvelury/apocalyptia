@@ -72,6 +72,8 @@ public class PlayerMovementScript : MonoBehaviour {
 			Vector3 direction = (transform.position - col.gameObject.transform.position).normalized;
 			movement = Quaternion.Euler (0,0,-45) * (0.5F * velocity*direction);
 			knockBackTimer = 0;
+		}else if (col.gameObject.tag == "DamagingHazard"){
+			GetComponent<PlayerResources>().healthCount -= 10;
 		}
 	}
 

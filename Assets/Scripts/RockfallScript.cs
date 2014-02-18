@@ -4,6 +4,7 @@ using System.Collections;
 public class RockfallScript : HazardScript {
 
 	private ParticleSystem particleSystem;
+	private SpriteRenderer spriteRender;
 
 	/// <summary>
 	/// The state of the rockfall.
@@ -12,13 +13,23 @@ public class RockfallScript : HazardScript {
 	/// 2 - particles
 	/// </summary>
 	private int rockfallState;
+	private Vector3 gravity = new Vector3(0, 0, .245f);
+	private Vector3 velocity;
+
+	private int timeElapsed;
+	public int shadowStageLifetime = 60;
 
 	// Use this for initialization
 	void Start () {
 		//this returns the sibling particle system
 		particleSystem = GetComponent<ParticleSystem>();
-		//particleSystem.Pause();
-		rockfallState = 2;
+		spriteRender = GetComponent<SpriteRenderer>();
+		particleSystem.Pause();
+		spriteRender.enabled = false;
+		rockfallState = 0;
+		timeElapsed = 0;
+		velocity = new Vector3(0, 0, 0);
+		tag = "DamagingHazard";
 
 		//run initializations for the base class
 		base.Start();
@@ -26,6 +37,7 @@ public class RockfallScript : HazardScript {
 	
 	// Update is called once per frame
 	void Update () {
+		//Debug.Log("Updating Rockfall " + rockfallState.ToString ());
 		switch (rockfallState){
 		case 0:
 			shadowUpdate ();
@@ -43,16 +55,37 @@ public class RockfallScript : HazardScript {
 
 	private void shadowUpdate(){
 		//make the shadow grow
+		timeElapsed++;
+		if (timeElapsed > shadowStageLifetime){
+			rockfallState = 1;
+			spriteRender.enabled = true;
+		}
 	}
 
 	private void fallingUpdate(){
 		//??
+		if (transform.position.z > 0){
+			particleSystem.Play();
+			rockfallState = 2;
+			spriteRender.enabled = false;
+		}
 	}
 
 	private void particleUpdate(){
-		if (particleSystem.time > particleSystem.startLifetime){
-			Debug.Log("Time :" + particleSystem.time.ToString() + "Lifetime: " + particleSystem.startLifetime.ToString());
+		//Debug.Log("Playing? " + particleSystem.isPlaying);
+		if (!particleSystem.isPlaying){
 			isAlive = false;
 		}
+	}
+
+	void FixedUpdate(){
+		if (rockfallState == 1){
+			velocity += gravity;
+			transform.position += velocity;
+		}
+	}
+
+	void OnCollisionEnter2D(Collision2D col){
+		collider2D.enabled = false;
 	}
 }
