@@ -13,7 +13,7 @@ public class RockfallScript : HazardScript {
 	/// 2 - particles
 	/// </summary>
 	private int rockfallState;
-	private Vector3 gravity = new Vector3(0, 0, .245f);
+	private Vector3 gravity = new Vector3(0, 0, .12f);
 	private Vector3 velocity;
 
 	private int timeElapsed;

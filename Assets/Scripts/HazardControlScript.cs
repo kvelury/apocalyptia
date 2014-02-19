@@ -77,7 +77,7 @@ public class HazardControlScript : MonoBehaviour {
 		do{
 			float theta, radius;
 			theta = Random.Range (0, 360);
-			radius = Random.Range (1, 5);
+			radius = Random.Range (0, 10);
 			location = new Vector3(radius * Mathf.Cos(theta * Mathf.Deg2Rad) + Player.transform.position.x, radius * Mathf.Sin(theta * Mathf.Deg2Rad) + Player.transform.position.y, -5);
 		} while (!isValidLocation(location));
 

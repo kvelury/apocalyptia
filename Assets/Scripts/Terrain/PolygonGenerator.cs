@@ -124,6 +124,7 @@ public class PolygonGenerator : MonoBehaviour {
 			mesh.Clear ();
 		Start ();
 		//blocks = null;
+		GameObject.Find("HazardController").GetComponent<HazardControlScript>().SetDifficulty();
 	}
 
 	public int GetDifficulty(){
