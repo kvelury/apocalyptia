@@ -5,6 +5,7 @@ public class RockfallScript : HazardScript {
 
 	private ParticleSystem particleSystem;
 	private SpriteRenderer spriteRender;
+	public AudioClip crash;
 
 	/// <summary>
 	/// The state of the rockfall.
@@ -71,6 +72,8 @@ public class RockfallScript : HazardScript {
 			rockfallState = 2;
 			spriteRender.enabled = false;
 			collider2D.enabled = false;
+			audio.clip = crash;
+			audio.PlayOneShot(audio.clip);
 		}
 	}
 
