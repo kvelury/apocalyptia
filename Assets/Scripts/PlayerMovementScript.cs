@@ -19,7 +19,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// <summary>
 	/// The weapon cool down, in frames.
 	/// </summary>
-	public static float weaponCoolDown = 10;
+	public static float weaponCoolDown = 30;
 
 	/// <summary>
 	/// Checking whether the character is in the process of dodging
