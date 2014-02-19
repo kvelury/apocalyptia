@@ -39,6 +39,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 100000, guid: eecace7165a7d2049aaf76273d21dd02, type: 2}
+  Enemy2: {fileID: 100000, guid: 019a76b7cd1284f448b13cc3cf39fea2, type: 2}
   Player: {fileID: 100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   maxEnemies: 0
   enemyCount: 0

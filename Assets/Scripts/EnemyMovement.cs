@@ -49,7 +49,7 @@ public class EnemyMovement : MonoBehaviour {
 			}
 
 
-			else if(gameObject.name == "Enemy2" /*(Clone)*/){
+			else if(gameObject.name == "Enemy2(Clone)"){
 				//TRICKSY BEHAVIOR GOES HERE!
 				if(Vector3.Distance (Player.transform.position,transform.position) < 10){// || (es.doomEvent == true && Random.Range(0, 10) > 6)){
 					if(chargeTimer < 2){
@@ -81,7 +81,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 
 	void OnDestroy(){
-		if (gameObject.name == "Enemy(Clone)") {
+		if (gameObject.name == "Enemy(Clone)" || gameObject.name == "Enemy2(Clone)") {
 						if (EnemySpawner != null) {
 								es.enemyCount -= 1;
 						}

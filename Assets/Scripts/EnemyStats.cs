@@ -12,6 +12,7 @@ public class EnemyStats : MonoBehaviour {
 	public GameObject Heart;
 	public GameObject HealthLeech;
 	public GameObject MoreHearts;
+	public GameObject ForceField;
 	private GameObject itemDrop;
 	public GameObject Player;
 	public GameObject EnemyParticle;
@@ -27,7 +28,7 @@ public class EnemyStats : MonoBehaviour {
 						maxHP = HP = 40;
 						damage = 10;
 				} 
-		else if (gameObject.name == "Enemy2" /*(Clone)*/) {
+		else if (gameObject.name == "Enemy2(Clone)") {
 			maxHP = HP = 60;
 			damage = 15;
 				}
@@ -38,7 +39,7 @@ public class EnemyStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Vector3.Distance (transform.position, Player.transform.position) > 50) {
+		if (Vector3.Distance (transform.position, Player.transform.position) > 36) {
 			/*Debug.Log ("Enemy Too far away!: Enemy.x = " + transform.position.x + ", Player.x = "
 			           + Player.transform.position.x + ", Enemy.y = " + transform.position.y +
 			           ", Player.y = " + Player.transform.position.y);*/
@@ -54,7 +55,7 @@ public class EnemyStats : MonoBehaviour {
 					GameController.killCount += 1;
 				}
 				}
-				else if(gameObject.name == "Enemy2" /*(Clone)*/){
+				else if(gameObject.name == "Enemy2(Clone)"){
 					pr.fameCount+=20;
 				}
 			}
@@ -73,6 +74,9 @@ public class EnemyStats : MonoBehaviour {
 			}
 			else if (i == 8){
 				itemDrop = Instantiate (HealthLeech, transform.position, new Quaternion(0,0,0,0)) as GameObject;
+			}
+			else if (i == 9){
+				itemDrop = Instantiate (ForceField, transform.position, new Quaternion(0,0,0,0)) as GameObject;
 			}
 			Destroy (gameObject);
 		}

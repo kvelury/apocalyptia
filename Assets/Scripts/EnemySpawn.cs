@@ -4,7 +4,9 @@ using System.Collections;
 public class EnemySpawn : MonoBehaviour {
 	
 	public GameObject Enemy;
+	public GameObject Enemy2;
 	public GameObject Player;
+	GameObject enemyInstance;
 	//private GameObject[] enemies;
 	public int maxEnemies;
 	public int enemyCount;
@@ -38,29 +40,29 @@ public class EnemySpawn : MonoBehaviour {
 		if (!doomEvent) {
 						switch (difficulty) {
 						case 1:
-								maxEnemies = 25;
+								maxEnemies = 15;
 								enemySpawnTime = 20;
 								break;
 						case 2:
-								maxEnemies = 25;
+								maxEnemies = 15;
 								enemySpawnTime = 15;
 								break;
 						case 3:
-								maxEnemies = 30;
+								maxEnemies = 20;
 								enemySpawnTime = 15;
 								break;
 						case 4:
-								maxEnemies = 30;
+								maxEnemies = 20;
 								enemySpawnTime = 10;
 								break;
 						case 5:
-								maxEnemies = 35;
+								maxEnemies = 25;
 								enemySpawnTime = 10;
 								break;
 						}
 				}
 		else {
-			maxEnemies = 40;
+			maxEnemies = 30;
 			enemySpawnTime = 5;
 				}
 		}
@@ -107,12 +109,11 @@ public class EnemySpawn : MonoBehaviour {
 		//spawnLoc.x = Random.Range (-25, worldWidth);
 		//spawnLoc.y = Random.Range (-30, worldHeight);
 		float xDist = 0;
-		while(xDist > -20 && xDist < 20)
-			xDist = Random.Range (-49, 49);
-		
+		while(xDist > -5 && xDist < 5)
+			xDist = Random.Range (-24, 24);
 		float yDist = 0;
-		while(yDist > -20 && yDist < 20)
-			yDist = Random.Range (-49, 49);
+		while(yDist > -5 && yDist < 5)
+			yDist = Random.Range (-24, 24);
 		spawnLoc.x = Player.transform.position.x + xDist;
 		spawnLoc.y = Player.transform.position.y + yDist;
 		//spawnLoc.x = Random.Range (Player.transform.position.x - 10, Player.transform.position.x + 10);
@@ -120,7 +121,12 @@ public class EnemySpawn : MonoBehaviour {
 		//spawnLoc.y = Random.Range (Player.transform.position.y - 10, Player.transform.position.y + 10);
 		//spawnLoc.y = spawnLoc.y * 4;
 		enemyCount++;
-		GameObject enemyInstance = Instantiate (Enemy, spawnLoc, new Quaternion(0,0,0,0)) as GameObject;
+		int x = Random.Range (0,3);
+		if(x > 1)
+			enemyInstance = Instantiate (Enemy2, spawnLoc, new Quaternion(0,0,0,0)) as GameObject;
+		else
+			enemyInstance = Instantiate (Enemy, spawnLoc, new Quaternion(0,0,0,0)) as GameObject;
+		Debug.Log (x);
 		//enemyInstance.GetComponent<LookAtScript>().target = GameObject.Find("Main Camera").transform;
 	}
 }

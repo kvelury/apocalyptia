@@ -33,7 +33,7 @@ function OnGUI(){
 	GUI.depth = drawDepth;
  
 	GUI.DrawTexture(Rect(0, 0, Screen.width, Screen.height), fadeOutTexture);
-	Debug.Log(GUI.color.a);
+	//Debug.Log(GUI.color.a);
 }
  
 //--------------------------------------------------------------------
