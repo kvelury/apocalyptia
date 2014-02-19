@@ -26,6 +26,7 @@ public class RockfallScript : HazardScript {
 		spriteRender = GetComponent<SpriteRenderer>();
 		particleSystem.Pause();
 		spriteRender.enabled = false;
+		collider2D.enabled = false;
 		rockfallState = 0;
 		timeElapsed = 0;
 		velocity = new Vector3(0, 0, 0);
@@ -59,6 +60,7 @@ public class RockfallScript : HazardScript {
 		if (timeElapsed > shadowStageLifetime){
 			rockfallState = 1;
 			spriteRender.enabled = true;
+			collider2D.enabled = true;
 		}
 	}
 
@@ -68,6 +70,7 @@ public class RockfallScript : HazardScript {
 			particleSystem.Play();
 			rockfallState = 2;
 			spriteRender.enabled = false;
+			collider2D.enabled = false;
 		}
 	}
 

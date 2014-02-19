@@ -5240,11 +5240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e154d1c89632347b538f974d0ed09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slash: {fileID: 8300000, guid: 10e9be83cdfece542b0cad73eaad9722, type: 3}
-  velocity: .100000001
-  Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
-  terrain: {fileID: 0}
   pr: {fileID: 0}
+  Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
+  slash: {fileID: 8300000, guid: 10e9be83cdfece542b0cad73eaad9722, type: 3}
+  terrain: {fileID: 0}
+  velocity: .100000001
   isDodging: 0
   dodgeCount: 0
   knockBackTimer: 0
