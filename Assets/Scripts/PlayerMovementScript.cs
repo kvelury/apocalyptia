@@ -192,9 +192,9 @@ public class PlayerMovementScript : MonoBehaviour {
 						if (terrain.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
 		                      Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale)] 
 								== (byte)PolygonGenerator.TileCodes.Water) {
-								velocity = 0.05f + stats.currSpeed;
+								velocity = 0.025f + stats.currSpeed;
 						} else {
-								velocity = 0.1f + stats.currSpeed;
+								velocity = 0.05f + stats.currSpeed;
 						}
 				}
 	}

@@ -941,6 +941,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
+      propertyPath: velocity
+      value: .100000001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   m_RootGameObject: {fileID: 1384526589}
