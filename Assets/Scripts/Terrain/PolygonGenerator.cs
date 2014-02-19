@@ -45,13 +45,21 @@ public class PolygonGenerator : MonoBehaviour {
 	protected Mesh mesh;
 
 	//variables to pick apart the sprite sheet
-	protected const float tUnit = 0.20f; //percentage of the width of the image of one tile
+	protected const float tUnit = 1.0f/16.0f; //percentage of the width of the image of one tile
+	/*
     protected readonly Vector2 Grass    = new Vector2(3, 0);
 	protected readonly Vector2 Stone    = new Vector2(1, 0);
 	protected readonly Vector2 Water    = new Vector2(2, 0);
 	protected readonly Vector2 Sand     = new Vector2(0, 0);
 	protected readonly Vector2 Dirt     = new Vector2(4, 0);
-	public enum TileCodes : byte {Grass, DryGrass, Stone, Water, Sand, Dirt};
+	*/
+	protected readonly Vector2 Water     = new Vector2( 1, 1);
+	protected readonly Vector2 Stone     = new Vector2( 4, 1);
+	protected readonly Vector2 Radiation = new Vector2( 7, 1);
+	protected readonly Vector2 Sand      = new Vector2(10, 1);
+	protected readonly Vector2 Grass     = new Vector2( 5, 5);//junk: replace with actua later
+	protected readonly Vector2 Dirt      = new Vector2( 9, 1);//junk: replace with actua later
+	public enum TileCodes : byte {Water, Stone, Radiation, Sand, Grass, Dirt};
 
 	protected int squareCount = 0;
 
@@ -159,11 +167,13 @@ public class PolygonGenerator : MonoBehaviour {
 		newTriangles.Add((squareCount*4)+1);
 		newTriangles.Add((squareCount*4)+2);
 		newTriangles.Add((squareCount*4)+3);
-		
-		newUV.Add(new Vector2 (tUnit * texture.x, tUnit * texture.y + tUnit));
-		newUV.Add(new Vector2 (tUnit * texture.x + tUnit, tUnit * texture.y + tUnit));
-		newUV.Add(new Vector2 (tUnit * texture.x + tUnit, tUnit * texture.y));
-		newUV.Add(new Vector2 (tUnit * texture.x, tUnit * texture.y));
+
+		//modify it by a tiny bit to stop grabbing parts of other tiles.
+		float aLittleBit = 0.0005f;
+		newUV.Add(new Vector2 (tUnit * texture.x + aLittleBit        , tUnit * texture.y + tUnit - aLittleBit));
+		newUV.Add(new Vector2 (tUnit * texture.x + tUnit - aLittleBit, tUnit * texture.y + tUnit - aLittleBit));
+		newUV.Add(new Vector2 (tUnit * texture.x + tUnit - aLittleBit, tUnit * texture.y + aLittleBit));
+		newUV.Add(new Vector2 (tUnit * texture.x + aLittleBit        , tUnit * texture.y + aLittleBit));
 
 		squareCount++;
 	}
@@ -184,23 +194,28 @@ public class PolygonGenerator : MonoBehaviour {
 		for(int px = 0; px < blocks.GetLength (0); px++){
 			for(int py = 0; py < blocks.GetLength (1); py++){
 				switch(blocks[px, py]){
-				//case (byte)TileCodes.DryGrass:
-				//	GenSquare(px, py, DryGrass);
-				//	break;
 				case (byte)TileCodes.Grass:
-					GenSquare(px, py, Grass);
+					//GenSquare(px, py, Grass);
+					SandOffset(px, py, Grass);
 					break;
 				case (byte)TileCodes.Stone:
-					GenSquare(px, py, Stone);
+					//GenSquare(px, py, Stone);
+					SandOffset(px, py, Stone);
 					break;
 				case (byte)TileCodes.Water:
-					GenSquare(px, py, Water);
+					//GenSquare(px, py, Water);
+					SandOffset(px, py, Water);
 					break;
 				case (byte)TileCodes.Sand:
 					GenSquare (px, py, Sand);
 					break;
 				case (byte)TileCodes.Dirt:
-					GenSquare (px, py, Dirt);
+					//GenSquare (px, py, Dirt);
+					SandOffset(px, py, Dirt);
+					break;
+				case (byte)TileCodes.Radiation:
+					//gen radiation
+					StoneOffset(px, py, Radiation);
 					break;
 				}
 			}
@@ -282,11 +297,45 @@ public class PolygonGenerator : MonoBehaviour {
 		mesh.tangents = tangents;
 	}
 
+	protected void SandOffset(int px, int py, Vector2 start){
+		Vector2 assignedTexture = new Vector2(start.x, start.y);
+		if (blocks [Mathf.Min(px + 1, gridWidth - 1), py] == (byte)TileCodes.Sand) {
+			assignedTexture.x++;
+		}
+		if(blocks[Mathf.Max (px - 1, 0), py] == (byte)TileCodes.Sand){
+			assignedTexture.x--;
+		}
+		if(blocks[px, Mathf.Min (py + 1, gridHeight - 1)] == (byte)TileCodes.Sand){
+			assignedTexture.y++;
+		}
+		if(blocks[px, Mathf.Max (py - 1, 0)] == (byte)TileCodes.Sand){
+			assignedTexture.y--;
+		}
+		GenSquare (px, py, assignedTexture);
+	}
+
+	protected void StoneOffset(int px, int py, Vector2 start){
+		Vector2 assignedTexture = new Vector2(start.x, start.y);
+		if (blocks [Mathf.Min(px + 1, gridWidth - 1), py] == (byte)TileCodes.Stone) {
+			assignedTexture.x++;
+		}
+		if(blocks[Mathf.Max (px - 1, 0), py] == (byte)TileCodes.Stone){
+			assignedTexture.x--;
+		}
+		if(blocks[px, Mathf.Min (py + 1, gridHeight - 1)] == (byte)TileCodes.Stone){
+			assignedTexture.y++;
+		}
+		if(blocks[px, Mathf.Max (py - 1, 0)] == (byte)TileCodes.Stone){
+			assignedTexture.y--;
+		}
+		GenSquare (px, py, assignedTexture);
+	}
+
 	protected virtual void AddResources(){
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				//add trees
-				if(/*blocks[i,j] == (byte)TileCodes.DryGrass ||  */blocks[i,j] == (byte)TileCodes.Grass){
+				if(blocks[i,j] == (byte)TileCodes.Grass){
 					Vector3 location = new Vector3(worldScale * i + this.transform.localPosition.x + worldScale * 0.5f,
 					                               worldScale * j + this.transform.localPosition.y - worldScale * 0.5f,
 					                               0.49f);

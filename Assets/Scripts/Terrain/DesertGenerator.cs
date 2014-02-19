@@ -11,11 +11,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class DesertGenerator : PolygonGenerator {
-	private float waterThreshold;
-	private float grassThreshold;
-	//private float dirtThreshold;
-	private float mountainThreshold;
-
 	/*
 	// Use this for initialization
 	public override void Start () {
@@ -49,10 +44,9 @@ public class DesertGenerator : PolygonGenerator {
 
 
 	protected override void GenTerrain(){
-		waterThreshold = 0.15f + 0.1f * difficulty;
-		grassThreshold = 0.20f + 0.1f * difficulty;
-		//dirtThreshold = 0.22f + 2 * difficulty;
-		mountainThreshold = 0.80f;
+		float radiationThreshold = 0.15f + 0.1f * difficulty;//this value and below is radioactive
+		float stoneThreshold = 0.20f + 0.1f * difficulty;//this value and below is stone
+		float sandThreshold = 0.80f;//this value and below is sand, above is water
 		blocks = new byte[gridWidth, gridHeight];
 		//xStart = 913;//Random.Range (-1000, 1000);
 		//yStart = -722;//Random.Range (-1000, 1000);
@@ -63,14 +57,14 @@ public class DesertGenerator : PolygonGenerator {
 				//assign values based on this number
 				
 				float elevation = elevationMap[px, py];
-				if(elevation < waterThreshold){//low elevation
-					blocks[px, py] = (byte)TileCodes.Water;
-				}else if(elevation >= waterThreshold && elevation < grassThreshold){
-					blocks[px, py] = (byte)TileCodes.Grass;
-				}else if(elevation >= grassThreshold && elevation < mountainThreshold){//middle elevation
+				if(elevation < radiationThreshold){//low elevation
+					blocks[px, py] = (byte)TileCodes.Radiation;
+				}else if(elevation >= radiationThreshold && elevation < stoneThreshold){
+					blocks[px, py] = (byte)TileCodes.Stone;
+				}else if(elevation >= stoneThreshold && elevation < sandThreshold){//middle elevation
 					blocks[px, py] = (byte)TileCodes.Sand;
 				}else{//high elevation
-					blocks[px, py] = (byte)TileCodes.Stone;
+					blocks[px, py] = (byte)TileCodes.Water;
 				}
 			}
 		}
