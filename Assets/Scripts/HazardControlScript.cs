@@ -61,9 +61,15 @@ public class HazardControlScript : MonoBehaviour {
 		if (hazards.Count < maxHazards){
 			//check a random chance against the spawn rate
 			//this makes it more likely for a hazard to spawn as time goes on
-			float result = Random.Range(0, hazardSpawnRate - timeSinceLastHazard);
-			if (result < 1){
-				SpawnHazard();
+//			float result = Random.Range(0, hazardSpawnRate - timeSinceLastHazard);
+//			if (result < 1){
+//				SpawnHazard();
+//			}
+			if (timeSinceLastHazard > hazardSpawnRate){
+				float result = Random.Range(0, hazardSpawnRate);
+				if (result < 10){
+					SpawnHazard();
+				}
 			}
 		}
 		//		Debug.Log("Hazard Count: " + hazards.Count.ToString());
@@ -146,7 +152,8 @@ public class HazardControlScript : MonoBehaviour {
 		currentApocalypse = terrain.apocalypseType;
 		difficulty  = GameObject.Find("EnemySpawner").GetComponent<EnemySpawn>().difficulty;
 //		Debug.Log ("Difficulty: " + difficulty.ToString());
-		maxHazards = difficulty * 2 + 5;
-		hazardSpawnRate = 60 * (5 - difficulty);
+		maxHazards = difficulty * 5 + 5;
+		hazardSpawnRate = 60 * (6 - difficulty) + 15;
+		Debug.Log("Spawn Rate: " + hazardSpawnRate.ToString());
 	}
 }
