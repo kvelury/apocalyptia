@@ -10,6 +10,9 @@ public class EndGameScript : MonoBehaviour {
 	public float finaleTimer;
 	public bool isEndGame;
 	public bool winCond;
+	private bool onetoggle;
+	public AudioClip beep;
+	public AudioClip endSound;
 	// Use this for initialization
 	void Start () {
 		player = GameObject.Find ("Player");
@@ -27,6 +30,11 @@ public class EndGameScript : MonoBehaviour {
 			isEndGame = true;
 		}
 		if (winCond) {
+			if(!onetoggle){
+				audio.clip = endSound;
+				audio.PlayOneShot (endSound);
+				onetoggle = true;
+			}
 			timer = 60;
 			Camera.main.BroadcastMessage ("fadeOut");			
 			finaleTimer++;
@@ -40,15 +48,17 @@ public class EndGameScript : MonoBehaviour {
 		if (Input.GetKeyDown ("e")) {
 			isEndGame = true;
 			timer = 60;
-				}
+		}
 		if (isEndGame) {
 			es.doomEvent = true;
 			time+=Time.deltaTime;
-			while(time > 1){
+			while(time > 1 && time < 60){
 				//This block is if we want to adjust the rate of the clock.
+				audio.clip = beep;
+				audio.PlayOneShot (beep);
 				time -= 1;
 				timer += 1;
-				Debug.Log (timer);
+				//Debug.Log (timer);
 			}
 			if(timer >= 60){
 				winCond = true;
