@@ -7,6 +7,7 @@ public class EndGameScript : MonoBehaviour {
 	public EndGameHUD egh;
 	public float timer;
 	public float time;
+	public float finaleTimer;
 	public bool isEndGame;
 	public bool winCond;
 	// Use this for initialization
@@ -25,9 +26,21 @@ public class EndGameScript : MonoBehaviour {
 				Debug.Log ("Endgame started. Brace yourself!");
 			isEndGame = true;
 		}
+		if (winCond) {
+			timer = 60;
+			Camera.main.BroadcastMessage ("fadeOut");			
+			finaleTimer++;
+			if(finaleTimer > 120){
+				Application.LoadLevel ("WinScene");
+			}
+		}
 	}
+
 	void FixedUpdate(){
-		
+		if (Input.GetKeyDown ("e")) {
+			isEndGame = true;
+			timer = 60;
+				}
 		if (isEndGame) {
 			es.doomEvent = true;
 			time+=Time.deltaTime;
@@ -39,9 +52,10 @@ public class EndGameScript : MonoBehaviour {
 			}
 			if(timer >= 60){
 				winCond = true;
-				Debug.Log ("Conglaturation!");
-				//Put score-saving here.
-				Application.LoadLevel ("WinScene");
+				//Time.timeScale = 0.0f;
+				player.GetComponent<PlayerResources>().mercyTimer = 0;
+				//Debug.Log ("Conglaturation!");
+				Camera.main.SendMessage ("fadeOut");
 			}
 		}
 	}

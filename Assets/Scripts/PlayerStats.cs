@@ -125,7 +125,7 @@ public class PlayerStats : MonoBehaviour {
 				inv[12] = 1;
 				Destroy (col.gameObject);
 			}
-			else if(col.gameObject.name == "ForceField(Clone"){
+			else if(col.gameObject.name == "ForceField(Clone)"){
 				inv[16] = 1;
 				Destroy (col.gameObject);
 			}
