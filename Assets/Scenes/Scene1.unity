@@ -184,19 +184,19 @@ Prefab:
     - target: {fileID: 2300000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 8aef305aa24d2d44ab52fc3351c4f647, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: a70342ba67d8db44780564f766baeca1, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 400020, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_LocalPosition.y
       value: -.0638122559
@@ -207,7 +207,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .00130208337
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
@@ -672,6 +672,7 @@ GameObject:
   - 114: {fileID: 444190774}
   - 114: {fileID: 444190775}
   - 114: {fileID: 444190776}
+  - 82: {fileID: 444190777}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -785,6 +786,8 @@ MonoBehaviour:
   closeLid: {fileID: 2800000, guid: b97b94af8b07b124ea7a43ff35ef108f, type: 3}
   openLid: {fileID: 2800000, guid: fe97547dbc5bb9b4e8d4da2b4749d751, type: 3}
   currLid: {fileID: 0}
+  flipOpen: {fileID: 8300000, guid: dec41a720bc21b9498c5072027e9736d, type: 3}
+  click: {fileID: 8300000, guid: e1c47264654c2ff4c89ed957404eb644, type: 3}
 --- !u!114 &444190776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -799,6 +802,64 @@ MonoBehaviour:
   display: 0
   endgameobj: {fileID: 0}
   player: {fileID: 0}
+--- !u!82 &444190777
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 444190767}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1001 &445858590
 Prefab:
   m_ObjectHideFlags: 0
@@ -5114,10 +5175,10 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
-  - {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
-  - {fileID: 2100000, guid: 8aef305aa24d2d44ab52fc3351c4f647, type: 2}
-  - {fileID: 2100000, guid: a70342ba67d8db44780564f766baeca1, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -8695,7 +8756,7 @@ Transform:
   m_PrefabInternal: {fileID: 64729663}
   m_GameObject: {fileID: 2075333025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .00130208337, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1352344432}
