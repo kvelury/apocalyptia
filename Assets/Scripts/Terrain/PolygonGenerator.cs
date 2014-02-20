@@ -314,6 +314,7 @@ public class PolygonGenerator : MonoBehaviour {
 		mesh.tangents = tangents;
 	}
 
+	/*
 	protected void SandOffset(int px, int py, Vector2 start){
 		Vector2 assignedTexture = new Vector2(start.x, start.y);
 		if (blocks [Mathf.Min(px + 1, gridWidth - 1), py] == (byte)TileCodes.Sand) {
@@ -346,22 +347,60 @@ public class PolygonGenerator : MonoBehaviour {
 			assignedTexture.y--;
 		}
 		GenSquare (px, py, assignedTexture);
-	}
+	}*/
 
 	protected void TileOffset(int px, int py, Vector2 start, TileCodes type){
 		Vector2 assignedTexture = new Vector2(start.x, start.y);
+		int bumps = 0;
 		if (blocks [Mathf.Min(px + 1, gridWidth - 1), py] == (byte)type) {
 			assignedTexture.x++;
+			++bumps;
 		}
 		if(blocks[Mathf.Max (px - 1, 0), py] == (byte)type){
 			assignedTexture.x--;
+			++bumps;
 		}
 		if(blocks[px, Mathf.Min (py + 1, gridHeight - 1)] == (byte)type){
 			assignedTexture.y++;
+			++bumps;
 		}
 		if(blocks[px, Mathf.Max (py - 1, 0)] == (byte)type){
 			assignedTexture.y--;
+			++bumps;
 		}
+		//if bumps == 0, it is either right where it is, or it is an inner corner
+		//if bumps == 1 or 2, it should be right where it is
+		//if bumps == 3, it is a  corner surrounded on 3 sides by the border texture
+		//if bumps == 4, it is a single tile surrounded on all sides by its border
+		/*
+		if (bumps == 0) {
+			//check if it is an inner corner
+			if(blocks[Mathf.Min (px + 1, gridWidth - 1), Mathf.Min (py + 1, gridHeight - 1)] != blocks[px, py]){
+				assignedTexture.x--;
+				assignedTexture.y--;
+				GenSquare (px, py, assignedTexture);
+				return;
+			}
+			if(blocks[Mathf.Min (px + 1, gridWidth - 1), Mathf.Max (py - 1, 0)             ] != blocks[px, py]){
+				assignedTexture.x--;
+				assignedTexture.y++;
+				GenSquare (px, py, assignedTexture);
+				return;
+			}
+			if(blocks[Mathf.Max (px - 1, 0)            , Mathf.Min (py + 1, gridHeight - 1)] != blocks[px, py]){
+				assignedTexture.x++;
+				assignedTexture.y--;
+				GenSquare (px, py, assignedTexture);
+				return;
+			}
+			if(blocks[Mathf.Max (px - 1, 0)            , Mathf.Max (py - 1, 0)             ] != blocks[px, py]){
+				assignedTexture.x++;
+				assignedTexture.y++;
+				GenSquare (px, py, assignedTexture);
+				return;
+			}
+		}
+		*/
 		GenSquare (px, py, assignedTexture);
 	}
 
