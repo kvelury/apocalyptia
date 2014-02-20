@@ -68,6 +68,7 @@ public class HazardControlScript : MonoBehaviour {
 			if (timeSinceLastHazard > hazardSpawnRate){
 				float result = Random.Range(0, hazardSpawnRate);
 				if (result < 10){
+					//Debug.Log ("Spawning hazard # " + hazards.Count);
 					SpawnHazard();
 				}
 			}
@@ -78,13 +79,16 @@ public class HazardControlScript : MonoBehaviour {
 	private void SpawnHazard(){
 		//spawn a hazard based on apocalypse
 		Vector3 location;
-
+		int i = 0;
 		//check for a proper location - ie a whirlpool is actually on a water tile
 		do{
+			i++;
+			//Debug.Log (i);
 			float theta, radius;
 			theta = Random.Range (0, 360);
 			radius = Random.Range (0, 10);
 			location = new Vector3(radius * Mathf.Cos(theta * Mathf.Deg2Rad) + Player.transform.position.x, radius * Mathf.Sin(theta * Mathf.Deg2Rad) + Player.transform.position.y, -5);
+			if(i > 5) break;
 		} while (!isValidLocation(location));
 
 		switch (currentApocalypse){
