@@ -84,8 +84,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Enemy") {
 			Vector3 direction = (transform.position - col.gameObject.transform.position).normalized;
-			movement = Quaternion.Euler (0,0,-45) * (0.5F * velocity*direction);
-			knockBackTimer = 0;
+			movement = Quaternion.Euler (0,0,0/*-45*/) * (2.5F * velocity*direction);
+			knockBackTimer = 20;
 			ChangeToRed();
 		} else if (col.gameObject.tag == "DamagingHazard"){
 			GetComponent<PlayerResources>().healthCount -= 10;

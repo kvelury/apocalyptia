@@ -74,8 +74,9 @@ public class EnemyMovement : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D col){
 		if (col.gameObject.tag == "Weapon") {
-			movement.x = -2F*movement.x;
-			movement.y = -2F*movement.y;
+			//movement.x = -2F*movement.x;
+			//movement.y = -2F*movement.y;
+			movement = -5f * (Player.transform.position - transform.position).normalized;
 			timer = 40;
 		}
 	}

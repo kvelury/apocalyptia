@@ -207,7 +207,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .00130208337
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
@@ -1013,6 +1013,14 @@ Prefab:
     - target: {fileID: 11400006, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: velocity
       value: .100000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
+      propertyPath: m_Intensity
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
+      propertyPath: m_Shadows.m_Type
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
@@ -6987,7 +6995,7 @@ Light:
   serializedVersion: 3
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2.5
+  m_Intensity: 1.5
   m_Range: 160
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -8777,7 +8785,7 @@ Transform:
   m_PrefabInternal: {fileID: 64729663}
   m_GameObject: {fileID: 2075333025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .00130208337, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1352344432}
