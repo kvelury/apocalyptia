@@ -81,10 +81,10 @@ public class GameFlowController : MonoBehaviour {
 		//create the proper new apocalypse
 		switch (rand) {
 			case 0:
-				currentApocalypse = (GameObject)Instantiate (desertApocalypse, new Vector3 (0, 0, 1), new Quaternion (0, 0, 0, 0));
+				currentApocalypse = (GameObject)Instantiate (desertApocalypse, new Vector3 (0, 0, .28f), new Quaternion (0, 0, 0, 0));
 				break;
 			case 1:
-				currentApocalypse = (GameObject)Instantiate (floodApocalypse, new Vector3 (0, 0, 1), new Quaternion (0, 0, 0, 0));
+				currentApocalypse = (GameObject)Instantiate (floodApocalypse, new Vector3 (0, 0, .28f), new Quaternion (0, 0, 0, 0));
 				break;
 		}
 		for (int i = 0; i < 20; i++) {
