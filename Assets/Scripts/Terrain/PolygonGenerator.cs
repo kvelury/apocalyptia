@@ -472,6 +472,7 @@ public class PolygonGenerator : MonoBehaviour {
 		}*/
 		//Temorary fix.
 		player = GameObject.Find ("Player");
+		/*
 		bool safe = false;
 		while (!safe) {
 			//player.transform.Translate (-player.transform.position.x, -player.transform.position.y, 0);
@@ -485,6 +486,8 @@ public class PolygonGenerator : MonoBehaviour {
 			}
 			else Debug.Log ("InWater, moving");
 		}
+		*/
+		player.transform.position = new Vector3 (150, 150, 0);
 	}
 	//Cloned from GameFlowController, since it's private.
 	private void DespawnOldResources(){
@@ -498,7 +501,6 @@ public class PolygonGenerator : MonoBehaviour {
 		for (int i = 0; i < stones.Length; i++) {
 			Destroy (stones[i]);
 		}
-		Debug.Log ("GameFlowController.DespawnOldResources() not implemented");
 	}
 
 }

@@ -69,13 +69,12 @@ public class GameFlowController : MonoBehaviour {
 			}
 		}
 		//pick the new one
-		int rand = Mathf.RoundToInt(Random.Range (0, 100)) % 2;
 		//avoid repeat apocalypses
-
+		int rand = Mathf.RoundToInt(Random.Range (0, 100)) % 2;
 		if(currentApocalypse != null){
-			if (rand == (int)currentApocalypse.GetComponent<PolygonGenerator>().apocalypseType) {
-				rand++;
-				rand = rand % 2;
+			int targetToAvoid = (int)currentApocalypse.GetComponent<PolygonGenerator> ().apocalypseType;
+			while (rand == targetToAvoid) {
+				rand = Mathf.RoundToInt(Random.Range (0, 100)) % 2;
 			}
 		}
 
@@ -142,9 +141,8 @@ public class GameFlowController : MonoBehaviour {
 			Destroy (trees[i]);
 		}
 	
-	for (int i = 0; i < stones.Length; i++) {
-		Destroy (stones[i]);
-	}
-		Debug.Log ("GameFlowController.DespawnOldResources() not implemented");
+		for (int i = 0; i < stones.Length; i++) {
+			Destroy (stones[i]);
+		}
 	}
 }

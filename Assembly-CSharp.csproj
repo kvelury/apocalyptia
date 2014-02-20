@@ -231,7 +231,6 @@
      <Compile Include="Assets\Daikon Forge\Tweening\Scripts\dfTweenVector3.cs" />
      <Compile Include="Assets\Daikon Forge\Tweening\Scripts\dfTweenVector4.cs" />
      <Compile Include="Assets\FogOfWar\FogOfWarPlayer.cs" />
-     <Compile Include="Assets\GameFlowController.cs" />
      <Compile Include="Assets\Scripts\BigRedButtonScript.cs" />
      <Compile Include="Assets\Scripts\BulletScript.cs" />
      <Compile Include="Assets\Scripts\CameraControl.cs" />
@@ -241,6 +240,7 @@
      <Compile Include="Assets\Scripts\EnemySpawn.cs" />
      <Compile Include="Assets\Scripts\EnemyStats.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\GameFlowController.cs" />
      <Compile Include="Assets\Scripts\GameOverEvents.cs" />
      <Compile Include="Assets\Scripts\GameplayEvents.cs" />
      <Compile Include="Assets\Scripts\HazardControlScript.cs" />

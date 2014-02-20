@@ -49,7 +49,7 @@
      <Compile Include="Assets\Scripts\FadeInOut.js" />
      <Compile Include="Assets\Scripts\NYI\ClickToDelete.js" />
      <Compile Include="Assets\Scripts\NYI\DeprecatedWASDMovement.js" />
-     <Compile Include="Assets\edgeCollide.js" />
+     <Compile Include="Assets\Scripts\edgeCollide.js" />
      <None Include="Assets\Standard Assets\Projectors\Guidelines.txt" />
      <None Include="Assets\Daikon Forge\Examples\Skins\Fantasy\Fonts\Open Sans\Heiro-OpenSans-Regular-24px.fnt" />
      <None Include="Assets\Standard Assets\Projectors\Sources\Shaders\Projector Multiply.shader" />
