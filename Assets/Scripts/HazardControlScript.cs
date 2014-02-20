@@ -3,37 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class HazardControlScript : MonoBehaviour {
-
+	
 	/// <summary>
 	/// The reference to the Player.
 	/// </summary>
 	private GameObject Player;
 	private PolygonGenerator terrain;
-
+	
 	private List<GameObject> hazards;
 	private List<GameObject> deadHazards;
-
+	
 	private ApocalypseType currentApocalypse;
 	private int difficulty;
-
+	
 	private int maxHazards = 0;
 	private int currHazards;
-
+	
 	private float hazardSpawnRate;
 	private float timeSinceLastHazard;
-
+	private bool needToSpawn;
+	
 	public ParticleSystem rockfall;
 	
 	// Use this for initialization
 	void Start () {
-//		Debug.Log ("Hazard Generator Activating");
+		//		Debug.Log ("Hazard Generator Activating");
 		Player = GameObject.Find("Player");
 		terrain = (PolygonGenerator) GameObject.Find("GameController").GetComponent<GameFlowController>().currentApocalypse.GetComponent<PolygonGenerator>();
 		SetDifficulty();
 		timeSinceLastHazard = 0;
-
-//		Debug.Log("MaxHazards: " + maxHazards.ToString());
-
+		needToSpawn = false;
+		
+		//		Debug.Log("MaxHazards: " + maxHazards.ToString());
+		
 		hazards = new List<GameObject>();
 		deadHazards = new List<GameObject>();
 	}
@@ -41,9 +43,9 @@ public class HazardControlScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		timeSinceLastHazard++;
-
+		
 		//find and destroy all spent particle systems
-        //Debug.Log("Count: " + hazards.Count);
+		//Debug.Log("Count: " + hazards.Count);
 		foreach (GameObject g in hazards){
 			HazardScript hazardScript = g.GetComponent<HazardScript>();
 			//Debug.Log("isAlive? " + hazardScript.isAlive);
@@ -57,25 +59,22 @@ public class HazardControlScript : MonoBehaviour {
 			hazards.Remove(g);
 		}
 		deadHazards.Clear();
-
+		
 		if (hazards.Count < maxHazards){
 			//check a random chance against the spawn rate
 			//this makes it more likely for a hazard to spawn as time goes on
-//			float result = Random.Range(0, hazardSpawnRate - timeSinceLastHazard);
-//			if (result < 1){
-//				SpawnHazard();
-//			}
+			//			}
 			if (timeSinceLastHazard > hazardSpawnRate){
 				float result = Random.Range(0, hazardSpawnRate);
 				if (result < 10){
 					//Debug.Log ("Spawning hazard # " + hazards.Count);
-					SpawnHazard();
+					needToSpawn = true;				
 				}
 			}
 		}
 		//		Debug.Log("Hazard Count: " + hazards.Count.ToString());
 	}
-
+	
 	private void SpawnHazard(){
 		//spawn a hazard based on apocalypse
 		Vector3 location;
@@ -90,7 +89,7 @@ public class HazardControlScript : MonoBehaviour {
 			location = new Vector3(radius * Mathf.Cos(theta * Mathf.Deg2Rad) + Player.transform.position.x, radius * Mathf.Sin(theta * Mathf.Deg2Rad) + Player.transform.position.y, -5);
 			if(i > 5) break;
 		} while (!isValidLocation(location));
-
+		
 		switch (currentApocalypse){
 		case ApocalypseType.Desert:
 			//spawn a dust devil
@@ -110,27 +109,27 @@ public class HazardControlScript : MonoBehaviour {
 		default:
 			break;
 		}
-
+		
 		//Debug.Log("Hazard Spawned");
 		timeSinceLastHazard = 0;
 		//currHazards++;
 	}
-
+	
 	public bool isValidLocation(Vector3 location){
 		bool returnVal;
 		byte currTile;
-
-//		Debug.Log ("Location: " + new Vector3(Mathf.CeilToInt(location.x / PolygonGenerator.worldScale - 1),
-//		                                      Mathf.CeilToInt(location.y / PolygonGenerator.worldScale), 0).ToString());
-//		Debug.Log ("Player Location: " + new Vector3(Mathf.CeilToInt(Player.transform.position.x / PolygonGenerator.worldScale - 1),
-//		                                      Mathf.CeilToInt(Player.transform.position.y / PolygonGenerator.worldScale), 0).ToString());
+		
+		//		Debug.Log ("Location: " + new Vector3(Mathf.CeilToInt(location.x / PolygonGenerator.worldScale - 1),
+		//		                                      Mathf.CeilToInt(location.y / PolygonGenerator.worldScale), 0).ToString());
+		//		Debug.Log ("Player Location: " + new Vector3(Mathf.CeilToInt(Player.transform.position.x / PolygonGenerator.worldScale - 1),
+		//		                                      Mathf.CeilToInt(Player.transform.position.y / PolygonGenerator.worldScale), 0).ToString());
 		try {
 			currTile = terrain.blocks[Mathf.CeilToInt(location.x / PolygonGenerator.worldScale - 1),
-			                               Mathf.CeilToInt(location.y / PolygonGenerator.worldScale)];
+			                          Mathf.CeilToInt(location.y / PolygonGenerator.worldScale)];
 		} catch(UnityException e){
 			return false;
 		}
-
+		
 		switch (currentApocalypse){
 		case ApocalypseType.Default:
 			returnVal = true;
@@ -148,14 +147,21 @@ public class HazardControlScript : MonoBehaviour {
 			returnVal = true;
 			break;
 		}
-
+		
 		return returnVal;
+	}
+	
+	void FixedUpdate(){
+		if (needToSpawn){
+			SpawnHazard();
+			needToSpawn = false;
+		}
 	}
 	
 	public void SetDifficulty(){
 		currentApocalypse = terrain.apocalypseType;
 		difficulty  = GameObject.Find("EnemySpawner").GetComponent<EnemySpawn>().difficulty;
-//		Debug.Log ("Difficulty: " + difficulty.ToString());
+		//		Debug.Log ("Difficulty: " + difficulty.ToString());
 		maxHazards = difficulty * 5 + 5;
 		hazardSpawnRate = 300 - (30 * difficulty);
 		Debug.Log("Spawn Rate: " + hazardSpawnRate.ToString());
