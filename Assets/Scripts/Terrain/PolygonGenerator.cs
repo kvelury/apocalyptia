@@ -57,7 +57,7 @@ public class PolygonGenerator : MonoBehaviour {
 	protected readonly Vector2 Stone     = new Vector2( 4, 1);
 	protected readonly Vector2 Radiation = new Vector2( 7, 1);
 	protected readonly Vector2 Sand      = new Vector2(10, 1);
-	protected readonly Vector2 Grass     = new Vector2( 5, 5);//junk: replace with actua later
+	protected readonly Vector2 Grass     = new Vector2( 0, 12);//junk: replace with actua later
 	protected readonly Vector2 Dirt      = new Vector2( 9, 1);//junk: replace with actua later
 	public enum TileCodes : byte {Water, Stone, Radiation, Sand, Grass, Dirt};
 
@@ -73,15 +73,26 @@ public class PolygonGenerator : MonoBehaviour {
 	protected bool firstInit = true;
 
 
+	protected readonly Vector2[] safeSpawnSeeds = { new Vector2( 8739, 5922),
+	                                       new Vector2( 3342, 6371),
+										   new Vector2( 5562, 9140),
+	            						   new Vector2( 3526, 2741),
+										   new Vector2( 8834, 5377),
+										   new Vector2(  335, 5163)
+	                                      };
+
 	// Use this for initialization
 	public virtual void Start () {
 		SetType ();
 		mesh = GetComponent<MeshFilter>().mesh;
 		//set the seed if necessary, ignored if this is called by increasing difficulty instead
 		if (firstInit) {
-			xStart = Random.Range (0, 10000);
-			yStart = Random.Range (0, 10000);
-			//firstInit = false;
+			//xStart = Random.Range (0, 10000);
+			//yStart = Random.Range (0, 10000);
+			int rand = Mathf.RoundToInt(Random.Range (0, 5));
+			Vector2 startvec = safeSpawnSeeds[rand];
+			xStart = startvec.x;
+			yStart = startvec.y;
 		}
 		GenTerrain ();
 		BuildMesh ();
