@@ -70,7 +70,15 @@ public class GameFlowController : MonoBehaviour {
 		}
 		//pick the new one
 		int rand = Mathf.RoundToInt(Random.Range (0, 100)) % 2;
-		Debug.Log (rand);
+		//avoid repeat apocalypses
+
+		if(currentApocalypse != null){
+			if (rand == (int)currentApocalypse.GetComponent<PolygonGenerator>().apocalypseType) {
+				rand++;
+				rand = rand % 2;
+			}
+		}
+
 		//create the proper new apocalypse
 		switch (rand) {
 			case 0:

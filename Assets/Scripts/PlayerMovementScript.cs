@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class PlayerMovementScript : MonoBehaviour {
 	
@@ -163,12 +164,16 @@ public class PlayerMovementScript : MonoBehaviour {
 			weaponCoolTimer++;
 		}
 		if (knockBackTimer > 30) {
-			if (terrain.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
-			                    Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale)] 
-			    == (byte)PolygonGenerator.TileCodes.Water) {
-				velocity = 0.025f + stats.currSpeed;
-			} else {
-				velocity = 0.05f + stats.currSpeed;
+			try{
+				if (terrain.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
+			                    	Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale)] 
+			    	== (byte)PolygonGenerator.TileCodes.Water) {
+					velocity = 0.025f + stats.currSpeed;
+				} else {
+					velocity = 0.05f + stats.currSpeed;
+				}
+			}catch (IndexOutOfRangeException e){//player has gone through the smoke
+				pr.healthCount -= 9999999999;
 			}
 		}
 	}
