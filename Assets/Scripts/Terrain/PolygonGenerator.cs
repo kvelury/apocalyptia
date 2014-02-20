@@ -197,26 +197,31 @@ public class PolygonGenerator : MonoBehaviour {
 				switch(blocks[px, py]){
 				case (byte)TileCodes.Grass:
 					//GenSquare(px, py, Grass);
-					SandOffset(px, py, Grass);
+					//SandOffset(px, py, Grass);
+					TileOffset (px, py, Grass, TileCodes.Sand);
 					break;
 				case (byte)TileCodes.Stone:
 					//GenSquare(px, py, Stone);
-					SandOffset(px, py, Stone);
+					//SandOffset(px, py, Stone);
+					TileOffset (px, py, Stone, TileCodes.Sand);
 					break;
 				case (byte)TileCodes.Water:
 					//GenSquare(px, py, Water);
-					SandOffset(px, py, Water);
+					//SandOffset(px, py, Water);
+					TileOffset (px, py, Water, TileCodes.Sand);
 					break;
 				case (byte)TileCodes.Sand:
 					GenSquare (px, py, Sand);
 					break;
 				case (byte)TileCodes.Dirt:
 					//GenSquare (px, py, Dirt);
-					SandOffset(px, py, Dirt);
+					//SandOffset(px, py, Dirt);
+					TileOffset (px, py, Dirt, TileCodes.Sand);
 					break;
 				case (byte)TileCodes.Radiation:
 					//gen radiation
-					StoneOffset(px, py, Radiation);
+					//StoneOffset(px, py, Radiation);
+					TileOffset (px, py, Radiation, TileCodes.Stone);
 					break;
 				}
 			}
@@ -327,6 +332,23 @@ public class PolygonGenerator : MonoBehaviour {
 			assignedTexture.y++;
 		}
 		if(blocks[px, Mathf.Max (py - 1, 0)] == (byte)TileCodes.Stone){
+			assignedTexture.y--;
+		}
+		GenSquare (px, py, assignedTexture);
+	}
+
+	protected void TileOffset(int px, int py, Vector2 start, TileCodes type){
+		Vector2 assignedTexture = new Vector2(start.x, start.y);
+		if (blocks [Mathf.Min(px + 1, gridWidth - 1), py] == (byte)type) {
+			assignedTexture.x++;
+		}
+		if(blocks[Mathf.Max (px - 1, 0), py] == (byte)type){
+			assignedTexture.x--;
+		}
+		if(blocks[px, Mathf.Min (py + 1, gridHeight - 1)] == (byte)type){
+			assignedTexture.y++;
+		}
+		if(blocks[px, Mathf.Max (py - 1, 0)] == (byte)type){
 			assignedTexture.y--;
 		}
 		GenSquare (px, py, assignedTexture);

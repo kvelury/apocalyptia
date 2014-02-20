@@ -165,12 +165,15 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 		if (knockBackTimer > 30) {
 			try{
-				if (terrain.blocks [Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1), 
-			                    	Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale)] 
-			    	== (byte)PolygonGenerator.TileCodes.Water) {
+				int x = Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1);
+				int y = Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale);
+				if (terrain.blocks [x, y] == (byte)PolygonGenerator.TileCodes.Water) {
 					velocity = 0.025f + stats.currSpeed;
 				} else {
 					velocity = 0.05f + stats.currSpeed;
+				}
+				if(terrain.blocks[x, y] == (byte)PolygonGenerator.TileCodes.Radiation){
+					pr.healthCount -= 0.05f;
 				}
 			}catch (IndexOutOfRangeException e){//player has gone through the smoke
 				pr.healthCount -= 9999999999;
