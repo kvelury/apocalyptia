@@ -36,8 +36,8 @@ public class VolcanoGenerator : PolygonGenerator {
 		
 		
 	protected override void GenTerrain(){
-		float lavaThreshold = 0.20f + 0.2f * difficulty;//this value and below is lava
-		float hardLavaThreshold = 0.30f + 0.2f * difficulty;//this value and below is hardened lava
+		float lavaThreshold = 0.20f + 0.1f * difficulty;//this value and below is lava
+		float hardLavaThreshold = 0.30f + 0.1f * difficulty;//this value and below is hardened lava
 		float scorchedThreshold = 0.80f;//this value and below is scorched stone, above is dirt
 		blocks = new byte[gridWidth, gridHeight];
 		//xStart = 913;//Random.Range (-1000, 1000);
