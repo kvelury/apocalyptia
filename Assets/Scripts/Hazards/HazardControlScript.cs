@@ -160,8 +160,8 @@ public class HazardControlScript : MonoBehaviour {
 	
 	public void SetDifficulty(){
 		currentApocalypse = terrain.apocalypseType;
-		difficulty  = GameObject.Find("EnemySpawner").GetComponent<EnemySpawn>().difficulty;
-		//		Debug.Log ("Difficulty: " + difficulty.ToString());
+		difficulty = GameObject.Find("EnemySpawner").GetComponent<EnemySpawn>().difficulty;
+		Debug.Log ("Difficulty: " + difficulty.ToString());
 		maxHazards = difficulty * 5 + 5;
 		hazardSpawnRate = 300 - (30 * difficulty);
 		Debug.Log("Spawn Rate: " + hazardSpawnRate.ToString());

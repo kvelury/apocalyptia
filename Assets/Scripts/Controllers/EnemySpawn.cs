@@ -44,25 +44,25 @@ public class EnemySpawn : MonoBehaviour {
 								enemySpawnTime = 20;
 								break;
 						case 2:
-								maxEnemies = 15;
-								enemySpawnTime = 15;
+								maxEnemies = 20;
+								enemySpawnTime = 20;
 								break;
 						case 3:
-								maxEnemies = 20;
+								maxEnemies = 25;
 								enemySpawnTime = 15;
 								break;
 						case 4:
-								maxEnemies = 20;
-								enemySpawnTime = 10;
+								maxEnemies = 30;
+								enemySpawnTime = 15;
 								break;
 						case 5:
-								maxEnemies = 25;
+								maxEnemies = 35;
 								enemySpawnTime = 10;
 								break;
 						}
 				}
 		else {
-			maxEnemies = 30;
+			maxEnemies = 40;
 			enemySpawnTime = 5;
 				}
 		}
