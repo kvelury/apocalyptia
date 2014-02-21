@@ -38,8 +38,9 @@ public class GameplayEvents : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKey(KeyCode.Escape)){
-			Pause ();
+		if (Input.GetKeyDown(KeyCode.Escape)){
+			if (!isPaused) Pause ();
+			else UnPause();
 		}
 
 		healthBarLength = (int)((Screen.width / 2) * (resources.currHealth/resources.maxHealth));
@@ -98,6 +99,7 @@ public class GameplayEvents : MonoBehaviour {
 
 	void UnPause(){
 		isPaused = false;
+		pauseMenuState = 0;
 		Time.timeScale = 1.0f;
 	}
 
