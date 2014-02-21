@@ -141,22 +141,12 @@ public class PlayerMovementScript : MonoBehaviour {
 			Quaternion swingRot = new Quaternion(0,0,0,0);
 			audio.clip = slash;
 			audio.PlayOneShot(audio.clip);
-			if (Input.mousePosition.x > Screen.width/2 + 16){
-				swingDir.y = transform.position.y - 0.70F;
-			}
-			if (Input.mousePosition.x < Screen.width/2 - 16){
-				swingDir.y = transform.position.y + 0.70F;
-			}
-			if (Input.mousePosition.y > Screen.height/2 + 16){
-				swingDir.x = transform.position.x + 0.70F;
-			}
-			if (Input.mousePosition.y < Screen.height/2 - 16){
-				swingDir.x = transform.position.x - 0.70F;
-			}
-			if (Input.mousePosition.x > Screen.width/2 - 16 && Input.mousePosition.x < Screen.width/2 + 16
-			    && Input.mousePosition.y > Screen.height/2 - 16 && Input.mousePosition.y < Screen.height/2 + 16){
-				swingDir.y = transform.position.y + 0.70F;
-			}
+
+			Vector3 diff = new Vector3(Input.mousePosition.x - Screen.width/2, Input.mousePosition.y - Screen.height/2, 0);
+			diff.Normalize();
+			diff = Quaternion.Euler (0, 0, -45) * diff;
+			swingDir = transform.position + diff;
+
 			swingRot = Quaternion.LookRotation (swingDir - transform.position);
 			swingRot.z = swingRot.w = 0;
 			if(swingDir.x == transform.position.x){
