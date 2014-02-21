@@ -153,7 +153,7 @@ MonoBehaviour:
   EnemyParticle: {fileID: 100000, guid: cd8301ea2b288a040a0a27165146695b, type: 2}
   ps: {fileID: 0}
   pr: {fileID: 0}
-  hit1: {fileID: 8300000, guid: 030d54279b66e58488dec307135babb3, type: 3}
+  hit1: {fileID: 8300000, guid: 32b2a5e85b2233146ab493aaa33b7296, type: 3}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
