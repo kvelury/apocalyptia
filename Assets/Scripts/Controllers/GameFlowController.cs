@@ -14,6 +14,7 @@ public class GameFlowController : MonoBehaviour {
 	
 	public GameObject player;
 	private PlayerMovementScript movement;
+	private PlayerResources resources;
 	public GameObject sword;
 	public GameObject shield;
 	public GameObject boots;
@@ -31,6 +32,7 @@ public class GameFlowController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		movement = player.GetComponent<PlayerMovementScript> ();
+		resources = player.GetComponent<PlayerResources> ();
 		NewApocalypse ();
 		currentApocalypse.GetComponent<PolygonGenerator> ().player = this.player;
 	}
@@ -57,6 +59,9 @@ public class GameFlowController : MonoBehaviour {
 	}
 
 	public void NewApocalypse(){
+		//give player max health
+		resources.healthCount = resources.maxHealth;
+
 		DespawnOldResources ();
 		//increase difficulty in preparation
 		++currentBaseDifficulty;

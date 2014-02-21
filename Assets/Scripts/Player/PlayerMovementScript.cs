@@ -39,9 +39,10 @@ public class PlayerMovementScript : MonoBehaviour {
 	private Vector3 movement;
 	
 	private float colorChangeTimer;
+	private float yellowTimer;
 	private bool isRed;
 	private bool isGreen;
-	
+	private bool isYellow;
 	
 	// Use this for initialization
 	void Start () {
@@ -52,7 +53,9 @@ public class PlayerMovementScript : MonoBehaviour {
 		
 		knockBackTimer = 11;
 		colorChangeTimer = 0;
+		yellowTimer = 0;
 		isRed = false;
+		isYellow = false;
 		isGreen = false;
 	}
 	
@@ -63,20 +66,25 @@ public class PlayerMovementScript : MonoBehaviour {
 			if (Input.GetKey ("space") && dodgeCount > 50) isDodging = true;
 			
 			Vector3 direction = new Vector3 (Input.GetAxis ("Horizontal"), Input.GetAxis ("Vertical"), 0);
-			
+
 			//Debug.Log ((Quaternion.Euler (0, 0, -45) * (velocity * direction)).ToString ());
 			movement = Quaternion.Euler (0, 0, -45) * (velocity * direction);
 		} else {
 			knockBackTimer ++;
 		}
 		
-		if (isRed){
+		if (isRed) {
 			colorChangeTimer--;
-			if (colorChangeTimer <= 0){
+			if (colorChangeTimer <= 0) {
 				isRed = false;
 			}
-		} else if (isGreen){
-			spriteRender.color = new Color(.2f, 1.0f, 0f);
+		} else if (isYellow) {
+			yellowTimer--;
+			if (yellowTimer <= 0) {
+				isYellow = false;
+			}
+		} else if (isGreen) {
+			spriteRender.color = new Color (.2f, 1.0f, 0f);
 		} else {
 			spriteRender.color = Color.white;
 		}
@@ -102,6 +110,10 @@ public class PlayerMovementScript : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D col){
 		if (col.gameObject.tag == "Water") {
 			velocity = 0.05f + stats.currSpeed;
+		}
+
+		if(col.gameObject.name == "Shield(Clone)"){
+			FlashYellow();
 		}
 	}
 	
@@ -243,5 +255,11 @@ public class PlayerMovementScript : MonoBehaviour {
 		isRed = true;
 		colorChangeTimer = 5;
 		spriteRender.color = Color.red;
+	}
+
+	private void FlashYellow() {
+		isYellow = true;
+		yellowTimer = 75;
+		spriteRender.color = Color.yellow;
 	}
 }
