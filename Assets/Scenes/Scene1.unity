@@ -784,6 +784,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 641718f3c84b17943a3d82e8c86720e5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 641718f3c84b17943a3d82e8c86720e5, type: 2}
   m_RootGameObject: {fileID: 1543350709}
@@ -851,19 +855,23 @@ Prefab:
     - target: {fileID: 2300000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 2100000, guid: 8aef305aa24d2d44ab52fc3351c4f647, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 2100000, guid: a70342ba67d8db44780564f766baeca1, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
+      propertyPath: grunt
+      value: 
+      objectReference: {fileID: 8300000, guid: 6638823323e133a408b72da0cd285fcd, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   m_RootGameObject: {fileID: 1384526589}
@@ -2292,7 +2300,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 793857767}
   m_GameObject: {fileID: 736017016}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -4560,6 +4568,10 @@ Prefab:
       propertyPath: RotationModule.curve.scalar
       value: 3.49065852
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: b76e4b70c9483594787825658febf6fd, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b76e4b70c9483594787825658febf6fd, type: 2}
   m_RootGameObject: {fileID: 736017016}
@@ -4600,6 +4612,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7ba92a36962e9324c9608d5682f3ac63, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ba92a36962e9324c9608d5682f3ac63, type: 2}
   m_RootGameObject: {fileID: 925103573}
@@ -4632,7 +4648,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 1801830415}
   m_GameObject: {fileID: 861103810}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -5783,7 +5799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &925103574
 Renderer:
   m_ObjectHideFlags: 0
@@ -5872,6 +5888,10 @@ Prefab:
     - target: {fileID: 400000, guid: 0055e94f35285fd4b85054b42688f5d3, type: 2}
       propertyPath: m_LocalRotation.w
       value: .707106829
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0055e94f35285fd4b85054b42688f5d3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0055e94f35285fd4b85054b42688f5d3, type: 2}
@@ -6117,7 +6137,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1091060026
 Renderer:
   m_ObjectHideFlags: 0
@@ -6213,10 +6233,10 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
-  - {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
-  - {fileID: 2100000, guid: 8aef305aa24d2d44ab52fc3351c4f647, type: 2}
-  - {fileID: 2100000, guid: a70342ba67d8db44780564f766baeca1, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -6391,6 +6411,7 @@ MonoBehaviour:
   forceFieldActive: 0
   PlayerDefault: {fileID: 21300000, guid: 5f95f869327f1c0469d505bf6b11b77d, type: 3}
   PlayerForceField: {fileID: 21300000, guid: 4245bb094d63dd14fb62194498cbe50d, type: 3}
+  grunt: {fileID: 8300000, guid: 6638823323e133a408b72da0cd285fcd, type: 3}
 --- !u!61 &1384526593
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6571,7 +6592,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1543350710
 Renderer:
   m_ObjectHideFlags: 0
@@ -6673,6 +6694,10 @@ Prefab:
       propertyPath: RotationModule.curve.scalar
       value: 3.49065852
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 86e4e40ed4167174cad188a904b3610a, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 86e4e40ed4167174cad188a904b3610a, type: 2}
   m_RootGameObject: {fileID: 1618317514}
@@ -6705,7 +6730,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 1597214203}
   m_GameObject: {fileID: 1618317514}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -7874,6 +7899,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c70ae97452b89d645acb812ef3411fcb, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c70ae97452b89d645acb812ef3411fcb, type: 2}
   m_RootGameObject: {fileID: 2063164029}
@@ -7976,6 +8005,10 @@ Prefab:
     - target: {fileID: 19800000, guid: e45adec0767464744b4802ff45b1269d, type: 2}
       propertyPath: RotationModule.curve.scalar
       value: 3.49065852
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: e45adec0767464744b4802ff45b1269d, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e45adec0767464744b4802ff45b1269d, type: 2}
@@ -8112,7 +8145,7 @@ Renderer:
     type: 2}
   m_PrefabInternal: {fileID: 2062549708}
   m_GameObject: {fileID: 1899963095}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_LightmapIndex: 255
@@ -8156,7 +8189,7 @@ Transform:
   m_GameObject: {fileID: 1899963095}
   m_LocalRotation: {x: .5, y: -.5, z: -.5, w: -.5}
   m_LocalPosition: {x: 150, y: 0, z: -1}
-  m_LocalScale: {x: 0, y: 301, z: 4}
+  m_LocalScale: {x: 1, y: 301, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!199 &1899963100
@@ -9668,6 +9701,18 @@ Prefab:
       propertyPath: RotationModule.curve.scalar
       value: 3.49065852
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 244da8e95c1b2cd4f8587c1cbf0acdaf, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 244da8e95c1b2cd4f8587c1cbf0acdaf, type: 2}
+      propertyPath: m_CastShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 244da8e95c1b2cd4f8587c1cbf0acdaf, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 244da8e95c1b2cd4f8587c1cbf0acdaf, type: 2}
   m_RootGameObject: {fileID: 1899963095}
@@ -9690,7 +9735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &2063164030
 Renderer:
   m_ObjectHideFlags: 0

@@ -23,6 +23,7 @@ public class PlayerResources : MonoBehaviour {
 	public bool forceFieldActive;
 	public Sprite PlayerDefault;
 	public Sprite PlayerForceField;
+	public AudioClip grunt;
 	
 	PlayerStats ps;
 
@@ -102,6 +103,11 @@ public class PlayerResources : MonoBehaviour {
 		//PlayerStats ps = gameObject.GetComponent<PlayerStats> ();
 		if (col.gameObject.tag == "Enemy" && mercyTimer > 30) {
 			EnemyStats es = col.gameObject.GetComponent<EnemyStats>();
+			int irnd = Random.Range(0,3);
+			if(irnd == 0){
+				audio.clip = grunt;
+				audio.PlayOneShot(audio.clip);
+			}
 			healthCount -= (es.damage - ps.currDef);
 			mercyTimer = 0;
 		}
