@@ -9,6 +9,7 @@ Material:
   m_Name: ColoredCharacter
   m_Shader: {fileID: 4800000, guid: 52a5692a634cd834392af683c59dbbd1, type: 3}
   m_ShaderKeywords: []
+  m_CustomRenderQueue: -1
   m_SavedProperties:
     serializedVersion: 2
     m_TexEnvs:

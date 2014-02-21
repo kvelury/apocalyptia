@@ -2,7 +2,16 @@ fileFormatVersion: 2
 guid: 963dd17ed9b7f324895681fffbf9c7ba
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tree: {instanceID: 0}
+  - stone: {instanceID: 0}
+  - building: {instanceID: 0}
+  - player: {instanceID: 0}
+  - water: {instanceID: 0}
+  - enemyspawner: {instanceID: 0}
+  - endgameobj: {instanceID: 0}
+  - BurntTile: {fileID: 100000, guid: 828e82487fa3af74285bd563b9cebb22, type: 2}
+  - es: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

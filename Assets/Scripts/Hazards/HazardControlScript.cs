@@ -164,6 +164,7 @@ public class HazardControlScript : MonoBehaviour {
 		//		Debug.Log ("Difficulty: " + difficulty.ToString());
 		maxHazards = difficulty * 5 + 5;
 		hazardSpawnRate = 300 - (30 * difficulty);
+		Debug.Log("Difficulty: " + difficulty.ToString());
 		Debug.Log("Spawn Rate: " + hazardSpawnRate.ToString());
 	}
 }

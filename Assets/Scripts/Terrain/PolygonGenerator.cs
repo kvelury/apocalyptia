@@ -28,6 +28,7 @@ public class PolygonGenerator : MonoBehaviour {
 	public GameObject player;
 	public GameObject water;
 	public GameObject enemyspawner;
+	public GameObject BurntTile;
 	public GameObject endgameobj;
 	public EnemySpawn es;
 	//*******************************************************************************************
@@ -560,6 +561,8 @@ public class PolygonGenerator : MonoBehaviour {
 		}
 		*/
 		player.transform.position = new Vector3 (150, 150, 0);
+		GameObject newBurnTile = Instantiate (BurntTile, player.transform.position, new Quaternion(0, 0, 0, 0)) as GameObject;
+
 	}
 	//Cloned from GameFlowController, since it's private.
 	private void DespawnOldResources(){
