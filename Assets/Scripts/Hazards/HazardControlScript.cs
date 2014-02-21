@@ -29,13 +29,10 @@ public class HazardControlScript : MonoBehaviour {
 	void Start () {
 		//		Debug.Log ("Hazard Generator Activating");
 		Player = GameObject.Find("Player");
-		terrain = (PolygonGenerator) GameObject.Find("GameController").GetComponent<GameFlowController>().currentApocalypse.GetComponent<PolygonGenerator>();
 		//SetDifficulty();
 		timeSinceLastHazard = 0;
 		needToSpawn = false;
-		
 		//		Debug.Log("MaxHazards: " + maxHazards.ToString());
-		
 		hazards = new List<GameObject>();
 		deadHazards = new List<GameObject>();
 	}
@@ -93,11 +90,11 @@ public class HazardControlScript : MonoBehaviour {
 		switch (currentApocalypse){
 		case ApocalypseType.Desert:
 			//spawn a dust devil
-			hazards.Add(Instantiate(rockfall, location, Quaternion.Euler(0, 0, 0)) as GameObject);
+			//hazards.Add(Instantiate(rockfall, location, Quaternion.Euler(0, 0, 0)) as GameObject);
 			break;
 		case ApocalypseType.Flood:
 			//spawn a whirlpool
-			hazards.Add(Instantiate(rockfall, location, Quaternion.Euler(0, 0, 0)) as GameObject);
+			//hazards.Add(Instantiate(rockfall, location, Quaternion.Euler(0, 0, 0)) as GameObject);
 			break;
 		case ApocalypseType.Volcano:
 			//spawn a rockfall
@@ -136,9 +133,11 @@ public class HazardControlScript : MonoBehaviour {
 			break;
 		case ApocalypseType.Desert:
 			returnVal = (currTile != (byte)PolygonGenerator.TileCodes.Water);
+			returnVal = true;
 			break;
 		case ApocalypseType.Flood:
-			returnVal = (currTile == (byte)PolygonGenerator.TileCodes.Water);
+			//returnVal = (currTile == (byte)PolygonGenerator.TileCodes.Water);
+			returnVal = true;
 			break;
 		case ApocalypseType.Volcano:
 			returnVal = true;
@@ -159,11 +158,13 @@ public class HazardControlScript : MonoBehaviour {
 	}
 	
 	public void SetDifficulty(){
+		terrain = (PolygonGenerator) GameObject.Find("GameController").GetComponent<GameFlowController>().currentApocalypse.GetComponent<PolygonGenerator>();
 		currentApocalypse = terrain.apocalypseType;
+		Debug.Log("Current Apocalypse: " + currentApocalypse.ToString());
 		difficulty = GameObject.Find("EnemySpawner").GetComponent<EnemySpawn>().difficulty;
-		Debug.Log ("Difficulty: " + difficulty.ToString());
+		//Debug.Log ("Difficulty: " + difficulty.ToString());
 		maxHazards = difficulty * 5 + 5;
 		hazardSpawnRate = 300 - (30 * difficulty);
-		Debug.Log("Spawn Rate: " + hazardSpawnRate.ToString());
+		//Debug.Log("Spawn Rate: " + hazardSpawnRate.ToString());
 	}
 }
