@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------
 //                        Public parameters
 //--------------------------------------------------------------------
- 
+
 public var fadeOutTexture : Texture2D;
 public var fadeSpeed = 0.3;
  
@@ -25,7 +25,7 @@ private var fadeDir = -1;
  
 function OnGUI(){
  
-	alpha += fadeDir * fadeSpeed * Time.deltaTime;	
+	alpha += fadeDir * fadeSpeed * 0.05f;//Time.deltaTime;	
 	alpha = Mathf.Clamp01(alpha);	
  
 	GUI.color.a = alpha;
@@ -45,7 +45,8 @@ function fadeIn(){
 //--------------------------------------------------------------------
  
 function fadeOut(){
-	fadeDir = 1;	
+	fadeDir = 1;
+	Debug.Log("Fadingout");	
 }
  
 function Start(){
