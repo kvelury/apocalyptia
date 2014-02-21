@@ -640,6 +640,7 @@ MonoBehaviour:
   currTime: 0
   target: {fileID: 1384526595}
   followDistance: {x: 2.5, y: 2.5, z: 7.5}
+  rumble: {fileID: 8300000, guid: cec5821d73217694a935ef35d9ad7d96, type: 3}
 --- !u!114 &444190775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -872,6 +873,10 @@ Prefab:
       propertyPath: grunt
       value: 
       objectReference: {fileID: 8300000, guid: 6638823323e133a408b72da0cd285fcd, type: 3}
+    - target: {fileID: 400028, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .00130208337
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   m_RootGameObject: {fileID: 1384526589}
@@ -9844,7 +9849,7 @@ Transform:
   m_PrefabInternal: {fileID: 453692665}
   m_GameObject: {fileID: 2075333025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .00130208337, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1352344432}

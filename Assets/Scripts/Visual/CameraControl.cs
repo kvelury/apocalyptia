@@ -34,11 +34,14 @@ public class CameraControl : MonoBehaviour
 	/// False represents free-roaming camera.
 	/// </summary>
 	private bool followingTarget = true;
+	private bool playAudio;
 	private int boolZoom;
+	public AudioClip rumble;
 	private Vector3 prevPosition;
 
 	void Start(){
 		currTime = 0;
+		playAudio = true;
 	}
 
 	// Update is called once per frame
@@ -81,11 +84,15 @@ public class CameraControl : MonoBehaviour
 			}*/
 			Time.timeScale = 0.0f;
 			if(boolZoom == 1){
-				
 				Vector3 dir = (transform.position - target.position).normalized;
 				dir.x = 0;
 				dir.y = 0.05f;
 				
+				if(playAudio){
+					audio.clip = rumble;
+					audio.PlayOneShot (rumble);
+					playAudio = false;
+				}
 				if(Vector3.Distance (transform.position, target.position) < 20){
 					transform.Translate (dir * .1f);
 				}
@@ -125,6 +132,8 @@ public class CameraControl : MonoBehaviour
 					boolZoom = 0;
 					//Debug.Log ("Liiiive!");
 					Time.timeScale = 1.0f;
+					
+					playAudio = true;
 				}
 			}
 
