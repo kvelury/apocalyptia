@@ -76,6 +76,7 @@ public class PolygonGenerator : MonoBehaviour {
 	protected float xStart;
 	protected float yStart;
 	protected bool firstInit = true;
+	protected float dontburnfloor;
 
 
 	protected readonly Vector2[] safeSpawnSeeds = { new Vector2( 8739, 5922),
@@ -107,7 +108,6 @@ public class PolygonGenerator : MonoBehaviour {
 			SpawnPlayerSafely ();
 			firstInit = false;
 		}
-		GameObject burnInstance = Instantiate (burntile, player.transform.position + new Vector3(0,0,0.27f), new Quaternion (0, 0, 0, 0)) as GameObject;
 	}
 	
 	// Update is called once per frame

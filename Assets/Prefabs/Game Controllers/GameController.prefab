@@ -52,6 +52,7 @@ MonoBehaviour:
   moreHearts: {fileID: 100000, guid: d4375d3c606d54a45b8a2670ed52b7b7, type: 2}
   oneUp: {fileID: 100000, guid: 4697feebceac36846a761482765ea749, type: 2}
   forceField: {fileID: 100000, guid: 7a4dc9c1cc2285542ac206e7b718e1b5, type: 2}
+  burntile: {fileID: 100000, guid: e0fb8eec762c91d488fca3fc443306ee, type: 2}
   itemInstance: {fileID: 0}
   currentBaseDifficulty: 0
 --- !u!1001 &100100000
