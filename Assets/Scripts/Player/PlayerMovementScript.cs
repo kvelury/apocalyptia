@@ -40,6 +40,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	private float colorChangeTimer;
 	private bool isRed;
+	private bool isGreen;
 	
 	
 	// Use this for initialization
@@ -52,6 +53,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		knockBackTimer = 11;
 		colorChangeTimer = 0;
 		isRed = false;
+		isGreen = false;
 	}
 	
 	// Update is called once per frame
@@ -72,8 +74,11 @@ public class PlayerMovementScript : MonoBehaviour {
 			colorChangeTimer--;
 			if (colorChangeTimer <= 0){
 				isRed = false;
-				spriteRender.color = Color.white;
 			}
+		} else if (isGreen){
+			spriteRender.color = new Color(.2f, 1.0f, 0f);
+		} else {
+			spriteRender.color = Color.white;
 		}
 		
 		//		if (Input.GetKey (KeyCode.Space)) {
@@ -214,6 +219,9 @@ public class PlayerMovementScript : MonoBehaviour {
 				}
 				if(terrain.blocks[x, y] == (byte)PolygonGenerator.TileCodes.Radiation){
 					pr.healthCount -= 0.05f;
+					isGreen = true;
+				} else {
+					isGreen = false;
 				}
 			}catch (IndexOutOfRangeException e){//player has gone through the smoke
 				pr.healthCount -= 9999999999;
