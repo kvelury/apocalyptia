@@ -23,6 +23,7 @@ public class PolygonGenerator : MonoBehaviour {
 	//*******************************************************************************************
 	//references for resources
 	public GameObject tree;
+	public GameObject burntTree;
 	public GameObject stone;
 	public GameObject building;
 	public GameObject player;
@@ -58,9 +59,12 @@ public class PolygonGenerator : MonoBehaviour {
 	protected readonly Vector2 Stone     = new Vector2( 4, 1);
 	protected readonly Vector2 Radiation = new Vector2( 7, 1);
 	protected readonly Vector2 Sand      = new Vector2(10, 1);
-	protected readonly Vector2 Grass     = new Vector2( 0, 12);//junk: replace with actua later
-	protected readonly Vector2 Dirt      = new Vector2( 9, 1);//junk: replace with actua later
-	public enum TileCodes : byte {Water, Stone, Radiation, Sand, Grass, Dirt};
+	protected readonly Vector2 Grass     = new Vector2( 0, 12);//junk: replace with actual later
+	protected readonly Vector2 Dirt      = new Vector2( 1, 4);
+	protected readonly Vector2 Lava      = new Vector2( 4, 4);
+	protected readonly Vector2 Scorched  = new Vector2( 7, 4);
+	protected readonly Vector2 HardLava  = new Vector2(10, 4);
+	public enum TileCodes : byte {Water, Stone, Radiation, Sand, Grass, Dirt, Lava, Scorched, HardLava};
 
 	protected int squareCount = 0;
 
@@ -227,14 +231,23 @@ public class PolygonGenerator : MonoBehaviour {
 					GenSquare (px, py, Sand);
 					break;
 				case (byte)TileCodes.Dirt:
-					//GenSquare (px, py, Dirt);
+					GenSquare (px, py, Dirt);
 					//SandOffset(px, py, Dirt);
-					TileOffset (px, py, Dirt, TileCodes.Sand);
+					//TileOffset (px, py, Dirt, TileCodes.Sand);
 					break;
 				case (byte)TileCodes.Radiation:
 					//gen radiation
 					//StoneOffset(px, py, Radiation);
 					TileOffset (px, py, Radiation, TileCodes.Stone);
+					break;
+				case (byte)TileCodes.Lava:
+					GenSquare (px, py, Lava);
+					break;
+				case (byte)TileCodes.HardLava:
+					GenSquare (px, py, HardLava);
+					break;
+				case (byte)TileCodes.Scorched:
+					GenSquare (px, py, Scorched);
 					break;
 				}
 			}

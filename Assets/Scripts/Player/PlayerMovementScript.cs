@@ -230,6 +230,9 @@ public class PlayerMovementScript : MonoBehaviour {
 				} else {
 					isGreen = false;
 				}
+				if(terrain.blocks[x, y] == (byte)PolygonGenerator.TileCodes.Lava){
+					pr.healthCount -= 0.5f;
+				}
 			}catch (IndexOutOfRangeException e){//player has gone through the smoke
 				pr.healthCount -= 9999999999;
 			}

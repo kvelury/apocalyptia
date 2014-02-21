@@ -72,20 +72,21 @@ public class GameFlowController : MonoBehaviour {
 		//pick the new one
 		//avoid repeat apocalypses
 		int rand = Mathf.RoundToInt(Random.Range (0, 100)) % 2;
+		/*
 		if(currentApocalypse != null){
 			int targetToAvoid = (int)currentApocalypse.GetComponent<PolygonGenerator> ().apocalypseType;
 			while (rand == targetToAvoid) {
 				rand = Mathf.RoundToInt(Random.Range (0, 100)) % 2;
 			}
 		}
-
+		*/
 		//create the proper new apocalypse
 		switch (rand) {
 			case 0:
 				currentApocalypse = (GameObject)Instantiate (desertApocalypse, new Vector3 (0, 0, .28f), new Quaternion (0, 0, 0, 0));
 				break;
 			case 1:
-				currentApocalypse = (GameObject)Instantiate (floodApocalypse, new Vector3 (0, 0, .28f), new Quaternion (0, 0, 0, 0));
+				currentApocalypse = (GameObject)Instantiate (volcanoApocalypse, new Vector3 (0, 0, .28f), new Quaternion (0, 0, 0, 0));
 				break;
 		}
 		for (int i = 0; i < 20; i++) {
