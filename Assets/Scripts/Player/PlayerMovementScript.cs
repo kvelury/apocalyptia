@@ -7,6 +7,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	public PlayerResources pr;
 	private PlayerStats stats;
 	public GameObject Weapon;
+	public GameObject Weapon2;
 	private GameObject swingInstance;
 	public AudioClip slash;
 	public PolygonGenerator terrain;
@@ -16,7 +17,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// The velocity vector holds the player's movement speed.
 	/// This gets multiplied by the direction to get actual movement.
 	/// </summary>
-	public float velocity = 10;
+	public float velocity = 15;
 	
 	private float weaponCoolTimer = 15;
 	/// <summary>
@@ -163,6 +164,45 @@ public class PlayerMovementScript : MonoBehaviour {
 		} else {
 			weaponCoolTimer++;
 		}
+
+		if(Input.GetMouseButton (1) && weaponCoolTimer >= weaponCoolDown && 
+		   //This added check is so the player doesn't swing when clicking Big Red Button.
+		   !(Input.mousePosition.x > (Screen.width - 220) && Input.mousePosition.x < (Screen.width - 20)
+		  && Input.mousePosition.y > (20) && Input.mousePosition.y < (220))){
+			
+			Vector3 swingDir = new Vector3(transform.position.x, transform.position.y, 0);
+			Quaternion swingRot = new Quaternion(0,0,0,0);
+			audio.clip = slash;
+			audio.PlayOneShot(audio.clip);
+			if (Input.mousePosition.x > Screen.width/2 + 16){
+				swingDir.y = transform.position.y - 0.70F;
+			}
+			if (Input.mousePosition.x < Screen.width/2 - 16){
+				swingDir.y = transform.position.y + 0.70F;
+			}
+			if (Input.mousePosition.y > Screen.height/2 + 16){
+				swingDir.x = transform.position.x + 0.70F;
+			}
+			if (Input.mousePosition.y < Screen.height/2 - 16){
+				swingDir.x = transform.position.x - 0.70F;
+			}
+			if (Input.mousePosition.x > Screen.width/2 - 16 && Input.mousePosition.x < Screen.width/2 + 16
+			    && Input.mousePosition.y > Screen.height/2 - 16 && Input.mousePosition.y < Screen.height/2 + 16){
+				swingDir.y = transform.position.y + 0.70F;
+			}
+			swingRot = Quaternion.LookRotation (swingDir - transform.position);
+			swingRot.z = swingRot.w = 0;
+			if(swingDir.x == transform.position.x){
+				swingRot.y = swingRot.x;
+			}
+			swingRot *= Quaternion.Euler (0, 0, 90);				
+			//we need account for the isometric rotation
+			swingInstance = Instantiate (Weapon2, swingDir, swingRot) as GameObject;
+			weaponCoolTimer = 0;
+		} else {
+			weaponCoolTimer++;
+		}
+
 		if (knockBackTimer > 30) {
 			try{
 				int x = Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1);

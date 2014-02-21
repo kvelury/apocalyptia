@@ -11,9 +11,9 @@ GameObject:
   - 61: {fileID: 6100000}
   - 50: {fileID: 5000000}
   - 212: {fileID: 21200000}
-  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Weapon
+  m_Name: Weapon2
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: .322196633, y: .993089259, z: 0}
-  m_LocalScale: {x: 2, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!50 &5000000
@@ -56,7 +56,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_Size: {x: .159999996, y: .319999993}
   m_Center: {x: 0, y: 0}
---- !u!114 &11400002
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 662bfd578f91dbc4da5164d36d15f45e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d8f5499452a063419ec5b1d652e0d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   weapon1: {fileID: 21300000, guid: 17ddfcca80b59ad4cac5dd2eea160836, type: 3}

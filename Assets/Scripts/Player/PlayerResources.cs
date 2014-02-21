@@ -15,6 +15,7 @@ public class PlayerResources : MonoBehaviour {
 	public float healthCount = 100;
 	//for health bar
 	public float currHealth = 100;
+	public int roundHealth = 100;
 	public float maxHealth = 100;
 	public float minHealth = 0;
 	public float mercyTimer = 0;
@@ -84,6 +85,8 @@ public class PlayerResources : MonoBehaviour {
 			currHealth = maxHealth;
 		if(maxHealth < 1)
 			maxHealth = 1;
+
+		roundHealth = (int)Mathf.Round (currHealth);
 	}
 
 	public void UseItem(){

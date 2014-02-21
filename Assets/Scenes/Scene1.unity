@@ -207,6 +207,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400022, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_LocalPosition.y
+      value: .00130208337
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400028, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
+      propertyPath: DataSource.MemberName
+      value: roundHealth
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400028, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
+      propertyPath: TwoWay
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1024,6 +1032,10 @@ Prefab:
       propertyPath: m_Shadows.m_Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
+      propertyPath: Weapon2
+      value: 
+      objectReference: {fileID: 100000, guid: 3230f8a321a32684fb9e8444c802c30a, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
   m_RootGameObject: {fileID: 1384526589}
@@ -5333,6 +5345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pr: {fileID: 0}
   Weapon: {fileID: 100000, guid: a6c2f3169a6c101428296528432754b8, type: 2}
+  Weapon2: {fileID: 100000, guid: 3230f8a321a32684fb9e8444c802c30a, type: 2}
   slash: {fileID: 8300000, guid: 10e9be83cdfece542b0cad73eaad9722, type: 3}
   terrain: {fileID: 0}
   velocity: .100000001
@@ -5374,6 +5387,7 @@ MonoBehaviour:
   fameCount: 0
   healthCount: 100
   currHealth: 100
+  roundHealth: 100
   maxHealth: 100
   minHealth: 0
   mercyTimer: 0
@@ -8280,12 +8294,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DataSource:
     Component: {fileID: 1384526592}
-    MemberName: currHealth
+    MemberName: roundHealth
   DataTarget:
     Component: {fileID: 1929489091}
     MemberName: Value
   FormatString: 
-  TwoWay: 1
+  TwoWay: 0
 --- !u!114 &1929489089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8787,7 +8801,7 @@ Transform:
   m_PrefabInternal: {fileID: 64729663}
   m_GameObject: {fileID: 2075333025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: .00130208337, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1352344432}
