@@ -15,6 +15,9 @@ public class CameraControl : MonoBehaviour
 	/// </summary>
 	public float screenBufferSize = 25;
 
+	public float difficultyTimer = 3600;
+	public float currTime;
+
 	/// <summary>
 	/// The target that the camera follows.
 	/// </summary>
@@ -34,9 +37,20 @@ public class CameraControl : MonoBehaviour
 	private int boolZoom;
 	private Vector3 prevPosition;
 
+	void Start(){
+		currTime = 0;
+	}
+
 	// Update is called once per frame
 	void Update ()
 	{
+		if (currTime > difficultyTimer){
+			followingTarget = false;
+			boolZoom = 1;
+			prevPosition = target.position - followDistance;
+			currTime = 0;
+		}
+
 		if (Input.GetKey (KeyCode.C)) {
 			followingTarget = false;
 			boolZoom = 1;
@@ -116,5 +130,9 @@ public class CameraControl : MonoBehaviour
 
 			//Debug.Log("beep");
 		}
+	}
+
+	void FixedUpdate(){
+		currTime++;
 	}
 }

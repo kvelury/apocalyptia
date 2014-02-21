@@ -184,19 +184,19 @@ Prefab:
     - target: {fileID: 2300000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
     - target: {fileID: 2300000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
     - target: {fileID: 2300000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 8aef305aa24d2d44ab52fc3351c4f647, type: 2}
     - target: {fileID: 2300000, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: a70342ba67d8db44780564f766baeca1, type: 2}
     - target: {fileID: 400020, guid: abfadfb1903804f83a010abb4df8ca22, type: 2}
       propertyPath: m_LocalPosition.y
       value: -.0638122559
@@ -780,6 +780,8 @@ MonoBehaviour:
   timer: 0
   pg: {fileID: 0}
   screenBufferSize: 25
+  difficultyTimer: 3600
+  currTime: 0
   target: {fileID: 1384526595}
   followDistance: {x: 2.5, y: 2.5, z: 7.5}
 --- !u!114 &444190775
@@ -938,6 +940,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 458937351}
+  - 114: {fileID: 458937353}
   - 114: {fileID: 458937352}
   m_Layer: 0
   m_Name: HazardController
@@ -962,6 +965,19 @@ MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 458937350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b69e6e0adccea42a2469de5ced2dfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockfall: {fileID: 100000, guid: 6aa6478d53390bd4ba780922f797e0b3, type: 2}
+--- !u!114 &458937353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 39b4147d377d0d64988642294c19b2f8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1879055697}
   m_GameObject: {fileID: 458937350}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -5217,10 +5233,10 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
+  - {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
+  - {fileID: 2100000, guid: 8aef305aa24d2d44ab52fc3351c4f647, type: 2}
+  - {fileID: 2100000, guid: a70342ba67d8db44780564f766baeca1, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
