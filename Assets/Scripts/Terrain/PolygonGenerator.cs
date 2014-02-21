@@ -29,6 +29,7 @@ public class PolygonGenerator : MonoBehaviour {
 	public GameObject water;
 	public GameObject enemyspawner;
 	public GameObject endgameobj;
+	public GameObject burntile;
 	public EnemySpawn es;
 	//*******************************************************************************************
 	//data needed externally
@@ -102,6 +103,7 @@ public class PolygonGenerator : MonoBehaviour {
 			SpawnPlayerSafely ();
 			firstInit = false;
 		}
+		GameObject burnInstance = Instantiate (burntile, player.transform.position + new Vector3(0,0,0.27f), new Quaternion (0, 0, 0, 0)) as GameObject;
 	}
 	
 	// Update is called once per frame

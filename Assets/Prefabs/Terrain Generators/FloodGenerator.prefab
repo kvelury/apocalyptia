@@ -89,6 +89,7 @@ MonoBehaviour:
   water: {fileID: 0}
   enemyspawner: {fileID: 0}
   endgameobj: {fileID: 100000, guid: afdbabdbfab525e4b945d1c9f73e75f3, type: 2}
+  burntile: {fileID: 100000, guid: e0fb8eec762c91d488fca3fc443306ee, type: 2}
   es: {fileID: 0}
   apocalypseType: 0
   newVertices: []
