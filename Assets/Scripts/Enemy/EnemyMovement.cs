@@ -29,17 +29,17 @@ public class EnemyMovement : MonoBehaviour {
 			movement.x = movement.x * velocity;
 			movement.y = movement.y * velocity;
 		}
-			
-			//movement = new Vector2 (velocity.x * (Player.transform.position.x - transform.position.x), velocity.y * (Player.transform.position.y - transform.position.y));
+		
+		//movement = new Vector2 (velocity.x * (Player.transform.position.x - transform.position.x), velocity.y * (Player.transform.position.y - transform.position.y));
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		//if (/*velocity == 2.5F &&*/ es.doomEvent == true)
-						//velocity = velocity * 1.5F;
+		//velocity = velocity * 1.5F;
 		timer += 1;
 		if (timer > 50) {
-				timer = 0;
+			timer = 0;
 			Vector2 direction = new Vector2 (0,0);
 			if(gameObject.name == "Enemy(Clone)"){
 				if(Vector3.Distance (Player.transform.position,transform.position) < 10 || (es.doomEvent == true && Random.Range(0, 10) > 6))
@@ -47,8 +47,8 @@ public class EnemyMovement : MonoBehaviour {
 				else
 					direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
 			}
-
-
+			
+			
 			else if(gameObject.name == "Enemy2(Clone)"){
 				//TRICKSY BEHAVIOR GOES HERE!
 				if(Vector3.Distance (Player.transform.position,transform.position) < 10){// || (es.doomEvent == true && Random.Range(0, 10) > 6)){
@@ -71,22 +71,29 @@ public class EnemyMovement : MonoBehaviour {
 			movement = new Vector2 (velocity * direction.x, velocity * direction.y);
 		}
 	}
-
+	
 	void OnCollisionEnter2D (Collision2D col){
-		if (col.gameObject.tag == "Weapon") {
+		if (col.gameObject.name == "Weapon(Clone)") {
 			//movement.x = -2F*movement.x;
 			//movement.y = -2F*movement.y;
 			movement = -5f * (Player.transform.position - transform.position).normalized;
 			timer = 40;
 		}
+		
+		if (col.gameObject.name == "Weapon2(Clone)") {
+			//movement.x = -2F*movement.x;
+			//movement.y = -2F*movement.y;
+			movement = -18f * (Player.transform.position - transform.position).normalized;
+			timer = 40;
+		}
 	}
-
+	
 	void OnDestroy(){
 		if (gameObject.name == "Enemy(Clone)" || gameObject.name == "Enemy2(Clone)") {
-						if (EnemySpawner != null) {
-								es.enemyCount -= 1;
-						}
-				}
+			if (EnemySpawner != null) {
+				es.enemyCount -= 1;
+			}
+		}
 	}
 	
 	//FixedUpdate is called once per tick and should be used for physics

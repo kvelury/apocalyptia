@@ -49,7 +49,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		spriteRender = GetComponent<SpriteRenderer>();
 		stats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
 		//		terrain = GameObject.Find ("Terrain").GetComponent<PolygonGenerator>();
-
+		
 		knockBackTimer = 11;
 		colorChangeTimer = 0;
 		isRed = false;
@@ -141,12 +141,12 @@ public class PlayerMovementScript : MonoBehaviour {
 			Quaternion swingRot = new Quaternion(0,0,0,0);
 			audio.clip = slash;
 			audio.PlayOneShot(audio.clip);
-
+			
 			Vector3 diff = new Vector3(Input.mousePosition.x - Screen.width/2, Input.mousePosition.y - Screen.height/2, 0);
 			diff.Normalize();
 			diff = Quaternion.Euler (0, 0, -45) * diff;
 			swingDir = transform.position + diff;
-
+			
 			if (Input.mousePosition.x > Screen.width/2 + 16){
 				swingDir.y = swingDir.y - 0.1F;
 			}
@@ -163,7 +163,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			    && Input.mousePosition.y > Screen.height/2 - 16 && Input.mousePosition.y < Screen.height/2 + 16){
 				swingDir.y = swingDir.y + 0.1F;
 			}
-
+			
 			swingRot = Quaternion.LookRotation (swingDir - transform.position);
 			swingRot.z = swingRot.w = 0;
 			if(swingDir.x == transform.position.x){
@@ -176,7 +176,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		} else {
 			weaponCoolTimer++;
 		}
-
+		
 		if(Input.GetMouseButton (1) && weaponCoolTimer >= weaponCoolDown && 
 		   //This added check is so the player doesn't swing when clicking Big Red Button.
 		   !(Input.mousePosition.x > (Screen.width - 220) && Input.mousePosition.x < (Screen.width - 20)
@@ -214,15 +214,15 @@ public class PlayerMovementScript : MonoBehaviour {
 		} else {
 			weaponCoolTimer++;
 		}
-
+		
 		if (knockBackTimer > 30) {
 			try{
 				int x = Mathf.CeilToInt (transform.position.x / PolygonGenerator.worldScale - 1);
 				int y = Mathf.CeilToInt (transform.position.y / PolygonGenerator.worldScale);
 				if (terrain.blocks [x, y] == (byte)PolygonGenerator.TileCodes.Water) {
-					velocity = 0.025f + stats.currSpeed;
-				} else {
 					velocity = 0.05f + stats.currSpeed;
+				} else {
+					velocity = 0.1f + stats.currSpeed;
 				}
 				if(terrain.blocks[x, y] == (byte)PolygonGenerator.TileCodes.Radiation){
 					pr.healthCount -= 0.05f;
@@ -235,7 +235,7 @@ public class PlayerMovementScript : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	private void ChangeToRed(){
 		isRed = true;
 		colorChangeTimer = 5;

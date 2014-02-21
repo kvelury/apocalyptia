@@ -18,20 +18,20 @@ public class EnemyStats : MonoBehaviour {
 	public GameObject EnemyParticle;
 	public PlayerStats ps;
 	public PlayerResources pr;
-
+	
 	public AudioClip hit1;
-
+	
 	private ParticleSystem particleSystem;
 	// Use this for initialization
 	void Start () {
 		if (gameObject.name == "Enemy(Clone)") {
-						maxHP = HP = 40;
-						damage = 10;
-				} 
+			maxHP = HP = 40;
+			damage = 10;
+		} 
 		else if (gameObject.name == "Enemy2(Clone)") {
 			maxHP = HP = 60;
 			damage = 15;
-				}
+		}
 		Player = GameObject.Find ("Player");
 		ps = Player.GetComponent<PlayerStats> ();
 		pr = Player.GetComponent<PlayerResources> ();
@@ -43,17 +43,17 @@ public class EnemyStats : MonoBehaviour {
 			/*Debug.Log ("Enemy Too far away!: Enemy.x = " + transform.position.x + ", Player.x = "
 			           + Player.transform.position.x + ", Enemy.y = " + transform.position.y +
 			           ", Player.y = " + Player.transform.position.y);*/
-						Destroy (gameObject);
-				}
+			Destroy (gameObject);
+		}
 		if (HP <= 0){
 			if (Player != null) {
 				PlayerResources pr = Player.GetComponent<PlayerResources> ();
 				if(gameObject.name == "Enemy(Clone)"){
-				pr.fameCount += 10;
-				//Debug.Log ("Fame++");
-				if(GameController.questAccepted == true){
-					GameController.killCount += 1;
-				}
+					pr.fameCount += 10;
+					//Debug.Log ("Fame++");
+					if(GameController.questAccepted == true){
+						GameController.killCount += 1;
+					}
 				}
 				else if(gameObject.name == "Enemy2(Clone)"){
 					pr.fameCount+=20;
@@ -81,9 +81,9 @@ public class EnemyStats : MonoBehaviour {
 			Destroy (gameObject);
 		}
 	}
-
+	
 	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.tag == "Weapon") {
+		if (col.gameObject.name == "Weapon(Clone)") {
 			audio.clip = hit1;
 			audio.PlayOneShot(audio.clip);
 			HP -= ps.currDam;
@@ -92,9 +92,19 @@ public class EnemyStats : MonoBehaviour {
 			if(ps.inv[10] == 1)
 				pr.healthCount += 1;
 		}
-
+		
+		if (col.gameObject.name == "Weapon2(Clone)") {
+			audio.clip = hit1;
+			audio.PlayOneShot(audio.clip);
+			//HP -= ps.currDam;
+			//Destroy (col.gameObject);
+			//particleSystem = Instantiate(EnemyParticle, transform.position, Quaternion.LookRotation(transform.position - Player.transform.position)) as ParticleSystem;
+			if(ps.inv[10] == 1)
+				pr.healthCount += 1;
+		}
+		
 		//Bullet code irrelevant, bullet has trigger not collision box.
-
+		
 		/*
 		if (col.gameObject.tag == "Bullet") {
 			HP -= 10;
