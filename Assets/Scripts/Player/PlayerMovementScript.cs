@@ -17,7 +17,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// The velocity vector holds the player's movement speed.
 	/// This gets multiplied by the direction to get actual movement.
 	/// </summary>
-	public float velocity = 15;
+	public float velocity = 20;
 	
 	private float weaponCoolTimer = 15;
 	/// <summary>
@@ -107,7 +107,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
-		if (Input.GetMouseButton (1) && pr.useItemTimer == 300) {
+		if (Input.GetKeyDown ("q") && pr.useItemTimer == 300) {
 			pr.UseItem ();
 		}
 		if (swingInstance != null) {
@@ -146,6 +146,23 @@ public class PlayerMovementScript : MonoBehaviour {
 			diff.Normalize();
 			diff = Quaternion.Euler (0, 0, -45) * diff;
 			swingDir = transform.position + diff;
+
+			if (Input.mousePosition.x > Screen.width/2 + 16){
+				swingDir.y = swingDir.y - 0.1F;
+			}
+			if (Input.mousePosition.x < Screen.width/2 - 16){
+				swingDir.y = swingDir.y + 0.1F;
+			}
+			if (Input.mousePosition.y > Screen.height/2 + 16){
+				swingDir.x = swingDir.x + 0.1F;
+			}
+			if (Input.mousePosition.y < Screen.height/2 - 16){
+				swingDir.x = swingDir.x - 0.1F;
+			}
+			if (Input.mousePosition.x > Screen.width/2 - 16 && Input.mousePosition.x < Screen.width/2 + 16
+			    && Input.mousePosition.y > Screen.height/2 - 16 && Input.mousePosition.y < Screen.height/2 + 16){
+				swingDir.y = swingDir.y + 0.1F;
+			}
 
 			swingRot = Quaternion.LookRotation (swingDir - transform.position);
 			swingRot.z = swingRot.w = 0;
