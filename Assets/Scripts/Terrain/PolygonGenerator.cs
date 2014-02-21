@@ -119,8 +119,8 @@ public class PolygonGenerator : MonoBehaviour {
 		}
 		enemyspawner = GameObject.Find ("EnemySpawner");
 		es = enemyspawner.GetComponent<EnemySpawn> ();
-		es.difficulty ++;
 		difficulty++;
+		es.difficulty = difficulty;
 		if (difficulty == maxLevel) {
 			GameObject endgame = Instantiate (endgameobj, 
 			                                  new Vector3(player.transform.position.x + Random.Range (-30, 30), 
