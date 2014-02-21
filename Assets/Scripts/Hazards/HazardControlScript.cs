@@ -30,7 +30,7 @@ public class HazardControlScript : MonoBehaviour {
 		//		Debug.Log ("Hazard Generator Activating");
 		Player = GameObject.Find("Player");
 		terrain = (PolygonGenerator) GameObject.Find("GameController").GetComponent<GameFlowController>().currentApocalypse.GetComponent<PolygonGenerator>();
-		SetDifficulty();
+		//SetDifficulty();
 		timeSinceLastHazard = 0;
 		needToSpawn = false;
 		
@@ -159,7 +159,10 @@ public class HazardControlScript : MonoBehaviour {
 	}
 	
 	public void SetDifficulty(){
-		currentApocalypse = terrain.apocalypseType;
+		try {
+			currentApocalypse = terrain.apocalypseType;
+		} catch (UnityException e){
+		}
 		difficulty = GameObject.Find("EnemySpawner").GetComponent<EnemySpawn>().difficulty;
 		Debug.Log ("Difficulty: " + difficulty.ToString());
 		maxHazards = difficulty * 5 + 5;

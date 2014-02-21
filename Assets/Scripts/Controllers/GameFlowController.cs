@@ -51,6 +51,7 @@ public class GameFlowController : MonoBehaviour {
 				currentApocalypse.GetComponent<PolygonGenerator> ().IncreaseDifficulty ();
 			}
 			worldStillNeedsUpdate = false;
+			GameObject.Find("HazardController").GetComponent<HazardControlScript>().SetDifficulty();
 		}
 
 	}
@@ -130,7 +131,6 @@ public class GameFlowController : MonoBehaviour {
 		//tell the player where to find the terrain for purposes of water, lava, etc.
 		movement.terrain = currentApocalypse.GetComponent<PolygonGenerator>();
 		worldStillNeedsUpdate = true;
-		GameObject.Find("HazardController").GetComponent<HazardControlScript>().SetDifficulty();
 	}
 
 	private void DespawnOldResources(){
