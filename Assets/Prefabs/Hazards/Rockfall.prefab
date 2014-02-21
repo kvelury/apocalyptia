@@ -13,8 +13,8 @@ GameObject:
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
   - 212: {fileID: 21200000}
-  - 61: {fileID: 6100000}
   - 82: {fileID: 8200000}
+  - 61: {fileID: 6100000}
   m_Layer: 0
   m_Name: Rockfall
   m_TagString: DamagingHazard
@@ -32,7 +32,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 119: {fileID: 11900000}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Projector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

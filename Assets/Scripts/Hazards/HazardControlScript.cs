@@ -159,10 +159,7 @@ public class HazardControlScript : MonoBehaviour {
 	}
 	
 	public void SetDifficulty(){
-		try {
-			currentApocalypse = terrain.apocalypseType;
-		} catch (UnityException e){
-		}
+		currentApocalypse = terrain.apocalypseType;
 		difficulty = GameObject.Find("EnemySpawner").GetComponent<EnemySpawn>().difficulty;
 		Debug.Log ("Difficulty: " + difficulty.ToString());
 		maxHazards = difficulty * 5 + 5;
