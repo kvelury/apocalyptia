@@ -253,6 +253,7 @@
      <Compile Include="Assets\Scripts\Obsolete\TileObject.cs" />
      <Compile Include="Assets\Scripts\Obsolete\TowerScript.cs" />
      <Compile Include="Assets\Scripts\Obsolete\WoodenHouseScript.cs" />
+     <Compile Include="Assets\Scripts\Player\OverlayParticleScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerMovementScript.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerResources.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />

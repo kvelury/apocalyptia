@@ -190,7 +190,7 @@ public class PlayerStats : MonoBehaviour {
 		else
 			currDef = 0;
 		if (inv [2] == 1)
-			currSpeed = 0.07f;
+			currSpeed = 0.04f;
 		else
 			currSpeed = 0;
 	}
