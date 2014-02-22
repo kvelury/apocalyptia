@@ -53,9 +53,9 @@ public class VolcanoGenerator : PolygonGenerator {
 					blocks[px, py] = (byte)TileCodes.Lava;
 				}else if(elevation >= lavaThreshold && elevation < hardLavaThreshold){
 					blocks[px, py] = (byte)TileCodes.HardLava;
-				/*}else if(elevation >= hardLavaThreshold && elevation < scorchedThreshold){//middle elevation
-					//blocks[px, py] = (byte)TileCodes.Scorched;
-				*/}else{//high elevation
+				}else if(elevation >= hardLavaThreshold && elevation < scorchedThreshold){//middle elevation
+					blocks[px, py] = (byte)TileCodes.Scorched;
+				}else{//high elevation
 					blocks[px, py] = (byte)TileCodes.Dirt;
 				}
 			}
