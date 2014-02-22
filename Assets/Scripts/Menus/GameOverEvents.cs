@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameOverEvents : MonoBehaviour {
 
+	public Texture background;
+
 	/// <summary>
 	/// This array stores the talent tree.  
 	/// There are 4 talents per path, plus one central talent.
@@ -68,8 +70,12 @@ public class GameOverEvents : MonoBehaviour {
 		int result = -1;
 		
 		// Make a background box
-		if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height - 50, 100, 50), "You Are Dead\n Try Again?"))
-			Application.LoadLevel ("MainMenu");
+		GUI.DrawTexture(new Rect(Screen.width * 1/16, 0, Screen.width * 7/8, Screen.height), background);
+
+		if (GUI.Button(new Rect(Screen.width * 3/8, Screen.height *3/8, Screen.width * 1/4, Screen.height * 1/4), "You are Dead\nTry Again?"))
+			Application.LoadLevel("MainMenu");
+//		if (GUI.Button (new Rect (Screen.width / 2 - 50, Screen.height - 50, 100, 50), "You Are Dead\n Try Again?"))
+//			Application.LoadLevel ("MainMenu");
 
 //		GUI.Box (new Rect(Screen.width - 50, 0, 50, 50), PlayerPrefs.GetFloat("Fame").ToString());
 //
