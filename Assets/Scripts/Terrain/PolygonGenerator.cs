@@ -76,6 +76,7 @@ public class PolygonGenerator : MonoBehaviour {
 	protected float xStart;
 	protected float yStart;
 	protected bool firstInit = true;
+	protected float dontburnfloor;
 
 
 	protected readonly Vector2[] safeSpawnSeeds = { new Vector2( 8739, 5922),
@@ -107,7 +108,6 @@ public class PolygonGenerator : MonoBehaviour {
 			SpawnPlayerSafely ();
 			firstInit = false;
 		}
-		GameObject burnInstance = Instantiate (burntile, player.transform.position + new Vector3(0,0,0.27f), new Quaternion (0, 0, 0, 0)) as GameObject;
 	}
 	
 	// Update is called once per frame
@@ -128,10 +128,17 @@ public class PolygonGenerator : MonoBehaviour {
 		difficulty++;
 		es.difficulty = difficulty;
 		if (difficulty == maxLevel) {
-			GameObject endgame = Instantiate (endgameobj, 
-			                                  new Vector3(player.transform.position.x + Random.Range (-30, 30), 
-			            									player.transform.position.y + Random.Range (-30, 30)),
-			                                  new Quaternion(0,0,0,0)) as GameObject;
+			Vector3 newLoc = new Vector3(player.transform.position.x + Random.Range (-30, 30), 
+			                             player.transform.position.y + Random.Range (-30, 30));
+			int i = 0;
+			while (blocks[Mathf.CeilToInt (newLoc.x / worldScale - 1), Mathf.CeilToInt (newLoc.y / worldScale)] == (byte)TileCodes.Lava){
+				newLoc = new Vector3(player.transform.position.x + Random.Range (-30, 30), 
+				                     player.transform.position.y + Random.Range (-30, 30));
+				i++;
+				if(i > 5)
+					break;
+			}
+			GameObject endgame = Instantiate (endgameobj, newLoc, new Quaternion(0,0,0,0)) as GameObject;
 			Debug.Log ("Endgame object spawned!");
 				}
 		//Added the next two lines to reduce lag - Kyle

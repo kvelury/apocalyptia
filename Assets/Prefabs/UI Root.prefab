@@ -1081,11 +1081,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DataSource:
-    Component: {fileID: 0}
-    MemberName: currHealth
+    Component: {fileID: 11400032}
+    MemberName: ActAsSlider
   DataTarget:
     Component: {fileID: 11400032}
-    MemberName: Value
+    MemberName: ActAsSlider
   FormatString: 
   TwoWay: 1
 --- !u!114 &11400030
@@ -1100,11 +1100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DataSource:
-    Component: {fileID: 0}
-    MemberName: maxHealth
+    Component: {fileID: 11400032}
+    MemberName: ActAsSlider
   DataTarget:
     Component: {fileID: 11400032}
-    MemberName: MaxValue
+    MemberName: ActAsSlider
   FormatString: 
   TwoWay: 0
 --- !u!114 &11400032
