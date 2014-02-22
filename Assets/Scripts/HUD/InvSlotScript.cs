@@ -38,7 +38,7 @@ public class InvSlotScript : MonoBehaviour {
 		//weapon picked up
 		if (stats.inv[0] == 1) {
 			weapon = true;
-			Destroy (WepLabel, .85F);
+			Destroy (WepLabel, 1.0F);
 			//if (ShieldLabel != null) Destroy (ShieldLabel);
 			//if (BootLabel != null) Destroy (BootLabel);
 			//if (OneUseLabel != null) Destroy (OneUseLabel);
@@ -46,7 +46,7 @@ public class InvSlotScript : MonoBehaviour {
 		//shield picked up
 		if (stats.inv[1] == 1) {
 			shield = true;
-			Destroy (ShieldLabel, .85F);
+			Destroy (ShieldLabel, 1.0F);
 			//if (WepLabel != null) Destroy (WepLabel);
 			//if (BootLabel != null) Destroy (BootLabel);
 			//if (OneUseLabel != null) Destroy (OneUseLabel);
@@ -54,7 +54,7 @@ public class InvSlotScript : MonoBehaviour {
 		//boots picked up
 		if (stats.inv[2] == 1) {
 			boots = true;
-			Destroy (BootLabel, .85F);
+			Destroy (BootLabel, 1.0F);
 			//if (ShieldLabel != null) Destroy (ShieldLabel);
 			//if (WepLabel != null) Destroy (WepLabel);
 			//if (OneUseLabel != null) Destroy (OneUseLabel);
@@ -66,7 +66,7 @@ public class InvSlotScript : MonoBehaviour {
 		//one-use item picked up
 		if (stats.inv[16] == 1) {
 			oneUse = true;
-			Destroy (OneUseLabel, .85F);
+			Destroy (OneUseLabel, 1.0F);
 			//if (ShieldLabel != null) Destroy (ShieldLabel);
 			//if (BootLabel != null) Destroy (BootLabel);
 			//if (WepLabel != null) Destroy (WepLabel);
