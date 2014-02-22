@@ -258,8 +258,8 @@ public class PolygonGenerator : MonoBehaviour {
 					TileOffset (px, py, HardLava, TileCodes.Scorched);
 					break;
 				case (byte)TileCodes.Scorched:
-					//GenSquare (px, py, Scorched);
-					TileOffset(px, py, Scorched, TileCodes.Dirt);
+					GenSquare (px, py, Scorched);
+					//TileOffset(px, py, Scorched, TileCodes.Dirt);
 					break;
 				}
 			}
