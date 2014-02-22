@@ -8,6 +8,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	private PlayerStats stats;
 	public GameObject Weapon;
 	public GameObject Weapon2;
+	public GameObject DodgeParticle;
 	private GameObject swingInstance;
 	public AudioClip slash;
 	public PolygonGenerator terrain;
@@ -33,6 +34,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	public bool isDodging = false;
 	public int dodgeCount = 0;
 	Vector3 dodgeDirection = new Vector3 (0,0,0);
+
+	private ParticleSystem particleSystem;
 	
 	public float knockBackTimer;
 	/// <summary>
@@ -206,7 +209,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 		if (swingInstance != null) {
 			swingInstance.transform.position += movement;
-		}
+		} 
 		if (isDodging == true && dodgeCount > 50){
 			dodgeDirection = movement*5;
 			isDodging = false;
@@ -214,6 +217,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		}
 		if (dodgeCount < 7){
 			transform.position += dodgeDirection;
+			particleSystem = Instantiate(DodgeParticle, transform.position, Quaternion.LookRotation(transform.position)) as ParticleSystem;
 		}
 		if (dodgeCount < 25) {
 			dodgeCount++;
