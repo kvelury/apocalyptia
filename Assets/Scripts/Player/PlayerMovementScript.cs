@@ -45,6 +45,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	private bool isRed;
 	private bool isGreen;
 	private bool isYellow;
+	private int lastDir;
 	
 	// Use this for initialization
 	void Start () {
@@ -56,7 +57,7 @@ public class PlayerMovementScript : MonoBehaviour {
 
 		animator = GetComponent<Animator>(); //for sprite animation
 		animator.SetTrigger ("snot");
-
+		lastDir = 2;
 		knockBackTimer = 11;
 		colorChangeTimer = 0;
 		yellowTimer = 0;
@@ -67,7 +68,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		/*
 		//magic
 		if (Input.GetKeyDown ("w")) {
 			animator.SetTrigger ("wpressed");
@@ -96,7 +97,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		if(Input.GetKeyUp("d")){
 			animator.SetTrigger ("snot");
 		}
-
+*/
 
 
 
@@ -109,6 +110,46 @@ public class PlayerMovementScript : MonoBehaviour {
 
 			//Debug.Log ((Quaternion.Euler (0, 0, -45) * (velocity * direction)).ToString ());
 			movement = Quaternion.Euler (0, 0, -45) * (velocity * direction);
+			
+			//magic
+			//lastDir
+			//1: up
+			//2: down
+			//3: left
+			//4: right
+			if (direction.y > 0) {
+				animator.Play ("WalkUp");
+				lastDir = 1;
+			}
+			else if (direction.y < 0) {
+				animator.Play ("WalkDown");
+				lastDir = 2;
+			}
+			else if (direction.x < 0) {
+				animator.Play ("WalkLeft");
+				lastDir = 3;
+			}
+			else if (direction.x > 0) {
+				animator.Play ("WalkRight");
+				lastDir = 4;
+			}
+			if(direction.y == 0 && direction.x == 0){
+				switch(lastDir){
+					case 1:
+						animator.Play ("StandUp");
+						break;
+					case 2:
+						animator.Play ("StandDown");
+						break;
+					case 3:
+						animator.Play ("StandLeft");
+						break;
+					case 4:
+						animator.Play ("StandRight");
+						break;
+				}
+
+			}
 		} else {
 			knockBackTimer ++;
 		}
