@@ -45,7 +45,7 @@ public class DesertGenerator : PolygonGenerator {
 
 	protected override void GenTerrain(){
 		float radiationThreshold = 0.15f + 0.1f * difficulty;//this value and below is radioactive
-		float stoneThreshold = 0.20f + 0.1f * difficulty;//this value and below is stone
+		float stoneThreshold = 0.30f + 0.1f * difficulty;//this value and below is stone
 		float sandThreshold = 0.80f;//this value and below is sand, above is water
 		blocks = new byte[gridWidth, gridHeight];
 		//xStart = 913;//Random.Range (-1000, 1000);
