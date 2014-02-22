@@ -58,6 +58,7 @@ public class GameFlowController : MonoBehaviour {
 			GameObject burnInstance = Instantiate (burntile, player.transform.position + new Vector3 (0, 0, 0.27f), new Quaternion (0, 0, 0, 0)) as GameObject;
 
 			GameObject.Find("HazardController").GetComponent<HazardControlScript>().SetDifficulty();
+			player.GetComponent<OverlayParticleScript>().SetDifficulty();
 		}
 
 	}

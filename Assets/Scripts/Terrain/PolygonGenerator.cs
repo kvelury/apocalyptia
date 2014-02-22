@@ -149,6 +149,7 @@ public class PolygonGenerator : MonoBehaviour {
 		Start ();
 		//blocks = null;
 		GameObject.Find("HazardController").GetComponent<HazardControlScript>().SetDifficulty();
+		player.GetComponent<OverlayParticleScript>().SetDifficulty();
 	}
 
 	public int GetDifficulty(){
