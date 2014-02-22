@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MainMenuEvents : MonoBehaviour {
 
+	public Texture Logo;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -20,7 +22,9 @@ public class MainMenuEvents : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if (GUI.Button (new Rect (Screen.width * 3 / 8, Screen.height * 3 / 8, Screen.width * 1 / 4, Screen.height * 1 / 4), "Play")) {
+		GUI.DrawTexture(new Rect(Screen.width * 1/8, 0, Screen.width*3/4, Screen.height), Logo);
+
+		if (GUI.Button (new Rect (Screen.width * 3 / 8, Screen.height * 3 / 4, Screen.width * 1 / 4, Screen.height * 1 / 8), "Play")) {
 			Application.LoadLevel("Scene1");
 		}
 	}
