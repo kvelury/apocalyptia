@@ -260,31 +260,16 @@ public class PlayerMovementScript : MonoBehaviour {
 			Vector3 diff = new Vector3(Input.mousePosition.x - Screen.width/2, Input.mousePosition.y - Screen.height/2, 0);
 			diff.Normalize();
 			diff = Quaternion.Euler (0, 0, -45) * diff;
+			diff = diff * 1.6f;
 			swingDir = transform.position + diff;
 			
-			if (Input.mousePosition.x > Screen.width/2 + 16){
-				swingDir.y = swingDir.y - 0.1F;
-			}
-			if (Input.mousePosition.x < Screen.width/2 - 16){
-				swingDir.y = swingDir.y + 0.1F;
-			}
-			if (Input.mousePosition.y > Screen.height/2 + 16){
-				swingDir.x = swingDir.x + 0.1F;
-			}
-			if (Input.mousePosition.y < Screen.height/2 - 16){
-				swingDir.x = swingDir.x - 0.1F;
-			}
 			if (Input.mousePosition.x > Screen.width/2 - 16 && Input.mousePosition.x < Screen.width/2 + 16
 			    && Input.mousePosition.y > Screen.height/2 - 16 && Input.mousePosition.y < Screen.height/2 + 16){
 				swingDir.y = swingDir.y + 0.1F;
 			}
 			
 			swingRot = Quaternion.LookRotation (swingDir - transform.position);
-			swingRot.z = swingRot.w = 0;
-			if(swingDir.x == transform.position.x){
-				swingRot.y = swingRot.x;
-			}
-			swingRot *= Quaternion.Euler (0, 0, 90);				
+			swingRot *= Quaternion.Euler (0, 90, 90);				
 			//we need account for the isometric rotation
 
 			if (stats.inv [0] == 0) {
