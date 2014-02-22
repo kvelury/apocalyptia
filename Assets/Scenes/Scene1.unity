@@ -657,8 +657,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonReady: 0
-  closeLid: {fileID: 2800000, guid: b97b94af8b07b124ea7a43ff35ef108f, type: 3}
-  openLid: {fileID: 2800000, guid: fe97547dbc5bb9b4e8d4da2b4749d751, type: 3}
+  closeLid: {fileID: 2800000, guid: ca47043e6a4311e4b9edee3e14716093, type: 3}
+  openLid: {fileID: 2800000, guid: 6bdd10424e973b84f8104d1dda01e1f1, type: 3}
   currLid: {fileID: 0}
   flipOpen: {fileID: 8300000, guid: dec41a720bc21b9498c5072027e9736d, type: 3}
   click: {fileID: 8300000, guid: e1c47264654c2ff4c89ed957404eb644, type: 3}

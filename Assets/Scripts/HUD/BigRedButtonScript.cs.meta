@@ -3,9 +3,13 @@ guid: d6eae1178cc2d564594eca48db731f9e
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - closeLid: {fileID: 2800000, guid: b97b94af8b07b124ea7a43ff35ef108f, type: 3}
-  - openLid: {fileID: 2800000, guid: fe97547dbc5bb9b4e8d4da2b4749d751, type: 3}
+  - closeLid: {fileID: 2800000, guid: ca47043e6a4311e4b9edee3e14716093, type: 3}
+  - openLid: {fileID: 2800000, guid: 6bdd10424e973b84f8104d1dda01e1f1, type: 3}
   - currLid: {instanceID: 0}
+  - flipOpen: {instanceID: 0}
+  - click: {instanceID: 0}
+  - thunder: {instanceID: 0}
+  - burnTile: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
