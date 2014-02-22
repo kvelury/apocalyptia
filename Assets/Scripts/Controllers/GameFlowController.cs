@@ -145,15 +145,10 @@ public class GameFlowController : MonoBehaviour {
 	}
 
 	private void DespawnOldResources(){
-		GameObject[] trees = GameObject.FindGameObjectsWithTag ("tree");
-		GameObject[] stones = GameObject.FindGameObjectsWithTag ("stone");
+		GameObject[] decorations = GameObject.FindGameObjectsWithTag ("decoration");
 		
-		for (int i = 0; i < trees.Length; i++) {
-			Destroy (trees[i]);
-		}
-	
-		for (int i = 0; i < stones.Length; i++) {
-			Destroy (stones[i]);
+		foreach (GameObject d in decorations) {
+			Destroy (d);
 		}
 	}
 }

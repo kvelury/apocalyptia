@@ -152,7 +152,7 @@ MonoBehaviour:
   invertFill: 0
 --- !u!65 &91450367
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500000, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -349,7 +349,7 @@ MonoBehaviour:
   excludedControls: []
 --- !u!65 &120846007
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500002, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -461,7 +461,7 @@ MonoBehaviour:
   invertFill: 0
 --- !u!65 &288561106
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500004, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -2054,24 +2054,24 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400038, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_LocalPosition.x
-      value: .00130208337
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
     - target: {fileID: 2300000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
     - target: {fileID: 2300000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_Materials.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 8aef305aa24d2d44ab52fc3351c4f647, type: 2}
     - target: {fileID: 2300000, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: m_Materials.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: ecc0e2016ccf647cb8953c6fce53db33, type: 2}
     - target: {fileID: 11400032, guid: 741b139df0d955c4f861fd2044e26a00, type: 2}
       propertyPath: Weapon
       value: 
@@ -2163,7 +2163,7 @@ MonoBehaviour:
   invertFill: 0
 --- !u!65 &558703522
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500006, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -2252,7 +2252,7 @@ MonoBehaviour:
   invertFill: 0
 --- !u!65 &659064946
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500008, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -6043,7 +6043,7 @@ MonoBehaviour:
   invertFill: 0
 --- !u!65 &1031122436
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500010, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -6155,7 +6155,7 @@ MonoBehaviour:
   invertFill: 0
 --- !u!65 &1062629206
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500012, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -6336,7 +6336,7 @@ Transform:
   m_Father: {fileID: 1062629202}
 --- !u!65 &1311126246
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500014, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -6488,10 +6488,10 @@ Renderer:
   m_LightmapIndex: 255
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 25bf5879f8a5449489b9c5279e37b2d7, type: 2}
+  - {fileID: 2100000, guid: 5ddffabbcdbcb3240b185e41f59b6f69, type: 3}
+  - {fileID: 2100000, guid: 8aef305aa24d2d44ab52fc3351c4f647, type: 2}
+  - {fileID: 2100000, guid: ecc0e2016ccf647cb8953c6fce53db33, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -6537,7 +6537,7 @@ MonoBehaviour:
   guides: []
 --- !u!65 &1352344430
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500016, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -6914,7 +6914,7 @@ Transform:
   m_Father: {fileID: 1031122433}
 --- !u!65 &1528606886
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500018, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -8496,7 +8496,7 @@ Transform:
   m_Father: {fileID: 2127238808}
 --- !u!65 &1809314980
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500020, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -9945,7 +9945,7 @@ MonoBehaviour:
   TwoWay: 0
 --- !u!65 &1929489090
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500022, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -10067,7 +10067,7 @@ Transform:
   m_Father: {fileID: 288561102}
 --- !u!65 &1943491583
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500024, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -10208,7 +10208,7 @@ Transform:
   m_Father: {fileID: 1929489087}
 --- !u!65 &1985984647
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500026, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -10377,7 +10377,7 @@ MonoBehaviour:
   invertFill: 0
 --- !u!65 &2001726463
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500028, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}
@@ -10578,7 +10578,7 @@ Transform:
   m_PrefabInternal: {fileID: 521662038}
   m_GameObject: {fileID: 2075333025}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .00130208337, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1352344432}
@@ -10762,7 +10762,7 @@ MonoBehaviour:
   invertFill: 0
 --- !u!65 &2127238812
 BoxCollider:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_PrefabParentObject: {fileID: 6500030, guid: 741b139df0d955c4f861fd2044e26a00,
     type: 2}
   m_PrefabInternal: {fileID: 521662038}

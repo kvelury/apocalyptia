@@ -103,8 +103,8 @@ public class PolygonGenerator : MonoBehaviour {
 		GenTerrain ();
 		BuildMesh ();
 		UpdateMesh ();
-		AddResources ();
 		if (firstInit) {
+			AddResources ();
 			SpawnPlayerSafely ();
 			firstInit = false;
 		}
@@ -143,7 +143,7 @@ public class PolygonGenerator : MonoBehaviour {
 		}
 		//Added the next two lines to reduce lag - Kyle
 		//ClearWater ();
-		DespawnOldResources ();
+		//DespawnOldResources ();
 		if(mesh!= null)
 			mesh.Clear ();
 		Start ();
@@ -554,6 +554,7 @@ public class PolygonGenerator : MonoBehaviour {
 		*/
 		player.transform.position = new Vector3 (150, 150, 0);
 	}
+	/*
 	//Cloned from GameFlowController, since it's private.
 	private void DespawnOldResources(){
 		GameObject[] trees = GameObject.FindGameObjectsWithTag ("tree");
@@ -567,5 +568,5 @@ public class PolygonGenerator : MonoBehaviour {
 			Destroy (stones[i]);
 		}
 	}
-
+	*/
 }
