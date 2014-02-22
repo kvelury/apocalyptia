@@ -61,7 +61,7 @@ public class InvSlotScript : MonoBehaviour {
 		}
 		if (stats.inv[10] == 1) {
 			leech = true;
-			Destroy (LeechLabel, 1.0F);
+			Destroy (LeechLabel, 1.5F);
 		}
 		//one-use item picked up
 		if (stats.inv[16] == 1) {
