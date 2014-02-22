@@ -46,9 +46,11 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	private float colorChangeTimer;
 	private float yellowTimer;
+	private float blueTimer;
 	private bool isRed;
 	private bool isGreen;
 	private bool isYellow;
+	private bool isBlue;
 	private int lastDir;
 	
 	// Use this for initialization
@@ -65,11 +67,13 @@ public class PlayerMovementScript : MonoBehaviour {
 		knockBackTimer = 11;
 		colorChangeTimer = 0;
 		yellowTimer = 0;
+		blueTimer = 0;
 		isRed = false;
 		isYellow = false;
 		isGreen = false;
+		isBlue = false;
 	}
-	
+	 
 	// Update is called once per frame
 	void Update () {
 		/*
@@ -184,6 +188,11 @@ public class PlayerMovementScript : MonoBehaviour {
 			if (yellowTimer <= 0) {
 				isYellow = false;
 			}
+		} else if (isBlue) {
+			blueTimer--;
+			if (blueTimer <= 0) {
+				isBlue = false;
+			}
 		} else if (isGreen) {
 			spriteRender.color = new Color (.2f, 1.0f, 0f);
 		} else {
@@ -192,7 +201,7 @@ public class PlayerMovementScript : MonoBehaviour {
 		
 		//		if (Input.GetKey (KeyCode.Space)) {
 		//			//Debug.Log("Precision Guns: " + stats.precisionGuns.ToString());
-		//		}
+		//		}inv[16] = 1;
 		
 	}
 	
@@ -222,6 +231,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	void FixedUpdate(){
 
 		if (Input.GetKeyDown ("q") && pr.useItemTimer == 300) {
+
+			if (stats.inv[16] == 1) ChangeToBlue();
 			pr.UseItem ();
 		}
 		if (swingInstance != null) {
@@ -344,9 +355,17 @@ public class PlayerMovementScript : MonoBehaviour {
 	}
 	
 	private void ChangeToRed(){
-		isRed = true;
-		colorChangeTimer = 5;
-		spriteRender.color = Color.red;
+		if (!isBlue) {
+			isRed = true;
+			colorChangeTimer = 5;
+			spriteRender.color = Color.red;
+		}
+	}
+
+	private void ChangeToBlue() {
+		isBlue = true;
+		blueTimer = 120;
+		spriteRender.color = new Color (0f, 153/255f, 204/255f);
 	}
 
 	private void FlashYellow() {
