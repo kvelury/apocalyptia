@@ -121,11 +121,27 @@ public class PlayerMovementScript : MonoBehaviour {
 			//3: left
 			//4: right
 			if (direction.y > 0) {
-				animator.Play ("WalkUp");
+				if(direction.x > 0){
+					animator.Play ("WalkUpRight");
+				}
+				else if(direction.x < 0){
+					animator.Play ("WalkUpLeft");
+				}
+				else{
+					animator.Play ("WalkUp");
+				}
 				lastDir = 1;
 			}
 			else if (direction.y < 0) {
-				animator.Play ("WalkDown");
+				if(direction.x > 0){
+					animator.Play ("WalkDownRight");
+				}
+				else if(direction.x < 0){
+					animator.Play ("WalkDownLeft");
+				}
+				else{
+					animator.Play ("WalkDown");
+				}
 				lastDir = 2;
 			}
 			else if (direction.x < 0) {
