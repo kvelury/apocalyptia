@@ -31,6 +31,7 @@ public class PolygonGenerator : MonoBehaviour {
 	public GameObject enemyspawner;
 	public GameObject endgameobj;
 	public GameObject burntile;
+	public GameObject cactus;
 	public EnemySpawn es;
 	//*******************************************************************************************
 	//data needed externally

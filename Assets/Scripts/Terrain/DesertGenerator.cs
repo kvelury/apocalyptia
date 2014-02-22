@@ -74,9 +74,10 @@ public class DesertGenerator : PolygonGenerator {
 		/***************************************************************/
 		//THESE NUMBERS COMBINED ARE NOT TO EXCEED 50 DUE TO LAG ISSUES//
 		/***************************************************************/
-		float treePercentage = 5f;
+		float treePercentage = 10f;
 		float stonePercentage = 20f;
 		float buildingPercentage = 1f;
+		float cactusPercentage = 20f;
 		for(int i = 0; i < blocks.GetLength (0); i++){
 			for(int j = 0; j < blocks.GetLength (1); j++){
 				//add trees
@@ -85,7 +86,7 @@ public class DesertGenerator : PolygonGenerator {
 						Vector3 location = new Vector3( worldScale * i + worldScale * 0.5f,
 					                               		worldScale * j - worldScale * 0.5f,
 						                               0);//0.49f);
-						GameObject newTree = Instantiate (tree, location, new Quaternion(0, 0, 0, 0)) as GameObject;
+						Instantiate (tree, location, new Quaternion(0, 0, 0, 0));
 					}
 				}
 				//add stone
@@ -94,7 +95,7 @@ public class DesertGenerator : PolygonGenerator {
 						Vector3 location = new Vector3( worldScale * i + worldScale * 0.5f,
 					                               		worldScale * j - worldScale * 0.5f,
 						                                0);
-						GameObject newStone = Instantiate (stone, location, new Quaternion(0, 0, 0, 0)) as GameObject;
+						Instantiate (stone, location, new Quaternion(0, 0, 0, 0));
 					}
 				}
 				//add buildings
@@ -103,7 +104,15 @@ public class DesertGenerator : PolygonGenerator {
 						Vector3 location = new Vector3( worldScale * i + worldScale * 0.5f,
 						                               worldScale * j  - worldScale * 0.5f,
 						                               0);//-0.49f);
-						GameObject newBuilding = Instantiate (building, location, new Quaternion(0, 0, 0, 0)) as GameObject;
+						Instantiate (building, location, new Quaternion(0, 0, 0, 0));
+					}
+				}
+				if(blocks[i,j] == (byte)TileCodes.Sand){
+					if(Random.Range (1, 100) < treePercentage){
+						Vector3 location = new Vector3( worldScale * i + worldScale * 0.5f,
+						                               worldScale * j  - worldScale * 0.5f,
+						                               0);//-0.49f);
+						Instantiate (burntTree, location, new Quaternion(0, 0, 0, 0));
 					}
 				}
 			}
