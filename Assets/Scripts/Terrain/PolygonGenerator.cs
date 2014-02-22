@@ -240,9 +240,9 @@ public class PolygonGenerator : MonoBehaviour {
 					GenSquare (px, py, Sand);
 					break;
 				case (byte)TileCodes.Dirt:
-					GenSquare (px, py, Dirt);
+					//GenSquare (px, py, Dirt);
 					//SandOffset(px, py, Dirt);
-					//TileOffset (px, py, Dirt, TileCodes.Sand);
+					TileOffset (px, py, Dirt, TileCodes.Scorched);
 					break;
 				case (byte)TileCodes.Radiation:
 					//gen radiation
@@ -250,13 +250,16 @@ public class PolygonGenerator : MonoBehaviour {
 					TileOffset (px, py, Radiation, TileCodes.Stone);
 					break;
 				case (byte)TileCodes.Lava:
-					GenSquare (px, py, Lava);
+					//GenSquare (px, py, Lava);
+					TileOffset (px, py, Lava, TileCodes.HardLava);
 					break;
 				case (byte)TileCodes.HardLava:
-					GenSquare (px, py, HardLava);
+					//GenSquare (px, py, HardLava);
+					TileOffset (px, py, HardLava, TileCodes.Scorched);
 					break;
 				case (byte)TileCodes.Scorched:
-					GenSquare (px, py, Scorched);
+					//GenSquare (px, py, Scorched);
+					TileOffset(px, py, Scorched, TileCodes.Dirt);
 					break;
 				}
 			}
