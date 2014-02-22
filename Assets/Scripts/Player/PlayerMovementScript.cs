@@ -48,13 +48,14 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+
 		pr = gameObject.GetComponent<PlayerResources> ();
 		spriteRender = GetComponent<SpriteRenderer>();
 		stats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
 		//		terrain = GameObject.Find ("Terrain").GetComponent<PolygonGenerator>();
 
 		animator = GetComponent<Animator>(); //for sprite animation
-
+		animator.SetTrigger ("snot");
 
 		knockBackTimer = 11;
 		colorChangeTimer = 0;
@@ -66,18 +67,38 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//magic
 		if (Input.GetKeyDown ("w")) {
-			animator.SetTrigger("wpressed");
+			animator.SetTrigger ("wpressed");
 		}
+		if(Input.GetKeyUp("w")){
+			animator.SetTrigger ("snot");
+		}
+		//
 		if (Input.GetKeyDown ("s")) {
-			animator.SetTrigger("spressed");
+			animator.SetTrigger ("spressed");
 		}
+		if(Input.GetKeyUp("s")){
+			animator.SetTrigger ("snot");
+		}
+		//
 		if (Input.GetKeyDown ("a")) {
-			animator.SetTrigger("apressed");
+			animator.SetTrigger ("apressed");
 		}
+		if(Input.GetKeyUp("a")){
+			animator.SetTrigger ("snot");
+		}
+		//
 		if (Input.GetKeyDown ("d")) {
-			animator.SetTrigger("dpressed");
+			animator.SetTrigger ("dpressed");
 		}
+		if(Input.GetKeyUp("d")){
+			animator.SetTrigger ("snot");
+		}
+
+
+
 
 
 		if (knockBackTimer > 30) {
