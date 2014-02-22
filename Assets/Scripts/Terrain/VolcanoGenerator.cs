@@ -31,7 +31,7 @@ public class VolcanoGenerator : PolygonGenerator {
 	*/
 		
 	protected override void SetType(){
-		apocalypseType = ApocalypseType.Desert;
+		apocalypseType = ApocalypseType.Volcano;
 	}
 		
 		
