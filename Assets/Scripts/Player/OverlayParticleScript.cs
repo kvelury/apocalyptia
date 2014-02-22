@@ -45,6 +45,8 @@ public class OverlayParticleScript : MonoBehaviour {
 	}
 
 	void FixedUpdate (){
-		currSystem.transform.position = transform.position + followDistance;
+		if (currSystem != null){
+			currSystem.transform.position = transform.position + followDistance;
+		}
 	}
 }
