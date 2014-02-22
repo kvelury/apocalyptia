@@ -21,7 +21,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	/// The velocity vector holds the player's movement speed.
 	/// This gets multiplied by the direction to get actual movement.
 	/// </summary>
-	public float velocity = 20;
+	public float velocity = 15;
 	
 	private float weaponCoolTimer = 15;
 	/// <summary>
@@ -347,6 +347,7 @@ public class PlayerMovementScript : MonoBehaviour {
 				}
 				if(terrain.blocks[x, y] == (byte)PolygonGenerator.TileCodes.Lava){
 					pr.healthCount -= 0.5f;
+					ChangeToRed ();
 				}
 			}catch (IndexOutOfRangeException e){//player has gone through the smoke
 				pr.healthCount -= 9999999999;
