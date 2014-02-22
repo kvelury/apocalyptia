@@ -76,7 +76,7 @@ public class EnemyMovement : MonoBehaviour {
 		if (col.gameObject.name == "Weapon(Clone)") {
 			//movement.x = -2F*movement.x;
 			//movement.y = -2F*movement.y;
-			movement = -5f * (Player.transform.position - transform.position).normalized;
+			movement = -2.5f * (Player.transform.position - transform.position).normalized;
 			timer = 40;
 		}
 		
