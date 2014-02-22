@@ -12,6 +12,8 @@ public class PlayerMovementScript : MonoBehaviour {
 	public AudioClip slash;
 	public PolygonGenerator terrain;
 	private SpriteRenderer spriteRender;
+
+	protected Animator animator; // for sprite animation
 	
 	/// <summary>
 	/// The velocity vector holds the player's movement speed.
@@ -50,7 +52,10 @@ public class PlayerMovementScript : MonoBehaviour {
 		spriteRender = GetComponent<SpriteRenderer>();
 		stats = GameObject.Find ("Player").GetComponent<PlayerStats> ();
 		//		terrain = GameObject.Find ("Terrain").GetComponent<PolygonGenerator>();
-		
+
+		animator = GetComponent<Animator>(); //for sprite animation
+
+
 		knockBackTimer = 11;
 		colorChangeTimer = 0;
 		yellowTimer = 0;
@@ -61,6 +66,20 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown ("w")) {
+			animator.SetTrigger("wpressed");
+		}
+		if (Input.GetKeyDown ("s")) {
+			animator.SetTrigger("spressed");
+		}
+		if (Input.GetKeyDown ("a")) {
+			animator.SetTrigger("apressed");
+		}
+		if (Input.GetKeyDown ("d")) {
+			animator.SetTrigger("dpressed");
+		}
+
+
 		if (knockBackTimer > 30) {
 			
 			if (Input.GetKey ("space") && dodgeCount > 50) isDodging = true;
@@ -119,6 +138,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	
 	//FixedUpdate is called once per tick and should be used for physics
 	void FixedUpdate(){
+
 		if (Input.GetKeyDown ("q") && pr.useItemTimer == 300) {
 			pr.UseItem ();
 		}
