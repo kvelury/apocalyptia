@@ -7,6 +7,7 @@ public class PlayerMovementScript : MonoBehaviour {
 	public PlayerResources pr;
 	private PlayerStats stats;
 	public GameObject Weapon;
+	public GameObject WeaponPlus;
 	public GameObject Weapon2;
 	public GameObject DodgeParticle;
 	private GameObject swingInstance;
@@ -285,13 +286,17 @@ public class PlayerMovementScript : MonoBehaviour {
 			}
 			swingRot *= Quaternion.Euler (0, 0, 90);				
 			//we need account for the isometric rotation
-			swingInstance = Instantiate (Weapon, swingDir, swingRot) as GameObject;
+
+			if (stats.inv [0] == 0) {
+				swingInstance = Instantiate (Weapon, swingDir, swingRot) as GameObject;
+			}
+			else swingInstance = Instantiate (WeaponPlus, swingDir, swingRot) as GameObject;
 			weaponCoolTimer = 0;
 		} else {
 			weaponCoolTimer++;
 		}
 		
-		if(Input.GetMouseButton (1) && weaponCoolTimer >= weaponCoolDown && 
+		if(stats.inv[1] == 1 && Input.GetMouseButton (1) && weaponCoolTimer >= weaponCoolDown && 
 		   //This added check is so the player doesn't swing when clicking Big Red Button.
 		   !(Input.mousePosition.x > (Screen.width - 220) && Input.mousePosition.x < (Screen.width - 20)
 		  && Input.mousePosition.y > (20) && Input.mousePosition.y < (220))){

@@ -73,7 +73,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D (Collision2D col){
-		if (col.gameObject.name == "Weapon(Clone)") {
+		if (col.gameObject.name == "Weapon(Clone)" || col.gameObject.name == "WeaponPlus(Clone)") {
 			//movement.x = -2F*movement.x;
 			//movement.y = -2F*movement.y;
 			movement = -2.5f * (Player.transform.position - transform.position).normalized;

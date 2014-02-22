@@ -83,7 +83,7 @@ public class EnemyStats : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.name == "Weapon(Clone)") {
+		if (col.gameObject.name == "Weapon(Clone)" || col.gameObject.name == "WeaponPlus(Clone)") {
 			audio.clip = hit1;
 			audio.PlayOneShot(audio.clip);
 			HP -= ps.currDam;

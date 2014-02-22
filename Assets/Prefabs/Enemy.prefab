@@ -142,9 +142,9 @@ MonoBehaviour:
   maxHP: 0
   HP: 0
   damage: 0
-  Sword: {fileID: 100000, guid: 36adfb9e0fd1c9d4781ca35815a2ae1c, type: 2}
-  Shield: {fileID: 100000, guid: 83a08dd1d40298847a0e3fcc6c994f81, type: 2}
-  Boots: {fileID: 100000, guid: b29c6169b0d4a444184e82ff8295df0f, type: 2}
+  Sword: {fileID: 100000, guid: 21d33c2825fac433d84253cce6951494, type: 2}
+  Shield: {fileID: 100000, guid: 4572907a98613422daf937bb4715a1b2, type: 2}
+  Boots: {fileID: 100000, guid: 34e4a79f8f2504ffea6b1be35b5d4ecf, type: 2}
   Heart: {fileID: 100000, guid: 389d25eb53baf9e44bdfce4b1238af83, type: 2}
   HealthLeech: {fileID: 100000, guid: 548f83752a1ea82438b96a61932a236c, type: 2}
   MoreHearts: {fileID: 100000, guid: d4375d3c606d54a45b8a2670ed52b7b7, type: 2}
