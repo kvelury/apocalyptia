@@ -60,10 +60,10 @@ public class PolygonGenerator : MonoBehaviour {
 	protected readonly Vector2 Radiation = new Vector2( 7, 1);
 	protected readonly Vector2 Sand      = new Vector2(10, 1);
 	protected readonly Vector2 Grass     = new Vector2( 0, 12);//junk: replace with actual later
-	protected readonly Vector2 Dirt      = new Vector2( 1, 4);
-	protected readonly Vector2 Lava      = new Vector2( 4, 4);
-	protected readonly Vector2 Scorched  = new Vector2( 7, 4);
-	protected readonly Vector2 HardLava  = new Vector2(10, 4);
+	protected readonly Vector2 Dirt      = new Vector2( 1, 7);
+	protected readonly Vector2 Lava      = new Vector2( 4, 7);
+	protected readonly Vector2 Scorched  = new Vector2( 7, 7);
+	protected readonly Vector2 HardLava  = new Vector2(10, 7);
 	public enum TileCodes : byte {Water, Stone, Radiation, Sand, Grass, Dirt, Lava, Scorched, HardLava};
 
 	protected int squareCount = 0;
@@ -140,7 +140,7 @@ public class PolygonGenerator : MonoBehaviour {
 			}
 			GameObject endgame = Instantiate (endgameobj, newLoc, new Quaternion(0,0,0,0)) as GameObject;
 			Debug.Log ("Endgame object spawned!");
-				}
+		}
 		//Added the next two lines to reduce lag - Kyle
 		//ClearWater ();
 		DespawnOldResources ();
@@ -337,41 +337,6 @@ public class PolygonGenerator : MonoBehaviour {
 		mesh.tangents = tangents;
 	}
 
-	/*
-	protected void SandOffset(int px, int py, Vector2 start){
-		Vector2 assignedTexture = new Vector2(start.x, start.y);
-		if (blocks [Mathf.Min(px + 1, gridWidth - 1), py] == (byte)TileCodes.Sand) {
-			assignedTexture.x++;
-		}
-		if(blocks[Mathf.Max (px - 1, 0), py] == (byte)TileCodes.Sand){
-			assignedTexture.x--;
-		}
-		if(blocks[px, Mathf.Min (py + 1, gridHeight - 1)] == (byte)TileCodes.Sand){
-			assignedTexture.y++;
-		}
-		if(blocks[px, Mathf.Max (py - 1, 0)] == (byte)TileCodes.Sand){
-			assignedTexture.y--;
-		}
-		GenSquare (px, py, assignedTexture);
-	}
-
-	protected void StoneOffset(int px, int py, Vector2 start){
-		Vector2 assignedTexture = new Vector2(start.x, start.y);
-		if (blocks [Mathf.Min(px + 1, gridWidth - 1), py] == (byte)TileCodes.Stone) {
-			assignedTexture.x++;
-		}
-		if(blocks[Mathf.Max (px - 1, 0), py] == (byte)TileCodes.Stone){
-			assignedTexture.x--;
-		}
-		if(blocks[px, Mathf.Min (py + 1, gridHeight - 1)] == (byte)TileCodes.Stone){
-			assignedTexture.y++;
-		}
-		if(blocks[px, Mathf.Max (py - 1, 0)] == (byte)TileCodes.Stone){
-			assignedTexture.y--;
-		}
-		GenSquare (px, py, assignedTexture);
-	}*/
-
 	protected void TileOffset(int px, int py, Vector2 start, TileCodes type){
 		Vector2 assignedTexture = new Vector2(start.x, start.y);
 		int bumps = 0;
@@ -395,35 +360,40 @@ public class PolygonGenerator : MonoBehaviour {
 		//if bumps == 1 or 2, it should be right where it is
 		//if bumps == 3, it is a  corner surrounded on 3 sides by the border texture
 		//if bumps == 4, it is a single tile surrounded on all sides by its border
-		/*
 		if (bumps == 0) {
 			//check if it is an inner corner
+			//if it is, move the y component up by 3.
+			//this moves it to its "flipped" version 1 row higher
+			//then bump it left/right/up/down as needed
 			if(blocks[Mathf.Min (px + 1, gridWidth - 1), Mathf.Min (py + 1, gridHeight - 1)] != blocks[px, py]){
+				assignedTexture.y += 3;
 				assignedTexture.x--;
 				assignedTexture.y--;
 				GenSquare (px, py, assignedTexture);
 				return;
 			}
 			if(blocks[Mathf.Min (px + 1, gridWidth - 1), Mathf.Max (py - 1, 0)             ] != blocks[px, py]){
+				assignedTexture.y += 3;
 				assignedTexture.x--;
 				assignedTexture.y++;
 				GenSquare (px, py, assignedTexture);
 				return;
 			}
 			if(blocks[Mathf.Max (px - 1, 0)            , Mathf.Min (py + 1, gridHeight - 1)] != blocks[px, py]){
+				assignedTexture.y += 3;
 				assignedTexture.x++;
 				assignedTexture.y--;
 				GenSquare (px, py, assignedTexture);
 				return;
 			}
 			if(blocks[Mathf.Max (px - 1, 0)            , Mathf.Max (py - 1, 0)             ] != blocks[px, py]){
+				assignedTexture.y += 3;
 				assignedTexture.x++;
 				assignedTexture.y++;
 				GenSquare (px, py, assignedTexture);
 				return;
 			}
 		}
-		*/
 		GenSquare (px, py, assignedTexture);
 	}
 
