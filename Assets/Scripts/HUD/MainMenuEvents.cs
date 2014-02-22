@@ -3,7 +3,9 @@ using System.Collections;
 
 public class MainMenuEvents : MonoBehaviour {
 
-	public Texture Logo;
+	public Texture Button;
+	public Texture SideA;
+	public Texture SideB;
 
 	// Use this for initialization
 	void Start () {
@@ -22,10 +24,12 @@ public class MainMenuEvents : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		GUI.DrawTexture(new Rect(Screen.width * 1/8, 0, Screen.width*3/4, Screen.height), Logo);
+		GUI.DrawTexture(new Rect(0, 0, SideA.width, Screen.height), SideA);
+		GUI.DrawTexture (new Rect(Screen.width-SideB.width, 0, SideB.width, Screen.height), SideB);
 
-		if (GUI.Button (new Rect (Screen.width * 3 / 8, Screen.height * 3 / 4, Screen.width * 1 / 4, Screen.height * 1 / 8), "Play")) {
+		if (GUI.Button (new Rect((Screen.width-Button.width) * 1/2, (Screen.height-Button.height) * 1/2, Button.width, Button.height), Button)) {
 			Application.LoadLevel("Scene1");
 		}
+		//GUI.TextField(new Rect(Screen.width * 7/16, Screen.height * 7/16, Screen.width * 1/8, Screen.height * 1/8), "Press to end\nthe world");
 	}
 }
