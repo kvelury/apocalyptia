@@ -235,10 +235,10 @@ public class PlayerMovementScript : MonoBehaviour {
 			transform.position += dodgeDirection;
 			particleSystem = Instantiate(DodgeParticle, transform.position, Quaternion.LookRotation(transform.position)) as ParticleSystem;
 		}
-		if (dodgeCount < 25) {
-			dodgeCount++;
-		}
-		else if (dodgeCount < 51) {
+		//if (dodgeCount < 25) {
+		//	dodgeCount++;
+		//}
+		/*else*/ if (dodgeCount < 51) {
 			transform.position += movement;
 			dodgeCount++;
 		}
