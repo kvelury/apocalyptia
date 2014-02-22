@@ -89,8 +89,11 @@ public class EnemyStats : MonoBehaviour {
 			HP -= ps.currDam;
 			//Destroy (col.gameObject);
 			particleSystem = Instantiate(EnemyParticle, transform.position, Quaternion.LookRotation(transform.position - Player.transform.position)) as ParticleSystem;
-			if(ps.inv[10] == 1)
+			if(ps.inv[10] == 1){
 				pr.healthCount += 1;
+				if(pr.healthCount > 100)
+					pr.healthCount = 100;
+			}
 		}
 		
 		if (col.gameObject.name == "Weapon2(Clone)") {

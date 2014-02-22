@@ -46,6 +46,16 @@ public class EnemyMovement : MonoBehaviour {
 					direction = (Player.transform.position - transform.position).normalized;
 				else
 					direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
+				if(direction.x > 0){
+					Vector3 i = gameObject.transform.localScale;
+					i.x = -0.5f;
+					gameObject.transform.localScale = i;
+				}
+				else{
+					Vector3 i = gameObject.transform.localScale;
+					i.x = 0.5f;
+					gameObject.transform.localScale = i;
+				}
 			}
 			
 			
@@ -67,6 +77,16 @@ public class EnemyMovement : MonoBehaviour {
 				}
 				else
 					direction = new Vector3 (Random.Range (-2, 2), Random.Range (-2, 2));
+				if(direction.x > 0){
+					Vector3 i = gameObject.transform.localScale;
+					i.x = -0.35f;
+					gameObject.transform.localScale = i;
+				}
+				else{
+					Vector3 i = gameObject.transform.localScale;
+					i.x = 0.35f;
+					gameObject.transform.localScale = i;
+				}
 			}
 			movement = new Vector2 (velocity * direction.x, velocity * direction.y);
 		}
